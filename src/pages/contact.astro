@@ -1,0 +1,803 @@
+---
+// Utils
+import { Picture, getImage } from "astro:assets";
+
+// Components
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Banner from "@components/Banner/Banner.astro";
+
+// Data
+import { BUSINESS } from "@data/client";
+
+// Images
+import landingImage from "@assets/images/gallery/bannercontact.jpg";
+import skyscraperImage from "@assets/images/gallery/skyscraper.jpg";
+const optimizedImage = await getImage({ src: landingImage, format: "webp" });
+
+// 引入静态地图图片
+import factoryMapImage from "@assets/images/gallery/factory-map.jpg";
+---
+
+<BaseLayout
+	title="Contact"
+	description="Bothbest company supplies high-quality, durable, and eco-friendly bamboo products to international markets"
+	heroImage={optimizedImage}
+>
+	<Banner
+		title="Partner with Us"
+		subtitle="Connect with our specialists for global commercial supply, factory-direct wholesale, and custom OEM bamboo solutions."
+		image={optimizedImage}
+	/>
+
+	<section id="cs-contact">
+		<div class="cs-container">
+			<form
+				id="cs-form"
+				name="Contact Form"
+				action="https://forminit.com/f/5jndokb8gr1"
+				method="POST"
+			>
+				<div class="cs-content">
+					<span class="cs-topper">Contact</span>
+					<h2 class="cs-title">Get in Touch</h2>
+					<p class="cs-text">
+						Have a project in mind or looking for a reliable bamboo
+						manufacturing partner? As a leading bamboo factory,
+						Bothbest specializes in premium bamboo flooring, custom
+						panels, and innovative bamboo solutions. Drop us a
+						message with your specifications, volume requirements,
+						or questions, and our team will get back to you with an
+						expert quote within 24 hours.
+					</p>
+				</div>
+				<label>
+					Name
+					<input
+						required
+						type="text"
+						id="name"
+						name="fi-sender-fullName"
+						placeholder="Name"
+					/>
+				</label>
+				<label>
+					Email
+					<input
+						required
+						type="email"
+						id="email"
+						name="fi-sender-email"
+						placeholder="Email"
+					/>
+				</label>
+				<label>
+					Phone
+					<input
+						required
+						type="text"
+						id="phone"
+						name="fi-text-phone"
+						placeholder="Phone"
+					/>
+				</label>
+				<label>
+					Product
+					<input
+						type="text"
+						id="find"
+						name="fi-text-findUs"
+						placeholder="Products of Interest?"
+					/>
+				</label>
+				<label class="cs-label-message">
+					Message
+					<textarea
+						required
+						name="fi-text-message"
+						id="message"
+						placeholder="Write message..."></textarea>
+				</label>
+				<button class="cs-button-solid" type="submit"
+					>Submit Message</button
+				>
+			</form>
+			<div class="cs-right-section">
+				<!--Email-->
+				<span class="cs-header">Email</span>
+				<a class="cs-link" href={`mailto:${BUSINESS.email}`}
+					>{BUSINESS.email}</a
+				>
+				<!--Phone-->
+				<span class="cs-header">Phone</span>
+				<a class="cs-link" href="tel:+865633032211"
+					>+86 (563) 303-2211</a
+				>
+				<!--WhatsApp-->
+				<span class="cs-header">WhatsApp</span>
+				<a class="cs-link" href="https://wa.me/8615005820528" target="_blank" rel="nofollow noopener noreferrer"
+					>+86 150 0582 0528</a
+				>
+				<!--Address-->
+				<span class="cs-header">Address</span>
+				<a class="cs-link" href={BUSINESS.address.mapLink}>
+					{BUSINESS.address.lineOne},
+					<br />
+					{BUSINESS.address.lineTwo},
+					<br />
+					<span class="cs-block">
+						{BUSINESS.address.city}, {BUSINESS.address.state}
+						{BUSINESS.address.zip}
+					</span>
+				</a>
+
+				<!-- Background Image-->
+				<Picture
+					src={skyscraperImage}
+					alt="building"
+					width={2500}
+					height={1667}
+					formats={["avif", "webp"]}
+					pictureAttributes={{ class: "cs-bg-picture" }}
+				/>
+			</div>
+		</div>
+	</section>
+
+	<section id="cs-location">
+		<div class="cs-location-container">
+			<div class="cs-location-header">
+				<span class="cs-topper">Location</span>
+				<h2 class="cs-title">Our Global Presence</h2>
+			</div>
+
+			<div class="cs-location-content">
+				<div class="cs-map-wrapper">
+					<a
+						href={factoryMapImage.src}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="cs-map-link"
+						aria-label="View full size map image"
+					>
+						<Picture
+							src={factoryMapImage}
+							alt="Bothbest Bamboo Factory Location Map"
+							widths={[400, 800, 1280]}
+							sizes="(max-width: 1280px) 100vw, 1280px"
+							formats={["avif", "webp"]}
+							pictureAttributes={{ class: "cs-map-picture" }}
+						/>
+
+						<div class="cs-map-overlay">
+							<span class="cs-map-badge">Factory Location</span>
+							<p class="cs-map-address">
+								{BUSINESS.address.lineOne}, {
+									BUSINESS.address.city
+								}
+							</p>
+							<span class="cs-map-btn">
+								Click to View Map ↗
+							</span>
+						</div>
+					</a>
+				</div>
+
+				<div class="cs-info-wrapper">
+					<div class="cs-info-card">
+						<div class="cs-icon-wrapper">
+							<svg
+								class="cs-icon"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+							>
+								<path
+									d="M22 16v-2l-8.5-5V3.5C13.5 2.67 12.83 2 12 2s-1.5.67-1.5 1.5V9L2 14v2l8.5-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13.5 19v-5.5L22 16z"
+								></path>
+							</svg>
+						</div>
+						<div class="cs-info-text">
+							<h3 class="cs-info-title">
+								Factory Visits & Airport Access
+							</h3>
+							<p class="cs-info-desc">
+								Planning to visit our bamboo manufacturing
+								facility? The most convenient airport is <strong
+									>Hangzhou Xiaoshan International Airport
+									(HGH)</strong
+								>, located approximately 80 km (a 1-hour drive)
+								from our factory. We can arrange airport pick-up
+								services upon request.
+							</p>
+						</div>
+					</div>
+
+					<div class="cs-info-card">
+						<div class="cs-icon-wrapper">
+							<svg
+								class="cs-icon"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+							>
+								<path
+									d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.64 2.62.99 4 .99h2v-2h-2zM3.95 12l.71-2h14.68l.71 2H3.95zm16.05 2H4c-1.1 0-2 .9-2 2v2c1.39 0 2.78-.47 4-1.32 2.44 1.71 5.56 1.71-8 0 1.22.85 2.61 1.32 4 1.32h12v-2c0-1.1-.9-2-2-2zM13 4h-2v3H8l4 4 4-4h-3V4z"
+								></path>
+							</svg>
+						</div>
+						<div class="cs-info-text">
+							<h3 class="cs-info-title">
+								Global Shipping & Logistics
+							</h3>
+							<p class="cs-info-desc">
+								Our factory is strategically located with
+								convenient port access. We typically export and
+								ship ocean freight from <strong
+									>Shanghai Port</strong
+								> (approx. 230 km away), which offers the most efficient
+								routes, frequent vessel schedules, and competitive
+								shipping rates.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style lang="less">
+	/* PAGE-SPECIFIC STYLES FOR THE CONTACT PAGE */
+
+	/*-- -------------------------- -->
+	<---          Contact           -->
+	<--- -------------------------- -*/
+
+	/* Mobile - 360px */
+	@media only screen and (min-width: 0em) {
+		#cs-contact {
+			padding: var(--sectionPadding);
+
+			.cs-container {
+				width: 100%;
+				/* changes to 1280px at desktop */
+				max-width: (800/16rem);
+				margin: auto;
+			}
+
+			.cs-content {
+				width: 100%;
+			}
+
+			.cs-topper {
+				text-align: left;
+				/* 8px - 12px */
+				margin-bottom: clamp(0.5rem, 1.4vw, 0.75rem);
+			}
+
+			.cs-title {
+				text-align: left;
+				max-width: (800/16rem);
+			}
+
+			.cs-text {
+				text-align: left;
+				/* 404px - 522px */
+				max-width: clamp(25.25rem, 30vw, 32.625rem);
+				margin: 0 auto 0 0;
+				/* 40px - 48px */
+				margin-bottom: clamp(2.5rem, 6.3vw, 3rem);
+			}
+
+			#cs-form {
+				margin-bottom: (40/16rem);
+				label {
+					font-size: (16/16rem);
+					font-weight: 700;
+					line-height: 1.5em;
+					/* 12px - 20px */
+					margin-bottom: clamp(0.75rem, 1.3em, 1.25rem);
+					color: var(--headerColor);
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: flex-start;
+				}
+
+				.cs-label-message {
+					/* 32px - 48px */
+					margin-bottom: clamp(2rem, 6.3vw, 3rem);
+				}
+
+				input,
+				textarea {
+					font-size: (16/16rem);
+					width: 100%;
+					height: (64/16rem);
+					margin-top: (4/16rem);
+					/* prevents border & padding from affecting height */
+					box-sizing: border-box;
+					padding-left: (20/16rem);
+					border: 1px solid #b4b2c7;
+					border-radius: (8/16rem);
+					transition: border 0.3s;
+
+					&:hover {
+						border: 1px solid var(--primary);
+					}
+				}
+
+				textarea {
+					font-family: inherit;
+					min-height: (120/16rem);
+					padding-top: (20/16rem);
+				}
+
+				.cs-button-solid {
+					width: 100%;
+					border: none;
+				}
+			}
+
+			.cs-right-section {
+				height: (320/16rem);
+				/* 24px - 40px top & bottom */
+				/* 20px - 40px left & right */
+				padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 3vw, 2.5rem);
+				border-radius: (8/16rem);
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+				align-items: flex-start;
+				position: relative;
+				/* cuts off corners on img tag */
+				overflow: hidden;
+			}
+
+			.cs-header {
+				/* 16px - 20px */
+				font-size: clamp(1rem, 3vw, 1.25rem);
+				font-weight: 700;
+				line-height: 1.2em;
+				margin-bottom: (8/16rem);
+				color: var(--bodyTextColorWhite);
+				display: block;
+			}
+
+			.cs-link {
+				/* 16px - 20px */
+				font-size: clamp(1rem, 3vw, 1.25rem);
+				line-height: 1.2em;
+				text-decoration: none;
+				margin-bottom: (20/16rem);
+				color: var(--bodyTextColorWhite);
+				display: block;
+				position: relative;
+
+				&:before {
+					/* Animated underline */
+					content: "";
+					width: 0%;
+					height: 2px;
+					/* current color of the parent */
+					background: currentColor;
+					opacity: 1;
+					display: block;
+					position: absolute;
+					bottom: (-2/16rem);
+					left: 0;
+					transition: width 0.3s;
+				}
+
+				&:hover {
+					&:before {
+						width: 100%;
+					}
+				}
+
+				&:last-of-type {
+					margin-bottom: 0;
+				}
+			}
+
+			.cs-block {
+				/* sends second address line to the bottom on its own line */
+				display: block;
+			}
+
+			.cs-bg-picture {
+				width: 100%;
+				height: 100%;
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: -1;
+				transition: transform 0.6s;
+
+				&:before {
+					/* background color overlay */
+					content: "";
+					width: 100%;
+					height: 100%;
+					background: linear-gradient(
+						180deg,
+						rgba(0, 0, 0, 0) 0%,
+						rgba(0, 0, 0, 0.8) 100%
+					);
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 0;
+					z-index: 1;
+				}
+
+				img {
+					width: 100%;
+					height: 100%;
+					/* Makes img tag act as a background image */
+					object-fit: cover;
+					position: absolute;
+					top: 0;
+					left: 0;
+				}
+			}
+		}
+	}
+
+	/* Tablet - 700px */
+	@media only screen and (min-width: 43.75em) {
+		#cs-contact {
+			#cs-form {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+				flex-wrap: wrap;
+
+				label {
+					width: 48%;
+				}
+
+				.cs-label-message {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	/* Small Desktop - 1024px */
+	@media only screen and (min-width: 64em) {
+		#cs-contact {
+			.cs-container {
+				max-width: (1280/16rem);
+				display: flex;
+				justify-content: flex-end;
+				align-items: flex-start;
+				gap: (80/16rem);
+			}
+
+			#cs-form {
+				max-width: (630/16rem);
+				label {
+					width: 100%;
+				}
+			}
+
+			.cs-right-section {
+				width: 40%;
+				max-width: (542/16rem);
+				/* changes to 578px at 1300px wide */
+				height: (686/16rem);
+				/* prevents flexbox from squishing it */
+				flex: none;
+
+				&:hover {
+					.cs-bg-picture {
+						transform: scale(1.1);
+					}
+				}
+			}
+
+			.cs-block {
+				/* goes back to inline so it stays "in line" with the rest of the text */
+				display: inline-block;
+			}
+		}
+	}
+
+	/* Small Desktop - 1300px */
+	@media only screen and (min-width: 81.25em) {
+		#cs-contact {
+			#cs-form {
+				column-gap: (0/16rem);
+				label {
+					width: 48%;
+					max-width: (305/16rem);
+				}
+
+				.cs-label-message {
+					max-width: 100%;
+				}
+			}
+
+			.cs-right-section {
+				height: (578/16rem);
+			}
+		}
+	}
+
+	/* Dark Mode */
+	@media only screen and (min-width: 0em) {
+		body.dark-mode {
+			#cs-contact {
+				.cs-text,
+				.cs-title {
+					color: var(--bodyTextColorWhite);
+				}
+
+				.cs-topper {
+					color: var(--primaryLight);
+				}
+
+				#cs-form {
+					label,
+					input,
+					textarea {
+						color: var(--bodyTextColorWhite);
+						background-color: transparent;
+
+						&::placeholder {
+							/* lighten up the color of the text by 40%*/
+							filter: brightness(1.4);
+						}
+					}
+				}
+
+				.cs-bg-picture {
+					background-color: #000;
+
+					img {
+						/* lets parent background-color bleed through and darken it */
+						opacity: 0.5;
+					}
+				}
+			}
+		}
+	}
+
+	/* 移除表单区域底部的多余留白 */
+	#cs-contact {
+		padding-bottom: 0 !important;
+		margin-bottom: 0 !important;
+	}
+
+	/*-- -------------------------- -->
+	<---     Location & Map Section -->
+	<--- -------------------------- -*/
+
+	/* Mobile - 360px */
+	@media only screen and (min-width: 0em) {
+		#cs-location {
+			padding-top: (32/16rem);
+			padding-bottom: (80/16rem);
+
+			.cs-location-container {
+				width: 100%;
+				max-width: (1280/16rem);
+				margin: auto;
+				padding: 0 (16/16rem);
+				box-sizing: border-box;
+			}
+
+			.cs-location-header {
+				text-align: center;
+				margin-bottom: clamp(2rem, 5vw, 3rem);
+
+				.cs-topper {
+					display: block;
+					margin-bottom: (8/16rem);
+				}
+
+				.cs-title {
+					margin: 0;
+				}
+			}
+
+			.cs-location-content {
+				display: flex;
+				flex-direction: column;
+				gap: (32/16rem);
+			}
+
+			/* 左侧地图 */
+			.cs-map-wrapper {
+				width: 100%;
+			}
+
+			.cs-map-link {
+				display: block;
+				width: 100%;
+				height: auto;
+				aspect-ratio: 1278 / 832; 
+				border-radius: (12/16rem);
+				overflow: hidden;
+				position: relative;
+				box-shadow: rgba(149, 157, 165, 0.15) 0px 8px 24px;
+				text-decoration: none;
+
+				&:hover {
+					.cs-map-picture img {
+						transform: scale(1.02);
+					}
+
+					.cs-map-btn {
+						background-color: var(--primary);
+						color: #fff;
+					}
+				}
+			}
+
+			.cs-map-picture {
+				width: 100%;
+				height: 100%;
+				display: block;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover; 
+					display: block;
+					transition: transform 0.5s ease;
+				}
+			}
+
+			/* 🌟 悬浮卡片：移至右下角 */
+			.cs-map-overlay {
+				position: absolute;
+				bottom: (16/16rem);
+				right: (24/16rem); /* 移到右侧，留出适度边距 */
+				left: auto;
+				z-index: 2;
+				background: rgba(255, 255, 255, 0.92);
+				backdrop-filter: blur(8px);
+				padding: (12/16rem) (16/16rem);
+				border-radius: (8/16rem);
+				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+				max-width: (280/16rem);
+			}
+
+			.cs-map-badge {
+				font-size: (12/16rem);
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				color: var(--primary);
+				display: block;
+				margin-bottom: (4/16rem);
+			}
+
+			.cs-map-address {
+				font-size: (14/16rem);
+				font-weight: 600;
+				color: var(--headerColor);
+				margin: 0 0 (10/16rem) 0;
+				line-height: 1.3em;
+			}
+
+			.cs-map-btn {
+				display: inline-block;
+				font-size: (13/16rem);
+				font-weight: 700;
+				color: var(--headerColor);
+				padding: (6/16rem) (12/16rem);
+				border: 1px solid var(--primary);
+				border-radius: (4/16rem);
+				transition: background-color 0.3s, color 0.3s;
+			}
+
+			/* 右侧交通文案 */
+			.cs-info-wrapper {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				gap: (24/16rem);
+				justify-content: center;
+			}
+
+			.cs-info-card {
+				display: flex;
+				gap: (16/16rem);
+				padding: (24/16rem);
+				background-color: #f7f8f9;
+				border-radius: (12/16rem);
+				border: 1px solid #e8e8e8;
+				transition: transform 0.3s, box-shadow 0.3s;
+
+				&:hover {
+					transform: translateY(-2px);
+					box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+				}
+			}
+
+			.cs-icon-wrapper {
+				width: (48/16rem);
+				height: (48/16rem);
+				background-color: rgba(0, 0, 0, 0.04);
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-shrink: 0;
+			}
+
+			.cs-icon {
+				width: (24/16rem);
+				height: (24/16rem);
+				fill: var(--primary);
+			}
+
+			.cs-info-title {
+				font-size: (18/16rem);
+				font-weight: 700;
+				color: var(--headerColor);
+				margin: 0 0 (8/16rem) 0;
+				line-height: 1.3em;
+			}
+
+			.cs-info-desc {
+				font-size: (15/16rem);
+				line-height: 1.5em;
+				color: var(--bodyTextColor);
+				margin: 0;
+
+				strong {
+					color: var(--headerColor);
+				}
+			}
+		}
+	}
+
+	/* Tablet & Desktop - 1024px 以上 */
+	@media only screen and (min-width: 64em) {
+		#cs-location {
+			padding-top: (48/16rem);
+			padding-bottom: (100/16rem);
+
+			.cs-location-container {
+				padding: 0 (24/16rem);
+			}
+
+			.cs-location-content {
+				flex-direction: row;
+				align-items: stretch;
+				gap: (40/16rem);
+			}
+
+			.cs-map-wrapper {
+				width: 55%;
+				flex-shrink: 0;
+			}
+
+			.cs-map-link {
+				height: 100%;
+			}
+
+			/* 🌟 桌面端定位调整 */
+			.cs-map-overlay {
+				bottom: (20/16rem);
+				right: (24/16rem);
+				left: auto;
+				max-width: (300/16rem);
+				padding: (14/16rem) (18/16rem);
+			}
+
+			.cs-info-wrapper {
+				width: 45%;
+			}
+
+			.cs-info-card {
+				padding: (28/16rem);
+			}
+		}
+	}
+</style>

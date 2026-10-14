@@ -1,0 +1,24 @@
+---
+// Utils
+import { getImage } from "astro:assets";
+
+// Components
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Banner from "@components/Banner/Banner.astro";
+import Gallery from "@components/Gallery/Gallery.astro";
+import CTA from "@components/CTA/CTASimple.astro";
+
+// Images
+import landingImage from "@assets/images/gallery/bannerproduct.jpg";
+const optimizedImage = await getImage({ src: landingImage, format: "webp" });
+---
+
+<BaseLayout title="Projects" description="Bothbest is a professional manufacturer and exporter of bamboo panels, bamboo veneer, and bamboo flooring in China" heroImage={optimizedImage}>
+    <Banner 
+        title="Global Excellence in Action" 
+        subtitle="Explore our verified portfolio of international commercial supply, luxury residential spaces, and custom architectural bamboo installations." 
+        image={optimizedImage} 
+    />
+    <Gallery />
+    <CTA />
+</BaseLayout>

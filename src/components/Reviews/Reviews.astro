@@ -1,0 +1,240 @@
+---
+// Utils
+import { Icon } from "astro-icon/components";
+---
+
+<section id="reviews">
+	<div class="container">
+		<div class="review">
+			<picture>
+				<div class="avatar-initials profile">MV</div>
+			</picture>
+			<p>"We sourced strand woven bamboo flooring from Bothbest for a luxury villa project, and the quality completely blew us away. The finish is remarkably scratch-resistant, and the natural grain adds incredible warmth to the space. Our clients are absolutely thrilled!"</p>
+			<div class="star-group">
+				<span class="name">Marcus Vance<span class="desc">Interior Architect & Designer</span></span>
+				<picture>
+					<img src="/assets/favicons/stars.svg" alt="5 out of 5 stars" width="91" height="15" />
+				</picture>
+			</div>
+		</div>
+		<div class="review">
+			<picture>
+				<div class="avatar-initials profile">ER</div>
+			</picture>
+			<p>"Finding high-density, exterior-grade decking that can truly survive harsh weather is a challenge, but Bothbest delivered exactly what we needed. Their bamboo decking has fantastic anti-corrosion properties and remains perfectly stable over time."</p>
+			<div class="star-group">
+				<span class="name">Elena Rostova<span class="desc">Landscape Contractor</span></span>
+				<picture>
+					<img src="/assets/favicons/stars.svg" alt="5 out of 5 stars" width="91" height="15" />
+				</picture>
+			</div>
+		</div>
+		<div class="review">
+			<picture>
+				<div class="avatar-initials profile">DS</div>
+			</picture>
+			<p>"As a furniture manufacturer, we demand tight tolerances and clean cores. Bothbest’s multi-layer bamboo plywood panels are exceptionally strong, structurally flawless, and perfect for our premium custom tabletop and cabinetry lines."</p>
+			<div class="star-group">
+				<span class="name">David Sterling<span class="desc">Custom Furniture Manufacturer</span></span>
+				<picture>
+					<img src="/assets/favicons/stars.svg" alt="5 out of 5 stars" width="91" height="15" />
+				</picture>
+			</div>
+		</div>
+		<div class="review">
+			<picture>
+				<div class="avatar-initials profile">JM</div>
+			</picture>
+			<p>"Working directly with Bothbest has been a seamless experience. From strict quality control to secure sea freight packaging, their factory team handles everything professionally. They are our go-to long-term partner for bulk bamboo supplies."</p>
+			<div class="star-group">
+				<span class="name">Julian Mercer<span class="desc">Building Materials Wholesaler</span></span>
+				<picture>
+					<img src="/assets/favicons/stars.svg" alt="5 out of 5 stars" width="91" height="15" />
+				</picture>
+			</div>
+		</div>
+		<div class="review">
+			<picture>
+				<div class="avatar-initials profile">ST</div>
+			</picture>
+			<p>"We wanted an eco-friendly flooring alternative to traditional hardwood for our entire home remodeling. This bamboo flooring looks incredibly elegant, feels solid underfoot, and gives us total peace of mind knowing it's highly sustainable."</p>
+			<div class="star-group">
+				<span class="name">Sarah & Tom B.<span class="desc">Homeowner</span></span>
+				<picture>
+					<img src="/assets/favicons/stars.svg" alt="5 out of 5 stars" width="91" height="15" />
+				</picture>
+			</div>
+		</div>
+		<div class="review">
+			<picture>
+				<div class="avatar-initials profile">AT</div>
+			</picture>
+			<p>"We needed specific custom dimensions and precision cutting for a massive commercial office fit-out. Bothbest met all our technical specifications with great accuracy and delivered on time. Highly recommended for commercial projects!"</p>
+			<div class="star-group">
+				<span class="name">Akira Tanaka<span class="desc">Commercial Project Manager</span></span>
+				<picture>
+					<img src="/assets/favicons/stars.svg" alt="5 out of 5 stars" width="91" height="15" />
+				</picture>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style lang="less">
+	/* PAGE-SPECIFIC STYLES FOR THE REVIEWS PAGE */
+
+	/*-- -------------------------- -->
+<---           Reviews          -->
+<--- -------------------------- -*/
+
+	/* Mobile */
+	@media only screen and (min-width: 0em) {
+		#reviews {
+			margin: auto;
+			padding-top: (120/16rem);
+			padding-bottom: (50/16rem);
+
+			.container {
+				width: 96%;
+				max-width: (1320/16rem);
+			}
+
+			.review {
+				width: 100%;
+				max-width: (410/16rem);
+				margin: auto;
+				margin-bottom: (100/16rem);
+				padding: (64/16rem) (30/16rem) (18/16rem) (30/16rem);
+				background: #fff;
+				box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
+				border-radius: (5/16rem);
+				display: flex;
+				flex-direction: column;
+				position: relative;
+				&:last-of-type {
+					margin-bottom: 0;
+				}
+
+				.profile {
+					width: (99/16rem);
+					height: (99/16rem);
+					margin-bottom: (16/16rem);
+					margin-left: 0;
+					border-radius: 50%;
+					display: block;
+					position: absolute;
+					top: (-51/16rem);
+					left: (30/16rem);
+				}
+
+				p {
+					line-height: 1.5em;
+					text-align: left;
+					margin-bottom: (28/16rem);
+				}
+
+				.star-group {
+					margin-top: auto;
+					padding-top: (16/16rem);
+					border-top: 1px solid #e7e7e7;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					flex-wrap: nowrap;
+
+					.name {
+						font-weight: bold;
+						line-height: (24/16rem);
+						text-align: left;
+						color: #1a1a1a;
+						display: block;
+					}
+
+					.desc {
+						font-weight: 400;
+						color: #575757;
+						display: block;
+					}
+
+					img {
+						width: (91/16rem);
+						height: (15/16rem);
+						margin: 0;
+						display: block;
+					}
+				}
+			}
+		}
+	}
+
+	/* Tablet */
+	@media only screen and (min-width: 48em) {
+		#reviews {
+			padding-top: (150/16rem);
+			padding-bottom: (50/16rem);
+
+			.container {
+				font-size: ~"min(1.4vw, 1em)";
+				padding: 0;
+				display: flex;
+				justify-content: center;
+				flex-wrap: wrap;
+				column-gap: (30/16rem);
+			}
+
+			.review {
+				margin: 0;
+				margin-bottom: (150/16rem);
+
+				&:last-of-type {
+					margin-bottom: (150/16rem);
+				}
+			}
+		}
+	}
+
+	/* Dark Mode */
+	@media only screen and (min-width: 0em) {
+		body.dark-mode {
+			#reviews {
+				.review {
+					background: var(--medium);
+
+					.star-group {
+						.name {
+							color: #fff;
+						}
+
+						.desc {
+							color: #fff;
+							opacity: 0.7;
+						}
+					}
+				}
+			}
+		}
+	}
+	.avatar-initials {
+    width: (99/16rem);
+    height: (99/16rem);
+    background-color: #2b5a41; /* 品牌绿背景 */
+    color: #ffffff;
+    font-size: (32/16rem);
+    font-weight: 700;
+    
+    /* 核心居中控制 */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    text-align: center;
+    margin: 0 !important; /* 清除原有 margin-left 的影响 */
+
+    border-radius: 50%;
+    position: absolute;
+    top: (-51/16rem);
+    left: (30/16rem);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+</style>

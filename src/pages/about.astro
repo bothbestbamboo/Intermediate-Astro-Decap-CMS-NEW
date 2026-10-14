@@ -1,0 +1,1149 @@
+---
+// Utils
+import { Image, getImage } from "astro:assets";
+
+// Components
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Banner from "@components/Banner/Banner.astro";
+import FAQAbout from "@components/FAQ/FAQAbout.astro";
+import CTA from "@components/CTA/CTASimple.astro";
+
+// Hero Image
+import landingImage from "@assets/images/landing.jpg";
+const optimizedImage = await getImage({ src: landingImage, format: "webp" });
+
+// Factory Images
+import factory1 from "@assets/images/blog/bothbest-bamboo-1.jpg";
+import factory2 from "@assets/images/blog/bothbest-bamboo-2.jpg";
+import factory3 from "@assets/images/blog/bothbest-bamboo-3.jpg";
+import factory4 from "@assets/images/blog/bothbest-bamboo-4.jpg";
+import factory5 from "@assets/images/blog/bothbest-bamboo-5.jpg";
+
+// New Factory Capability Images
+import factory7 from "@assets/images/blog/bothbest-bamboo-7.jpg"; // Homag Milling Line
+import factory8 from "@assets/images/blog/bothbest-bamboo-8.jpg"; // 5400T Pressing Machine
+import factory9 from "@assets/images/blog/bothbest-bamboo-9.jpg"; // Material Stock
+import factory10 from "@assets/images/blog/bothbest-bamboo-10.jpg"; // Coating Line
+import factory11 from "@assets/images/blog/bothbest-bamboo-11.jpg";
+import factory12 from "@assets/images/blog/bothbest-bamboo-12.jpg";
+import factory13 from "@assets/images/blog/bothbest-bamboo-13.jpg";
+
+// Laboratory Testing Equipment Images
+import test1 from "@assets/images/blog/Floor-Abrasion-Resistance-Simulator.jpg";
+import test2 from "@assets/images/blog/VOC-Emission-Test-Chamber.jpg";
+import test3 from "@assets/images/blog/Falling-Ball-Impact-Tester.jpg";
+import test4 from "@assets/images/blog/Taber-Abrasion-Tester.jpg";
+import test5 from "@assets/images/blog/Constant-Climate-Chamber.jpg";
+import test6 from "@assets/images/blog/Floor-Dimension-Tester.jpg";
+
+// Patent Certificate Images
+import patent1 from "@assets/images/blog/bamboo-patent-1.JPG";
+import patent2 from "@assets/images/blog/bamboo-patent-2.JPG";
+import patent3 from "@assets/images/blog/bamboo-patent-3.JPG";
+import patent4 from "@assets/images/blog/bamboo-patent-4.JPG";
+import patent5 from "@assets/images/blog/bamboo-patent-5.JPG";
+---
+
+<BaseLayout
+	title="About Bothbest Bamboo | Leading Bamboo Manufacturer in China"
+	description="Bothbest is a direct, large-scale bamboo manufacturing factory in China supplying premium flooring, decking, panels, and custom OEM/ODM solutions worldwide."
+	heroImage={optimizedImage}
+>
+	<Banner
+		title="Built on Precision & Passion"
+		subtitle="Inside our modern facilities: Where state-of-the-art CNC technology meets sustainable industrial manufacturing."
+		image={optimizedImage}
+	/>
+
+	<section id="about-modern">
+		<div class="cs-container">
+			<!-- Section 1: Quick Stats -->
+			<div class="cs-stats-grid">
+				<div class="cs-stat-card">
+					<span class="cs-stat-number">20+</span>
+					<span class="cs-stat-label"
+						>Years Industrial Experience</span
+					>
+				</div>
+				<div class="cs-stat-card">
+					<span class="cs-stat-number"> Millions m²</span>
+					<span class="cs-stat-label">Annual Production Output</span>
+				</div>
+				<div class="cs-stat-card">
+					<span class="cs-stat-number">100%</span>
+					<span class="cs-stat-label">Sustainable Moso Bamboo</span>
+				</div>
+				<div class="cs-stat-card">
+					<span class="cs-stat-number">90+</span>
+					<span class="cs-stat-label">Global Export Markets</span>
+				</div>
+			</div>
+
+			<!-- Section 2: Who We Are (Side by Side) -->
+			<div class="cs-about-hero">
+				<div class="cs-about-img">
+					<Image
+						src={factory13}
+						alt="Bothbest Bamboo Manufacturing Plant"
+					/>
+				</div>
+				<div class="cs-about-text">
+					<span class="cs-topper">WHO WE ARE</span>
+					<h2 class="cs-title">
+						Direct Bamboo Manufacturing Excellence
+					</h2>
+					<p>
+						Based in Anji, Zhejiang—the heart of China's premium Moso
+						Bamboo forest—Bothbest is a premier direct manufacturing
+						enterprise. We specialize in engineering
+						high-performance bamboo flooring, fused outdoor decking,
+						architectural panels, and custom CNC components for
+						global B2B clients.
+					</p>
+					<p>
+						By integrating sustainable raw forest management with
+						high-precision micro-milling, we deliver unmatched
+						structural stability, certified environmental
+						compliance, and direct-factory price advantages to
+						distributors, contractors, and architects worldwide.
+					</p>
+				</div>
+			</div>
+
+			<!-- Section 3: Corporate History & Milestones (2000 - 2024) -->
+			<div class="cs-section-header">
+				<span class="cs-topper">OUR JOURNEY</span>
+				<h2 class="cs-title">Company History & Milestones</h2>
+				<p class="cs-header-p">From our founding roots in Anji to global manufacturing leadership through innovation, patents, and rigorous quality systems.</p>
+			</div>
+
+			<div class="cs-timeline-container">
+				<div class="cs-timeline">
+					<!-- Phase 1: Foundation & Early Expansion -->
+					<div class="cs-timeline-item">
+						<div class="cs-timeline-dot"></div>
+						<div class="cs-timeline-content">
+							<span class="cs-timeline-date">2000 - 2005</span>
+							<h3>Foundation & Factory Establishment</h3>
+							<ul>
+								<li><strong>January 2000:</strong> Factory established in Shanhe Village, Tianhuangping Town, Anji County.</li>
+								<li><strong>August 2002:</strong> Achieved our first successful bamboo flooring export shipment to the Netherlands.</li>
+								<li><strong>May 2003:</strong> Began construction of a modern expanded facility in the Tianhuangping Functional Zone.</li>
+								<li><strong>June 2005:</strong> Successfully relocated to the new factory site and officially registered as Anji Dazhuhai Flooring Co., Ltd.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Phase 2: R&D and Patent Innovations -->
+					<div class="cs-timeline-item">
+						<div class="cs-timeline-dot"></div>
+						<div class="cs-timeline-content">
+							<span class="cs-timeline-date">2007 - 2009</span>
+							<h3>R&D Breakthroughs & Intellectual Property</h3>
+							<ul>
+								<li><strong>December 2007:</strong> Developed advanced, high-durability outdoor bamboo panel formulations.</li>
+								<li><strong>June 2008:</strong> Granted Utility Model Patent for "Quick-Installation Bamboo & Wood Flooring" by the State Intellectual Property Office.</li>
+								<li><strong>October 2008:</strong> Awarded Utility Model Patent for specialized "Molds Used in Bamboo Board Pressing".</li>
+								<li><strong>September 2009:</strong> Recognized as a "Science and Technology SME" by the Zhejiang Provincial Department of Science and Technology.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Phase 3: National Recognition & Patents -->
+					<div class="cs-timeline-item">
+						<div class="cs-timeline-dot"></div>
+						<div class="cs-timeline-content">
+							<span class="cs-timeline-date">2010</span>
+							<h3>National Patents & Government Honors</h3>
+							<ul>
+								<li><strong>February 2010:</strong> Awarded "County-University Cooperation Excellence Award" for research on thermo-treatment and deep carbonization technologies.</li>
+								<li><strong>March 2010:</strong> Granted Utility Model Patent for "Bamboo Decorative Panels".</li>
+								<li><strong>May & June 2010:</strong> Secured major Invention Patents for "Method of Producing Panels Using Carbonized Bamboo" and "Bamboo Composite Technology Panels".</li>
+								<li><strong>October 2010:</strong> Certified as an "Agricultural Science and Technology Enterprise" by the Zhejiang Science and Technology Department.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Phase 4: Systems Certification & Scaling -->
+					<div class="cs-timeline-item">
+						<div class="cs-timeline-dot"></div>
+						<div class="cs-timeline-content">
+							<span class="cs-timeline-date">2011 - 2012</span>
+							<h3>System Standards & Global Compliance</h3>
+							<ul>
+								<li><strong>March 2011:</strong> Awarded Anji County "2010 Financial Progress First Prize".</li>
+								<li><strong>June 2011:</strong> Successfully certified under ISO9001:2008 Quality Management and ISO14001:2004 Environmental Management Systems.</li>
+								<li><strong>November 2011:</strong> Established and recognized as the "Agricultural Enterprise Technology R&D Center".</li>
+								<li><strong>June 2012:</strong> Awarded Anji County "2011 Science and Technology Progress Award" and obtained international FSC Forest Management Certification.</li>
+								<li><strong>September 2012:</strong> Recognized by the Zhejiang Environmental Protection Bureau as a "Zhejiang Clean Production Milestone Enterprise".</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Phase 5: Smart Manufacturing & Global Expansion (2013 - 2018) -->
+					<div class="cs-timeline-item">
+						<div class="cs-timeline-dot"></div>
+						<div class="cs-timeline-content">
+							<span class="cs-timeline-date">2013 - 2018</span>
+							<h3>Smart Manufacturing & Global Market Scaling</h3>
+							<ul>
+								<li><strong>2013 - 2014:</strong> Upgraded heavy-duty hot pressing lines and expanded strand woven bamboo production capacity to meet surging international demand.</li>
+								<li><strong>2015:</strong> Introduced automated UV-cured coating lines, significantly increasing daily finish output and reducing VOC emissions.</li>
+								<li><strong>2016:</strong> Integrated German HOMAG high-precision micro-milling machines to guarantee micrometric tolerances on click-lock flooring systems.</li>
+								<li><strong>2017 - 2018:</strong> Expanded global distribution network to over 80 countries, solidifying long-term OEM/ODM partnerships with top global building material brands.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Phase 6: Digital Transformation & Green Excellence (2019 - 2024) -->
+					<div class="cs-timeline-item">
+						<div class="cs-timeline-dot"></div>
+						<div class="cs-timeline-content">
+							<span class="cs-timeline-date">2019 - 2024</span>
+							<h3>Digital Transformation & Sustainable Leadership</h3>
+							<ul>
+								<li><strong>2019 - 2020:</strong> Adopted advanced computerized Nanxing and Shunda CNC machining centers for customized high-end bamboo tabletops and architectural components.</li>
+								<li><strong>2021 - 2022:</strong> Upgraded corporate enterprise standards and modernized factory warehousing logistics for rapid global container dispatch.</li>
+								<li><strong>2023:</strong> Deepened green manufacturing compliance, achieving alignment with strict international standards including E1/E0 and CARB Phase 2 zero-formaldehyde benchmarks.</li>
+								<li><strong>2024:</strong> Reached a milestone of over two decades of bamboo manufacturing expertise, continuously empowering global architecture, distribution, and interior design projects with eco-friendly innovations.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Section 4: Core Manufacturing Infrastructure -->
+			<div class="cs-section-header">
+				<span class="cs-topper">FACTORY CAPABILITIES</span>
+				<h2 class="cs-title">
+					Advanced Machinery & Industrial Capacity
+				</h2>
+			</div>
+
+			<div class="cs-grid-4">
+				<div class="cs-card">
+					<div class="cs-card-img">
+						<Image
+							src={factory8}
+							alt="5400-Ton Heavy Duty Bamboo Hot Pressing Line"
+						/>
+					</div>
+					<h3>5,400-Ton Heavy Pressing</h3>
+					<p>
+						Equipped with two 20-layer 5,400-ton presses capable of
+						producing twenty 2440x1220mm structural panels per
+						cycle for maximum density and stability.
+					</p>
+				</div>
+
+				<div class="cs-card">
+					<div class="cs-card-img">
+						<Image
+							src={factory7}
+							alt="German Imported HOMAG Click & T&G Milling Machine"
+						/>
+					</div>
+					<h3>German HOMAG Profiling</h3>
+					<p>
+						State-of-the-art imported HOMAG milling lines guarantee
+						micrometric precision across Click interlocking and
+						Tongue & Groove (T&G) profiles.
+					</p>
+				</div>
+
+				<div class="cs-card">
+					<div class="cs-card-img">
+						<Image
+							src={factory10}
+							alt="Automated UV Coating Production Line"
+						/>
+					</div>
+					<h3>1,600 m²/Day Coating Lines</h3>
+					<p>
+						Two fully automated coating lines deliver a daily output
+						of 1,600 m², applying multi-layer UV-cured anti-scratch
+						finishes with low-VOC compliance.
+					</p>
+				</div>
+
+				<div class="cs-card">
+					<div class="cs-card-img">
+						<Image
+							src={factory9}
+							alt="Extensive Raw Material and Finished Inventory"
+						/>
+					</div>
+					<h3>Abundant Material Stock</h3>
+					<p>
+						Extensive indoor inventory of seasoned raw materials and
+						standard panels ensures uninterrupted supply chains and
+						rapid fulfillment for volume orders.
+					</p>
+				</div>
+			</div>
+
+			<!-- Section 5: Production Process & Craftsmanship -->
+			<div class="cs-section-header">
+				<span class="cs-topper">END-TO-END QUALITY CONTROL</span>
+				<h2 class="cs-title">Precision Manufacturing Workflow</h2>
+			</div>
+
+			<div class="cs-grid-4">
+				<div class="cs-card">
+					<div class="cs-card-img">
+						<Image
+							src={factory3}
+							alt="Raw Bamboo Fiber Processing Line"
+						/>
+					</div>
+					<h3>Raw Material Selection</h3>
+					<p>
+						Rigorous sorting of 4 to 6-year-old mature Mao Bamboo
+						ensures maximum tensile strength, natural grain clarity,
+						and fiber integrity.
+					</p>
+				</div>
+
+				<div class="cs-card">
+					<div class="cs-card-img">
+						<Image
+							src={factory2}
+							alt="Rigorous Finish & Surface Inspection"
+						/>
+					</div>
+					<h3>Rigorous Surface Inspection</h3>
+					<p>
+						Experienced technicians perform meticulous visual checks
+						to evaluate paint fullness, sheen
+						consistency, and flawless surface adhesion.
+					</p>
+				</div>
+
+				<div class="cs-card">
+					<div class="cs-card-img">
+						<Image
+							src={factory5}
+							alt="Computerized Nanxing & Shunda CNC Machining"
+						/>
+					</div>
+					<h3>Automated CNC Shaping</h3>
+					<p>
+						High-speed automated CNC centers execute custom
+						beveling, geometric cuts, and complex tabletop designs
+						with micro-metric repeatability.
+					</p>
+				</div>
+
+				<div class="cs-card">
+					<div class="cs-card-img">
+						<Image
+							src={factory12}
+							alt="Precision Micro-Milling and Quality Inspection"
+						/>
+					</div>
+					<h3>Micrometric Quality Check</h3>
+					<p>
+						Every board undergoes strict mechanical tolerance
+						testing, moisture equilibrium checks, and finish
+						adhesion validation before packing.
+					</p>
+				</div>
+			</div>
+
+			<!-- Section 6: Laboratory Quality Testing (New Testing Equipment Section) -->
+			<div class="cs-section-header">
+				<span class="cs-topper">RIGOROUS TESTING LAB</span>
+				<h2 class="cs-title">Advanced Laboratory Quality Testing</h2>
+				<p class="cs-header-p">Equipped with professional testing instruments to simulate extreme conditions, ensuring every batch meets international durability and environmental standards.</p>
+			</div>
+
+			<div class="cs-grid-3">
+				<!-- Test 1 -->
+				<div class="cs-card cs-test-card">
+					<div class="cs-card-img">
+						<Image src={test1} alt="Floor Abrasion Resistance Simulator" />
+					</div>
+					<div class="cs-patent-info">
+						<span class="cs-patent-tag">Durability Testing</span>
+						<h3>Abrasion Resistance Simulator</h3>
+						<p class="cs-patent-desc">Simulates long-term wear and foot traffic impact to verify surface finish longevity and protective coating resilience in heavy-use environments.</p>
+					</div>
+				</div>
+
+				<!-- Test 2 -->
+				<div class="cs-card cs-test-card">
+					<div class="cs-card-img">
+						<Image src={test2} alt="Cubic Meter VOC Emission Test Chamber" />
+					</div>
+					<div class="cs-patent-info">
+						<span class="cs-patent-tag">Environmental Safety</span>
+						<h3>VOC Emission Test Chamber</h3>
+						<p class="cs-patent-desc">Accurately measures volatile organic compound emissions and formaldehyde release, ensuring full compliance with stringent global indoor air quality standards.</p>
+					</div>
+				</div>
+
+				<!-- Test 3 -->
+				<div class="cs-card cs-test-card">
+					<div class="cs-card-img">
+						<Image src={test3} alt="Falling Ball Impact Tester" />
+					</div>
+					<div class="cs-patent-info">
+						<span class="cs-patent-tag">Impact Resistance</span>
+						<h3>Falling Ball Impact Tester</h3>
+						<p class="cs-patent-desc">Tests structural shock absorption and surface resistance against sudden heavy impacts, preventing cracking or indentation in high-traffic applications.</p>
+					</div>
+				</div>
+
+				<!-- Test 4 -->
+				<div class="cs-card cs-test-card">
+					<div class="cs-card-img">
+						<Image src={test4} alt="Taber Abrasion Tester" />
+					</div>
+					<div class="cs-patent-info">
+						<span class="cs-patent-tag">Surface Testing</span>
+						<h3>Taber Abrasion Tester</h3>
+						<p class="cs-patent-desc">Evaluates the anti-scratch and wear-through resistance of flooring protective layers under standardized abrasive wheel rotations.</p>
+					</div>
+				</div>
+
+				<!-- Test 5 -->
+				<div class="cs-card cs-test-card">
+					<div class="cs-card-img">
+						<Image src={test5} alt="Constant Climate Chamber" />
+					</div>
+					<div class="cs-patent-info">
+						<span class="cs-patent-tag">Climate Simulation</span>
+						<h3>Constant Climate Chamber</h3>
+						<p class="cs-patent-desc">Subjects flooring samples to various temperature and humidity extremes to test dimensional stability and moisture resistance across global climates.</p>
+					</div>
+				</div>
+
+				<!-- Test 6 -->
+				<div class="cs-card cs-test-card">
+					<div class="cs-card-img">
+						<Image src={test6} alt="Floor Dimension and Squareness Testing Apparatus" />
+					</div>
+					<div class="cs-patent-info">
+						<span class="cs-patent-tag">Precision Metrology</span>
+						<h3>Dimension & Squareness Testing Apparatus</h3>
+						<p class="cs-patent-desc">Performs high-precision electronic measurements on length, width, thickness, squareness, and straightness to guarantee seamless installation.</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Section 7: Patent Innovations & Core Technologies -->
+			<div class="cs-section-header">
+				<span class="cs-topper">INTELLECTUAL PROPERTY</span>
+				<h2 class="cs-title">Patent Innovations & Core Technologies</h2>
+				<p class="cs-header-p">Backed by national patents and advanced proprietary engineering, we continuously redefine the structural limits and craftsmanship of bamboo manufacturing.</p>
+			</div>
+
+			<div class="cs-grid-3">
+				<!-- Patent 1 -->
+				<div class="cs-card cs-patent-card">
+					<div class="cs-card-img">
+						<Image src={patent1} alt="Bamboo and Wood Quick-Install Flooring Patent Certificate" />
+					</div>
+					<div class="cs-patent-info">
+						<span class="cs-patent-tag">Utility Model Patent</span>
+						<h3>Bamboo & Wood Quick-Install Flooring</h3>
+						<p><strong>Patent No.:</strong> ZL 2007 2 0112267.5</p>
+						<p><strong>Granted:</strong> June 2008</p>
+						<p class="cs-patent-desc">Enables rapid, secure mechanical interlocks, reducing installation time and improving structural alignment for modern interiors.</p>
+					</div>
+				</div>
+
+				<!-- Patent 2 -->
+				<div class="cs-card cs-patent-card">
+					<div class="cs-card-img">
+						<Image src={patent2} alt="Molds Used in Bamboo Board Pressing Patent Certificate" />
+					</div>
+					<div class="cs-patent-info">
+						<span class="cs-patent-tag">Utility Model Patent</span>
+						<h3>Specialized Bamboo Pressing Molds</h3>
+						<p><strong>Patent No.:</strong> ZL 2007 2 0311567.6</p>
+						<p><strong>Granted:</strong> October 2008</p>
+						<p class="cs-patent-desc">Precision-engineered molds designed for high-tonnage hot pressing, ensuring uniform density and core stability in structural panels.</p>
+					</div>
+				</div>
+
+				<!-- Patent 3 -->
+				<div class="cs-card cs-patent-card">
+					<div class="cs-card-img">
+						<Image src={patent3} alt="Bamboo Composite Technology Panels Patent Certificate" />
+					</div>
+					<div class="cs-patent-info">
+						<span class="cs-patent-tag">Invention Patent</span>
+						<h3>Bamboo Composite Technology Panels</h3>
+						<p><strong>Patent No.:</strong> ZL 2007 1 0160468.7</p>
+						<p><strong>Granted:</strong> June 2010</p>
+						<p class="cs-patent-desc">Innovative cross-laminated composite structuring method that delivers superior tensile strength, load capacity, and anti-warping performance.</p>
+					</div>
+				</div>
+
+				<!-- Patent 4 -->
+				<div class="cs-card cs-patent-card">
+					<div class="cs-card-img">
+						<Image src={patent4} alt="Carbonized Bamboo Board Method Patent Certificate" />
+					</div>
+					<div class="cs-patent-info">
+						<span class="cs-patent-tag">Invention Patent</span>
+						<h3>Carbonized Bamboo Board Method</h3>
+						<p><strong>Patent No.:</strong> ZL 2007 1 0071320.6</p>
+						<p><strong>Granted:</strong> May 2010</p>
+						<p class="cs-patent-desc">Proprietary thermo-treatment technology that enhances weather resistance, enriches color tone naturally, and prevents rotting without toxic additives.</p>
+					</div>
+				</div>
+
+				<!-- Patent 5 -->
+				<div class="cs-card cs-patent-card">
+					<div class="cs-card-img">
+						<Image src={patent5} alt="Bamboo Decorative Panels Patent Certificate" />
+					</div>
+					<div class="cs-patent-info">
+						<span class="cs-patent-tag">Utility Model Patent</span>
+						<h3>Advanced Bamboo Decorative Panels</h3>
+						<p><strong>Patent No.:</strong> ZL 2009 2 0118850.6</p>
+						<p><strong>Granted:</strong> March 2010</p>
+						<p class="cs-patent-desc">Showcases natural grain elegance and dimensional stability, tailored for high-end architectural wall linings and surface design solutions.</p>
+					</div>
+				</div>
+
+				<!-- R&D Highlight Box -->
+				<div class="cs-feature-box highlight-box">
+					<div class="cs-icon">🏆</div>
+					<h3>Continuous R&D Commitment</h3>
+					<p>
+						With over 20 years of dedicated industry focus, our R&D team holds multiple national invention and utility patents, translating lab breakthroughs into reliable commercial success for global partners.
+					</p>
+				</div>
+			</div>
+
+			<!-- Section 8: Why Partner With Us -->
+			<div class="cs-section-header">
+				<span class="cs-topper">THE BOTHBEST ADVANTAGE</span>
+				<h2 class="cs-title">Why Global B2B Partners Choose Us</h2>
+			</div>
+
+			<div class="cs-grid-3">
+				<div class="cs-feature-box">
+					<div class="cs-icon">🏷️</div>
+					<h3>Direct Factory Pricing</h3>
+					<p>
+						Eliminate middleman fees and secure competitive
+						wholesale margins with stable, continuous
+						container-volume supply chains.
+					</p>
+				</div>
+
+				<div class="cs-feature-box">
+					<div class="cs-icon">⚙️</div>
+					<h3>Full OEM & ODM Customization</h3>
+					<p>
+						Custom dimensions, specialized colors, wire-brushed
+						textures, and private-label packaging engineered to your
+						exact market specs.
+					</p>
+				</div>
+
+				<div class="cs-feature-box">
+					<div class="cs-icon">🌱</div>
+					<h3>Eco-Certified Compliance</h3>
+					<p>
+						Strictly compliant with European E1/E0, Japanese JAS
+						4-star, and US CARB Phase 2 / EPA TSCA Title VI
+						zero-formaldehyde standards.
+					</p>
+				</div>
+			</div>
+
+			<!-- Section 9: Warehouse & Contact Callout -->
+			<div class="cs-contact-banner">
+				<div class="cs-banner-img">
+					<Image
+						src={factory11}
+						alt="Bothbest Stock Inventory & Supply Logistics"
+					/>
+				</div>
+				<div class="cs-banner-info">
+					<h3>Ready to Scale Your Bamboo Supply Chain?</h3>
+					<p>
+						Contact our engineering team today for technical data
+						sheets, custom OEM inquiries, or international sample
+						shipments.
+					</p>
+					<ul class="cs-info-list">
+						<li>
+							<strong>Location:</strong> Anji, Zhejiang Province, China
+						</li>
+						<li>
+							<strong>WhatsApp / Mobile:</strong> +86 150 0582 0528
+						</li>
+						<li>
+							<strong>Core Products:</strong> Strand Woven Flooring,
+							Outdoor Decking, Panels & Countertops
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<FAQAbout />
+	<CTA />
+</BaseLayout>
+
+<style lang="less">
+	#about-modern {
+		padding: clamp(3rem, 6vw, 5rem) 1rem;
+		background-color: var(--bodyBg, #fff);
+
+		.cs-container {
+			width: 100%;
+			max-width: (1200/16rem);
+			margin: 0 auto;
+		}
+
+		.cs-topper {
+			font-size: (14/16rem);
+			font-weight: 700;
+			letter-spacing: 0.1em;
+			color: var(--primary, #70b340);
+			display: block;
+			margin-bottom: (8/16rem);
+			text-transform: uppercase;
+		}
+
+		.cs-title {
+			font-size: clamp(1.75rem, 3vw, 2.25rem);
+			font-weight: 800;
+			color: var(--headerColor, #1a1a1a);
+			margin-bottom: (12/16rem);
+			line-height: 1.25em;
+		}
+
+		.cs-header-p {
+			color: var(--bodyTextColor, #555);
+			font-size: (16/16rem);
+			max-width: (700/16rem);
+			margin: 0 auto;
+			line-height: 1.5em;
+		}
+
+		.cs-section-header {
+			text-align: center;
+			max-width: (800/16rem);
+			margin: (60/16rem) auto (32/16rem);
+		}
+
+		/* 1. Stats Grid */
+		.cs-stats-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: (16/16rem);
+			margin-bottom: (60/16rem);
+
+			@media only screen and (min-width: 48em) {
+				grid-template-columns: repeat(4, 1fr);
+			}
+		}
+
+		.cs-stat-card {
+			background: #f8f9fa;
+			padding: (24/16rem);
+			border-radius: (12/16rem);
+			text-align: center;
+			border-bottom: 3px solid var(--primary, #70b340);
+
+			.cs-stat-number {
+				display: block;
+				font-size: clamp(2rem, 3.5vw, 2.75rem);
+				font-weight: 800;
+				color: var(--headerColor, #1a1a1a);
+			}
+
+			.cs-stat-label {
+				font-size: (14/16rem);
+				color: var(--bodyTextColor, #555);
+				font-weight: 600;
+			}
+		}
+
+		/* 2. About Hero (Side by side) */
+		.cs-about-hero {
+			display: flex;
+			flex-direction: column;
+			gap: (32/16rem);
+			align-items: center;
+
+			@media only screen and (min-width: 48em) {
+				flex-direction: row;
+			}
+
+			.cs-about-img {
+				flex: 1;
+				width: 100%;
+				border-radius: (12/16rem);
+				overflow: hidden;
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+				img {
+					width: 100%;
+					height: 100%;
+					max-height: (400/16rem);
+					object-fit: cover;
+					display: block;
+				}
+			}
+
+			.cs-about-text {
+				flex: 1;
+
+				p {
+					font-size: (16/16rem);
+					line-height: 1.6em;
+					color: var(--bodyTextColor, #4e4b66);
+					margin-bottom: (16/16rem);
+				}
+			}
+		}
+
+		/* Timeline Section Styles */
+		.cs-timeline-container {
+			max-width: (900/16rem);
+			margin: 0 auto (60/16rem);
+			position: relative;
+			padding: (20/16rem) 0;
+
+			.cs-timeline {
+				position: relative;
+				border-left: 2px solid var(--primary, #70b340);
+				margin-left: (20/16rem);
+
+				@media only screen and (min-width: 48em) {
+					margin-left: (40/16rem);
+				}
+
+				.cs-timeline-item {
+					position: relative;
+					margin-bottom: (40/16rem);
+					padding-left: (30/16rem);
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+
+					.cs-timeline-dot {
+						position: absolute;
+						left: (-9/16rem);
+						top: (4/16rem);
+						width: (16/16rem);
+						height: (16/16rem);
+						background: var(--primary, #70b340);
+						border: 3px solid #fff;
+						border-radius: 50%;
+						box-shadow: 0 0 0 2px var(--primary, #70b340);
+					}
+
+					.cs-timeline-content {
+						background: #f8f9fa;
+						padding: (24/16rem);
+						border-radius: (12/16rem);
+						border: 1px solid #eef0f2;
+						box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+
+						.cs-timeline-date {
+							display: inline-block;
+							font-size: (13/16rem);
+							font-weight: 700;
+							color: #fff;
+							background: var(--primary, #70b340);
+							padding: (4/16rem) (12/16rem);
+							border-radius: (20/16rem);
+							margin-bottom: (10/16rem);
+						}
+
+						h3 {
+							font-size: (18/16rem);
+							font-weight: 700;
+							color: var(--headerColor, #1a1a1a);
+							margin-bottom: (12/16rem);
+						}
+
+						ul {
+							list-style: disc;
+							padding-left: (20/16rem);
+							margin: 0;
+
+							li {
+								font-size: (14/16rem);
+								line-height: 1.6em;
+								color: var(--bodyTextColor, #555);
+								margin-bottom: (8/16rem);
+
+								strong {
+									color: var(--headerColor, #1a1a1a);
+								}
+
+								&:last-child {
+									margin-bottom: 0;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/* 3. Grid 4 Cards */
+		.cs-grid-4 {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: (24/16rem);
+
+			@media only screen and (min-width: 36em) {
+				grid-template-columns: repeat(2, 1fr);
+			}
+
+			@media only screen and (min-width: 62em) {
+				grid-template-columns: repeat(4, 1fr);
+			}
+		}
+
+		.cs-card {
+			background: #fff;
+			border-radius: (12/16rem);
+			overflow: hidden;
+			border: 1px solid #eef0f2;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+
+			.cs-card-img {
+				height: (260/16rem);
+				width: 100%;
+				background: #f0f2f5;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					display: block;
+				}
+			}
+
+			h3 {
+				font-size: (18/16rem);
+				font-weight: 700;
+				padding: (16/16rem) (16/16rem) (8/16rem);
+				color: var(--headerColor, #1a1a1a);
+			}
+
+			p {
+				font-size: (14/16rem);
+				line-height: 1.5em;
+				padding: 0 (16/16rem) (20/16rem);
+				color: var(--bodyTextColor, #666);
+			}
+		}
+
+		/* Testing Equipment Cards Specific Styling (Optimized for mixed horizontal/vertical photos) */
+		.cs-test-card {
+			display: flex;
+			flex-direction: column;
+
+			.cs-card-img {
+				height: (320/16rem);
+				background: #fdfdfd;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				overflow: hidden;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover; /* 改为 cover，确保横版和竖版照片都能充满卡片区域，保持整齐划一 */
+					display: block;
+				}
+			}
+
+			.cs-patent-info {
+				padding: (20/16rem);
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+
+				.cs-patent-tag {
+					display: inline-block;
+					font-size: (12/16rem);
+					font-weight: 700;
+					color: var(--primary, #70b340);
+					background: rgba(112, 179, 64, 0.1);
+					padding: (3/16rem) (10/16rem);
+					border-radius: (20/16rem);
+					margin-bottom: (8/16rem);
+					align-self: flex-start;
+				}
+
+				h3 {
+					font-size: (17/16rem);
+					font-weight: 700;
+					color: var(--headerColor, #1a1a1a);
+					margin-bottom: (10/16rem);
+					padding: 0;
+					line-height: 1.3em;
+				}
+
+				p {
+					font-size: (13/16rem);
+					color: var(--bodyTextColor, #555);
+					padding: 0;
+					margin-bottom: (6/16rem);
+				}
+
+				.cs-patent-desc {
+					margin-top: auto;
+					padding-top: (10/16rem);
+					border-top: 1px solid #eee;
+					font-size: (13/16rem);
+					line-height: 1.5em;
+					color: var(--bodyTextColor, #666);
+				}
+			}
+		}
+
+		/* Patent Cards Specific Styling */
+		.cs-patent-card {
+			display: flex;
+			flex-direction: column;
+
+			.cs-card-img {
+				height: (440/16rem);
+				background: #fdfdfd;
+				padding: (10/16rem);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: contain;
+					display: block;
+				}
+			}
+
+			.cs-patent-info {
+				padding: (20/16rem);
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+
+				.cs-patent-tag {
+					display: inline-block;
+					font-size: (12/16rem);
+					font-weight: 700;
+					color: var(--primary, #70b340);
+					background: rgba(112, 179, 64, 0.1);
+					padding: (3/16rem) (10/16rem);
+					border-radius: (20/16rem);
+					margin-bottom: (8/16rem);
+					align-self: flex-start;
+				}
+
+				h3 {
+					font-size: (17/16rem);
+					font-weight: 700;
+					color: var(--headerColor, #1a1a1a);
+					margin-bottom: (10/16rem);
+					padding: 0;
+					line-height: 1.3em;
+				}
+
+				p {
+					font-size: (13/16rem);
+					color: var(--bodyTextColor, #555);
+					padding: 0;
+					margin-bottom: (6/16rem);
+
+					strong {
+						color: var(--headerColor, #1a1a1a);
+					}
+				}
+
+				.cs-patent-desc {
+					margin-top: auto;
+					padding-top: (10/16rem);
+					border-top: 1px solid #eee;
+					font-size: (13/16rem);
+					line-height: 1.5em;
+					color: var(--bodyTextColor, #666);
+				}
+			}
+		}
+
+		/* 4. Grid 3 Cards */
+		.cs-grid-3 {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: (24/16rem);
+
+			@media only screen and (min-width: 48em) {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+
+		.cs-feature-box {
+			background: #f8f9fa;
+			padding: (32/16rem) (24/16rem);
+			border-radius: (12/16rem);
+			text-align: left;
+			border: 1px solid #eef0f2;
+
+			&.highlight-box {
+				background: linear-gradient(135deg, rgba(112, 179, 64, 0.1), rgba(112, 179, 64, 0.02));
+				border: 1px solid rgba(112, 179, 64, 0.3);
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+
+			.cs-icon {
+				font-size: (36/16rem);
+				margin-bottom: (12/16rem);
+			}
+
+			h3 {
+				font-size: (18/16rem);
+				font-weight: 700;
+				color: var(--headerColor, #1a1a1a);
+				margin-bottom: (12/16rem);
+			}
+
+			p {
+				font-size: (14/16rem);
+				line-height: 1.6em;
+				color: var(--bodyTextColor, #555);
+
+				strong {
+					color: var(--headerColor, #1a1a1a);
+				}
+			}
+		}
+
+		/* 5. Contact Banner */
+		.cs-contact-banner {
+			margin-top: (60/16rem);
+			background: #111;
+			color: #fff;
+			border-radius: (16/16rem);
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+
+			@media only screen and (min-width: 48em) {
+				flex-direction: row;
+			}
+
+			.cs-banner-img {
+				flex: 1;
+
+				img {
+					width: 100%;
+					height: 100%;
+					min-height: (280/16rem);
+					object-fit: cover;
+				}
+			}
+
+			.cs-banner-info {
+				flex: 1.2;
+				padding: clamp(2rem, 4vw, 3rem);
+
+				h3 {
+					font-size: clamp(1.5rem, 2.5vw, 2rem);
+					color: #fff;
+					margin-bottom: (12/16rem);
+				}
+
+				p {
+					color: #ccc;
+					margin-bottom: (20/16rem);
+					font-size: (15/16rem);
+				}
+
+				.cs-info-list {
+					list-style: none;
+					padding: 0;
+					margin: 0;
+
+					li {
+						font-size: (15/16rem);
+						color: #ddd;
+						margin-bottom: (8/16rem);
+
+						strong {
+							color: var(--primary, #70b340);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/* Dark Mode */
+	body.dark-mode {
+		#about-modern {
+			background-color: transparent;
+
+			.cs-title,
+			.cs-header-p,
+			.cs-stat-card .cs-stat-number,
+			.cs-card h3,
+			.cs-feature-box h3,
+			.cs-timeline-content h3,
+			.cs-timeline-content ul li strong,
+			.cs-patent-card .cs-patent-info h3,
+			.cs-patent-card .cs-patent-info p strong,
+			.cs-test-card .cs-patent-info h3 {
+				color: #fff;
+			}
+
+			.cs-stat-card,
+			.cs-card,
+			.cs-feature-box,
+			.cs-timeline-content {
+				background-color: rgba(255, 255, 255, 0.05);
+				border-color: rgba(255, 255, 255, 0.1);
+			}
+
+			.cs-patent-card .cs-patent-info .cs-patent-desc,
+			.cs-test-card .cs-patent-info .cs-patent-desc {
+				border-top-color: rgba(255, 255, 255, 0.1);
+			}
+
+			.cs-patent-card .cs-card-img,
+			.cs-test-card .cs-card-img {
+				background: rgba(255, 255, 255, 0.03);
+			}
+
+			.cs-feature-box.highlight-box {
+				background: rgba(112, 179, 64, 0.1);
+				border-color: rgba(112, 179, 64, 0.2);
+			}
+
+			.cs-stat-card .cs-stat-label,
+			.cs-about-text p,
+			.cs-card p,
+			.cs-feature-box p,
+			.cs-timeline-content ul li,
+			.cs-patent-card .cs-patent-info p,
+			.cs-test-card .cs-patent-info p {
+				color: #ccc;
+			}
+
+			.cs-timeline-dot {
+				border-color: #1a1a1a;
+			}
+		}
+	}
+</style>

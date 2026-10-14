@@ -1,0 +1,40 @@
+---
+/**
+ * * This page generates the individual product detail pages based on the products collection
+ **/
+
+import { getCollection, render } from "astro:content";
+import ProductPostLayout from "@layouts/ProductPostLayout.astro";
+
+export async function getStaticPaths() {
+	const products = await getCollection("products");
+	return products.map((entry) => ({
+		params: { product: entry.id },
+		props: { product: entry },
+	}));
+}
+
+const { product } = Astro.props;
+
+// 全方位图片描述防御体系
+const safeAltText =
+	product.data.imageAlt || product.data.title || "Bothbest Bamboo Product";
+
+const formattedProduct = {
+	...product,
+	data: {
+		...product.data,
+		author: "bothbest",
+		image: product.data.image,
+		imageAlt: safeAltText,
+		alt: safeAltText,
+		title: product.data.title,
+		// 🌟 确保带有产品标签，让 ProductPostLayout 识别
+		tags: product.data.tags || ["Products"],
+	},
+};
+
+const { headings } = await render(product);
+---
+
+<ProductPostLayout post={formattedProduct} headings={headings} />
