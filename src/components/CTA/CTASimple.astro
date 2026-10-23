@@ -1,13 +1,13 @@
 ---
 /**
- * * Simplified CTA component using Astro's built-in Picture component
+ * * Simplified Full-Width CTA Component for Bamboo Business
  **/
 
 // Utils
 import { Picture } from "astro:assets";
 
 // Images
-import ctaImage from "@assets/images/CTA/cabinets2.jpg";
+import ctaImage from "@assets/images/CTA/bamboo-decking-project.jpg";
 ---
 
 <section id="cta">
@@ -20,66 +20,74 @@ import ctaImage from "@assets/images/CTA/cabinets2.jpg";
 		<p>Partner with a trusted manufacturer to bring premium, sustainable bamboo solutions to your business. Reach out now to discuss custom dimensions, bulk pricing, or to request free material samples for your next residential or commercial project.</p>
 		<a href="/contact/" class="cs-button-solid">👉 GET A FREE QUOTE NOW</a>
 	</div>
-	<Picture src={ctaImage} alt="" layout="full-width" formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture" }} />
+	<Picture src={ctaImage} alt="Bamboo Flooring Samples" layout="full-width" formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture" }} />
 </section>
 
 <style lang="less">
-	/* Mobile */
+	/* Mobile & Universal Styles */
 	@media only screen and (min-width: 0em) {
 		#cta {
-			padding: (50/16rem) 0;
+			padding: (80/16rem) 0;
 			position: relative;
+			width: 100%;
+			overflow: hidden;
 
+			/* Dark Overlay for better readability */
 			&:before {
 				content: "";
 				width: 100%;
 				height: 100%;
-				background: #000;
-				opacity: 0.7;
+				background: rgba(0, 0, 0, 0.45);
 				display: block;
 				position: absolute;
 				top: 0;
 				left: 0;
-				z-index: -1;
+				z-index: 1;
 			}
 
 			.container {
 				text-align: center;
+				position: relative;
+				z-index: 2;
+				width: 90%;
+				max-width: (1200/16rem);
+				margin: auto;
 			}
 
 			.title {
-				font-size: ~"min(9vw, 3rem)";
+				font-size: ~"min(9vw, 3.25rem)";
 				font-weight: 900;
-				line-height: 58/48;
+				line-height: 1.2;
 				text-align: center;
-				margin-bottom: (36/16rem);
+				margin-bottom: (24/16rem);
 				color: #fff;
-				position: relative;
+				text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 			}
 
 			p {
 				text-align: center;
-				width: 96%;
-				max-width: (598/16rem);
-				margin: auto;
-				margin-bottom: (36/16rem);
-				color: #fff;
-				opacity: 1;
+				width: 100%;
+				max-width: (680/16rem);
+				margin: 0 auto (36/16rem) auto;
+				color: #f0f0f0;
+				font-size: (18/16rem);
+				line-height: 1.6;
+				text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
 			}
 
 			.cs-picture {
 				width: 100%;
 				height: 100%;
-				object-fit: cover;
 				position: absolute;
 				top: 0;
 				left: 0;
-				z-index: -2;
+				z-index: 0;
 
 				img {
 					width: 100%;
 					height: 100%;
 					object-fit: cover;
+					object-position: center;
 				}
 			}
 		}
@@ -88,56 +96,24 @@ import ctaImage from "@assets/images/CTA/cabinets2.jpg";
 	/* Small Desktop */
 	@media only screen and (min-width: 64em) {
 		#cta {
-			padding: (168/16rem) 0;
+			padding: (120/16rem) 0;
 		}
 	}
 
-	/* Large Desktop */
+	/* Large Desktop (Ensures 100% Full Width) */
 	@media only screen and (min-width: 1300px) {
 		#cta {
-			margin-top: (100/16rem);
-			position: relative;
-			&:before {
-				display: none;
-			}
+			padding: (140/16rem) 0;
+			margin-top: (60/16rem);
+
 			&:after {
-				content: "";
-				// width: (2000/16rem);
-				width: 100%; /* a fixed width causes overflow on desktop */
-				height: (1108/16rem);
-				background: url("/src/icons/cta-squares.svg");
-				background-position: center;
-				background-size: contain;
-				background-repeat: no-repeat;
-				opacity: 1;
-				display: block;
-				position: absolute;
-				bottom: 0;
-				left: 50%;
-				z-index: -3;
-				transform: translateX(-50%);
-			}
-			.container {
-				width: 90.0625%;
-				margin: auto;
+				display: none;
 			}
 
 			.cs-picture {
-				width: 90.0625%;
-				left: 50%;
-				transform: translateX(-50%);
-				&:before {
-					content: "";
-					width: 100%;
-					height: 100%;
-					background: #000;
-					opacity: 0.7;
-					display: block;
-					position: absolute;
-					top: 0;
-					left: 0;
-					z-index: 1;
-				}
+				width: 100%;
+				left: 0;
+				transform: none;
 			}
 		}
 	}
@@ -146,8 +122,8 @@ import ctaImage from "@assets/images/CTA/cabinets2.jpg";
 	@media only screen and (min-width: 0em) {
 		body.dark-mode {
 			#cta {
-				&:after {
-					display: none;
+				&:before {
+					background: rgba(0, 0, 0, 0.6);
 				}
 			}
 		}

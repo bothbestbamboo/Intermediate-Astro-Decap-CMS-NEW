@@ -5,7 +5,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 // 🎯 动态自动扫描 public 目录下的所有 .html 文件
-const domain = "https://www.bambooindustry.com";
+const domain = "https://www.chinabathtub.com";
 const publicDir = "./public";
 
 function getHtmlFiles(dir, base = "") {

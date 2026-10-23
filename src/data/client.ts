@@ -1,9 +1,9 @@
 // ===== SITE CONSTANTS =====
 export const SITE = {
-	title: "Bamboo Flooring, Decking, Plywood | China Factory",
-	tagline: "bamboo factory since 2001",
-	description: "Bothbest is a premier factory of bamboo products in China, specializing in manufacturing high-quality, sustainable bamboo flooring, bamboo decking and bamboo plywood for global markets.",
-	url: "https://www.bambooindustry.com",
+	title: "Shower Room & Enclosure | China Bathtub Factory",
+	tagline: "bathtub factory since 2006",
+	description: "Bothbest is a premier factory of bath products in China, specializing in manufacturing high-quality, shower room, one-piece bathtub for global markets.",
+	url: "https://www.chinabathtub.com",
 	author: "bothbest",
 	locale: "en",
 };
@@ -11,19 +11,19 @@ export const SITE = {
 // ===== BUSINESS INFO =====
 export const BUSINESS = {
     name: SITE.title,
-    email: "info@bambooindustry.com",
+    email: "info@chinabathtub.com",
     phoneForTel: "563-303-2211",
     phoneFormatted: "(563) 303-2211",
     // 🌟 新增 WhatsApp 全局配置
-    whatsAppForLink: "008615005820528", // 纯数字，方便后续拼接 api.whatsapp.com 链接
-    whatsAppFormatted: "+86 150 0582 0528", // 格式化显示，国际买家看起来更专业清晰
+    whatsAppForLink: "008613905633017", // 纯数字，方便后续拼接 api.whatsapp.com 链接
+    whatsAppFormatted: "+86 139 0563 3017", // 格式化显示，国际买家看起来更专业清晰
     logo: "/assets/images/blog/logo2026.png",
     address: {
-        lineOne: "Bamboo Industry Zone",
-        lineTwo: "Xiaofeng",
-        city: "Anji", 
+        lineOne: "Sanitary Ware Zone",
+        lineTwo: "Hanting",
+        city: "Xuancheng", 
         state: "China", 
-        zip: "313300",
+        zip: "242000",
         mapLink: "#",
     },
     socials: {
