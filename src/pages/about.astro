@@ -13,13 +13,14 @@ import landingImage from "@assets/images/landing.jpg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 
 // 你提供的 7 张生产与展会图片 (对应你上传的顺序)
-import factoryAcrylic from "@assets/images/blog/bothbest-bamboo-1.jpg"; // 图1：亚克力板/初加工
-import factoryMolding from "@assets/images/blog/bothbest-bamboo-2.jpg"; // 图2：浴缸成型/流水线
-import factoryExhibition from "@assets/images/blog/bothbest-bamboo-3.jpg"; // 图3：展会洽谈/客户看浴缸
-import factoryGrinding from "@assets/images/blog/bothbest-bamboo-4.jpg"; // 图4：工人打磨/抛光
-import factorySpraying from "@assets/images/blog/bothbest-bamboo-5.jpg"; // 图5：喷涂/玻璃钢加强层
-import factoryAssembly from "@assets/images/blog/bothbest-bamboo-7.jpg"; // 图6：半成品浴缸排列
-import factoryMachining from "@assets/images/blog/bothbest-bamboo-8.jpg"; // 图7：机器加工/开孔(根据图片推测)
+import factoryAcrylic from "@assets/images/about/xc-bath-1.jpg"; // 图1：亚克力板/初加工
+import factoryMolding from "@assets/images/about/xc-bath-2.jpg"; // 图2：浴缸成型/流水线
+import factoryExhibition from "@assets/images/about/xc-bath-3.jpg"; // 图3：展会洽谈/客户看浴缸
+import factoryGrinding from "@assets/images/about/xc-bath-4.jpg"; // 图4：工人打磨/抛光
+import factorySpraying from "@assets/images/about/xc-bath-5.jpg"; // 图5：喷涂/玻璃钢加强层
+import factoryAssembly from "@assets/images/about/xc-bath-7.jpg"; // 图6：半成品浴缸排列
+import factoryMachining from "@assets/images/about/xc-bath-6.jpg"; // 图7：机器加工/开孔(根据图片推测)
+import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg"; // 图8：生产车间
 ---
 
 <BaseLayout
@@ -59,8 +60,8 @@ import factoryMachining from "@assets/images/blog/bothbest-bamboo-8.jpg"; // 图
 			<div class="cs-about-hero">
 				<div class="cs-about-img">
 					<Image
-						src={factoryAssembly}
-						alt="XC Bath Factory Assembly Line"
+						src={factoryWorkshop}
+						alt="XC Bath Factory Workshop"
 					/>
 				</div>
 				<div class="cs-about-text">
