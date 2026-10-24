@@ -7,8 +7,8 @@ import { formatDate } from "@js/utils";
 import { getBlogPostingSchema } from "@js/blogPostingSchema.js";
 import "@styles/markdown.less";
 
-// 导入作者真实的头像图片
-import bothbestAvatar from "@assets/images/authors/bothbest.png";
+// 导入作者真实的头像图片 (确保图片已放在该路径下)
+import xcBathAvatar from "@assets/images/authors/xcbath.png";
 
 // Components
 import BaseLayout from "@layouts/BaseLayout.astro";
@@ -24,9 +24,9 @@ const { Content, headings } = await render(post);
 const isProductPage =
     tags &&
     (tags.includes("Products") ||
-        tags.includes("Flooring") ||
-        tags.includes("Decking") ||
-        tags.includes("Plywood"));
+        tags.includes("Bathtubs") ||
+        tags.includes("Showers") ||
+        tags.includes("Cabinets"));
 
 // Generate BlogPosting schema
 const imageUrl = image.src.startsWith("http")
@@ -67,15 +67,18 @@ const blogPostingSchema = getBlogPostingSchema(
                                 {
                                     !author ||
                                     author.toLowerCase().trim() ===
-                                        "bothbest" ? (
+                                        "bothbest" || 
+                                    author.toLowerCase().trim() === "xc bath" ? (
                                         <Image
-                                            src={bothbestAvatar}
-                                            alt="Bothbest Bamboo"
+                                            src={xcBathAvatar}
+                                            alt="XC Bath Team"
                                             width="32"
                                             height="32"
                                             style={{
                                                 borderRadius: "50%",
                                                 objectFit: "cover",
+                                                // 如果是透明底 PNG，加一点极淡的背景色防止在深色/白色下看不清边缘
+                                                backgroundColor: "#f8fafc"
                                             }}
                                         />
                                     ) : (
@@ -127,7 +130,7 @@ const blogPostingSchema = getBlogPostingSchema(
                                 <h3>Interested in this Product?</h3>
                                 <p>
                                     Get instant factory-direct pricing, custom
-                                    specifications, and material samples for
+                                    specifications, and product catalogs for
                                     your projects.
                                 </p>
                                 <a
@@ -209,17 +212,20 @@ const blogPostingSchema = getBlogPostingSchema(
         }
 
         .blog-author-img {
-            width: (32/16em);
-            height: (32/16em);
+            width: (36/16em); /* 微调：稍微放大了一点点到36px，更显眼 */
+            height: (36/16em);
             border-radius: 50%;
             display: block;
             position: relative;
             overflow: hidden;
+            border: 1px solid #e5e7eb; 
+            background-color: #fff; /* 确保透明 PNG 的背景是白色的 */
 
             img {
                 width: 100%;
                 height: 100%;
-                object-fit: cover;
+                object-fit: contain; /* 修改：确保你的浴缸图标不变形，完整显示 */
+                padding: 4px; /* 修改：给图标四周留一点空隙，避免贴边 */
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -238,12 +244,13 @@ const blogPostingSchema = getBlogPostingSchema(
             font-size: (14/16rem);
             line-height: 1.5em;
             color: var(--bodyTextColor);
+            font-weight: 500;
         }
 
         .blog-dot {
-            width: 3px;
-            height: 3px;
-            background-color: #fe4f70;
+            width: 4px;
+            height: 4px;
+            background-color: #C5A059; /* 香槟金点缀 */
             border-radius: 50%;
             display: block;
         }
@@ -267,7 +274,7 @@ const blogPostingSchema = getBlogPostingSchema(
     }
 
     /* ==========================================================================
-       2. Tablet/Desktop Styles (64em+ / 1024px+) - 彻底平铺，禁止在媒体查询中写复杂的嵌套
+       2. Tablet/Desktop Styles (64em+ / 1024px+)
        ========================================================================== */
     @media only screen and (min-width: 64em) {
         .blog-wrapper-inner {
@@ -276,7 +283,6 @@ const blogPostingSchema = getBlogPostingSchema(
             column-gap: (48/16em);
         }
 
-        /* 针对产品页面的特别大屏布局优化 */
         .product-page-layout {
             .blog-wrapper-inner {
                 column-gap: (32/16em);
@@ -306,27 +312,28 @@ const blogPostingSchema = getBlogPostingSchema(
     }
 
     .product-inquiry-box {
-        background: #f9fafb;
-        border: 1px solid #e5e7eb;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
         border-radius: 8px;
         padding: 24px;
-        border-left: 4px solid #9dc815;
+        border-left: 4px solid #004B87; /* 品牌深海蓝 */
         box-sizing: border-box;
 
         h3 {
             font-size: 16px;
             font-weight: 700;
-            color: #111111;
+            color: #004B87;
             margin: 0 0 10px 0;
         }
 
         p {
             font-size: 13px;
             line-height: 1.5;
-            color: #666666;
+            color: #64748b;
             margin: 0 0 18px 0;
         }
 
+        /* 按钮：深蓝底白字 */
         .product-inquiry-btn {
             display: flex;
             align-items: center;
@@ -340,12 +347,12 @@ const blogPostingSchema = getBlogPostingSchema(
             text-decoration: none;
             border-radius: 4px;
             transition: background-color 0.3s ease, color 0.3s ease;
-            background-color: #9dc815 !important;
-            color: #111111 !important;
+            background-color: #004B87 !important; 
+            color: #ffffff !important; 
         }
 
         .product-inquiry-btn:hover {
-            background-color: #111111 !important;
+            background-color: #C5A059 !important; /* 悬停变香槟金 */
             color: #ffffff !important;
         }
     }
@@ -360,11 +367,16 @@ const blogPostingSchema = getBlogPostingSchema(
             .blog-date {
                 color: #f7f7f7;
             }
+            .blog-author-img {
+                border-color: #333333;
+                background-color: #1a1a1a; /* 深色模式下的头像背景 */
+            }
         }
         
         .product-inquiry-box {
             background: #1a1a1a;
             border-color: #333333;
+            border-left-color: #004B87; 
             h3 {
                 color: #ffffff;
             }
@@ -372,11 +384,11 @@ const blogPostingSchema = getBlogPostingSchema(
                 color: #999999;
             }
             .product-inquiry-btn {
-                background-color: #9dc815 !important;
-                color: #111111 !important;
+                background-color: #004B87 !important;
+                color: #ffffff !important;
             }
             .product-inquiry-btn:hover {
-                background-color: #111111 !important;
+                background-color: #C5A059 !important;
                 color: #ffffff !important;
             }
         }
