@@ -86,9 +86,9 @@ h6 {
 @media only screen and (min-width: 0em) {
 	:root {
 		// Website colors
-		--primary: #9dc815;
-		--primaryLight: #aed52b;
-		--secondary: #001f3f;
+		--primary: #004B87;      /* 修改：深海蓝 */
+		--primaryLight: #3374a8; /* 修改：浅一点的蓝色 */
+		--secondary: #C5A059;    /* 修改：香槟金 */
 		--secondaryLight: #001f3f;
 		--headerColor: #1a1a1a;
 		--bodyTextColor: #4e4b66;
@@ -159,7 +159,7 @@ button {
 	line-height: 1.2em;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
-	color: var(--secondary);
+	color: var(--secondary); /* 这里会自动变成香槟金 */
 	display: block;
 }
 
@@ -198,7 +198,7 @@ button {
 		padding: 0 (30/16rem);
 
 		// Transition Properties
-		color: #000;
+		color: #fff; /* 修改：文字为白色 */
 		background-color: var(--primary);
 		display: inline-block;
 		position: relative;
@@ -254,7 +254,7 @@ button {
 			opacity: 1;
 			padding: 1rem 1.5rem;
 			background-color: var(--primary);
-			color: var(--headerColor);
+			color: #fff; /* 修改：保证跳转按钮可视 */
 			text-decoration: none;
 			font-weight: 700;
 			outline: 2px solid var(--primary);
