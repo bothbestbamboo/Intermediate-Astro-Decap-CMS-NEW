@@ -1,7 +1,7 @@
 ---
 title: "Commercial Bamboo Decking: Why Hotels and Parks Are Switching to Strand Bamboo"
 description: "Commercial bamboo decking is winning hotel and park projects for one reason: strand bamboo handles heavy foot traffic, wet climates, and strict fire codes better than most hardwoods or composites."
-author: "bothbest"
+author: "XC Bath"
 date: 2026-10-12T23:37:01.000Z
 image: "@assets/images/blog/commercial-bamboo-decking-strand-bamboo-4.jpg"
 imageAlt: "Commercial Bamboo Decking for Hotels and Parks"
