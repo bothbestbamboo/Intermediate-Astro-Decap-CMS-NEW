@@ -11,9 +11,10 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 <header id="cs-navigation">
 	<div class="cs-container">
 		<a href="/" class="cs-logo" aria-label="Return to Home page">
+			<!-- 建议：直接将带副标题的SVG替换掉这个img。如果暂时用代码，请将 src 换成你只有图标的 SVG -->
 			<img
 				src="/assets/favicons/logo-black.svg"
-				alt="Bothbest Bamboo"
+				alt="XC BATH - Premium Bathtub & Shower"
 				width="235"
 				height="50"
 			/>
@@ -165,7 +166,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 						</ul>
 					</li>
 
-					<!-- Projects 下拉菜单（修改方案：升级为富文本卡片风格） -->
+					<!-- Projects 下拉菜单 -->
 					<li class="cs-li cs-dropdown">
 						<button
 							class:list={[
@@ -730,7 +731,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 					border-left: 3px solid transparent;
 
 					&:hover {
-						background-color: #f4f6f0;
+						background-color: #f0f5fa;
 						border-left-color: var(--primary);
 					}
 				}
@@ -918,13 +919,28 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 					content: "";
 					width: 0%;
 					height: 2px;
-					background: var(--primary);
+					background: #C5A059; /* 修改：香槟金下划线 */
 					opacity: 1;
 					display: block;
 					position: absolute;
 					bottom: (0/16rem);
 					left: 0;
 					transition: width 0.3s;
+				}
+			}
+
+			/* 针对 Contact Us 按钮的细节样式 */
+			.cs-nav-button {
+				background-color: var(--primary) !important;
+				color: #ffffff !important;
+				padding: (12/16rem) (24/16rem);
+				border-radius: 4px;
+				text-decoration: none;
+				font-weight: 600;
+				transition: background-color 0.3s;
+				
+				&:hover {
+					background-color: #003366 !important;
 				}
 			}
 		}
@@ -941,7 +957,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				.cs-li-link {
 					color: var(--bodyTextColorWhite);
 					&:before {
-						background-color: var(--primaryLight);
+						background-color: #C5A059; /* 修改：深色模式下也保持香槟金 */
 					}
 				}
 			}
