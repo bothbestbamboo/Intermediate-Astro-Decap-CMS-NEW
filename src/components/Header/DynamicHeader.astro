@@ -136,16 +136,23 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 							class="cs-drop-ul cs-drop-card-style"
 							aria-labelledby="projects-dropdown-toggle"
 						>
+							<!-- 🌟 修改：更新了这里的链接和文案 -->
 							<li class="cs-drop-li">
-								<a href="/projects/hotels/" class="cs-li-link cs-drop-link">
-									<span class="cs-drop-title">Hotel Cases</span>
-									<span class="cs-drop-desc">Resorts & Commercial Works</span>
+								<a href="/projects/bathtubs/" class="cs-li-link cs-drop-link">
+									<span class="cs-drop-title">Bathtub Projects</span>
+									<span class="cs-drop-desc">Luxury Freestanding Tubs</span>
 								</a>
 							</li>
 							<li class="cs-drop-li">
-								<a href="/projects/residential/" class="cs-li-link cs-drop-link">
-									<span class="cs-drop-title">Residential Cases</span>
-									<span class="cs-drop-desc">Villas & Luxury Homes</span>
+								<a href="/projects/showers/" class="cs-li-link cs-drop-link">
+									<span class="cs-drop-title">Shower Projects</span>
+									<span class="cs-drop-desc">Modern Glass Enclosures</span>
+								</a>
+							</li>
+							<li class="cs-drop-li">
+								<a href="/projects/cabinets/" class="cs-li-link cs-drop-link">
+									<span class="cs-drop-title">Cabinet Projects</span>
+									<span class="cs-drop-desc">Elegant Bathroom Vanities</span>
 								</a>
 							</li>
 						</ul>
@@ -298,7 +305,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				position: absolute;
 				top: 100%;
 				right: 0;
-				z-index: 10; /* 修复背景层级 */
+				z-index: 10;
 				overflow: hidden;
 				transform: scaleX(0);
 				transition: transform 0.4s, opacity 0.3s;
@@ -332,10 +339,9 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				overflow-y: auto;
 			}
 
-			/* 修复：补全移动端列表去除圆点及文字颜色 */
 			.cs-li {
 				text-align: right;
-				list-style: none; /* 去除圆点 */
+				list-style: none;
 				width: 100%;
 				margin-right: 0;
 				opacity: 0;
@@ -343,12 +349,11 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				transition: transform 0.6s, opacity 0.9s;
 			}
 
-			/* 修复：补全移动端导航链接样式 */
 			.cs-li-link {
 				font-size: clamp(1rem, 2.5vw, 1.5rem);
-				color: var(--headerColor, #1a1a1a); /* 强制深色，去除紫色 */
+				color: var(--headerColor, #1a1a1a);
 				line-height: 1.2em;
-				text-decoration: none; /* 去除下划线 */
+				text-decoration: none;
 				margin: 0;
 				display: inline-block;
 				position: relative;
@@ -412,7 +417,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				width: (15/16rem);
 				height: auto;
 				display: inline-block;
-				color: #C5A059; /* 香槟金箭头 */
+				color: #C5A059;
 				transform: rotate(180deg);
 				transition: 0.3s;
 			}
@@ -423,7 +428,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				margin: 0;
 				box-sizing: border-box;
 				padding: 0 (24/16rem);
-				background-color: var(--primary); /* 下拉背景为主题蓝 */
+				background-color: var(--primary);
 				opacity: 0;
 				display: flex;
 				visibility: hidden;
@@ -445,7 +450,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			.cs-li-link {
 				&.cs-drop-link {
 					font-size: clamp(0.875rem, 2vw, 1.25rem);
-					color: #fff; /* 下拉文字为白色 */
+					color: #fff;
 					text-decoration: none;
 				}
 			}
