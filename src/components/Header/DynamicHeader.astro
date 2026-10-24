@@ -93,71 +93,21 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 							aria-labelledby="products-dropdown-toggle"
 						>
 							<li class="cs-drop-li">
-								<a
-									href="/product/flooring/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname ===
-									"/product/flooring/"
-										? "page"
-										: undefined}
-								>
-									<span class="cs-drop-title"
-										>Bamboo Flooring</span
-									>
-									<span class="cs-drop-desc"
-										>Indoor Solid & Strand Woven</span
-									>
+								<a href="/product/bathtubs/" class="cs-li-link cs-drop-link">
+									<span class="cs-drop-title">Bathtubs</span>
+									<span class="cs-drop-desc">Freestanding & Whirlpool</span>
 								</a>
 							</li>
 							<li class="cs-drop-li">
-								<a
-									href="/product/decking/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname ===
-									"/product/decking/"
-										? "page"
-										: undefined}
-								>
-									<span class="cs-drop-title"
-										>Bamboo Decking</span
-									>
-									<span class="cs-drop-desc"
-										>Outdoor High Density Decking</span
-									>
+								<a href="/product/showers/" class="cs-li-link cs-drop-link">
+									<span class="cs-drop-title">Shower Enclosures</span>
+									<span class="cs-drop-desc">Frameless & Tempered Glass</span>
 								</a>
 							</li>
 							<li class="cs-drop-li">
-								<a
-									href="/product/plywood/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname ===
-									"/product/plywood/"
-										? "page"
-										: undefined}
-								>
-									<span class="cs-drop-title"
-										>Bamboo Plywood</span
-									>
-									<span class="cs-drop-desc"
-										>Panels & Furniture Veneer</span
-									>
-								</a>
-							</li>
-							<li class="cs-drop-li">
-								<a
-									href="/product/bamboo/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname ===
-									"/product/bamboo/"
-										? "page"
-										: undefined}
-								>
-									<span class="cs-drop-title"
-										>Bamboo Concepts</span
-									>
-									<span class="cs-drop-desc"
-										>Inspired Sustainable Goods</span
-									>
+								<a href="/product/cabinets/" class="cs-li-link cs-drop-link">
+									<span class="cs-drop-title">Bath Cabinets</span>
+									<span class="cs-drop-desc">Vanities & Storage</span>
 								</a>
 							</li>
 						</ul>
@@ -187,54 +137,15 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 							aria-labelledby="projects-dropdown-toggle"
 						>
 							<li class="cs-drop-li">
-								<a
-									href="/projects/bamboo-flooring/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname ===
-									"/projects/bamboo-flooring/"
-										? "page"
-										: undefined}
-								>
-									<span class="cs-drop-title"
-										>Flooring Cases</span
-									>
-									<span class="cs-drop-desc"
-										>Residential & Commercial Works</span
-									>
+								<a href="/projects/hotels/" class="cs-li-link cs-drop-link">
+									<span class="cs-drop-title">Hotel Cases</span>
+									<span class="cs-drop-desc">Resorts & Commercial Works</span>
 								</a>
 							</li>
 							<li class="cs-drop-li">
-								<a
-									href="/projects/bamboo-decking/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname ===
-									"/projects/bamboo-decking/"
-										? "page"
-										: undefined}
-								>
-									<span class="cs-drop-title"
-										>Decking Cases</span
-									>
-									<span class="cs-drop-desc"
-										>Resorts, Promenades & Outdoors</span
-									>
-								</a>
-							</li>
-							<li class="cs-drop-li">
-								<a
-									href="/projects/bamboo-plywood/"
-									class="cs-li-link cs-drop-link"
-									aria-current={Astro.url.pathname ===
-									"/projects/bamboo-plywood/"
-										? "page"
-										: undefined}
-								>
-									<span class="cs-drop-title"
-										>Plywood Cases</span
-									>
-									<span class="cs-drop-desc"
-										>Custom Furniture & Panels</span
-									>
+								<a href="/projects/residential/" class="cs-li-link cs-drop-link">
+									<span class="cs-drop-title">Residential Cases</span>
+									<span class="cs-drop-desc">Villas & Luxury Homes</span>
 								</a>
 							</li>
 						</ul>
@@ -306,18 +217,17 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			position: fixed;
 			z-index: 10000;
 
-			/* 修改2：强制移动端垂直居中 */
 			.cs-container {
 				width: 100%;
 				display: flex;
-				justify-content: space-between; /* 改为两端对齐，避免 LOGO 把右侧挤太远 */
+				justify-content: space-between;
 				align-items: center;
 			}
 
 			.cs-logo {
-				width: auto;         /* 修改：移除百分比 */
-				max-width: 60%;      /* 修改：最大占宽 */
-				height: (40/16rem);  /* 修改：固定高度，宽度自适应 */
+				width: auto;
+				max-width: 60%;
+				height: (40/16rem);
 				margin: 0;
 				display: flex;
 				justify-content: flex-start;
@@ -332,8 +242,127 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				}
 			}
 
-			/* ... 这里省略中间未改动的手机端展开菜单代码 ... */
-			/* ... (保持你原文件的代码即可) ... */
+			.cs-toggle {
+				width: clamp(2.75rem, 6vw, 3rem);
+				height: clamp(2.75rem, 6vw, 3rem);
+				margin: 0 0 0 auto;
+				background-color: transparent;
+				border: none;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.cs-active {
+				.cs-line1 {
+					top: 50%;
+					transform: translate(-50%, -50%) rotate(225deg);
+				}
+				.cs-line2 {
+					top: 50%;
+					transform: translate(-50%, -50%) rotate(-225deg);
+					transform-origin: center;
+				}
+				.cs-line3 {
+					opacity: 0;
+					bottom: 100%;
+				}
+			}
+
+			.cs-box {
+				width: clamp(1.5rem, 2vw, 1.75rem);
+				height: clamp(0.875rem, 1.5vw, 1rem);
+				position: relative;
+			}
+
+			.cs-line {
+				width: 100%;
+				height: 2px;
+				background-color: #1a1a1a;
+				border-radius: 2px;
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+
+			.cs-line1 { top: 0; transition: transform 0.5s, top 0.3s; }
+			.cs-line2 { top: 50%; transform: translateX(-50%) translateY(-50%); transition: top 0.3s, transform 0.5s; }
+			.cs-line3 { bottom: 0; transition: bottom 0.3s, opacity 0.3s; }
+
+			.cs-ul-wrapper {
+				height: 100vh;
+				background-color: #fff;
+				box-shadow: inset rgba(0, 0, 0, 0.2) 0px 8px 24px;
+				opacity: 0;
+				visibility: hidden;
+				position: absolute;
+				top: 100%;
+				right: 0;
+				z-index: 10; /* 修复背景层级 */
+				overflow: hidden;
+				transform: scaleX(0);
+				transition: transform 0.4s, opacity 0.3s;
+				transform-origin: top right;
+			}
+
+			&.cs-active {
+				.cs-ul-wrapper {
+					opacity: 1;
+					visibility: visible;
+					transform: scaleX(1);
+					transition-delay: 0.2s;
+				}
+				.cs-li {
+					opacity: 1;
+					transform: translateX(0);
+				}
+			}
+
+			.cs-ul {
+				width: auto;
+				min-width: 40%;
+				height: 65vh;
+				margin: 0;
+				padding: (48/16rem) clamp(1.75rem, 3vw, 2.5rem) (32/16rem) (70/16rem);
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: flex-end;
+				gap: (20/16rem);
+				overflow-y: auto;
+			}
+
+			/* 修复：补全移动端列表去除圆点及文字颜色 */
+			.cs-li {
+				text-align: right;
+				list-style: none; /* 去除圆点 */
+				width: 100%;
+				margin-right: 0;
+				opacity: 0;
+				transform: translateX(-40/16rem);
+				transition: transform 0.6s, opacity 0.9s;
+			}
+
+			/* 修复：补全移动端导航链接样式 */
+			.cs-li-link {
+				font-size: clamp(1rem, 2.5vw, 1.5rem);
+				color: var(--headerColor, #1a1a1a); /* 强制深色，去除紫色 */
+				line-height: 1.2em;
+				text-decoration: none; /* 去除下划线 */
+				margin: 0;
+				display: inline-block;
+				position: relative;
+
+				&.cs-active {
+					&:before {
+						display: block;
+					}
+				}
+			}
+
+			.cs-button-solid {
+				display: none;
+			}
 		}
 	}
 
@@ -370,12 +399,8 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 						visibility: visible;
 						transform: scale(1);
 					}
-					.cs-drop-link {
-						opacity: 1;
-					}
-					.cs-drop-icon {
-						transform: rotate(0);
-					}
+					.cs-drop-link { opacity: 1; }
+					.cs-drop-icon { transform: rotate(0); }
 				}
 				.cs-li-link {
 					position: relative;
@@ -387,8 +412,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				width: (15/16rem);
 				height: auto;
 				display: inline-block;
-				/* 修改3：手机端下拉箭头变香槟金 */
-				color: #C5A059; 
+				color: #C5A059; /* 香槟金箭头 */
 				transform: rotate(180deg);
 				transition: 0.3s;
 			}
@@ -398,8 +422,8 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				height: 0;
 				margin: 0;
 				box-sizing: border-box;
-				padding: 0 (24/16rem) 0 (24/16rem);
-				background-color: var(--primary);
+				padding: 0 (24/16rem);
+				background-color: var(--primary); /* 下拉背景为主题蓝 */
 				opacity: 0;
 				display: flex;
 				visibility: hidden;
@@ -409,13 +433,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				gap: (12/16rem);
 				overflow: hidden;
 				transform: scale(0);
-				transition:
-					padding 0.3s,
-					margin 0.3s,
-					height 0.3s,
-					opacity 0.3s,
-					transform 0.3s,
-					visibility 0.3s;
+				transition: padding 0.3s, margin 0.3s, height 0.3s, opacity 0.3s, transform 0.3s, visibility 0.3s;
 				transform-origin: top right;
 			}
 
@@ -427,25 +445,20 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			.cs-li-link {
 				&.cs-drop-link {
 					font-size: clamp(0.875rem, 2vw, 1.25rem);
-					color: #fff;
+					color: #fff; /* 下拉文字为白色 */
+					text-decoration: none;
 				}
 			}
 
-			.cs-drop-title {
-				display: block;
-				font-weight: 600;
-			}
-
-			.cs-drop-desc {
-				display: block;
-				font-size: 0.75rem;
-				opacity: 0.8;
-			}
+			.cs-drop-title { display: block; font-weight: 600; }
+			.cs-drop-desc { display: block; font-size: 0.75rem; opacity: 0.8; margin-top: 4px; }
 
 			.cs-dropdown-toggle {
 				background-color: transparent;
 				border: none;
 				appearance: none;
+				font-family: inherit;
+				cursor: pointer;
 			}
 		}
 	}
@@ -455,36 +468,23 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 		#cs-navigation {
 			.cs-dropdown {
 				position: relative;
-				&:hover,
-				&.cs-active {
+				&:hover, &.cs-active {
 					cursor: pointer;
-					.cs-drop-ul {
-						opacity: 1;
-						visibility: visible;
-						transform: scaleY(1);
-					}
-					.cs-drop-li {
-						opacity: 1;
-						transform: translateY(0);
-					}
+					.cs-drop-ul { opacity: 1; visibility: visible; transform: scaleY(1); }
+					.cs-drop-li { opacity: 1; transform: translateY(0); }
 				}
 			}
 
 			.cs-dropdown:has(.cs-drop-icon) {
 				display: flex;
 				align-items: center;
-				&:hover {
-					.cs-drop-icon {
-						transform: rotate(0);
-					}
-				}
+				&:hover { .cs-drop-icon { transform: rotate(0); } }
 			}
 
 			.cs-drop-icon {
 				width: (15/16rem);
 				height: auto;
 				display: inline-block;
-				/* 修改3：电脑端下拉箭头变香槟金 */
 				color: #C5A059;
 				transform: rotate(180deg);
 				transition: 0.3s;
@@ -502,104 +502,36 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				z-index: -100;
 				overflow: hidden;
 				transform: scaleY(0);
-				transition:
-					transform 0.3s,
-					visibility 0.3s,
-					opacity 0.3s;
+				transition: transform 0.3s, visibility 0.3s, opacity 0.3s;
 				transform-origin: top;
 				border-radius: 0 0 8px 8px;
 			}
 
-			/* Products 与 Projects 统一使用的通用卡片式样式 */
 			.cs-drop-card-style {
 				min-width: (270/16rem);
 				padding: (10/16rem);
-				border-bottom: 4px solid #C5A059; /* 修改：底部边框也改成香槟金 */
+				border-bottom: 4px solid #C5A059;
 
-				.cs-drop-li {
-					margin-bottom: (6/16rem);
-					&:last-child {
-						margin-bottom: 0;
-					}
-				}
-
+				.cs-drop-li { margin-bottom: (6/16rem); &:last-child { margin-bottom: 0; } }
 				.cs-drop-link {
 					padding: (10/16rem) (14/16rem);
 					border-radius: 6px;
 					border-left: 3px solid transparent;
-
-					&:hover {
-						background-color: #f0f5fa;
-						border-left-color: #C5A059; /* 修改：悬停时左侧边框变香槟金 */
-					}
+					&:hover { background-color: #f0f5fa; border-left-color: #C5A059; }
 				}
 			}
 
-			.cs-drop-title {
-				display: block;
-				font-size: (15/16rem);
-				font-weight: 700;
-				color: var(--headerColor);
-				line-height: 1.2em;
-			}
-
-			.cs-drop-desc {
-				display: block;
-				font-size: (12/16rem);
-				color: #666;
-				margin-top: (4/16rem);
-				line-height: 1.2em;
-			}
-
-			.cs-drop-li {
-				font-size: (15/16rem);
-				list-style: none;
-				width: 100%;
-				height: auto;
-				color: var(--bodyTextColor);
-				opacity: 0;
-				display: block;
-				transform: translateY(-10/16rem);
-				transition:
-					opacity 0.4s,
-					transform 0.4s;
-
-				&:nth-of-type(1) { transition-delay: 0.03s; }
-				&:nth-of-type(2) { transition-delay: 0.06s; }
-				&:nth-of-type(3) { transition-delay: 0.09s; }
-				&:nth-of-type(4) { transition-delay: 0.12s; }
-			}
-
+			.cs-drop-title { display: block; font-size: (15/16rem); font-weight: 700; color: var(--headerColor); line-height: 1.2em; }
+			.cs-drop-desc { display: block; font-size: (12/16rem); color: #666; margin-top: (4/16rem); line-height: 1.2em; }
+			.cs-drop-li { font-size: (15/16rem); list-style: none; width: 100%; height: auto; color: var(--bodyTextColor); opacity: 0; display: block; transform: translateY(-10/16rem); transition: opacity 0.4s, transform 0.4s; }
 			.cs-li-link {
 				&.cs-drop-link {
-					font-size: (15/16rem);
-					line-height: 1.4em;
-					text-decoration: none;
-					white-space: nowrap;
-					width: 100%;
-					box-sizing: border-box;
-					color: var(--bodyTextColor);
-					display: block;
-					transition:
-						color 0.2s,
-						background-color 0.2s,
-						border-color 0.2s;
-
-					&:focus-within {
-						outline: 2px solid currentColor;
-						outline-offset: -2px;
-					}
-					&:before {
-						display: none;
-					}
+					font-size: (15/16rem); line-height: 1.4em; text-decoration: none; white-space: nowrap; width: 100%; box-sizing: border-box; color: var(--bodyTextColor); display: block; transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+					&:focus-within { outline: 2px solid currentColor; outline-offset: -2px; }
+					&:before { display: none; }
 				}
 			}
-
-			.cs-dropdown-toggle {
-				background-color: transparent;
-				border: none;
-				appearance: none;
-			}
+			.cs-dropdown-toggle { background-color: transparent; border: none; appearance: none; font-family: inherit; cursor: pointer;}
 		}
 	}
 
@@ -607,26 +539,11 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 	@media only screen and (min-width: 0rem) {
 		body.dark-mode {
 			#cs-navigation {
-				.cs-drop-ul {
-					background-color: var(--dark);
-				}
-				.cs-drop-title {
-					color: #fff;
-				}
-				.cs-drop-desc {
-					color: #aaa;
-				}
-				.cs-li-link {
-					&.cs-drop-link {
-						&:hover {
-							background-color: var(--medium);
-						}
-					}
-				}
-				.cs-drop-icon {
-					color: #C5A059; /* 深色模式下箭头也是香槟金 */
-					filter: none;   /* 移除之前的滤镜，因为现在直接用颜色了 */
-				}
+				.cs-drop-ul { background-color: var(--dark); }
+				.cs-drop-title { color: #fff; }
+				.cs-drop-desc { color: #aaa; }
+				.cs-li-link { &.cs-drop-link { &:hover { background-color: var(--medium); } } }
+				.cs-drop-icon { color: #C5A059; filter: none; }
 			}
 		}
 	}
@@ -652,49 +569,28 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				margin: auto;
 				display: flex;
 				justify-content: flex-end;
-				align-items: center; /* 修改2：强制所有元素垂直居中，解决按钮偏下 */
-				gap: (32/16rem);     /* 稍微增加右侧元素之间的间距 */
+				align-items: center;
+				gap: (32/16rem);
 			}
 
-			.cs-toggle {
-				display: none;
-			}
+			.cs-toggle { display: none; }
 
 			.cs-logo {
-				/* 修改1：利用 flex: 1 让它占据左侧所有剩余空间，并设定最大高度 */
 				flex: 1; 
-				max-width: (400/16rem); /* 放宽一点限制 */
-				height: (65/16rem);     /* 撑满导航栏高度 */
+				max-width: (400/16rem);
+				height: (65/16rem);
 				margin: 0 auto 0 0;
-				padding: 0;
-				display: flex;
-				justify-content: flex-start; /* 靠左对齐 */
-				align-items: center;
-				z-index: 100;
-
-				img {
-					width: 100%;
-					height: 100%;
-					object-fit: contain; /* 保证宽高比不拉伸 */
-					object-position: left; /* 靠左对齐 */
-				}
-			}
-
-			.cs-ul {
-				width: 100%;
-				margin: 0;
 				padding: 0;
 				display: flex;
 				justify-content: flex-start;
 				align-items: center;
-				gap: 0.25rem;
+				z-index: 100;
+
+				img { width: 100%; height: 100%; object-fit: contain; object-position: left; }
 			}
 
-			.cs-li {
-				list-style: none;
-				padding: (32/16rem) (16/16rem);
-				flex: none;
-			}
+			.cs-ul { width: 100%; margin: 0; padding: 0; display: flex; justify-content: flex-start; align-items: center; gap: 0.25rem; }
+			.cs-li { list-style: none; padding: (32/16rem) (16/16rem); flex: none; }
 
 			.cs-li-link {
 				font-size: clamp(0.875rem, 1vw, 1rem);
@@ -705,22 +601,14 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				display: block;
 				position: relative;
 
-				&:hover {
-					&:before {
-						width: 100%;
-					}
-				}
-				&.cs-active {
-					&:before {
-						width: 100%;
-					}
-				}
+				&:hover { &:before { width: 100%; } }
+				&.cs-active { &:before { width: 100%; } }
 
 				&:before {
 					content: "";
 					width: 0%;
 					height: 2px;
-					background: #C5A059; /* 香槟金下划线 */
+					background: #C5A059;
 					opacity: 1;
 					display: block;
 					position: absolute;
@@ -730,7 +618,6 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				}
 			}
 
-			/* 针对 Contact Us 按钮的细节样式 */
 			.cs-nav-button {
 				background-color: var(--primary) !important;
 				color: #ffffff !important;
@@ -739,14 +626,10 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				text-decoration: none;
 				font-weight: 600;
 				transition: background-color 0.3s;
-				/* 强制垂直居中，消除因为行高带来的偏移 */
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				
-				&:hover {
-					background-color: #003366 !important;
-				}
+				&:hover { background-color: #003366 !important; }
 			}
 		}
 	}
@@ -756,14 +639,10 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 		body.dark-mode {
 			#cs-navigation {
 				background-color: var(--dark);
-				.cs-logo {
-					filter: grayscale(1) brightness(1000%);
-				}
+				.cs-logo { filter: grayscale(1) brightness(1000%); }
 				.cs-li-link {
 					color: var(--bodyTextColorWhite);
-					&:before {
-						background-color: #C5A059; 
-					}
+					&:before { background-color: #C5A059; }
 				}
 			}
 		}
