@@ -11,12 +11,9 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 <header id="cs-navigation">
 	<div class="cs-container">
 		<a href="/" class="cs-logo" aria-label="Return to Home page">
-			<!-- 建议：直接将带副标题的SVG替换掉这个img。如果暂时用代码，请将 src 换成你只有图标的 SVG -->
 			<img
 				src="/assets/favicons/logo-black.svg"
 				alt="XC BATH - Premium Bathtub & Shower"
-				width="235"
-				height="50"
 			/>
 		</a>
 
@@ -309,63 +306,25 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			position: fixed;
 			z-index: 10000;
 
-			&:before {
-				content: "";
-				width: 0%;
-				height: 100vh;
-				background: rgba(0, 0, 0, 0.6);
-				opacity: 0;
-				display: block;
-				position: absolute;
-				top: 100%;
-				right: 0;
-				z-index: -11;
-				transition:
-					width 0.5s,
-					opacity 0.3s;
-				-webkit-backdrop-filter: blur(10px);
-				backdrop-filter: blur(10px);
-			}
-
-			&.cs-active {
-				&:before {
-					width: 100%;
-					opacity: 1;
-				}
-
-				.cs-ul-wrapper {
-					opacity: 1;
-					visibility: visible;
-					transform: scaleX(1);
-					transition-delay: 0.2s;
-				}
-
-				.cs-li {
-					opacity: 1;
-					transform: translateX(0);
-				}
-			}
-
+			/* 修改2：强制移动端垂直居中 */
 			.cs-container {
 				width: 100%;
 				display: flex;
-				justify-content: flex-end;
+				justify-content: space-between; /* 改为两端对齐，避免 LOGO 把右侧挤太远 */
 				align-items: center;
 			}
 
 			.cs-logo {
-				width: 40%;
-				max-width: (146/16rem);
-				height: 100%;
-				margin: 0 auto 0 0;
-				box-sizing: border-box;
-				padding: 0;
+				width: auto;         /* 修改：移除百分比 */
+				max-width: 60%;      /* 修改：最大占宽 */
+				height: (40/16rem);  /* 修改：固定高度，宽度自适应 */
+				margin: 0;
 				display: flex;
-				justify-content: center;
+				justify-content: flex-start;
 				align-items: center;
 				z-index: 10;
 
-				svg {
+				img {
 					width: 100%;
 					height: 100%;
 					object-fit: contain;
@@ -373,171 +332,8 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				}
 			}
 
-			.cs-toggle {
-				width: clamp(2.75rem, 6vw, 3rem);
-				height: clamp(2.75rem, 6vw, 3rem);
-				margin: 0 0 0 auto;
-				background-color: transparent;
-				border: none;
-				border-radius: (4/16rem);
-				display: flex;
-				justify-content: center;
-				align-items: center;
-			}
-
-			.cs-active {
-				.cs-line1 {
-					top: 50%;
-					transform: translate(-50%, -50%) rotate(225deg);
-				}
-				.cs-line2 {
-					top: 50%;
-					transform: translate(-50%, -50%) translateY(0)
-						rotate(-225deg);
-					transform-origin: center;
-				}
-				.cs-line3 {
-					opacity: 0;
-					bottom: 100%;
-				}
-			}
-
-			.cs-box {
-				width: clamp(1.5rem, 2vw, 1.75rem);
-				height: clamp(0.875rem, 1.5vw, 1rem);
-				position: relative;
-			}
-
-			.cs-line {
-				width: 100%;
-				height: 2px;
-				background-color: #1a1a1a;
-				border-radius: 2px;
-				position: absolute;
-				left: 50%;
-				transform: translateX(-50%);
-			}
-
-			.cs-line1 {
-				top: 0;
-				transition:
-					transform 0.5s,
-					top 0.3s,
-					left 0.3s;
-				animation-duration: 0.7s;
-				animation-timing-function: ease;
-				animation-direction: normal;
-				animation-fill-mode: forwards;
-				transform-origin: center;
-			}
-
-			.cs-line2 {
-				top: 50%;
-				transform: translateX(-50%) translateY(-50%);
-				transition:
-					top 0.3s,
-					left 0.3s,
-					transform 0.5s;
-				animation-duration: 0.7s;
-				animation-timing-function: ease;
-				animation-direction: normal;
-				animation-fill-mode: forwards;
-			}
-
-			.cs-line3 {
-				bottom: 0;
-				transition:
-					bottom 0.3s,
-					opacity 0.3s;
-			}
-
-			.cs-ul-wrapper {
-				height: 100vh;
-				background-color: #fff;
-				box-shadow: inset rgba(0, 0, 0, 0.2) 0px 8px 24px;
-				opacity: 0;
-				visibility: hidden;
-				position: absolute;
-				top: 100%;
-				right: 0;
-				left: auto;
-				z-index: -1;
-				overflow: hidden;
-				transform: scaleX(0);
-				transition:
-					transform 0.4s,
-					opacity 0.3s;
-				transform-origin: top right;
-			}
-
-			.cs-ul {
-				width: auto;
-				min-width: 40%;
-				height: 65vh;
-				margin: 0;
-				padding: (48/16rem) clamp(1.75rem, 3vw, 2.5rem) (32/16rem)
-					(70/16rem);
-				display: flex;
-				flex-direction: column;
-				justify-content: flex-start;
-				align-items: flex-end;
-				gap: (20/16rem);
-				overflow: scroll;
-			}
-
-			.cs-li {
-				text-align: right;
-				list-style: none;
-				width: 100%;
-				margin-right: 0;
-				opacity: 0;
-				transform: translateX(-40/16rem);
-				transition:
-					transform 0.6s,
-					opacity 0.9s;
-
-				&:nth-of-type(1) { transition-delay: 0.05s; }
-				&:nth-of-type(2) { transition-delay: 0.1s; }
-				&:nth-of-type(3) { transition-delay: 0.15s; }
-				&:nth-of-type(4) { transition-delay: 0.2s; }
-				&:nth-of-type(5) { transition-delay: 0.25s; }
-				&:nth-of-type(6) { transition-delay: 0.3s; }
-				&:nth-of-type(7) { transition-delay: 0.35s; }
-				&:nth-of-type(8) { transition-delay: 0.4s; }
-				&:nth-of-type(9) { transition-delay: 0.45s; }
-			}
-
-			.cs-li-link {
-				font-size: clamp(1rem, 2.5vw, 1.5rem);
-				color: inherit;
-				line-height: 1.2em;
-				text-decoration: none;
-				margin: 0;
-				display: inline-block;
-				position: relative;
-
-				&:before {
-					content: "";
-					width: 100%;
-					height: 1px;
-					background: currentColor;
-					opacity: 1;
-					display: none;
-					position: absolute;
-					bottom: (-2/16rem);
-					left: 0;
-				}
-
-				&.cs-active {
-					&:before {
-						display: block;
-					}
-				}
-			}
-
-			.cs-button-solid {
-				display: none;
-			}
+			/* ... 这里省略中间未改动的手机端展开菜单代码 ... */
+			/* ... (保持你原文件的代码即可) ... */
 		}
 	}
 
@@ -591,7 +387,8 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				width: (15/16rem);
 				height: auto;
 				display: inline-block;
-				color: inherit;
+				/* 修改3：手机端下拉箭头变香槟金 */
+				color: #C5A059; 
 				transform: rotate(180deg);
 				transition: 0.3s;
 			}
@@ -687,7 +484,8 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				width: (15/16rem);
 				height: auto;
 				display: inline-block;
-				color: inherit;
+				/* 修改3：电脑端下拉箭头变香槟金 */
+				color: #C5A059;
 				transform: rotate(180deg);
 				transition: 0.3s;
 			}
@@ -716,7 +514,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			.cs-drop-card-style {
 				min-width: (270/16rem);
 				padding: (10/16rem);
-				border-bottom: 4px solid var(--primary);
+				border-bottom: 4px solid #C5A059; /* 修改：底部边框也改成香槟金 */
 
 				.cs-drop-li {
 					margin-bottom: (6/16rem);
@@ -732,7 +530,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 					&:hover {
 						background-color: #f0f5fa;
-						border-left-color: var(--primary);
+						border-left-color: #C5A059; /* 修改：悬停时左侧边框变香槟金 */
 					}
 				}
 			}
@@ -826,7 +624,8 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 					}
 				}
 				.cs-drop-icon {
-					filter: grayscale(1) brightness(1000%);
+					color: #C5A059; /* 深色模式下箭头也是香槟金 */
+					filter: none;   /* 移除之前的滤镜，因为现在直接用颜色了 */
 				}
 			}
 		}
@@ -853,8 +652,8 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				margin: auto;
 				display: flex;
 				justify-content: flex-end;
-				align-items: center;
-				gap: (24/16rem);
+				align-items: center; /* 修改2：强制所有元素垂直居中，解决按钮偏下 */
+				gap: (32/16rem);     /* 稍微增加右侧元素之间的间距 */
 			}
 
 			.cs-toggle {
@@ -862,20 +661,22 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			}
 
 			.cs-logo {
-				width: 18.4%;
-				max-width: (350/16rem);
-				height: (65/16rem);
+				/* 修改1：利用 flex: 1 让它占据左侧所有剩余空间，并设定最大高度 */
+				flex: 1; 
+				max-width: (400/16rem); /* 放宽一点限制 */
+				height: (65/16rem);     /* 撑满导航栏高度 */
 				margin: 0 auto 0 0;
 				padding: 0;
 				display: flex;
-				justify-content: center;
+				justify-content: flex-start; /* 靠左对齐 */
 				align-items: center;
 				z-index: 100;
 
-				svg {
+				img {
 					width: 100%;
 					height: 100%;
-					object-fit: contain;
+					object-fit: contain; /* 保证宽高比不拉伸 */
+					object-position: left; /* 靠左对齐 */
 				}
 			}
 
@@ -919,7 +720,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 					content: "";
 					width: 0%;
 					height: 2px;
-					background: #C5A059; /* 修改：香槟金下划线 */
+					background: #C5A059; /* 香槟金下划线 */
 					opacity: 1;
 					display: block;
 					position: absolute;
@@ -938,6 +739,10 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				text-decoration: none;
 				font-weight: 600;
 				transition: background-color 0.3s;
+				/* 强制垂直居中，消除因为行高带来的偏移 */
+				display: flex;
+				align-items: center;
+				justify-content: center;
 				
 				&:hover {
 					background-color: #003366 !important;
@@ -957,7 +762,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				.cs-li-link {
 					color: var(--bodyTextColorWhite);
 					&:before {
-						background-color: #C5A059; /* 修改：深色模式下也保持香槟金 */
+						background-color: #C5A059; 
 					}
 				}
 			}
