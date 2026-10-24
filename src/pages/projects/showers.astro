@@ -1,0 +1,245 @@
+---
+// Utils
+import { Picture, getImage } from "astro:assets";
+
+// Components
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Banner from "@components/Banner/Banner.astro";
+import CTA from "@components/CTA/CTASimple.astro";
+
+// Banner Image (建议替换为淋浴房相关的 Banner 图)
+import landingImage from "@assets/images/gallery/bannerdecking.jpg";
+
+// Project Showcase Images (请替换为你实际的淋浴房项目图片)
+import port1 from "@assets/images/projects/decking1.jpg";
+import port2 from "@assets/images/projects/decking2.jpg";
+import port3 from "@assets/images/projects/decking3.jpg";
+import port4 from "@assets/images/projects/decking4.jpg";
+import port5 from "@assets/images/projects/decking5.jpg";
+import port6 from "@assets/images/projects/decking6.jpg";
+
+const optimizedImage = await getImage({ src: landingImage, format: "webp" });
+
+// Structured Shower Enclosure Project Data
+const projectItems = [
+	{
+		img: port1,
+		title: "Modern Villa Frameless Shower Enclosure",
+		category: "Frameless Glass Showers",
+		specs: "Premium 10mm tempered glass with polished hardware, creating a seamless and spacious look for high-end residential bathrooms.",
+		location: "Private Villa",
+	},
+	{
+		img: port2,
+		title: "Luxury Hotel Bathroom Glass Partition",
+		category: "Semi-Frameless Shower Doors",
+		specs: "Sturdy aluminum frame with clear tempered glass, offering superior waterproofing and easy-clean surfaces for hospitality projects.",
+		location: "Commercial Hotel",
+	},
+	{
+		img: port3,
+		title: "Contemporary Apartment Corner Shower",
+		category: "Pivot & Hinge Shower Doors",
+		specs: "Space-saving corner installation with smooth pivot hinges and magnetic seals, maximizing functionality in modern apartments.",
+		location: "Residential Apartment",
+	},
+	{
+		img: port4,
+		title: "Resort Walk-in Shower Screen",
+		category: "Walk-in Open Showers",
+		specs: "Single fixed glass panel design for a minimalist open-concept bathroom, treated with nano anti-limescale coating.",
+		location: "Resort & Spa",
+	},
+	{
+		img: port5,
+		title: "Luxury Master Bathroom Sliding Shower",
+		category: "Sliding Glass Shower Doors",
+		specs: "Smooth sliding mechanism with dual rollers, perfect for large bathroom spaces, featuring premium brushed gold finish.",
+		location: "Luxury Residence",
+	},
+	{
+		img: port6,
+		title: "Commercial Gym & Club Shower Enclosures",
+		category: "Heavy-Duty Public Showers",
+		specs: "Robust heavy-duty tempered glass and reinforced hardware engineered to withstand high-frequency public use and strict safety standards.",
+		location: "Commercial Fitness Center",
+	},
+];
+---
+
+<BaseLayout
+	title="Shower Enclosure Projects | Frameless & Tempered Glass"
+	description="Explore XC Bath's global portfolio of shower enclosure installations, featuring frameless, semi-frameless, and custom tempered glass showers."
+	heroImage={optimizedImage}
+>
+	<!-- Banner -->
+	<Banner
+		title="Transforming Bathrooms with Modern Glass Showers"
+		subtitle="Global project showcases featuring our high-strength, waterproof, and elegantly designed shower enclosures."
+		image={optimizedImage}
+	/>
+
+	<!-- Main Content & Gallery -->
+	<section class="projects-section">
+		<div class="cs-container">
+			<!-- Header Intro -->
+			<div class="section-intro">
+				<span class="section-subtitle">PROJECT PORTFOLIO</span>
+				<h2>Proven Performance & Elegance in Every Detail</h2>
+				<p>
+					From luxury villa bathrooms to high-traffic commercial gyms, XC Bath shower enclosures are chosen worldwide for their certified safety glass, corrosion-resistant hardware, and sleek architectural design.
+				</p>
+			</div>
+
+			<!-- Project Category Filter / Tabs Header -->
+			<div class="category-nav">
+				<a href="/projects/bathtubs/" class="nav-btn">Bathtubs</a>
+				<a href="/projects/showers/" class="nav-btn active">Shower Enclosures</a>
+				<a href="/projects/cabinets/" class="nav-btn">Bath Cabinets</a>
+			</div>
+
+			<!-- Projects Grid -->
+			<div class="projects-grid">
+				{
+					projectItems.map((item) => (
+						<article class="project-card">
+							<div class="project-image-wrapper">
+								<Picture
+									src={item.img}
+									alt={item.title}
+									width={800}
+									height={600}
+									formats={["avif", "webp"]}
+									class="lightbox-trigger"
+								/>
+								<span class="project-tag">{item.category}</span>
+							</div>
+							<div class="project-details">
+								<span class="project-location">
+									{item.location}
+								</span>
+								<h3>{item.title}</h3>
+								<p>{item.specs}</p>
+							</div>
+						</article>
+					))
+				}
+			</div>
+
+			<!-- Technical Resources Support Box -->
+			<div class="engineering-support-box">
+				<div class="support-text">
+					<h3>
+						Require Technical Data & Installation Profiles for Glass Showers?
+					</h3>
+					<p>
+						Download our official Shower Enclosure Catalogue for full product specs, glass thickness options, hardware finishes, and safety certification test data.
+					</p>
+				</div>
+				<a
+					href="/pdf/xcbath-shower-catalogue.pdf"
+					target="_blank"
+					class="cs-button-solid">Download Product Catalog (PDF)</a
+				>
+			</div>
+		</div>
+	</section>
+
+	<CTA />
+
+	<!-- Lightbox Modal HTML -->
+	<div id="lightbox-modal" class="lightbox-modal" style="display: none;">
+		<span class="lightbox-close" title="Close">&times;</span>
+		<div class="lightbox-image-wrap">
+			<img class="lightbox-content" id="lightbox-img" alt="Enlarged project image" />
+			<span class="lightbox-zoomout" title="Click to shrink / close">
+				<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+					<circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/>
+					<line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+					<line x1="7.5" y1="10.5" x2="13.5" y2="10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+				</svg>
+			</span>
+		</div>
+	</div>
+</BaseLayout>
+
+<!-- Astro View Transitions Lightbox Script -->
+<script is:inline>
+	function setupLightbox() {
+		const modal = document.getElementById('lightbox-modal');
+		const modalImg = document.getElementById('lightbox-img');
+		const closeBtn = document.querySelector('.lightbox-close');
+		const zoomOutBtn = document.querySelector('.lightbox-zoomout');
+
+		if (!modal || !modalImg) return;
+
+		const grid = document.querySelector('.projects-grid');
+		if (grid) {
+			grid.onclick = (e) => {
+				const target = e.target;
+				if (target && target.tagName === 'IMG') {
+					modal.style.display = 'flex';
+					modalImg.src = target.currentSrc || target.src;
+				}
+			};
+		}
+
+		const closeModal = () => {
+			modal.style.display = 'none';
+			modalImg.src = '';
+		};
+
+		if (closeBtn) closeBtn.onclick = closeModal;
+		if (zoomOutBtn) zoomOutBtn.onclick = (e) => { e.stopPropagation(); closeModal(); };
+
+		modal.onclick = (e) => {
+			if (e.target === modal || e.target === modalImg) closeModal();
+		};
+
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape') closeModal();
+		});
+	}
+
+	setupLightbox();
+	document.addEventListener('astro:page-load', setupLightbox);
+</script>
+
+<style>
+	/* 保持与 bathtubs.astro 相同的样式代码，由于篇幅限制，请直接复制 bathtubs.astro 的 <style> 部分过来即可，无需更改 */
+	.projects-section { padding: 4rem 1.5rem; background-color: #f8fafc; }
+	.cs-container { max-width: 1280px; margin: 0 auto; }
+	.section-intro { text-align: center; max-width: 750px; margin: 0 auto 2.5rem auto; }
+	.section-subtitle { color: var(--primary, #004B87); font-weight: 700; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; }
+	.section-intro h2 { font-size: 2.25rem; color: #0f172a; margin: 0.5rem 0 1rem 0; font-weight: 800; }
+	.section-intro p { color: #475569; font-size: 1.05rem; line-height: 1.6; }
+	.category-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 3rem; }
+	.nav-btn { padding: 0.6rem 1.25rem; border-radius: 9999px; background: #ffffff; border: 1px solid #cbd5e1; color: #334155; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all 0.2s ease; }
+	.nav-btn:hover, .nav-btn.active { background: var(--primary, #004B87); color: #ffffff; border-color: var(--primary, #004B87); }
+	.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+	.project-card { background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column; }
+	.project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.08); }
+	.project-image-wrapper { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+	.project-image-wrapper img { width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; transition: transform 0.3s ease; }
+	.project-card:hover .project-image-wrapper img { transform: scale(1.05); }
+	.project-tag { position: absolute; top: 1rem; left: 1rem; background: rgba(15, 23, 42, 0.85); color: #ffffff; font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.65rem; border-radius: 4px; backdrop-filter: blur(4px); }
+	.project-details { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
+	.project-location { font-size: 0.75rem; font-weight: 700; color: var(--primary, #004B87); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.35rem; }
+	.project-details h3 { font-size: 1.15rem; color: #0f172a; margin-bottom: 0.5rem; font-weight: 700; }
+	.project-details p { font-size: 0.9rem; color: #64748b; line-height: 1.5; margin: 0; }
+	.engineering-support-box { background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid var(--primary, #004B87); border-radius: 12px; padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04); }
+	.support-text h3 { font-size: 1.3rem; color: #0f172a; margin-bottom: 0.5rem; }
+	.support-text p { color: #475569; margin: 0; font-size: 0.95rem; }
+	.cs-button-solid { white-space: nowrap; background-color: var(--primary, #004B87); color: #fff; padding: 0.85rem 1.75rem; border-radius: 8px; font-weight: 700; text-decoration: none; transition: background-color 0.2s ease; display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+	.cs-button-solid:hover { background-color: #16a34a; }
+	.lightbox-modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); justify-content: center; align-items: center; padding: 2rem; }
+	.lightbox-image-wrap { position: relative; display: inline-flex; justify-content: center; align-items: center; max-width: 90vw; max-height: 85vh; }
+	.lightbox-content { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 8px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); animation: zoomIn 0.25s ease; cursor: zoom-out; display: block; }
+	.lightbox-zoomout { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9); width: 64px; height: 64px; border-radius: 50%; background: rgba(15, 23, 42, 0.6); color: #ffffff; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease; cursor: zoom-out; backdrop-filter: blur(3px); }
+	.lightbox-image-wrap:hover .lightbox-zoomout { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) scale(1); }
+	.lightbox-zoomout:hover { background: var(--primary, #004B87); color: #ffffff; }
+	.lightbox-close { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; transition: color 0.2s; line-height: 1; z-index: 2; }
+	.lightbox-close:hover { color: var(--primary, #004B87); }
+	@keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+	@media (max-width: 768px) { .engineering-support-box { flex-direction: column; text-align: center; padding: 1.75rem 1.5rem; } }
+</style>

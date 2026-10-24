@@ -1,0 +1,245 @@
+---
+// Utils
+import { Picture, getImage } from "astro:assets";
+
+// Components
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Banner from "@components/Banner/Banner.astro";
+import CTA from "@components/CTA/CTASimple.astro";
+
+// Banner Image (建议替换为浴室柜相关的 Banner 图)
+import landingImage from "@assets/images/gallery/bannerplywood.jpg";
+
+// Project Showcase Images (请替换为你实际的浴室柜项目图片)
+import port1 from "@assets/images/projects/ply1.jpg";
+import port2 from "@assets/images/projects/ply2.jpg";
+import port3 from "@assets/images/projects/ply3.jpg";
+import port4 from "@assets/images/projects/ply4.jpg";
+import port5 from "@assets/images/projects/ply5.jpg";
+import port6 from "@assets/images/projects/ply6.jpg";
+
+const optimizedImage = await getImage({ src: landingImage, format: "webp" });
+
+// Structured Bath Cabinet Project Data
+const projectItems = [
+	{
+		img: port1,
+		title: "Modern Floating Vanity Project",
+		category: "Wall-Mounted Bath Cabinets",
+		specs: "Space-saving wall-mounted vanity with soft-close drawers, featuring moisture-resistant materials and a sleek minimalist aesthetic.",
+		location: "Luxury Apartment",
+	},
+	{
+		img: port2,
+		title: "Double Sink Master Bathroom Vanity",
+		category: "Double Basin Vanities",
+		specs: "Spacious double-sink vanity with ample storage, engineered for high-end residential master bathrooms.",
+		location: "Private Villa",
+	},
+	{
+		img: port3,
+		title: "Commercial Hotel Bathroom Storage",
+		category: "Freestanding Bath Cabinets",
+		specs: "Freestanding vanity unit with durable construction and a premium finish, designed for long-term commercial use.",
+		location: "Boutique Hotel",
+	},
+	{
+		img: port4,
+		title: "Minimalist Solid Wood Vanity",
+		category: "Solid Wood Bath Cabinets",
+		specs: "Crafted from premium solid wood with a natural grain finish, offering exceptional durability and warmth.",
+		location: "Residential Interior",
+	},
+	{
+		img: port5,
+		title: "Smart Mirror Integrated Vanity",
+		category: "Smart Bathroom Vanities",
+		specs: "Integrated LED mirror with anti-fog technology, paired with a modern vanity unit for a high-tech bathroom experience.",
+		location: "Modern Residence",
+	},
+	{
+		img: port6,
+		title: "Compact Corner Bathroom Cabinet",
+		category: "Corner Vanity Units",
+		specs: "Custom corner design maximizing storage in compact spaces, featuring soft-close hinges and a clean finish.",
+		location: "Small Apartment",
+	},
+];
+---
+
+<BaseLayout
+	title="Bath Cabinet Projects | Modern Vanities & Storage"
+	description="Explore XC Bath's global portfolio of bathroom cabinet installations, featuring floating vanities, double sinks, and custom storage solutions."
+	heroImage={optimizedImage}
+>
+	<!-- Banner -->
+	<Banner
+		title="Elegant Storage Solutions for Modern Bathrooms"
+		subtitle="Global project showcases featuring our moisture-resistant, stylish, and highly functional bathroom vanities."
+		image={optimizedImage}
+	/>
+
+	<!-- Main Content & Gallery -->
+	<section class="projects-section">
+		<div class="cs-container">
+			<!-- Header Intro -->
+			<div class="section-intro">
+				<span class="section-subtitle">PROJECT PORTFOLIO</span>
+				<h2>Proven Quality & Storage Innovation Across Global Projects</h2>
+				<p>
+					From high-end hotel bathrooms to modern residential spaces, XC Bath bathroom cabinets are chosen worldwide for their moisture resistance, smart storage, and elegant design.
+				</p>
+			</div>
+
+			<!-- Project Category Filter / Tabs Header -->
+			<div class="category-nav">
+				<a href="/projects/bathtubs/" class="nav-btn">Bathtubs</a>
+				<a href="/projects/showers/" class="nav-btn">Shower Enclosures</a>
+				<a href="/projects/cabinets/" class="nav-btn active">Bath Cabinets</a>
+			</div>
+
+			<!-- Projects Grid -->
+			<div class="projects-grid">
+				{
+					projectItems.map((item) => (
+						<article class="project-card">
+							<div class="project-image-wrapper">
+								<Picture
+									src={item.img}
+									alt={item.title}
+									width={800}
+									height={600}
+									formats={["avif", "webp"]}
+									class="lightbox-trigger"
+								/>
+								<span class="project-tag">{item.category}</span>
+							</div>
+							<div class="project-details">
+								<span class="project-location">
+									{item.location}
+								</span>
+								<h3>{item.title}</h3>
+								<p>{item.specs}</p>
+							</div>
+						</article>
+					))
+				}
+			</div>
+
+			<!-- Technical Resources Support Box -->
+			<div class="engineering-support-box">
+				<div class="support-text">
+					<h3>
+						Need Complete Bath Cabinet Specifications & Sizing Options?
+					</h3>
+					<p>
+						Download our official Bath Cabinet Catalogue for full technical details, including material availability, hardware options, custom sizing, and factory certifications.
+					</p>
+				</div>
+				<a
+					href="/pdf/xcbath-cabinet-catalogue.pdf"
+					target="_blank"
+					class="cs-button-solid">Download Product Catalog (PDF)</a
+				>
+			</div>
+		</div>
+	</section>
+
+	<CTA />
+
+	<!-- Lightbox Modal HTML -->
+	<div id="lightbox-modal" class="lightbox-modal" style="display: none;">
+		<span class="lightbox-close" title="Close">&times;</span>
+		<div class="lightbox-image-wrap">
+			<img class="lightbox-content" id="lightbox-img" alt="Enlarged project image" />
+			<span class="lightbox-zoomout" title="Click to shrink / close">
+				<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+					<circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/>
+					<line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+					<line x1="7.5" y1="10.5" x2="13.5" y2="10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+				</svg>
+			</span>
+		</div>
+	</div>
+</BaseLayout>
+
+<!-- Astro View Transitions Lightbox Script -->
+<script is:inline>
+	function setupLightbox() {
+		const modal = document.getElementById('lightbox-modal');
+		const modalImg = document.getElementById('lightbox-img');
+		const closeBtn = document.querySelector('.lightbox-close');
+		const zoomOutBtn = document.querySelector('.lightbox-zoomout');
+
+		if (!modal || !modalImg) return;
+
+		const grid = document.querySelector('.projects-grid');
+		if (grid) {
+			grid.onclick = (e) => {
+				const target = e.target;
+				if (target && target.tagName === 'IMG') {
+					modal.style.display = 'flex';
+					modalImg.src = target.currentSrc || target.src;
+				}
+			};
+		}
+
+		const closeModal = () => {
+			modal.style.display = 'none';
+			modalImg.src = '';
+		};
+
+		if (closeBtn) closeBtn.onclick = closeModal;
+		if (zoomOutBtn) zoomOutBtn.onclick = (e) => { e.stopPropagation(); closeModal(); };
+
+		modal.onclick = (e) => {
+			if (e.target === modal || e.target === modalImg) closeModal();
+		};
+
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape') closeModal();
+		});
+	}
+
+	setupLightbox();
+	document.addEventListener('astro:page-load', setupLightbox);
+</script>
+
+<style>
+	/* 保持与其他分类页一致的样式 */
+	.projects-section { padding: 4rem 1.5rem; background-color: #f8fafc; }
+	.cs-container { max-width: 1280px; margin: 0 auto; }
+	.section-intro { text-align: center; max-width: 750px; margin: 0 auto 2.5rem auto; }
+	.section-subtitle { color: var(--primary, #004B87); font-weight: 700; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; }
+	.section-intro h2 { font-size: 2.25rem; color: #0f172a; margin: 0.5rem 0 1rem 0; font-weight: 800; }
+	.section-intro p { color: #475569; font-size: 1.05rem; line-height: 1.6; }
+	.category-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 3rem; }
+	.nav-btn { padding: 0.6rem 1.25rem; border-radius: 9999px; background: #ffffff; border: 1px solid #cbd5e1; color: #334155; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all 0.2s ease; }
+	.nav-btn:hover, .nav-btn.active { background: var(--primary, #004B87); color: #ffffff; border-color: var(--primary, #004B87); }
+	.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+	.project-card { background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column; }
+	.project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.08); }
+	.project-image-wrapper { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+	.project-image-wrapper img { width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; transition: transform 0.3s ease; }
+	.project-card:hover .project-image-wrapper img { transform: scale(1.05); }
+	.project-tag { position: absolute; top: 1rem; left: 1rem; background: rgba(15, 23, 42, 0.85); color: #ffffff; font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.65rem; border-radius: 4px; backdrop-filter: blur(4px); }
+	.project-details { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
+	.project-location { font-size: 0.75rem; font-weight: 700; color: var(--primary, #004B87); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.35rem; }
+	.project-details h3 { font-size: 1.15rem; color: #0f172a; margin-bottom: 0.5rem; font-weight: 700; }
+	.project-details p { font-size: 0.9rem; color: #64748b; line-height: 1.5; margin: 0; }
+	.engineering-support-box { background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid var(--primary, #004B87); border-radius: 12px; padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04); }
+	.support-text h3 { font-size: 1.3rem; color: #0f172a; margin-bottom: 0.5rem; }
+	.support-text p { color: #475569; margin: 0; font-size: 0.95rem; }
+	.cs-button-solid { white-space: nowrap; background-color: var(--primary, #004B87); color: #fff; padding: 0.85rem 1.75rem; border-radius: 8px; font-weight: 700; text-decoration: none; transition: background-color 0.2s ease; display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+	.cs-button-solid:hover { background-color: #16a34a; }
+	.lightbox-modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); justify-content: center; align-items: center; padding: 2rem; }
+	.lightbox-image-wrap { position: relative; display: inline-flex; justify-content: center; align-items: center; max-width: 90vw; max-height: 85vh; }
+	.lightbox-content { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 8px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); animation: zoomIn 0.25s ease; cursor: zoom-out; display: block; }
+	.lightbox-zoomout { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9); width: 64px; height: 64px; border-radius: 50%; background: rgba(15, 23, 42, 0.6); color: #ffffff; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease; cursor: zoom-out; backdrop-filter: blur(3px); }
+	.lightbox-image-wrap:hover .lightbox-zoomout { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) scale(1); }
+	.lightbox-zoomout:hover { background: var(--primary, #004B87); color: #ffffff; }
+	.lightbox-close { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; transition: color 0.2s; line-height: 1; z-index: 2; }
+	.lightbox-close:hover { color: var(--primary, #004B87); }
+	@keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+	@media (max-width: 768px) { .engineering-support-box { flex-direction: column; text-align: center; padding: 1.75rem 1.5rem; } }
+</style>
