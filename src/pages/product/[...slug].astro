@@ -3,8 +3,8 @@
  * Product index page with clean URL routing for pagination and categories:
  * /product -> All page 1 (24 products/page)
  * /product/2 -> All page 2
- * /product/bamboo -> Bamboo page 1 (100 products/page)
- * /product/bamboo/2 -> Bamboo page 2
+ * /product/bathtubs -> Bathtubs page 1 (100 products/page)
+ * /product/bathtubs/2 -> Bathtubs page 2
  **/
 
 // Utils
@@ -16,43 +16,37 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/Banner/Banner.astro";
 import CTA from "@components/CTA/CTASimple.astro";
 
-// 🌟 导入不同分类专属的 Banner 图片（请根据你的实际图片路径进行调整或引入）
+// 🌟 导入不同分类专属的 Banner 图片（请确保你的 assets 目录下有这些图片，或者替换为你现有的卫浴图）
 import defaultBannerImg from "@assets/images/gallery/bannerproduct2.jpg";
-import flooringBannerImg from "@assets/images/gallery/bannerflooring.jpg"; // 示例：地板分类专属图
-import deckingBannerImg from "@assets/images/gallery/bannerdecking.jpg";   // 示例：户外重竹专属图
-import plywoodBannerImg from "@assets/images/gallery/bannerplywood.jpg";   // 示例：板材分类专属图
-import bambooBannerImg from "@assets/images/gallery/bannerreview.jpg";     // 示例：天然竹系列专属图
+import bathtubBannerImg from "@assets/images/gallery/bannerflooring.jpg"; // 建议替换为浴缸分类图
+import showerBannerImg from "@assets/images/gallery/bannerdecking.jpg";   // 建议替换为淋浴房分类图
+import cabinetBannerImg from "@assets/images/gallery/bannerplywood.jpg";  // 建议替换为浴室柜分类图
 
-// 定义支持的分类列表（与 Tag 一致）
+// 定义支持的分类列表（与 Tag 一致，严格按照 3 个分类）
 const CATEGORIES = [
   { name: "All Series", slug: "all" },
-  { name: "Flooring", slug: "flooring" },
-  { name: "Decking", slug: "decking" },
-  { name: "Plywood", slug: "plywood" },
-  { name: "Bamboo", slug: "bamboo" },
+  { name: "Bathtubs", slug: "bathtubs" },
+  { name: "Showers", slug: "showers" },
+  { name: "Cabinets", slug: "cabinets" },
 ];
 
 // 🎯 为不同的分类自定义单独的 SEO 元数据
 const SEO_CONFIG: Record<string, { title: string; description: string }> = {
   all: {
-    title: "All Bamboo Products",
-    description: "Browse our complete range of premium bamboo products including bamboo flooring, outdoor decking, architectural bamboo plywood, and poles."
+    title: "All Bathroom Products",
+    description: "Browse our complete range of premium sanitary ware products including freestanding bathtubs, shower enclosures, and bathroom cabinets."
   },
-  flooring: {
-    title: "Bamboo Flooring | Strand Woven & Solid",
-    description: "Explore high density strand woven bamboo flooring and solid bamboo floors. Durable, eco-friendly, and stylish flooring solutions for residential and commercial use."
+  bathtubs: {
+    title: "Premium Bathtubs | Freestanding & Whirlpool",
+    description: "Explore high-quality freestanding bathtubs and whirlpool tubs. Durable, ergonomic, and stylish bathing solutions for luxury residential and commercial projects."
   },
-  decking: {
-    title: "Bamboo Decking | Outdoor High Durability",
-    description: "Discover premium outdoor strand woven bamboo decking. Excellent weather resistance, anti-corrosion, and stability for patio and outdoor projects."
+  showers: {
+    title: "Shower Enclosures | Frameless & Tempered Glass",
+    description: "Discover premium shower enclosures engineered with tempered glass and corrosion-resistant hardware. Excellent waterproofing and sleek designs for modern bathrooms."
   },
-  plywood: {
-    title: "Bamboo Plywood & Sheet Panels | Architectural & Structural",
-    description: "High-quality architectural bamboo plywood sheets and panels. Ideal for furniture, cabinetry, wall panels, and interior architectural design."
-  },
-  bamboo: {
-    title: "Natural Bamboo Products & Structural Materials",
-    description: "Explore versatile natural bamboo products, raw materials, poles, and structural elements designed for sustainable building projects."
+  cabinets: {
+    title: "Bathroom Cabinets & Vanities | Modern Storage",
+    description: "High-quality bathroom vanities built with moisture-resistant materials. Ideal for smart storage and elegant interior design."
   }
 };
 
@@ -66,7 +60,8 @@ export async function getStaticPaths() {
     return dateB - dateA;
   });
 
-  const categories = ["all", "flooring", "decking", "plywood", "bamboo"];
+  // 修改这里：只保留 all, bathtubs, showers, cabinets
+  const categories = ["all", "bathtubs", "showers", "cabinets"];
   const paths = [];
 
   for (const category of categories) {
@@ -118,10 +113,9 @@ const { products, currentPage, totalPages, currentCategory } = Astro.props;
 
 // 🌟 根据当前分类动态匹配专属 Banner 图片（若未找到则回退到 defaultBannerImg）
 const CATEGORY_BANNERS: Record<string, any> = {
-  flooring: flooringBannerImg,
-  decking: deckingBannerImg,
-  plywood: plywoodBannerImg,
-  bamboo: bambooBannerImg,
+  bathtubs: bathtubBannerImg,
+  showers: showerBannerImg,
+  cabinets: cabinetBannerImg,
   all: defaultBannerImg,
 };
 
@@ -144,14 +138,12 @@ const getCleanUrl = (category: string, pageNum: number) => {
 
 const getBadgeClass = (tag?: string) => {
   switch (tag?.toLowerCase()) {
-    case "plywood":
-      return "badge-plywood";
-    case "flooring":
-      return "badge-flooring";
-    case "decking":
-      return "badge-decking";
-    case "bamboo":
-      return "badge-bamboo";
+    case "bathtubs":
+      return "badge-bathtubs";
+    case "showers":
+      return "badge-showers";
+    case "cabinets":
+      return "badge-cabinets";
     default:
       return "badge-default";
   }
@@ -162,21 +154,21 @@ const getBadgeClass = (tag?: string) => {
     title={pageTitle} 
     description={pageDescription} 
     heroImage={optimizedBannerImage}
-    imageAlt="Bothbest bamboo products banner"
+    imageAlt="XC Bath premium sanitary ware products banner"
 >
     <!-- 🌟 这里会自动根据当前选中的分类渲染专属的 Banner -->
     <Banner 
         title={currentSeo.title} 
         subtitle={currentSeo.description} 
         image={optimizedBannerImage} 
-        alt="Bothbest bamboo products banner" 
-        imageAlt="Bothbest bamboo products banner" 
+        alt="XC Bath products banner" 
+        imageAlt="XC Bath products banner" 
     />
 
     <!-- 🎯 页头大标题 -->
     <div class="vp-page-title">
-        <h1 class="title">🌿 Eco-Building Solutions ✨</h1>
-        <p class="lead">All kinds of premium bamboo flooring, durable bamboo decking & architectural bamboo plywood.</p>
+        <h1 class="title">🛁 Luxury Bathing Solutions ✨</h1>
+        <p class="lead">Explore our premium freestanding bathtubs, modern shower enclosures & elegant bathroom cabinets.</p>
     </div>
 
     <!-- 🎯 1. 极简 URL 分类 Tab 控制台 -->
@@ -302,11 +294,11 @@ const getBadgeClass = (tag?: string) => {
     .pagination-number:hover:not(.active) {
         border-color: #004B87;
         color: #000;
-        background-color: #f7fee7;
+        background-color: #f0f9ff; /* 微调为浅蓝色背景，更契合卫浴风格 */
     }
     .pagination-number.active {
         background-color: #004B87;
-        color: #000000;
+        color: #ffffff; /* 这里修正了原代码黑色字在深蓝底看不清的问题 */
         border-color: #004B87;
         font-weight: 600;
     }
@@ -346,10 +338,10 @@ const getBadgeClass = (tag?: string) => {
             }
 
             &.active {
-                background-color: #0369a1;
+                background-color: #004B87; /* 统一使用你的深海蓝 */
                 color: #ffffff;
-                border-color: #0369a1;
-                box-shadow: 0 4px 6px -1px rgba(3, 105, 161, 0.2);
+                border-color: #004B87;
+                box-shadow: 0 4px 6px -1px rgba(0, 75, 135, 0.2);
             }
         }
     }
@@ -397,7 +389,7 @@ const getBadgeClass = (tag?: string) => {
         height: 100%;
 
         &:hover {
-            border-color: #3730a3; 
+            border-color: #004B87; /* 悬停边框统一为深蓝色 */
             transform: translateY(-2px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
             .product-description {
@@ -449,6 +441,7 @@ const getBadgeClass = (tag?: string) => {
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
+    
     .badge {
         font-size: 12px;
         padding: 0.125rem 0.5rem;
@@ -456,9 +449,8 @@ const getBadgeClass = (tag?: string) => {
         white-space: nowrap;
         font-weight: 500;
     }
-    .badge-plywood { background-color: #115e59; color: #ffffff; }
-    .badge-flooring { background-color: #0369a1; color: #ffffff; }
-    .badge-decking { background-color: #b45309; color: #ffffff; }
-    .badge-bamboo { background-color: #16a34a; color: #ffffff; }
+    .badge-bathtubs { background-color: #004B87; color: #ffffff; } /* 深海蓝 */
+    .badge-showers { background-color: #0ea5e9; color: #ffffff; }  /* 亮蓝色 */
+    .badge-cabinets { background-color: #64748b; color: #ffffff; } /* 沉稳灰 */
     .badge-default { border: 1px solid #cbd5e1; color: #64748b; }
 </style>
