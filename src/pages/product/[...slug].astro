@@ -16,13 +16,13 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/Banner/Banner.astro";
 import CTA from "@components/CTA/CTASimple.astro";
 
-// 🌟 导入不同分类专属的 Banner 图片（请确保你的 assets 目录下有这些图片，或者替换为你现有的卫浴图）
+// 🌟 导入不同分类专属的 Banner 图片
 import defaultBannerImg from "@assets/images/gallery/bannerproduct2.jpg";
-import bathtubBannerImg from "@assets/images/gallery/bannerflooring.jpg"; // 建议替换为浴缸分类图
-import showerBannerImg from "@assets/images/gallery/bannerdecking.jpg";   // 建议替换为淋浴房分类图
-import cabinetBannerImg from "@assets/images/gallery/bannerplywood.jpg";  // 建议替换为浴室柜分类图
+import bathtubBannerImg from "@assets/images/gallery/bannerflooring.jpg"; 
+import showerBannerImg from "@assets/images/gallery/bannerdecking.jpg";   
+import cabinetBannerImg from "@assets/images/gallery/bannerplywood.jpg";  
 
-// 定义支持的分类列表（与 Tag 一致，严格按照 3 个分类）
+// 定义支持的分类列表
 const CATEGORIES = [
   { name: "All Series", slug: "all" },
   { name: "Bathtubs", slug: "bathtubs" },
@@ -60,7 +60,6 @@ export async function getStaticPaths() {
     return dateB - dateA;
   });
 
-  // 修改这里：只保留 all, bathtubs, showers, cabinets
   const categories = ["all", "bathtubs", "showers", "cabinets"];
   const paths = [];
 
@@ -111,7 +110,7 @@ interface Props {
 
 const { products, currentPage, totalPages, currentCategory } = Astro.props;
 
-// 🌟 根据当前分类动态匹配专属 Banner 图片（若未找到则回退到 defaultBannerImg）
+// 🌟 根据当前分类动态匹配专属 Banner 图片
 const CATEGORY_BANNERS: Record<string, any> = {
   bathtubs: bathtubBannerImg,
   showers: showerBannerImg,
@@ -154,20 +153,17 @@ const getBadgeClass = (tag?: string) => {
     title={pageTitle} 
     description={pageDescription} 
     heroImage={optimizedBannerImage}
-    imageAlt="XC Bath premium sanitary ware products banner"
 >
-    <!-- 🌟 这里会自动根据当前选中的分类渲染专属的 Banner -->
+    <!-- Banner 组件只需传入 title, subtitle, image 即可 -->
     <Banner 
         title={currentSeo.title} 
         subtitle={currentSeo.description} 
         image={optimizedBannerImage} 
-        alt="XC Bath products banner" 
-        imageAlt="XC Bath products banner" 
     />
 
-    <!-- 🎯 页头大标题 -->
+    <!-- 🎯 页头大标题（去除了过多的 Emoji，保持 B2B 专业感） -->
     <div class="vp-page-title">
-        <h1 class="title">🛁 Luxury Bathing Solutions ✨</h1>
+        <h1 class="title">Luxury Bathing Solutions</h1>
         <p class="lead">Explore our premium freestanding bathtubs, modern shower enclosures & elegant bathroom cabinets.</p>
     </div>
 
@@ -260,7 +256,7 @@ const getBadgeClass = (tag?: string) => {
 </BaseLayout>
 
 <style lang="less">
-    /* 样式保持不变 */
+    /* 统一使用 CSS 变量，方便后续维护 */
     .pagination-container {
         display: flex;
         justify-content: center;
@@ -276,6 +272,7 @@ const getBadgeClass = (tag?: string) => {
         align-items: center;
         gap: 0.5rem;
     }
+    
     .pagination-btn, .pagination-number {
         display: inline-flex;
         align-items: center;
@@ -290,24 +287,29 @@ const getBadgeClass = (tag?: string) => {
         transition: all 0.2s ease;
         background-color: #fff;
     }
+
+    /* 优化悬停效果：浅灰底 + 品牌蓝边框 */
     .pagination-btn:hover:not(.disabled),
     .pagination-number:hover:not(.active) {
-        border-color: #004B87;
-        color: #000;
-        background-color: #f0f9ff; /* 微调为浅蓝色背景，更契合卫浴风格 */
+        border-color: var(--primary, #004B87);
+        color: var(--primary, #004B87);
+        background-color: #f8fafc; 
     }
+
     .pagination-number.active {
-        background-color: #004B87;
-        color: #ffffff; /* 这里修正了原代码黑色字在深蓝底看不清的问题 */
-        border-color: #004B87;
+        background-color: var(--primary, #004B87);
+        color: #ffffff;
+        border-color: var(--primary, #004B87);
         font-weight: 600;
     }
+
     .pagination-btn.disabled {
         color: #cbd5e1;
         border-color: #f1f5f9;
         cursor: not-allowed;
         background-color: #f8fafc;
     }
+
     .filter-tab-container {
         display: flex;
         justify-content: center;
@@ -338,13 +340,14 @@ const getBadgeClass = (tag?: string) => {
             }
 
             &.active {
-                background-color: #004B87; /* 统一使用你的深海蓝 */
+                background-color: var(--primary, #004B87); 
                 color: #ffffff;
-                border-color: #004B87;
+                border-color: var(--primary, #004B87);
                 box-shadow: 0 4px 6px -1px rgba(0, 75, 135, 0.2);
             }
         }
     }
+
     .vp-page-title {
         text-align: center;
         padding: 3.5rem 1rem 1rem 1rem;
@@ -360,11 +363,13 @@ const getBadgeClass = (tag?: string) => {
             margin: 0;
         }
     }
+
     .projects-section {
         padding: 1rem 1.5rem 2rem 1.5rem;
         max-width: 1200px;
         margin: 0 auto;
     }
+
     .ProjectsContent {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
@@ -372,11 +377,13 @@ const getBadgeClass = (tag?: string) => {
         gap: 24px;
         margin: 0 auto;
     }
+
     .project-card-link {
         text-decoration: none;
         color: inherit;
         display: block;
     }
+
     .project-card {
         overflow: hidden;
         border: 1px solid #e2e8f0;
@@ -389,7 +396,7 @@ const getBadgeClass = (tag?: string) => {
         height: 100%;
 
         &:hover {
-            border-color: #004B87; /* 悬停边框统一为深蓝色 */
+            border-color: var(--primary, #004B87);
             transform: translateY(-2px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
             .product-description {
@@ -397,6 +404,7 @@ const getBadgeClass = (tag?: string) => {
             }
         }
     }
+
     .banner-box {
         width: 100%;
         height: 10rem;
@@ -410,6 +418,7 @@ const getBadgeClass = (tag?: string) => {
             transition: transform 0.5s ease;
         }
     }
+
     .text-content {
         padding: 1rem;
         padding-bottom: 1.5rem;
@@ -417,9 +426,10 @@ const getBadgeClass = (tag?: string) => {
         flex-direction: column;
         flex-grow: 1;
     }
+
     .title-row {
         display: flex;
-        align-items: center;
+        align-items: flex-start; /* 改为 top 对齐，防止长标题挤压徽章 */
         justify-content: space-between;
         gap: 0.5rem;
         .product-title {
@@ -430,6 +440,7 @@ const getBadgeClass = (tag?: string) => {
             line-height: 1.3;
         }
     }
+
     .product-description {
         margin: 0.5rem 0 0 0;
         font-size: 0.875rem;
@@ -448,9 +459,10 @@ const getBadgeClass = (tag?: string) => {
         border-radius: 9999px;
         white-space: nowrap;
         font-weight: 500;
+        flex-shrink: 0; /* 防止徽章被标题文字挤压变形 */
     }
-    .badge-bathtubs { background-color: #004B87; color: #ffffff; } /* 深海蓝 */
-    .badge-showers { background-color: #0ea5e9; color: #ffffff; }  /* 亮蓝色 */
-    .badge-cabinets { background-color: #64748b; color: #ffffff; } /* 沉稳灰 */
+    .badge-bathtubs { background-color: var(--primary, #004B87); color: #ffffff; }
+    .badge-showers { background-color: #0ea5e9; color: #ffffff; }
+    .badge-cabinets { background-color: #64748b; color: #ffffff; }
     .badge-default { border: 1px solid #cbd5e1; color: #64748b; }
 </style>
