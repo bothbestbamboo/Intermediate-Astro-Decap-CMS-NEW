@@ -20,8 +20,8 @@ import factoryMapImage from "@assets/images/gallery/factory-map.jpg";
 
 <BaseLayout
 	title="Contact Us | XC Bath Sanitary Ware Manufacturer"
-description="Contact XC Bath for factory-direct pricing on premium freestanding bathtubs, shower enclosures, and bathroom cabinets. We offer reliable OEM/ODM services and fast quotes for global B2B projects."
-heroImage={optimizedImage}
+	description="Contact XC Bath for factory-direct pricing on premium freestanding bathtubs, shower enclosures, and bathroom cabinets. We offer reliable OEM/ODM services and fast quotes for global B2B projects."
+	heroImage={optimizedImage}
 >
 	<Banner
 		title="Partner with Us"
@@ -41,8 +41,8 @@ heroImage={optimizedImage}
 					<span class="cs-topper">Contact</span>
 					<h2 class="cs-title">Get in Touch</h2>
 					<p class="cs-text">
-	Have a project in mind or looking for a reliable sanitary ware manufacturer? As a leading factory, XC Bath specializes in premium freestanding bathtubs, shower enclosures, and custom bathroom solutions. Drop us a message with your specifications, volume requirements, or questions, and our team will get back to you with an expert quote within 24 hours.
-</p>
+						Have a project in mind or looking for a reliable sanitary ware manufacturer? As a leading factory, XC Bath specializes in premium freestanding bathtubs, shower enclosures, and custom bathroom solutions. Drop us a message with your specifications, volume requirements, or questions, and our team will get back to you with an expert quote within 24 hours.
+					</p>
 				</div>
 				<label>
 					Name
@@ -91,36 +91,29 @@ heroImage={optimizedImage}
 						id="message"
 						placeholder="Write message..."></textarea>
 				</label>
-				<button class="cs-button-solid" type="submit"
-					>Submit Message</button
-				>
+				<button class="cs-button-solid" type="submit">Submit Message</button>
 			</form>
+			
 			<div class="cs-right-section">
 				<!--Email-->
 				<span class="cs-header">Email</span>
-				<a class="cs-link" href={`mailto:${BUSINESS.email}`}
-					>{BUSINESS.email}</a
-				>
+				<a class="cs-link" href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
+				
 				<!--Phone-->
 				<span class="cs-header">Phone</span>
-				<a class="cs-link" href="tel:+865633032211"
-					>+86 (563) 303-2211</a
-				>
+				<a class="cs-link" href="tel:+865633032211">+86 (563) 303-2211</a>
+				
 				<!--WhatsApp-->
 				<span class="cs-header">WhatsApp</span>
-				<a class="cs-link" href="https://wa.me/8613905633017" target="_blank" rel="nofollow noopener noreferrer"
-					>+86 139 0563 3017</a
-				>
+				<a class="cs-link" href="https://wa.me/8613905633017" target="_blank" rel="nofollow noopener noreferrer">+86 139 0563 3017</a>
+				
 				<!--Address-->
 				<span class="cs-header">Address</span>
 				<a class="cs-link" href={BUSINESS.address.mapLink}>
-					{BUSINESS.address.lineOne},
-					<br />
-					{BUSINESS.address.lineTwo},
-					<br />
+					{BUSINESS.address.lineOne},<br />
+					{BUSINESS.address.lineTwo},<br />
 					<span class="cs-block">
-						{BUSINESS.address.city}, {BUSINESS.address.state}
-						{BUSINESS.address.zip}
+						{BUSINESS.address.city}, {BUSINESS.address.state} {BUSINESS.address.zip}
 					</span>
 				</a>
 
@@ -138,98 +131,72 @@ heroImage={optimizedImage}
 	</section>
 
 	<section id="cs-location">
-	<div class="cs-location-container">
-		<div class="cs-location-header">
-			<span class="cs-topper">Location</span>
-			<h2 class="cs-title">Our Global Presence</h2>
-		</div>
-
-		<div class="cs-location-content">
-			<div class="cs-map-wrapper">
-				<a
-					href={factoryMapImage.src}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="cs-map-link"
-					aria-label="View full size map image"
-				>
-					<Picture
-						src={factoryMapImage}
-						alt="XC Bath Factory Location Map"
-						widths={[400, 800, 1280]}
-						sizes="(max-width: 1280px) 100vw, 1280px"
-						formats={["avif", "webp"]}
-						pictureAttributes={{ class: "cs-map-picture" }}
-					/>
-
-					<div class="cs-map-overlay">
-						<span class="cs-map-badge">Factory Location</span>
-						<p class="cs-map-address">
-							{BUSINESS.address.lineOne}, {
-								BUSINESS.address.city
-							}
-						</p>
-						<span class="cs-map-btn">
-							Click to View Map ↗
-						</span>
-					</div>
-				</a>
+		<div class="cs-location-container">
+			<div class="cs-location-header">
+				<span class="cs-topper">Location</span>
+				<h2 class="cs-title">Our Global Presence</h2>
 			</div>
 
-			<div class="cs-info-wrapper">
-				<div class="cs-info-card">
-					<div class="cs-icon-wrapper">
-						<svg
-							class="cs-icon"
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24 24"
-							fill="currentColor"
-						>
-							<path
-								d="M22 16v-2l-8.5-5V3.5C13.5 2.67 12.83 2 12 2s-1.5.67-1.5 1.5V9L2 14v2l8.5-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13.5 19v-5.5L22 16z"
-							></path>
-						</svg>
-					</div>
-					<div class="cs-info-text">
-						<h3 class="cs-info-title">
-							Factory Visits & Airport Access
-						</h3>
-						<p class="cs-info-desc">
-							Planning to visit our manufacturing facility? The most convenient airport is <strong
-								>Wuhu Xuanzhou Airport (WHA)</strong
-							>, located just 20 km (a 30-minute drive) from our factory. We can arrange airport pick-up services upon request.
-						</p>
-					</div>
+			<div class="cs-location-content">
+				<div class="cs-map-wrapper">
+					<a
+						href={factoryMapImage.src}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="cs-map-link"
+						aria-label="View full size map image"
+					>
+						<Picture
+							src={factoryMapImage}
+							alt="XC Bath Factory Location Map"
+							widths={[400, 800, 1280]}
+							sizes="(max-width: 1280px) 100vw, 1280px"
+							formats={["avif", "webp"]}
+							pictureAttributes={{ class: "cs-map-picture" }}
+						/>
+
+						<div class="cs-map-overlay">
+							<span class="cs-map-badge">Factory Location</span>
+							<p class="cs-map-address">
+								{BUSINESS.address.lineOne}, {BUSINESS.address.city}
+							</p>
+							<span class="cs-map-btn">Click to View Map ↗</span>
+						</div>
+					</a>
 				</div>
 
-				<div class="cs-info-card">
-					<div class="cs-icon-wrapper">
-						<svg
-							class="cs-icon"
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24 24"
-							fill="currentColor"
-						>
-							<path
-								d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.64 2.62.99 4 .99h2v-2h-2zM3.95 12l.71-2h14.68l.71 2H3.95zm16.05 2H4c-1.1 0-2 .9-2 2v2c1.39 0 2.78-.47 4-1.32 2.44 1.71 5.56 1.71-8 0 1.22.85 2.61 1.32 4 1.32h12v-2c0-1.1-.9-2-2-2zM13 4h-2v3H8l4 4 4-4h-3V4z"
-							></path>
-						</svg>
+				<div class="cs-info-wrapper">
+					<div class="cs-info-card">
+						<div class="cs-icon-wrapper">
+							<svg class="cs-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M22 16v-2l-8.5-5V3.5C13.5 2.67 12.83 2 12 2s-1.5.67-1.5 1.5V9L2 14v2l8.5-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13.5 19v-5.5L22 16z"></path>
+							</svg>
+						</div>
+						<div class="cs-info-text">
+							<h3 class="cs-info-title">Factory Visits & Airport Access</h3>
+							<p class="cs-info-desc">
+								Planning to visit our manufacturing facility? The most convenient airport is <strong>Wuhu Xuanzhou Airport (WHA)</strong>, located just 20 km (a 30-minute drive) from our factory. We can arrange airport pick-up services upon request.
+							</p>
+						</div>
 					</div>
-					<div class="cs-info-text">
-						<h3 class="cs-info-title">
-							Global Shipping & Logistics
-						</h3>
-						<p class="cs-info-desc">
-							Our factory is strategically located with convenient port access. We primarily export from <strong
-								>Wuhu Port</strong
-							> (approx. 70 km away), offering highly efficient regional logistics. For large-scale ocean freight, we also utilize <strong>Shanghai Port</strong> (approx. 300 km away), ensuring the most competitive shipping rates and frequent vessel schedules for global clients.
-						</p>
+
+					<div class="cs-info-card">
+						<div class="cs-icon-wrapper">
+							<svg class="cs-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.64 2.62.99 4 .99h2v-2h-2zM3.95 12l.71-2h14.68l.71 2H3.95zm16.05 2H4c-1.1 0-2 .9-2 2v2c1.39 0 2.78-.47 4-1.32 2.44 1.71 5.56 1.71-8 0 1.22.85 2.61 1.32 4 1.32h12v-2c0-1.1-.9-2-2-2zM13 4h-2v3H8l4 4 4-4h-3V4z"></path>
+							</svg>
+						</div>
+						<div class="cs-info-text">
+							<h3 class="cs-info-title">Global Shipping & Logistics</h3>
+							<p class="cs-info-desc">
+								Our factory is strategically located with convenient port access. We primarily export from <strong>Wuhu Port</strong> (approx. 70 km away), offering highly efficient regional logistics. For large-scale ocean freight, we also utilize <strong>Shanghai Port</strong> (approx. 300 km away), ensuring the most competitive shipping rates and frequent vessel schedules for global clients.
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 </BaseLayout>
 
 <style lang="less">
@@ -246,7 +213,6 @@ heroImage={optimizedImage}
 
 			.cs-container {
 				width: 100%;
-				/* changes to 1280px at desktop */
 				max-width: (800/16rem);
 				margin: auto;
 			}
@@ -257,7 +223,6 @@ heroImage={optimizedImage}
 
 			.cs-topper {
 				text-align: left;
-				/* 8px - 12px */
 				margin-bottom: clamp(0.5rem, 1.4vw, 0.75rem);
 			}
 
@@ -268,10 +233,8 @@ heroImage={optimizedImage}
 
 			.cs-text {
 				text-align: left;
-				/* 404px - 522px */
 				max-width: clamp(25.25rem, 30vw, 32.625rem);
 				margin: 0 auto 0 0;
-				/* 40px - 48px */
 				margin-bottom: clamp(2.5rem, 6.3vw, 3rem);
 			}
 
@@ -281,7 +244,6 @@ heroImage={optimizedImage}
 					font-size: (16/16rem);
 					font-weight: 700;
 					line-height: 1.5em;
-					/* 12px - 20px */
 					margin-bottom: clamp(0.75rem, 1.3em, 1.25rem);
 					color: var(--headerColor);
 					display: flex;
@@ -291,7 +253,6 @@ heroImage={optimizedImage}
 				}
 
 				.cs-label-message {
-					/* 32px - 48px */
 					margin-bottom: clamp(2rem, 6.3vw, 3rem);
 				}
 
@@ -301,7 +262,6 @@ heroImage={optimizedImage}
 					width: 100%;
 					height: (64/16rem);
 					margin-top: (4/16rem);
-					/* prevents border & padding from affecting height */
 					box-sizing: border-box;
 					padding-left: (20/16rem);
 					border: 1px solid #b4b2c7;
@@ -327,8 +287,6 @@ heroImage={optimizedImage}
 
 			.cs-right-section {
 				height: (320/16rem);
-				/* 24px - 40px top & bottom */
-				/* 20px - 40px left & right */
 				padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 3vw, 2.5rem);
 				border-radius: (8/16rem);
 				display: flex;
@@ -336,12 +294,10 @@ heroImage={optimizedImage}
 				justify-content: flex-end;
 				align-items: flex-start;
 				position: relative;
-				/* cuts off corners on img tag */
 				overflow: hidden;
 			}
 
 			.cs-header {
-				/* 16px - 20px */
 				font-size: clamp(1rem, 3vw, 1.25rem);
 				font-weight: 700;
 				line-height: 1.2em;
@@ -351,7 +307,6 @@ heroImage={optimizedImage}
 			}
 
 			.cs-link {
-				/* 16px - 20px */
 				font-size: clamp(1rem, 3vw, 1.25rem);
 				line-height: 1.2em;
 				text-decoration: none;
@@ -361,11 +316,9 @@ heroImage={optimizedImage}
 				position: relative;
 
 				&:before {
-					/* Animated underline */
 					content: "";
 					width: 0%;
 					height: 2px;
-					/* current color of the parent */
 					background: currentColor;
 					opacity: 1;
 					display: block;
@@ -376,18 +329,13 @@ heroImage={optimizedImage}
 				}
 
 				&:hover {
-					&:before {
-						width: 100%;
-					}
+					&:before { width: 100%; }
 				}
 
-				&:last-of-type {
-					margin-bottom: 0;
-				}
+				&:last-of-type { margin-bottom: 0; }
 			}
 
 			.cs-block {
-				/* sends second address line to the bottom on its own line */
 				display: block;
 			}
 
@@ -402,15 +350,10 @@ heroImage={optimizedImage}
 				transition: transform 0.6s;
 
 				&:before {
-					/* background color overlay */
 					content: "";
 					width: 100%;
 					height: 100%;
-					background: linear-gradient(
-						180deg,
-						rgba(0, 0, 0, 0) 0%,
-						rgba(0, 0, 0, 0.8) 100%
-					);
+					background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
 					display: block;
 					position: absolute;
 					top: 0;
@@ -421,7 +364,6 @@ heroImage={optimizedImage}
 				img {
 					width: 100%;
 					height: 100%;
-					/* Makes img tag act as a background image */
 					object-fit: cover;
 					position: absolute;
 					top: 0;
@@ -440,13 +382,8 @@ heroImage={optimizedImage}
 				align-items: flex-start;
 				flex-wrap: wrap;
 
-				label {
-					width: 48%;
-				}
-
-				.cs-label-message {
-					width: 100%;
-				}
+				label { width: 48%; }
+				.cs-label-message { width: 100%; }
 			}
 		}
 	}
@@ -464,30 +401,21 @@ heroImage={optimizedImage}
 
 			#cs-form {
 				max-width: (630/16rem);
-				label {
-					width: 100%;
-				}
+				label { width: 100%; }
 			}
 
 			.cs-right-section {
 				width: 40%;
 				max-width: (542/16rem);
-				/* changes to 578px at 1300px wide */
 				height: (686/16rem);
-				/* prevents flexbox from squishing it */
 				flex: none;
 
 				&:hover {
-					.cs-bg-picture {
-						transform: scale(1.1);
-					}
+					.cs-bg-picture { transform: scale(1.1); }
 				}
 			}
 
-			.cs-block {
-				/* goes back to inline so it stays "in line" with the rest of the text */
-				display: inline-block;
-			}
+			.cs-block { display: inline-block; }
 		}
 	}
 
@@ -500,15 +428,10 @@ heroImage={optimizedImage}
 					width: 48%;
 					max-width: (305/16rem);
 				}
-
-				.cs-label-message {
-					max-width: 100%;
-				}
+				.cs-label-message { max-width: 100%; }
 			}
 
-			.cs-right-section {
-				height: (578/16rem);
-			}
+			.cs-right-section { height: (578/16rem); }
 		}
 	}
 
@@ -533,7 +456,6 @@ heroImage={optimizedImage}
 						background-color: transparent;
 
 						&::placeholder {
-							/* lighten up the color of the text by 40%*/
 							filter: brightness(1.4);
 						}
 					}
@@ -543,7 +465,6 @@ heroImage={optimizedImage}
 					background-color: #000;
 
 					img {
-						/* lets parent background-color bleed through and darken it */
 						opacity: 0.5;
 					}
 				}
@@ -553,8 +474,8 @@ heroImage={optimizedImage}
 
 	/* 移除表单区域底部的多余留白 */
 	#cs-contact {
-		padding-bottom: 0 !important;
-		margin-bottom: 0 !important;
+		padding-bottom: 0;
+		margin-bottom: 0;
 	}
 
 	/*-- -------------------------- -->
@@ -584,9 +505,7 @@ heroImage={optimizedImage}
 					margin-bottom: (8/16rem);
 				}
 
-				.cs-title {
-					margin: 0;
-				}
+				.cs-title { margin: 0; }
 			}
 
 			.cs-location-content {
@@ -595,10 +514,7 @@ heroImage={optimizedImage}
 				gap: (32/16rem);
 			}
 
-			/* 左侧地图 */
-			.cs-map-wrapper {
-				width: 100%;
-			}
+			.cs-map-wrapper { width: 100%; }
 
 			.cs-map-link {
 				display: block;
@@ -612,10 +528,7 @@ heroImage={optimizedImage}
 				text-decoration: none;
 
 				&:hover {
-					.cs-map-picture img {
-						transform: scale(1.02);
-					}
-
+					.cs-map-picture img { transform: scale(1.02); }
 					.cs-map-btn {
 						background-color: var(--primary);
 						color: #fff;
@@ -637,11 +550,10 @@ heroImage={optimizedImage}
 				}
 			}
 
-			/* 🌟 悬浮卡片：移至右下角 */
 			.cs-map-overlay {
 				position: absolute;
 				bottom: (16/16rem);
-				right: (24/16rem); /* 移到右侧，留出适度边距 */
+				right: (24/16rem);
 				left: auto;
 				z-index: 2;
 				background: rgba(255, 255, 255, 0.92);
@@ -650,6 +562,7 @@ heroImage={optimizedImage}
 				border-radius: (8/16rem);
 				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 				max-width: (280/16rem);
+				transition: background-color 0.3s, color 0.3s;
 			}
 
 			.cs-map-badge {
@@ -681,7 +594,6 @@ heroImage={optimizedImage}
 				transition: background-color 0.3s, color 0.3s;
 			}
 
-			/* 右侧交通文案 */
 			.cs-info-wrapper {
 				width: 100%;
 				display: flex;
@@ -697,7 +609,7 @@ heroImage={optimizedImage}
 				background-color: #f7f8f9;
 				border-radius: (12/16rem);
 				border: 1px solid #e8e8e8;
-				transition: transform 0.3s, box-shadow 0.3s;
+				transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, border-color 0.3s;
 
 				&:hover {
 					transform: translateY(-2px);
@@ -736,9 +648,7 @@ heroImage={optimizedImage}
 				color: var(--bodyTextColor);
 				margin: 0;
 
-				strong {
-					color: var(--headerColor);
-				}
+				strong { color: var(--headerColor); }
 			}
 		}
 	}
@@ -749,9 +659,7 @@ heroImage={optimizedImage}
 			padding-top: (48/16rem);
 			padding-bottom: (100/16rem);
 
-			.cs-location-container {
-				padding: 0 (24/16rem);
-			}
+			.cs-location-container { padding: 0 (24/16rem); }
 
 			.cs-location-content {
 				flex-direction: row;
@@ -764,11 +672,8 @@ heroImage={optimizedImage}
 				flex-shrink: 0;
 			}
 
-			.cs-map-link {
-				height: 100%;
-			}
+			.cs-map-link { height: 100%; }
 
-			/* 🌟 桌面端定位调整 */
 			.cs-map-overlay {
 				bottom: (20/16rem);
 				right: (24/16rem);
@@ -777,12 +682,42 @@ heroImage={optimizedImage}
 				padding: (14/16rem) (18/16rem);
 			}
 
-			.cs-info-wrapper {
-				width: 45%;
-			}
+			.cs-info-wrapper { width: 45%; }
+			.cs-info-card { padding: (28/16rem); }
+		}
+	}
 
-			.cs-info-card {
-				padding: (28/16rem);
+	/* 🌟 新增：Location 区域的暗黑模式适配 */
+	@media only screen and (min-width: 0em) {
+		body.dark-mode {
+			#cs-location {
+				.cs-map-overlay {
+					background: rgba(30, 41, 59, 0.92);
+					border: 1px solid rgba(255, 255, 255, 0.1);
+					
+					.cs-map-address,
+					.cs-map-btn {
+						color: #ffffff;
+					}
+				}
+
+				.cs-info-card {
+					background-color: var(--medium);
+					border-color: rgba(255, 255, 255, 0.1);
+
+					.cs-icon-wrapper {
+						background-color: rgba(255, 255, 255, 0.1);
+					}
+
+					.cs-info-title,
+					.cs-info-desc strong {
+						color: #ffffff;
+					}
+
+					.cs-info-desc {
+						color: #cbd5e1;
+					}
+				}
 			}
 		}
 	}
