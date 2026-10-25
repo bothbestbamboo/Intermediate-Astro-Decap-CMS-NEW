@@ -447,26 +447,40 @@ import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
     }
 
     /* ==========================================================================
-       🌟 新增：全局暗黑模式适配 (Dark Mode)
+       🌟 修复：全局暗黑模式适配 (Dark Mode) - 补充了标题和文字的颜色
        ========================================================================== */
     body.dark-mode {
+        /* 基础标题全局覆盖，防止被其他样式干扰 */
+        .section-header h2,
+        .proof-content h3,
+        .project-details h3,
+        .global-text h2,
+        .cert-item span {
+            color: #ffffff !important;
+        }
+        
+        /* 基础段落文字颜色 */
+        .section-header p,
+        .proof-content p,
+        .project-details p,
+        .reach-list li {
+            color: #cbd5e1 !important;
+        }
+
         .trust-stats {
             background: var(--dark);
             border-color: rgba(255, 255, 255, 0.1);
         }
-        .stat-number { color: #fff; }
-        .stat-label { color: #94a3b8; }
+        .stat-number { color: #ffffff !important; }
+        .stat-label { color: #94a3b8 !important; }
         .stat-card:not(:last-child)::after { background-color: rgba(255, 255, 255, 0.1); }
 
-        .section-header h2 { color: #fff; }
-        .section-header p { color: #cbd5e1; }
+        .section-tagline { color: #38bdf8 !important; } /* 小标题用亮蓝色 */
 
         .proof-card {
             background: var(--medium);
             border-color: rgba(255, 255, 255, 0.1);
         }
-        .proof-content h3 { color: #fff; }
-        .proof-content p { color: #cbd5e1; }
 
         .projects-section {
             background: transparent;
@@ -476,19 +490,17 @@ import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
             border-color: rgba(255, 255, 255, 0.1);
         }
         .project-images-pair { background: rgba(255, 255, 255, 0.1); }
-        .project-tag { background-color: rgba(0, 75, 135, 0.4); color: #38bdf8; }
-        .project-details h3 { color: #fff; }
-        .project-details p { color: #cbd5e1; }
+        .project-tag { 
+            background-color: rgba(0, 75, 135, 0.4); 
+            color: #38bdf8 !important; 
+        }
 
         .global-reach { background: transparent; }
-        .global-text h2 { color: #fff; }
-        .reach-list li { color: #cbd5e1; }
 
         .cert-item {
             background: var(--medium);
             border-color: rgba(255, 255, 255, 0.1);
         }
-        .cert-item span { color: #cbd5e1; }
 
         .reviews-header-section { background: transparent; }
     }
