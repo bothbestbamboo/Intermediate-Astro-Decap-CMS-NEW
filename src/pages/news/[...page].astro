@@ -15,7 +15,7 @@ import BlogRecentArticlesWithSidebar from "@layouts/BlogRecentArticlesWithSideba
 import CTA from "@components/CTA/CTASimple.astro";
 
 // Images
-import placeholderImage from "@assets/images/placeholder.jpg";
+import placeholderImage from "@assets/images/gallery/bannerreview.jpg";
 const placeholderOptimizedImage = await getImage({ src: placeholderImage, format: "webp" });
 
 // 1. 定义动态路由生成函数
@@ -33,11 +33,11 @@ const { page } = Astro.props;
 
 <BaseLayout title="Blog" description="Meta description for the page" heroImage={placeholderOptimizedImage}>
     <Banner 
-        title="Bamboo Insights & Trends" 
+        title="Bathtub Insights & Trends" 
         subtitle="Deep dives into performance standards, material science, and technical updates straight from our factory." 
         image={placeholderOptimizedImage} 
-        alt="Bothbest factory technical updates and industry insights banner" 
-        imageAlt="Bothbest factory technical updates and industry insights banner" 
+        alt="XC Bath factory technical updates and industry insights banner" 
+        imageAlt="XC Bath factory technical updates and industry insights banner" 
     />
 
     <!-- 传入当前页的文章列表 page.data -->
