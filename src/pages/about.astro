@@ -658,47 +658,53 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg";
 		}
 	}
 
-	/* Dark Mode Optimization */
+	/* ==========================================================================
+       🌟 彻底修复暗黑模式 (Dark Mode)
+       ========================================================================== */
 	body.dark-mode {
 		#about-modern {
 			background-color: transparent;
 
+			/* 强制字体变白，覆盖所有内部默认黑色 */
 			.cs-title,
 			.cs-header-p,
 			.cs-stat-card .cs-stat-number,
 			.cs-card h3,
 			.cs-feature-box h3,
 			.cs-timeline-content h3 {
-				color: #fff;
+				color: #ffffff !important;
 			}
 
-			.cs-stat-card,
-			.cs-card,
-			.cs-feature-box,
-			.cs-timeline-content {
-				background-color: rgba(255, 255, 255, 0.05);
-				border-color: rgba(255, 255, 255, 0.1);
-			}
-
+			/* 强制段落文字变亮灰，防止与背景融为一体 */
 			.cs-stat-card .cs-stat-label,
 			.cs-about-text p,
 			.cs-card p,
 			.cs-feature-box p,
 			.cs-timeline-content ul li {
-				color: #ccc;
+				color: #cbd5e1 !important;
 			}
 
+			/* 强制卡片背景变暗色，加上 !important 防止被全局白底覆盖 */
+			.cs-stat-card,
+			.cs-card,
+			.cs-feature-box,
+			.cs-timeline-content {
+				background-color: var(--medium, #1a1a1a) !important;
+				border-color: rgba(255, 255, 255, 0.1) !important;
+			}
+
+			/* 修复时间轴圆点边框颜色，避免出现突兀的白圈 */
 			.cs-timeline-dot {
-				border-color: var(--dark); /* 修复：使用全局暗黑模式背景色 */
+				border-color: var(--dark, #0f172a) !important;
 			}
 
-			/* 修复：补充暗黑模式下联系横幅的样式 */
+			/* 修复底部横幅 */
 			.cs-contact-banner {
-				background: var(--medium);
-				border: 1px solid rgba(255, 255, 255, 0.1);
+				background: var(--medium, #1a1a1a) !important;
+				border: 1px solid rgba(255, 255, 255, 0.1) !important;
 				
 				.cs-banner-info p {
-					color: #aaa;
+					color: #94a3b8 !important;
 				}
 			}
 		}
