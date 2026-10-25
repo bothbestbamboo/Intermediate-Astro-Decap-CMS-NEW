@@ -9,31 +9,31 @@ import Banner from "@components/Banner/Banner.astro";
 import ReviewsSection from "@components/Reviews/Reviews.astro";
 import CTA from "@components/CTA/CTASimple.astro";
 
-// Hero Image (建议后续换成带有 XC Bath 浴缸/淋浴房的实景图)
+// Hero Image
 import landingImage from "@assets/images/gallery/bannerreview.jpg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 
-// Factory & Inspection Showcase Images (请后续替换为卫浴验厂/出货图)
-import containerImg from "@assets/images/reviews/container.jpg"; // 建议替换为：浴缸装箱/货柜图
-import palletImg from "@assets/images/reviews/pallet.jpg"; // 建议替换为：淋浴房玻璃/五金配件木架打包图
-import plywoodInspectImg from "@assets/images/reviews/plywood-inspection.JPG"; // 建议替换为：老外/第三方在车间验货(浴缸或玻璃)
-import customerCheckImg from "@assets/images/reviews/customer-check-decking.JPG"; // 建议替换为：客户在展会或工厂看浴缸
-import salesNetworkImg from "@assets/images/reviews/sales-network.jpg"; // 世界地图可以继续用
+// Factory & Inspection Showcase Images
+import containerImg from "@assets/images/reviews/container.jpg";
+import palletImg from "@assets/images/reviews/pallet.jpg";
+import plywoodInspectImg from "@assets/images/reviews/plywood-inspection.JPG";
+import customerCheckImg from "@assets/images/reviews/customer-check-decking.JPG";
+import salesNetworkImg from "@assets/images/reviews/sales-network.jpg";
 
-// Certificates (如果你有卫浴的 CE, ACS, ISO 证书，请替换这些图片)
+// Certificates
 import certCe from "@assets/images/reviews/c-ce.jpg";
 import certFsc from "@assets/images/reviews/c-fsc.jpg";
 import certIso14001 from "@assets/images/reviews/c-iso14001.jpg";
 import certIso2004 from "@assets/images/reviews/c-iso2004.jpg";
 
-// Project Engineering Application Images (请后续替换为：酒店浴室、健身房淋浴间、别墅浴缸等项目实景)
-import projectGymFloor1 from "@assets/images/reviews/flooring-1.jpg"; // 建议替换：健身房/商业空间淋浴房
+// Project Engineering Application Images
+import projectGymFloor1 from "@assets/images/reviews/flooring-1.jpg";
 import projectGymFloor2 from "@assets/images/reviews/flooring-2.jpg";
-import projectStairs1 from "@assets/images/reviews/panels-1.jpg"; // 建议替换：酒店客房浴室柜/浴缸
+import projectStairs1 from "@assets/images/reviews/panels-1.jpg";
 import projectStairs2 from "@assets/images/reviews/panels-2.jpg";
-import projectHotel1 from "@assets/images/reviews/plywood-1.JPG"; // 建议替换：高端酒店整体卫浴实景
+import projectHotel1 from "@assets/images/reviews/plywood-1.JPG";
 import projectHotel2 from "@assets/images/reviews/plywood-2.jpg";
-import projectDecking1 from "@assets/images/reviews/decking-1.jpg"; // 建议替换：户外独立浴缸/按摩浴缸项目
+import projectDecking1 from "@assets/images/reviews/decking-1.jpg";
 import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
 ---
 
@@ -83,67 +83,43 @@ import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
             </div>
 
             <div class="proof-grid">
-                <!-- Card 1 -->
                 <div class="proof-card">
                     <div class="proof-img-wrapper">
-                        <Image
-                            src={customerCheckImg}
-                            alt="International client inspecting XC Bath bathtub quality on site"
-                        />
+                        <Image src={customerCheckImg} alt="International client inspecting XC Bath bathtub quality on site" />
                     </div>
                     <div class="proof-content">
                         <h3>In-Person QC</h3>
-                        <p>
-                            Overseas clients inspect our freestanding bathtubs and shower enclosures directly, confirming acrylic thickness and hardware precision.
-                        </p>
+                        <p>Overseas clients inspect our freestanding bathtubs and shower enclosures directly, confirming acrylic thickness and hardware precision.</p>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
                 <div class="proof-card">
                     <div class="proof-img-wrapper">
-                        <Image
-                            src={plywoodInspectImg}
-                            alt="Third-party inspector checking shower enclosure glass and hardware quality"
-                        />
+                        <Image src={plywoodInspectImg} alt="Third-party inspector checking shower enclosure glass and hardware quality" />
                     </div>
                     <div class="proof-content">
                         <h3>On-Site Factory Audits</h3>
-                        <p>
-                            Strict third-party and client audits in our workshop ensure zero-defect tempered glass and perfect surface finishing standards.
-                        </p>
+                        <p>Strict third-party and client audits in our workshop ensure zero-defect tempered glass and perfect surface finishing standards.</p>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
                 <div class="proof-card">
                     <div class="proof-img-wrapper">
-                        <Image
-                            src={containerImg}
-                            alt="Direct factory loading of bathtubs into shipping container for overseas export"
-                        />
+                        <Image src={containerImg} alt="Direct factory loading of bathtubs into shipping container for overseas export" />
                     </div>
                     <div class="proof-content">
                         <h3>Direct Container Loading</h3>
-                        <p>
-                            Full-container load (FCL) packing with reinforced strapping ensures zero movement and damage-free ocean transit for heavy sanitary ware.
-                        </p>
+                        <p>Full-container load (FCL) packing with reinforced strapping ensures zero movement and damage-free ocean transit for heavy sanitary ware.</p>
                     </div>
                 </div>
 
-                <!-- Card 4 -->
                 <div class="proof-card">
                     <div class="proof-img-wrapper">
-                        <Image
-                            src={palletImg}
-                            alt="Professional shock-absorbing packaging for bathroom products ready for export"
-                        />
+                        <Image src={palletImg} alt="Professional shock-absorbing packaging for bathroom products ready for export" />
                     </div>
                     <div class="proof-content">
                         <h3>Standard Export Package</h3>
-                        <p>
-                            Extra-thick pearl wool, shock-absorbing foam, and reinforced wooden crates preserve the finish during long-distance ocean transit.
-                        </p>
+                        <p>Extra-thick pearl wool, shock-absorbing foam, and reinforced wooden crates preserve the finish during long-distance ocean transit.</p>
                     </div>
                 </div>
             </div>
@@ -154,97 +130,57 @@ import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
     <section class="projects-section">
         <div class="cs-container">
             <div class="section-header">
-                <span class="section-tagline"
-                    >PROVEN IN COMMERCIAL PROJECTS</span
-                >
+                <span class="section-tagline">PROVEN IN COMMERCIAL PROJECTS</span>
                 <h2>Real-World Bathroom Applications</h2>
-                <p>
-                    Explore how our premium sanitary ware excels in high-traffic hospitality environments and high-end residential projects globally.
-                </p>
+                <p>Explore how our premium sanitary ware excels in high-traffic hospitality environments and high-end residential projects globally.</p>
             </div>
 
             <div class="projects-grid">
-                <!-- Project 1: Commercial Showers -->
                 <div class="project-card">
                     <div class="project-images-pair">
-                        <Image
-                            src={projectGymFloor1}
-                            alt="Modern commercial gym fitted with XC Bath frameless shower enclosures"
-                        />
-                        <Image
-                            src={projectGymFloor2}
-                            alt="Durability of tempered glass and hardware in a high-traffic fitness center"
-                        />
+                        <Image src={projectGymFloor1} alt="Modern commercial gym fitted with XC Bath frameless shower enclosures" />
+                        <Image src={projectGymFloor2} alt="Durability of tempered glass and hardware in a high-traffic fitness center" />
                     </div>
                     <div class="project-details">
                         <span class="project-tag">Commercial Showers</span>
                         <h3>Fitness Center & Gym Shower Enclosures</h3>
-                        <p>
-                            Heavy-duty tempered glass shower enclosures engineered to withstand continuous daily use in commercial sports facilities.
-                        </p>
+                        <p>Heavy-duty tempered glass shower enclosures engineered to withstand continuous daily use in commercial sports facilities.</p>
                     </div>
                 </div>
 
-                <!-- Project 2: Outdoor Whirlpools -->
                 <div class="project-card">
                     <div class="project-images-pair">
-                        <Image
-                            src={projectDecking1}
-                            alt="Luxury resort outdoor decking featuring XC Bath outdoor whirlpool bathtub"
-                        />
-                        <Image
-                            src={projectDecking2}
-                            alt="Weather-resistant outdoor hot tub installation in a premium resort"
-                        />
+                        <Image src={projectDecking1} alt="Luxury resort outdoor decking featuring XC Bath outdoor whirlpool bathtub" />
+                        <Image src={projectDecking2} alt="Weather-resistant outdoor hot tub installation in a premium resort" />
                     </div>
                     <div class="project-details">
                         <span class="project-tag">Outdoor Bathing</span>
                         <h3>Resort Outdoor Whirlpool Installations</h3>
-                        <p>
-                            Weather-resistant outdoor massage tubs designed for extreme climates, offering therapeutic hydrotherapy for luxury resorts.
-                        </p>
+                        <p>Weather-resistant outdoor massage tubs designed for extreme climates, offering therapeutic hydrotherapy for luxury resorts.</p>
                     </div>
                 </div>
 
-                <!-- Project 3: Hospitality & Bathtubs -->
                 <div class="project-card">
                     <div class="project-images-pair">
-                        <Image
-                            src={projectHotel1}
-                            alt="Luxury hotel suite bathroom fitted with XC Bath freestanding bathtub"
-                        />
-                        <Image
-                            src={projectHotel2}
-                            alt="Custom bathroom vanity and mirror setup in a high-end hospitality project"
-                        />
+                        <Image src={projectHotel1} alt="Luxury hotel suite bathroom fitted with XC Bath freestanding bathtub" />
+                        <Image src={projectHotel2} alt="Custom bathroom vanity and mirror setup in a high-end hospitality project" />
                     </div>
                     <div class="project-details">
                         <span class="project-tag">Hospitality Spaces</span>
                         <h3>Luxury Hotel & Villa Bathroom Suites</h3>
-                        <p>
-                            Premium freestanding bathtubs and custom bathroom vanities tailored for upscale hotel suites and architectural millwork.
-                        </p>
+                        <p>Premium freestanding bathtubs and custom bathroom vanities tailored for upscale hotel suites and architectural millwork.</p>
                     </div>
                 </div>
 
-                <!-- Project 4: Residential Cabinets -->
                 <div class="project-card">
                     <div class="project-images-pair">
-                        <Image
-                            src={projectStairs1}
-                            alt="Modern residential bathroom featuring XC Bath floating vanity cabinet"
-                        />
-                        <Image
-                            src={projectStairs2}
-                            alt="Close up detail of moisture-resistant bathroom cabinet edge finishing"
-                        />
+                        <Image src={projectStairs1} alt="Modern residential bathroom featuring XC Bath floating vanity cabinet" />
+                        <Image src={projectStairs2} alt="Close up detail of moisture-resistant bathroom cabinet edge finishing" />
                     </div>
                     <div class="project-details">
                         <span class="project-tag">Bath Cabinets</span>
                         <h3>Modern Residential Bathroom Vanities</h3>
-                        <p>
-                            Moisture-resistant floating vanities and storage cabinets fabricated for sleek, modern bathrooms with exceptional structural stability.
-                        </p>
+                        <p>Moisture-resistant floating vanities and storage cabinets fabricated for sleek, modern bathrooms with exceptional structural stability.</p>
                     </div>
                 </div>
             </div>
@@ -257,24 +193,15 @@ import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
             <div class="global-text">
                 <span class="section-tagline">GLOBAL FOOTPRINT</span>
                 <h2>Serving Wholesalers & Contractors Worldwide</h2>
-                <p>
-                    XC Bath products are exported across North America, Europe, Australia, and the Middle East. Our standardized export logistics make overseas procurement of sanitary ware smooth and hassle-free.
-                </p>
+                <p>XC Bath products are exported across North America, Europe, Australia, and the Middle East. Our standardized export logistics make overseas procurement of sanitary ware smooth and hassle-free.</p>
                 <ul class="reach-list">
                     <li>✓ Custom OEM / ODM Branding & Carton Packaging</li>
-                    <li>
-                        ✓ Full Compliance with CE, ACS, and Global Sanitary Standards
-                    </li>
-                    <li>
-                        ✓ Reliable Ocean Freight Shipping & Fragile Cargo Protection
-                    </li>
+                    <li>✓ Full Compliance with CE, ACS, and Global Sanitary Standards</li>
+                    <li>✓ Reliable Ocean Freight Shipping & Fragile Cargo Protection</li>
                 </ul>
             </div>
             <div class="global-map-wrapper">
-                <Image
-                    src={salesNetworkImg}
-                    alt="XC Bath global export network and destination countries"
-                />
+                <Image src={salesNetworkImg} alt="XC Bath global export network and destination countries" />
             </div>
         </div>
     </section>
@@ -285,37 +212,23 @@ import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
             <div class="section-header">
                 <span class="section-tagline">QUALIFICATIONS</span>
                 <h2>International Compliance & Certifications</h2>
-                <p>
-                    Our sanitary ware passes rigorous test standards for material safety, glass durability, and environmental management.
-                </p>
+                <p>Our sanitary ware passes rigorous test standards for material safety, glass durability, and environmental management.</p>
             </div>
             <div class="cert-grid">
                 <div class="cert-item">
-                    <Image
-                        src={certCe}
-                        alt="CE Certification for XC Bath Shower Enclosures and Bathtubs"
-                    />
+                    <Image src={certCe} alt="CE Certification for XC Bath Shower Enclosures and Bathtubs" />
                     <span>CE Certified</span>
                 </div>
                 <div class="cert-item">
-                    <Image
-                        src={certFsc}
-                        alt="ACS Certification for Sanitary Ware"
-                    />
+                    <Image src={certFsc} alt="ACS Certification for Sanitary Ware" />
                     <span>ACS Certified</span>
                 </div>
                 <div class="cert-item">
-                    <Image
-                        src={certIso2004}
-                        alt="ISO 14001 Environmental Management System Registration"
-                    />
+                    <Image src={certIso2004} alt="ISO 14001 Environmental Management System Registration" />
                     <span>ISO 14001 Environmental</span>
                 </div>
                 <div class="cert-item">
-                    <Image
-                        src={certIso14001}
-                        alt="ISO 9001 Quality Management System Certificate"
-                    />
+                    <Image src={certIso14001} alt="ISO 9001 Quality Management System Certificate" />
                     <span>ISO 9001 Quality</span>
                 </div>
             </div>
@@ -325,12 +238,10 @@ import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
     <!-- 7. Original Written Reviews Component -->
     <section class="reviews-header-section">
         <div class="cs-container">
-            <div class="section-header" style="margin-bottom: 0;">
+            <div class="section-header no-margin-bottom">
                 <span class="section-tagline">CLIENT FEEDBACK</span>
                 <h2>What Our Global Partners Say</h2>
-                <p>
-                    Read genuine reviews and feedback from architects, contractors, wholesalers, and hotel owners worldwide.
-                </p>
+                <p>Read genuine reviews and feedback from architects, contractors, wholesalers, and hotel owners worldwide.</p>
             </div>
         </div>
     </section>
@@ -342,12 +253,12 @@ import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
 </BaseLayout>
 
 <style>
-    /* 全局容器统一规范 (与 Reviews 等宽) */
+    /* 全局容器统一规范 */
     .cs-container {
         width: 100%;
-        max-width: 1280px; /* 控制整体最大宽度，与页面 Reviews 版块保持一致 */
-        margin: 0 auto; /* 水平居中 */
-        padding: 0 1.5rem; /* 两侧留出安全边距，防止贴边 */
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
         box-sizing: border-box;
     }
 
@@ -358,23 +269,19 @@ import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
         border-top: 1px solid #e2e8f0;
         border-bottom: 1px solid #e2e8f0;
     }
-
     .trust-stats .cs-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 2rem;
         text-align: center;
     }
-
     .stat-card {
-        background: transparent; /* 去除白框 */
-        border: none; /* 去除四周边框及绿条 */
+        background: transparent;
+        border: none;
         padding: 1rem;
-        box-shadow: none; /* 去除阴影 */
+        box-shadow: none;
         position: relative;
     }
-
-    /* 在卡片右侧加一条极其细微的分隔线（最后一个除外） */
     .stat-card:not(:last-child)::after {
         content: "";
         position: absolute;
@@ -384,7 +291,6 @@ import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
         width: 1px;
         background-color: #cbd5e1;
     }
-
     .stat-number {
         display: block;
         font-size: 2.25rem;
@@ -393,13 +299,6 @@ import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
         line-height: 1.1;
         margin-bottom: 0.5rem;
     }
-
-    /* 用微小的蓝色圆点/强调色增加层次 */
-    .stat-number::after {
-        content: ".";
-        color: var(--primary, #004B87);
-    }
-
     .stat-label {
         font-size: 0.85rem;
         font-weight: 600;
@@ -407,24 +306,21 @@ import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
         text-transform: uppercase;
         letter-spacing: 0.5px;
     }
-
     @media (max-width: 768px) {
-        .stat-card:not(:last-child)::after {
-            display: none;
-        }
+        .stat-card:not(:last-child)::after { display: none; }
     }
 
     /* Common Sections */
-    .proof-section,
-    .projects-section,
-    .certifications-section,
-    .global-reach {
+    .proof-section, .projects-section, .certifications-section, .global-reach {
         padding: 4.5rem 0;
     }
     .section-header {
         text-align: center;
         max-width: 750px;
         margin: 0 auto 3rem auto;
+    }
+    .no-margin-bottom {
+        margin-bottom: 0;
     }
     .section-tagline {
         color: var(--primary, #004B87);
@@ -463,34 +359,14 @@ import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
         transform: translateY(-4px);
         box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.1);
     }
-    .proof-img-wrapper {
-        aspect-ratio: 4 / 3;
-        overflow: hidden;
-    }
-    .proof-img-wrapper img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    .proof-content {
-        padding: 1.25rem;
-    }
-    .proof-content h3 {
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
-        color: #1f2937;
-    }
-    .proof-content p {
-        font-size: 0.9rem;
-        color: #6b7280;
-        line-height: 1.5;
-        margin: 0;
-    }
+    .proof-img-wrapper { aspect-ratio: 4 / 3; overflow: hidden; }
+    .proof-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+    .proof-content { padding: 1.25rem; }
+    .proof-content h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: #1f2937; }
+    .proof-content p { font-size: 0.9rem; color: #6b7280; line-height: 1.5; margin: 0; }
 
     /* Real Projects Section Styles */
-    .projects-section {
-        background-color: #f8fafc;
-    }
+    .projects-section { background-color: #f8fafc; }
     .projects-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -511,15 +387,8 @@ import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
         gap: 4px;
         background: #e2e8f0;
     }
-    .project-images-pair img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-    }
-    .project-details {
-        padding: 1.5rem;
-        flex-grow: 1;
-    }
+    .project-images-pair img { width: 100%; height: 180px; object-fit: cover; }
+    .project-details { padding: 1.5rem; flex-grow: 1; }
     .project-tag {
         display: inline-block;
         background-color: #e0f2fe;
@@ -531,53 +400,22 @@ import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
         text-transform: uppercase;
         margin-bottom: 0.75rem;
     }
-    .project-details h3 {
-        font-size: 1.2rem;
-        color: #0f172a;
-        margin-bottom: 0.5rem;
-    }
-    .project-details p {
-        font-size: 0.9rem;
-        color: #64748b;
-        line-height: 1.5;
-        margin: 0;
-    }
+    .project-details h3 { font-size: 1.2rem; color: #0f172a; margin-bottom: 0.5rem; }
+    .project-details p { font-size: 0.9rem; color: #64748b; line-height: 1.5; margin: 0; }
 
     /* Global Reach Section */
-    .global-reach {
-        background-color: #ffffff;
-    }
+    .global-reach { background-color: #ffffff; }
     .global-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 3rem;
         align-items: center;
     }
-    @media (max-width: 768px) {
-        .global-container {
-            grid-template-columns: 1fr;
-        }
-    }
-    .global-text h2 {
-        font-size: 2rem;
-        margin: 0.5rem 0 1rem 0;
-    }
-    .reach-list {
-        list-style: none;
-        padding: 0;
-        margin-top: 1.5rem;
-    }
-    .reach-list li {
-        margin-bottom: 0.75rem;
-        font-weight: 600;
-        color: #374151;
-    }
-    .global-map-wrapper img {
-        width: 100%;
-        height: auto;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
+    @media (max-width: 768px) { .global-container { grid-template-columns: 1fr; } }
+    .global-text h2 { font-size: 2rem; margin: 0.5rem 0 1rem 0; }
+    .reach-list { list-style: none; padding: 0; margin-top: 1.5rem; }
+    .reach-list li { margin-bottom: 0.75rem; font-weight: 600; color: #374151; }
+    .global-map-wrapper img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
 
     /* Certifications Grid */
     .cert-grid {
@@ -586,16 +424,8 @@ import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
         gap: 1.5rem;
         margin-top: 2rem;
     }
-    @media (max-width: 1024px) {
-        .cert-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-    @media (max-width: 640px) {
-        .cert-grid {
-            grid-template-columns: 1fr;
-        }
-    }
+    @media (max-width: 1024px) { .cert-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .cert-grid { grid-template-columns: 1fr; } }
     .cert-item {
         border: 1px solid #e2e8f0;
         padding: 1.25rem;
@@ -605,24 +435,61 @@ import projectDecking2 from "@assets/images/reviews/decking-2.JPG";
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         transition: transform 0.2s ease;
     }
-    .cert-item:hover {
-        transform: translateY(-3px);
-    }
-    .cert-item img {
-        width: 100%;
-        height: 220px;
-        object-fit: contain;
-        margin-bottom: 0.75rem;
-    }
-    .cert-item span {
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: #334155;
-    }
+    .cert-item:hover { transform: translateY(-3px); }
+    .cert-item img { width: 100%; height: 220px; object-fit: contain; margin-bottom: 0.75rem; }
+    .cert-item span { font-size: 0.9rem; font-weight: 600; color: #334155; }
+
     /* Reviews Header Section Spacing */
     .reviews-header-section {
         padding-top: 4.5rem;
         padding-bottom: 1rem;
         background-color: #ffffff;
+    }
+
+    /* ==========================================================================
+       🌟 新增：全局暗黑模式适配 (Dark Mode)
+       ========================================================================== */
+    body.dark-mode {
+        .trust-stats {
+            background: var(--dark);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        .stat-number { color: #fff; }
+        .stat-label { color: #94a3b8; }
+        .stat-card:not(:last-child)::after { background-color: rgba(255, 255, 255, 0.1); }
+
+        .section-header h2 { color: #fff; }
+        .section-header p { color: #cbd5e1; }
+
+        .proof-card {
+            background: var(--medium);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        .proof-content h3 { color: #fff; }
+        .proof-content p { color: #cbd5e1; }
+
+        .projects-section {
+            background: transparent;
+        }
+        .project-card {
+            background: var(--medium);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        .project-images-pair { background: rgba(255, 255, 255, 0.1); }
+        .project-tag { background-color: rgba(0, 75, 135, 0.4); color: #38bdf8; }
+        .project-details h3 { color: #fff; }
+        .project-details p { color: #cbd5e1; }
+
+        .global-reach { background: transparent; }
+        .global-text h2 { color: #fff; }
+        .reach-list li { color: #cbd5e1; }
+
+        .cert-item {
+            background: var(--medium);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        .cert-item span { color: #cbd5e1; }
+
+        .reviews-header-section { background: transparent; }
     }
 </style>
