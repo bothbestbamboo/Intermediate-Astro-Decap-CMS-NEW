@@ -31,6 +31,44 @@ const { description, title, heroImage } = Astro.props as Props;
 		<!-- View Transitions support -->
 		<ClientRouter />
 
+		<!-- 🌟 优化：将暗黑模式脚本提前注入到 <head> 中，防止刷新时白屏闪烁 (FOUC) -->
+		<script is:inline>
+			function enableDarkMode() {
+				document.body.classList.add("dark-mode");
+				localStorage.setItem("theme", "dark");
+			}
+
+			function disableDarkMode() {
+				document.body.classList.remove("dark-mode");
+				localStorage.setItem("theme", "light");
+			}
+
+			function setTheme() {
+				let theme: string | null = "light";
+
+				if (localStorage.getItem("theme")) {
+					theme = localStorage.getItem("theme");
+				} else if (
+					window.matchMedia &&
+					window.matchMedia("(prefers-color-scheme: dark)").matches
+				) {
+					theme = "dark";
+				}
+
+				if (theme === "dark") {
+					enableDarkMode();
+				} else {
+					disableDarkMode();
+				}
+			}
+
+			// 立即执行一次
+			setTheme();
+
+			// 监听 Astro View Transitions 完成事件，保证页面跳转后主题保持
+			document.addEventListener("astro:after-swap", setTheme);
+		</script>
+
 		<!-- SEO Meta Tags -->
 		<Meta title={title} description={description} heroImage={heroImage}>
 			<slot name="schema" slot="schema" />
@@ -39,7 +77,7 @@ const { description, title, heroImage } = Astro.props as Props;
 		<!-- Astro custom Font API -->
 		<Font cssVariable="--font-primary" />
 
-		<!-- If present, preloads the image passed as a prop -->
+		<!-- 仅保留基础 preload，并增加条件拦截避免解析错误 -->
 		{heroImage && <link rel="preload" href={heroImage.src} as="image" />}
 
 		<!-- Sitewide Scripts -->
@@ -58,41 +96,3 @@ const { description, title, heroImage } = Astro.props as Props;
 		<Footer />
 	</body>
 </html>
-
-<script is:inline>
-	// helper functions to toggle dark mode
-	function enableDarkMode() {
-		document.body.classList.add("dark-mode");
-		localStorage.setItem("theme", "dark");
-	}
-
-	function disableDarkMode() {
-		document.body.classList.remove("dark-mode");
-		localStorage.setItem("theme", "light");
-	}
-
-	function setTheme() {
-		// default to the light theme
-		let theme = "light";
-
-		// check localStorage for a saved 'theme' variable. if it's there, the user has visited before, so apply the necessary theme choices
-		if (localStorage.getItem("theme")) {
-			theme = localStorage.getItem("theme");
-		}
-		// if it's not there, check to see if the user has applied dark mode preferences themselves in the browser
-		else if (
-			window.matchMedia &&
-			window.matchMedia("(prefers-color-scheme: dark)").matches
-		) {
-			theme = "dark";
-		}
-
-		// if there is no preference set, the default of light will be used. apply accordingly
-		theme === "dark" ? enableDarkMode() : disableDarkMode();
-	}
-
-	setTheme();
-
-	document.addEventListener("astro:after-swap", setTheme); // For View Transitions purposes - astro:after-swap ensures that the theme is kept after navigating to a new page.
-</script>
-

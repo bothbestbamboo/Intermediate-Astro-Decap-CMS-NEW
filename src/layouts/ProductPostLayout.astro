@@ -8,7 +8,7 @@ import { getBlogPostingSchema } from "@js/blogPostingSchema.js";
 import "@styles/markdown.less";
 
 // 导入作者真实的头像图片
-import bothbestAvatar from "@assets/images/authors/bothbest.png";
+import xcBathAvatar from "@assets/images/authors/xcbath.png";
 
 // Components
 import BaseLayout from "@layouts/BaseLayout.astro";
@@ -69,15 +69,17 @@ const blogPostingSchema = getBlogPostingSchema(
               <picture class="blog-author-img">
                 {
                   !author ||
+                  author.toLowerCase().trim() === "xc bath" ||
                   author.toLowerCase().trim() === "bothbest" ? (
                     <Image
-                      src={bothbestAvatar}
-                      alt="Bothbest Bamboo"
+                      src={xcBathAvatar}
+                      alt="XC Bath Team"
                       width="32"
                       height="32"
                       style={{
                         borderRadius: "50%",
                         objectFit: "cover",
+                        backgroundColor: "#f8fafc"
                       }}
                     />
                   ) : (
@@ -141,8 +143,7 @@ const blogPostingSchema = getBlogPostingSchema(
   <CTA />
 </BaseLayout>
 
-<!-- 样式部分与你 blogPostLayout.astro 完全一致，直接整段复制过来即可 -->
-<style lang="less">
+<style lang="less" is:global>
   /* ==========================================================================
      1. Mobile Base Styles (0em+)
      ========================================================================== */
@@ -206,15 +207,8 @@ const blogPostingSchema = getBlogPostingSchema(
       display: block;
       position: relative;
       overflow: hidden;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
+      border: 1px solid #e5e7eb;
+      background-color: #fff;
     }
 
     .blog-authorGroup {
@@ -232,9 +226,9 @@ const blogPostingSchema = getBlogPostingSchema(
     }
 
     .blog-dot {
-      width: 3px;
-      height: 3px;
-      background-color: #fe4f70;
+      width: 4px;
+      height: 4px;
+      background-color: #C5A059; /* 浴缸站：香槟金点缀 */
       border-radius: 50%;
       display: block;
     }
@@ -243,8 +237,6 @@ const blogPostingSchema = getBlogPostingSchema(
       font-size: clamp(18px, 4vw, 31px);
       font-weight: 800;
       line-height: 1.25em;
-      width: 100% !important;
-      max-width: 100% !important;
       margin: (12/16rem) 0;
       color: var(--headerColor);
       word-wrap: break-word;
@@ -287,7 +279,7 @@ const blogPostingSchema = getBlogPostingSchema(
   }
 
   /* ==========================================================================
-     3. Inquiry Box Styles
+     3. Inquiry Box Styles - 询盘反馈框
      ========================================================================== */
   .product-inquiry-box-inserted {
     margin-top: 24px;
@@ -296,24 +288,24 @@ const blogPostingSchema = getBlogPostingSchema(
   }
 
   .product-inquiry-box {
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
     border-radius: 8px;
     padding: 24px;
-    border-left: 4px solid #9dc815;
+    border-left: 4px solid #004B87; /* 浴缸站：品牌深海蓝 */
     box-sizing: border-box;
 
     h3 {
       font-size: 16px;
       font-weight: 700;
-      color: #111111;
+      color: #004B87;
       margin: 0 0 10px 0;
     }
 
     p {
       font-size: 13px;
       line-height: 1.5;
-      color: #666666;
+      color: #64748b;
       margin: 0 0 18px 0;
     }
 
@@ -330,12 +322,12 @@ const blogPostingSchema = getBlogPostingSchema(
       text-decoration: none;
       border-radius: 4px;
       transition: background-color 0.3s ease, color 0.3s ease;
-      background-color: #9dc815 !important;
-      color: #111111 !important;
+      background-color: #004B87 !important; 
+      color: #ffffff !important; 
     }
 
     .product-inquiry-btn:hover {
-      background-color: #111111 !important;
+      background-color: #C5A059 !important; /* 浴缸站：悬停变香槟金 */
       color: #ffffff !important;
     }
   }
@@ -350,11 +342,19 @@ const blogPostingSchema = getBlogPostingSchema(
       .blog-date {
         color: #f7f7f7;
       }
+      .blog-author-img {
+        border-color: #333333;
+        background-color: #1a1a1a;
+      }
+      #blog-content {
+        border-top-color: #333333;
+      }
     }
 
     .product-inquiry-box {
       background: #1a1a1a;
       border-color: #333333;
+      border-left-color: #004B87; 
       h3 {
         color: #ffffff;
       }
@@ -362,19 +362,21 @@ const blogPostingSchema = getBlogPostingSchema(
         color: #999999;
       }
       .product-inquiry-btn {
-        background-color: #9dc815 !important;
-        color: #111111 !important;
+        background-color: #004B87 !important;
+        color: #ffffff !important;
       }
       .product-inquiry-btn:hover {
-        background-color: #111111 !important;
+        background-color: #C5A059 !important;
         color: #ffffff !important;
       }
     }
   }
 
-  /* Global Markdown Divider Override */
+  /* ==========================================================================
+     5. Global Markdown Divider Override
+     ========================================================================== */
   #blog-content {
-    :global(hr) {
+    hr {
       display: block !important;
       height: 1px !important;
       border: 0 !important;
@@ -384,5 +386,9 @@ const blogPostingSchema = getBlogPostingSchema(
       padding: 0 !important;
       clear: both !important;
     }
+  }
+
+  body.dark-mode #blog-content hr {
+    border-top-color: #333333 !important;
   }
 </style>

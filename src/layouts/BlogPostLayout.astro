@@ -66,18 +66,17 @@ const blogPostingSchema = getBlogPostingSchema(
                             <picture class="blog-author-img">
                                 {
                                     !author ||
-                                    author.toLowerCase().trim() ===
-                                        "bothbest" || 
+                                    author.toLowerCase().trim() === "bothbest" || 
                                     author.toLowerCase().trim() === "xc bath" ? (
                                         <Image
                                             src={xcBathAvatar}
                                             alt="XC Bath Team"
-                                            width="32"
-                                            height="32"
+                                            width="36"
+                                            height="36"
                                             style={{
                                                 borderRadius: "50%",
-                                                objectFit: "cover",
-                                                // 如果是透明底 PNG，加一点极淡的背景色防止在深色/白色下看不清边缘
+                                                objectFit: "contain",
+                                                padding: "4px",
                                                 backgroundColor: "#f8fafc"
                                             }}
                                         />
@@ -154,7 +153,7 @@ const blogPostingSchema = getBlogPostingSchema(
     <CTA />
 </BaseLayout>
 
-<style lang="less">
+<style lang="less" is:global>
     /* ==========================================================================
        1. Mobile Base Styles (0em+) - 基础手机端样式与嵌套结构
        ========================================================================== */
@@ -212,24 +211,15 @@ const blogPostingSchema = getBlogPostingSchema(
         }
 
         .blog-author-img {
-            width: (36/16em); /* 微调：稍微放大了一点点到36px，更显眼 */
+            width: (36/16em);
             height: (36/16em);
             border-radius: 50%;
             display: block;
             position: relative;
             overflow: hidden;
             border: 1px solid #e5e7eb; 
-            background-color: #fff; /* 确保透明 PNG 的背景是白色的 */
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: contain; /* 修改：确保你的浴缸图标不变形，完整显示 */
-                padding: 4px; /* 修改：给图标四周留一点空隙，避免贴边 */
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
+            background-color: #fff; 
+            /* 移除了内部的 img 样式，完全交给 Astro Image 内联样式管理 */
         }
 
         .blog-authorGroup {
@@ -259,8 +249,6 @@ const blogPostingSchema = getBlogPostingSchema(
             font-size: clamp(18px, 4vw, 31px);
             font-weight: 800;
             line-height: 1.25em;
-            width: 100% !important;
-            max-width: 100% !important;
             margin: (12/16rem) 0;
             color: var(--headerColor);
             word-wrap: break-word;
@@ -333,7 +321,6 @@ const blogPostingSchema = getBlogPostingSchema(
             margin: 0 0 18px 0;
         }
 
-        /* 按钮：深蓝底白字 */
         .product-inquiry-btn {
             display: flex;
             align-items: center;
@@ -358,7 +345,7 @@ const blogPostingSchema = getBlogPostingSchema(
     }
 
     /* ==========================================================================
-       4. Dark Mode Styles - 暗黑模式独立平铺
+       4. Dark Mode Styles
        ========================================================================== */
     body.dark-mode {
         .blog-article {
@@ -369,7 +356,10 @@ const blogPostingSchema = getBlogPostingSchema(
             }
             .blog-author-img {
                 border-color: #333333;
-                background-color: #1a1a1a; /* 深色模式下的头像背景 */
+                background-color: #1a1a1a;
+            }
+            #blog-content {
+                border-top-color: #333333;
             }
         }
         
@@ -396,7 +386,7 @@ const blogPostingSchema = getBlogPostingSchema(
 
     /* Global Markdown Divider Override */
     #blog-content {
-        :global(hr) {
+        hr {
             display: block !important;
             height: 1px !important;
             border: 0 !important;
@@ -406,5 +396,10 @@ const blogPostingSchema = getBlogPostingSchema(
             padding: 0 !important;
             clear: both !important;
         }
+    }
+
+    /* 暗黑模式下的分割线 */
+    body.dark-mode #blog-content hr {
+        border-top-color: #333333 !important;
     }
 </style>
