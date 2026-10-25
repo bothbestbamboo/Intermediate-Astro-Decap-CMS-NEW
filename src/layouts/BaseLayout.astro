@@ -20,7 +20,7 @@ type HeroImage = GetImageResult | ImageMetadata;
 interface Props {
 	title: string;
 	description: string;
-	heroImage?: HeroImage; // optional - passing a heroImage to BaseLayout will 1. preload the image and 2. use the image for og socials tags in the <head>
+	heroImage?: HeroImage; 
 }
 
 const { description, title, heroImage } = Astro.props as Props;
@@ -31,42 +31,41 @@ const { description, title, heroImage } = Astro.props as Props;
 		<!-- View Transitions support -->
 		<ClientRouter />
 
-		<!-- 🌟 优化：将暗黑模式脚本提前注入到 <head> 中，防止刷新时白屏闪烁 (FOUC) -->
+		<!-- 🌟 核心修复：将脚本放在 <head> 最前面，防止闪屏并确保切页保留状态 -->
 		<script is:inline>
-			function enableDarkMode() {
-				document.body.classList.add("dark-mode");
-				localStorage.setItem("theme", "dark");
-			}
-
-			function disableDarkMode() {
-				document.body.classList.remove("dark-mode");
-				localStorage.setItem("theme", "light");
-			}
-
-			function setTheme() {
-				let theme: string | null = "light";
-
-				if (localStorage.getItem("theme")) {
-					theme = localStorage.getItem("theme");
-				} else if (
-					window.matchMedia &&
-					window.matchMedia("(prefers-color-scheme: dark)").matches
-				) {
-					theme = "dark";
+			// 主题初始化函数
+			const initTheme = () => {
+				let theme = localStorage.getItem("theme");
+				
+				// 如果没有本地记录，检查系统偏好
+				if (!theme) {
+					theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 				}
 
 				if (theme === "dark") {
-					enableDarkMode();
+					document.documentElement.classList.add("dark-mode");
+					document.body.classList.add("dark-mode");
 				} else {
-					disableDarkMode();
+					document.documentElement.classList.remove("dark-mode");
+					document.body.classList.remove("dark-mode");
 				}
-			}
+			};
 
-			// 立即执行一次
-			setTheme();
+			// 1. 页面首次加载时立即执行
+			initTheme();
 
-			// 监听 Astro View Transitions 完成事件，保证页面跳转后主题保持
-			document.addEventListener("astro:after-swap", setTheme);
+			// 2. 监听 Astro 页面切换，在 DOM 准备后、绘制前强制重设，防止短暂闪白
+			document.addEventListener("astro:before-swap", () => {
+				// 在切页前确保 html 标签上也有主题类名
+				if (localStorage.getItem("theme") === "dark") {
+					document.documentElement.classList.add("dark-mode");
+				}
+			});
+			
+			// 3. 页面切换完成后（DOM 已替换），再次同步类名，防止被新页面覆盖
+			document.addEventListener("astro:after-swap", () => {
+				initTheme();
+			});
 		</script>
 
 		<!-- SEO Meta Tags -->
@@ -77,7 +76,7 @@ const { description, title, heroImage } = Astro.props as Props;
 		<!-- Astro custom Font API -->
 		<Font cssVariable="--font-primary" />
 
-		<!-- 仅保留基础 preload，并增加条件拦截避免解析错误 -->
+		<!-- If present, preloads the image passed as a prop -->
 		{heroImage && <link rel="preload" href={heroImage.src} as="image" />}
 
 		<!-- Sitewide Scripts -->
