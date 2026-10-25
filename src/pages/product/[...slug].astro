@@ -161,7 +161,7 @@ const getBadgeClass = (tag?: string) => {
         image={optimizedBannerImage} 
     />
 
-    <!-- 🎯 页头大标题（去除了过多的 Emoji，保持 B2B 专业感） -->
+    <!-- 🎯 页头大标题 -->
     <div class="vp-page-title">
         <h1 class="title">Luxury Bathing Solutions</h1>
         <p class="lead">Explore our premium freestanding bathtubs, modern shower enclosures & elegant bathroom cabinets.</p>
@@ -181,7 +181,7 @@ const getBadgeClass = (tag?: string) => {
 
     <!-- 📦 产品网格 -->
     <section class="projects-section">
-        <div class="ProjectsContent">
+        <div class="projects-content">
             {products.map((product) => {
                 const imgUrl = typeof product.data.image === 'string' 
                   ? product.data.image 
@@ -191,7 +191,7 @@ const getBadgeClass = (tag?: string) => {
                     <a href={`/product/${product.id}`} class="project-card-link">
                         <div class="project-card">
                             <div class="banner-box">
-                                <div class="banner-img" style={`background-image: url(${imgUrl})`}></div>
+                                <div class="banner-img" style={`background-image: url('${imgUrl}')`}></div>
                             </div>
                             
                             <div class="text-content">
@@ -255,59 +255,25 @@ const getBadgeClass = (tag?: string) => {
     <CTA />
 </BaseLayout>
 
-<style lang="less">
-    /* 统一使用 CSS 变量，方便后续维护 */
-    .pagination-container {
-        display: flex;
-        justify-content: center;
-        margin: 3rem 0;
-    }
-    .pagination {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
-    .pagination-numbers {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-    
-    .pagination-btn, .pagination-number {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.5rem 0.85rem;
-        border: 1px solid #e2e8f0;
-        border-radius: 6px;
-        color: #334155;
-        text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: all 0.2s ease;
-        background-color: #fff;
-    }
-
-    /* 优化悬停效果：浅灰底 + 品牌蓝边框 */
-    .pagination-btn:hover:not(.disabled),
-    .pagination-number:hover:not(.active) {
-        border-color: var(--primary, #004B87);
-        color: var(--primary, #004B87);
-        background-color: #f8fafc; 
-    }
-
-    .pagination-number.active {
-        background-color: var(--primary, #004B87);
-        color: #ffffff;
-        border-color: var(--primary, #004B87);
-        font-weight: 600;
-    }
-
-    .pagination-btn.disabled {
-        color: #cbd5e1;
-        border-color: #f1f5f9;
-        cursor: not-allowed;
-        background-color: #f8fafc;
+<!-- 🌟 增加 is:global 使 body.dark-mode 生效 -->
+<style lang="less" is:global>
+    /* ==========================================================================
+       1. 基础排版与过滤按钮
+       ========================================================================== */
+    .vp-page-title {
+        text-align: center;
+        padding: 3.5rem 1rem 1rem 1rem;
+        .title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #111827;
+            margin: 0 0 0.5rem 0;
+        }
+        .lead {
+            font-size: 1.125rem;
+            color: #6b7280;
+            margin: 0;
+        }
     }
 
     .filter-tab-container {
@@ -348,29 +314,16 @@ const getBadgeClass = (tag?: string) => {
         }
     }
 
-    .vp-page-title {
-        text-align: center;
-        padding: 3.5rem 1rem 1rem 1rem;
-        .title {
-            font-size: 2.25rem;
-            font-weight: 800;
-            color: #111827;
-            margin: 0 0 0.5rem 0;
-        }
-        .lead {
-            font-size: 1.125rem;
-            color: #6b7280;
-            margin: 0;
-        }
-    }
-
+    /* ==========================================================================
+       2. 产品网格与卡片
+       ========================================================================== */
     .projects-section {
         padding: 1rem 1.5rem 2rem 1.5rem;
         max-width: 1200px;
         margin: 0 auto;
     }
 
-    .ProjectsContent {
+    .projects-content {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
         max-width: 1152px;
@@ -429,7 +382,7 @@ const getBadgeClass = (tag?: string) => {
 
     .title-row {
         display: flex;
-        align-items: flex-start; /* 改为 top 对齐，防止长标题挤压徽章 */
+        align-items: flex-start; 
         justify-content: space-between;
         gap: 0.5rem;
         .product-title {
@@ -459,10 +412,139 @@ const getBadgeClass = (tag?: string) => {
         border-radius: 9999px;
         white-space: nowrap;
         font-weight: 500;
-        flex-shrink: 0; /* 防止徽章被标题文字挤压变形 */
+        flex-shrink: 0;
     }
     .badge-bathtubs { background-color: var(--primary, #004B87); color: #ffffff; }
     .badge-showers { background-color: #0ea5e9; color: #ffffff; }
     .badge-cabinets { background-color: #64748b; color: #ffffff; }
     .badge-default { border: 1px solid #cbd5e1; color: #64748b; }
+
+    /* ==========================================================================
+       3. 分页器
+       ========================================================================== */
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        margin: 3rem 0;
+    }
+    .pagination {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    .pagination-numbers {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .pagination-btn, .pagination-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 0.85rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        color: #334155;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        background-color: #fff;
+    }
+
+    .pagination-btn:hover:not(.disabled),
+    .pagination-number:hover:not(.active) {
+        border-color: var(--primary, #004B87);
+        color: var(--primary, #004B87);
+        background-color: #f8fafc; 
+    }
+
+    .pagination-number.active {
+        background-color: var(--primary, #004B87);
+        color: #ffffff;
+        border-color: var(--primary, #004B87);
+        font-weight: 600;
+    }
+
+    .pagination-btn.disabled {
+        color: #cbd5e1;
+        border-color: #f1f5f9;
+        cursor: not-allowed;
+        background-color: #f8fafc;
+    }
+
+    /* ==========================================================================
+       4. 🌟 暗黑模式全面适配 (修复截图中的字体颜色问题)
+       ========================================================================== */
+    body.dark-mode {
+        .vp-page-title {
+            .title {
+                color: #ffffff !important;
+            }
+            .lead {
+                color: #94a3b8 !important;
+            }
+        }
+
+        .filter-tab-container .filter-btn {
+            background-color: #1e293b;
+            border-color: #334155;
+            color: #cbd5e1;
+
+            &:hover {
+                border-color: #cbd5e1;
+                color: #ffffff;
+            }
+            &.active {
+                background-color: var(--primary, #004B87);
+                color: #ffffff;
+                border-color: var(--primary, #004B87);
+            }
+        }
+
+        .project-card {
+            background-color: #1e293b; /* 卡片深色背景 */
+            border-color: #334155;
+
+            &:hover {
+                border-color: var(--primary, #3b82f6); /* 深色模式下高亮用稍微亮一点的蓝 */
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            }
+
+            .product-title {
+                color: #f8fafc !important;
+            }
+
+            .product-description {
+                color: #94a3b8 !important;
+            }
+        }
+
+        /* 分页器 */
+        .pagination-btn, 
+        .pagination-number {
+            background-color: #1e293b;
+            border-color: #334155;
+            color: #cbd5e1;
+
+            &:hover:not(.disabled):not(.active) {
+                background-color: #0f172a;
+                color: #ffffff;
+                border-color: #475569;
+            }
+        }
+
+        .pagination-number.active {
+            background-color: var(--primary, #004B87);
+            color: #ffffff;
+            border-color: var(--primary, #004B87);
+        }
+
+        .pagination-btn.disabled {
+            background-color: #0f172a;
+            color: #475569;
+            border-color: #1e293b;
+        }
+    }
 </style>
