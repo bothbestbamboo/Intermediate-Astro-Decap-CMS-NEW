@@ -136,7 +136,6 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 							class="cs-drop-ul cs-drop-card-style"
 							aria-labelledby="projects-dropdown-toggle"
 						>
-							<!-- 🌟 修改：更新了这里的链接和文案 -->
 							<li class="cs-drop-li">
 								<a href="/projects/bathtubs/" class="cs-li-link cs-drop-link">
 									<span class="cs-drop-title">Bathtub Projects</span>
@@ -258,22 +257,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				display: flex;
 				justify-content: center;
 				align-items: center;
-			}
-
-			.cs-active {
-				.cs-line1 {
-					top: 50%;
-					transform: translate(-50%, -50%) rotate(225deg);
-				}
-				.cs-line2 {
-					top: 50%;
-					transform: translate(-50%, -50%) rotate(-225deg);
-					transform-origin: center;
-				}
-				.cs-line3 {
-					opacity: 0;
-					bottom: 100%;
-				}
+				cursor: pointer;
 			}
 
 			.cs-box {
@@ -290,11 +274,18 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				position: absolute;
 				left: 50%;
 				transform: translateX(-50%);
+				transition: transform 0.5s, top 0.3s, bottom 0.3s, opacity 0.3s;
 			}
 
-			.cs-line1 { top: 0; transition: transform 0.5s, top 0.3s; }
-			.cs-line2 { top: 50%; transform: translateX(-50%) translateY(-50%); transition: top 0.3s, transform 0.5s; }
-			.cs-line3 { bottom: 0; transition: bottom 0.3s, opacity 0.3s; }
+			.cs-line1 { top: 0; }
+			.cs-line2 { top: 50%; transform: translateX(-50%) translateY(-50%); }
+			.cs-line3 { bottom: 0; }
+
+			.cs-active {
+				.cs-line1 { top: 50%; transform: translate(-50%, -50%) rotate(225deg); }
+				.cs-line2 { top: 50%; transform: translate(-50%, -50%) rotate(-225deg); transform-origin: center; }
+				.cs-line3 { opacity: 0; bottom: 100%; }
+			}
 
 			.cs-ul-wrapper {
 				height: 100vh;
@@ -357,12 +348,6 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				margin: 0;
 				display: inline-block;
 				position: relative;
-
-				&.cs-active {
-					&:before {
-						display: block;
-					}
-				}
 			}
 
 			.cs-button-solid {
@@ -458,12 +443,15 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			.cs-drop-title { display: block; font-weight: 600; }
 			.cs-drop-desc { display: block; font-size: 0.75rem; opacity: 0.8; margin-top: 4px; }
 
+			/* 统一定义下拉按钮外观，去除重复 */
 			.cs-dropdown-toggle {
 				background-color: transparent;
 				border: none;
 				appearance: none;
 				font-family: inherit;
 				cursor: pointer;
+				padding: 0; 
+				text-align: inherit;
 			}
 		}
 	}
@@ -536,7 +524,15 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 					&:before { display: none; }
 				}
 			}
-			.cs-dropdown-toggle { background-color: transparent; border: none; appearance: none; font-family: inherit; cursor: pointer;}
+			/* 桌面端下拉按钮保持统一样式 */
+			.cs-dropdown-toggle { 
+				background-color: transparent; 
+				border: none; 
+				appearance: none; 
+				font-family: inherit; 
+				cursor: pointer; 
+				padding: 0;
+			}
 		}
 	}
 
