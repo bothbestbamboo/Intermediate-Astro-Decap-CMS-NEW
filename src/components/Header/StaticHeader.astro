@@ -1,3 +1,4 @@
+---
 /**
  * * STATIC HEADER COMPONENT
  * * =======================
@@ -9,12 +10,12 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 <header id="cs-navigation">
 	<div class="cs-container">
-		<a href="/" class="cs-logo" aria-label="Return to Home page">
-			<img
-				src="/assets/favicons/logo-black.svg"
-				alt="XC BATH - Premium Bathtub & Shower"
-			/>
-		</a>
+	<a href="/" class="cs-logo" aria-label="Return to Home page">
+    <img
+        src="/assets/favicons/logo-black.svg"
+        alt="XC BATH - Premium Bathtub & Shower"
+    />
+</a>
 
 		<nav class="cs-nav" aria-label="main navigation">
 			<button
@@ -110,6 +111,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 							<Icon name="mdi--caret" class="cs-drop-icon" />
 						</button>
 						<ul class="cs-drop-ul cs-drop-card-style" aria-labelledby="projects-dropdown-toggle">
+							<!-- 🌟 修改：更新了这里的链接和文案 -->
 							<li class="cs-drop-li">
 								<a href="/projects/bathtubs/" class="cs-li-link cs-drop-link">
 									<span class="cs-drop-title">Bathtub Projects</span>
@@ -168,12 +170,9 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 	<---      Mobile Navigation     -->
 	<--- -------------------------- -*/
 
+	/* Mobile - 1023px */
 	@media only screen and (max-width: 63.9375rem) {
-		body {
-			&.cs-open {
-				overflow: hidden;
-			}
-		}
+		body { &.cs-open { overflow: hidden; } }
 
 		#cs-navigation {
 			width: 100%;
@@ -181,15 +180,31 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			padding: (12/16rem) (16/16rem);
 			background-color: #fff;
 			box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-			position: fixed;
+			position: fixed; 
 			z-index: 10000;
 
-			.cs-container {
-				width: 100%;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
+			&:before {
+				content: "";
+				width: 0%;
+				height: 100vh;
+				background: rgba(0, 0, 0, 0.6);
+				opacity: 0;
+				display: block;
+				position: absolute;
+				top: 100%;
+				right: 0;
+				z-index: -11;
+				transition: width 0.5s, opacity 0.3s;
+				backdrop-filter: blur(10px);
 			}
+
+			&.cs-active {
+				&:before { width: 100%; opacity: 1; }
+				.cs-ul-wrapper { opacity: 1; visibility: visible; transform: scaleX(1); transition-delay: 0.2s; }
+				.cs-li { opacity: 1; transform: translateX(0); }
+			}
+
+			.cs-container { width: 100%; display: flex; justify-content: space-between; align-items: center; }
 
 			.cs-logo {
 				width: auto;
@@ -200,13 +215,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				justify-content: flex-start;
 				align-items: center;
 				z-index: 10;
-
-				img {
-					width: 100%;
-					height: 100%;
-					object-fit: contain;
-					object-position: left;
-				}
+				img { width: 100%; height: 100%; object-fit: contain; object-position: left; }
 			}
 
 			.cs-toggle {
@@ -221,37 +230,13 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			}
 
 			.cs-active {
-				.cs-line1 {
-					top: 50%;
-					transform: translate(-50%, -50%) rotate(225deg);
-				}
-				.cs-line2 {
-					top: 50%;
-					transform: translate(-50%, -50%) rotate(-225deg);
-					transform-origin: center;
-				}
-				.cs-line3 {
-					opacity: 0;
-					bottom: 100%;
-				}
+				.cs-line1 { top: 50%; transform: translate(-50%, -50%) rotate(225deg); }
+				.cs-line2 { top: 50%; transform: translate(-50%, -50%) rotate(-225deg); transform-origin: center; }
+				.cs-line3 { opacity: 0; bottom: 100%; }
 			}
 
-			.cs-box {
-				width: clamp(1.5rem, 2vw, 1.75rem);
-				height: clamp(0.875rem, 1.5vw, 1rem);
-				position: relative;
-			}
-
-			.cs-line {
-				width: 100%;
-				height: 2px;
-				background-color: #1a1a1a;
-				border-radius: 2px;
-				position: absolute;
-				left: 50%;
-				transform: translateX(-50%);
-			}
-
+			.cs-box { width: clamp(1.5rem, 2vw, 1.75rem); height: clamp(0.875rem, 1.5vw, 1rem); position: relative; }
+			.cs-line { width: 100%; height: 2px; background-color: #1a1a1a; border-radius: 2px; position: absolute; left: 50%; transform: translateX(-50%); }
 			.cs-line1 { top: 0; transition: transform 0.5s, top 0.3s; }
 			.cs-line2 { top: 50%; transform: translateX(-50%) translateY(-50%); transition: top 0.3s, transform 0.5s; }
 			.cs-line3 { bottom: 0; transition: bottom 0.3s, opacity 0.3s; }
@@ -270,19 +255,6 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				transform: scaleX(0);
 				transition: transform 0.4s, opacity 0.3s;
 				transform-origin: top right;
-			}
-
-			&.cs-active {
-				.cs-ul-wrapper {
-					opacity: 1;
-					visibility: visible;
-					transform: scaleX(1);
-					transition-delay: 0.2s;
-				}
-				.cs-li {
-					opacity: 1;
-					transform: translateX(0);
-				}
 			}
 
 			.cs-ul {
@@ -317,49 +289,46 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				margin: 0;
 				display: inline-block;
 				position: relative;
-
-				&.cs-active {
-					&:before {
-						display: block;
-					}
-				}
+				&.cs-active { &:before { display: block; } }
 			}
 
-			.cs-button-solid {
-				display: none;
-			}
+			.cs-button-solid { display: none; }
+		}
+	}
 
-			/* Mobile Dropdown */
+	/* Dark Mode Mobile */
+	@media only screen and (max-width: 63.9375rem) {
+		body.dark-mode {
+			#cs-navigation {
+				background-color: var(--dark);
+				.cs-logo { filter: grayscale(1) brightness(1000%); }
+				.cs-line { background-color: #fff; }
+				.cs-ul-wrapper { background-color: var(--medium); }
+				.cs-li-link { color: var(--bodyTextColorWhite); }
+			}
+		}
+	}
+
+	/*-- -------------------------- -->
+	<---     Navigation Dropdown    -->
+	<--- -------------------------- -*/
+
+	/* Mobile - 1023px */
+	@media only screen and (max-width: 63.9375rem) {
+		#cs-navigation {
 			.cs-dropdown {
 				color: var(--headerColor);
 				position: relative;
 
 				&.cs-active {
-					.cs-drop-ul {
-						height: auto;
-						margin: (12/16rem) 0 0 0;
-						padding: (16/16rem);
-						opacity: 1;
-						visibility: visible;
-						transform: scale(1);
-					}
+					.cs-drop-ul { height: auto; margin: (12/16rem) 0 0 0; padding: (16/16rem); opacity: 1; visibility: visible; transform: scale(1); }
 					.cs-drop-link { opacity: 1; }
 					.cs-drop-icon { transform: rotate(0); }
 				}
-				.cs-li-link {
-					position: relative;
-					transition: opacity 0.3s;
-				}
+				.cs-li-link { position: relative; transition: opacity 0.3s; }
 			}
 
-			.cs-drop-icon {
-				width: (15/16rem);
-				height: auto;
-				display: inline-block;
-				color: #C5A059;
-				transform: rotate(180deg);
-				transition: 0.3s;
-			}
+			.cs-drop-icon { width: (15/16rem); height: auto; display: inline-block; color: #C5A059; transform: rotate(180deg); transition: 0.3s; }
 
 			.cs-drop-ul {
 				width: 100%;
@@ -381,41 +350,85 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				transform-origin: top right;
 			}
 
-			.cs-drop-li {
-				text-align: inherit;
-				list-style: none;
-			}
-
-			.cs-li-link {
-				&.cs-drop-link {
-					font-size: clamp(0.875rem, 2vw, 1.25rem);
-					color: #fff;
-					text-decoration: none;
-				}
-			}
-
+			.cs-drop-li { text-align: inherit; list-style: none; }
+			.cs-li-link { &.cs-drop-link { font-size: clamp(0.875rem, 2vw, 1.25rem); color: #fff; text-decoration: none; } }
 			.cs-drop-title { display: block; font-weight: 600; }
 			.cs-drop-desc { display: block; font-size: 0.75rem; opacity: 0.8; margin-top: 4px; }
 
-			.cs-dropdown-toggle {
-				background-color: transparent;
-				border: none;
-				appearance: none;
-				font-family: inherit;
-				cursor: pointer;
-			}
+			.cs-dropdown-toggle { background-color: transparent; border: none; appearance: none; font-family: inherit; cursor: pointer; }
 		}
 	}
 
-	/* Dark Mode Mobile */
-	@media only screen and (max-width: 63.9375rem) {
+	/* Desktop - 1024px */
+	@media only screen and (min-width: 64rem) {
+		#cs-navigation {
+			.cs-dropdown {
+				position: relative;
+				&:hover, &.cs-active {
+					cursor: pointer;
+					.cs-drop-ul { opacity: 1; visibility: visible; transform: scaleY(1); }
+					.cs-drop-li { opacity: 1; transform: translateY(0); }
+				}
+			}
+
+			.cs-dropdown:has(.cs-drop-icon) {
+				display: flex;
+				align-items: center;
+				&:hover { .cs-drop-icon { transform: rotate(0); } }
+			}
+
+			.cs-drop-icon { width: (15/16rem); height: auto; display: inline-block; color: #C5A059; transform: rotate(180deg); transition: 0.3s; }
+
+			.cs-drop-ul {
+				margin: 0;
+				background-color: #fff;
+				box-shadow: rgba(149, 157, 165, 0.18) 0px 12px 32px;
+				opacity: 0;
+				visibility: hidden;
+				position: absolute;
+				top: 100%;
+				left: 0;
+				z-index: -100;
+				overflow: hidden;
+				transform: scaleY(0);
+				transition: transform 0.3s, visibility 0.3s, opacity 0.3s;
+				transform-origin: top;
+				border-radius: 0 0 8px 8px;
+			}
+
+			.cs-drop-card-style {
+				min-width: (270/16rem);
+				padding: (10/16rem);
+				border-bottom: 4px solid var(--primary);
+
+				.cs-drop-li { margin-bottom: (6/16rem); &:last-child { margin-bottom: 0; } }
+				.cs-drop-link { padding: (10/16rem) (14/16rem); border-radius: 6px; border-left: 3px solid transparent; &:hover { background-color: #f0f5fa; border-left-color: var(--primary); } }
+			}
+
+			.cs-drop-title { display: block; font-size: (15/16rem); font-weight: 700; color: var(--headerColor); line-height: 1.2em; }
+			.cs-drop-desc { display: block; font-size: (12/16rem); color: #666; margin-top: (4/16rem); line-height: 1.2em; }
+			.cs-drop-li { font-size: (15/16rem); list-style: none; width: 100%; height: auto; color: var(--bodyTextColor); opacity: 0; display: block; transform: translateY(-10/16rem); transition: opacity 0.4s, transform 0.4s; }
+			
+			.cs-li-link {
+				&.cs-drop-link {
+					font-size: (15/16rem); line-height: 1.4em; text-decoration: none; white-space: nowrap; width: 100%; box-sizing: border-box; color: var(--bodyTextColor); display: block; transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+					&:focus-within { outline: 2px solid currentColor; outline-offset: -2px; }
+					&:before { display: none; }
+				}
+			}
+			.cs-dropdown-toggle { background-color: transparent; border: none; appearance: none; font-family: inherit; cursor: pointer; }
+		}
+	}
+
+	/* Dark Mode Dropdown Desktop */
+	@media only screen and (min-width: 0rem) {
 		body.dark-mode {
 			#cs-navigation {
-				background-color: var(--dark);
-				.cs-logo { filter: grayscale(1) brightness(1000%); }
-				.cs-line { background-color: #fff; }
-				.cs-ul-wrapper { background-color: var(--medium); }
-				.cs-li-link { color: var(--bodyTextColorWhite); }
+				.cs-drop-ul { background-color: var(--dark); }
+				.cs-drop-title { color: #fff; }
+				.cs-drop-desc { color: #aaa; }
+				.cs-li-link { &.cs-drop-link { &:hover { background-color: var(--medium); } } }
+				.cs-drop-icon { filter: grayscale(1) brightness(1000%); }
 			}
 		}
 	}
@@ -424,6 +437,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 	<---     Desktop Navigation     -->
 	<--- -------------------------- -*/
 
+	/* Small Desktop - 1024px */
 	@media only screen and (min-width: 64rem) {
 		#cs-navigation {
 			width: 100%;
@@ -441,25 +455,11 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				display: flex;
 				justify-content: flex-end;
 				align-items: center;
-				gap: (32/16rem);
+				gap: (24/16rem);
 			}
 
 			.cs-toggle { display: none; }
-
-			.cs-logo {
-				flex: 1;
-				max-width: (400/16rem);
-				height: (65/16rem);
-				margin: 0 auto 0 0;
-				padding: 0;
-				display: flex;
-				justify-content: flex-start;
-				align-items: center;
-				z-index: 100;
-
-				img { width: 100%; height: 100%; object-fit: contain; object-position: left; }
-			}
-
+			.cs-logo { width: 18.4%; max-width: (350/16rem); height: (65/16rem); margin: 0 auto 0 0; padding: 0; display: flex; justify-content: center; align-items: center; z-index: 100; svg { width: 100%; height: 100%; object-fit: contain; } }
 			.cs-ul { width: 100%; margin: 0; padding: 0; display: flex; justify-content: flex-start; align-items: center; gap: 0.25rem; }
 			.cs-li { list-style: none; padding: (32/16rem) (16/16rem); flex: none; }
 
@@ -483,7 +483,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 					opacity: 1;
 					display: block;
 					position: absolute;
-					bottom: 0;
+					bottom: (0/16rem);
 					left: 0;
 					transition: width 0.3s;
 				}
@@ -497,80 +497,8 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				text-decoration: none;
 				font-weight: 600;
 				transition: background-color 0.3s;
-				display: flex;
-				align-items: center;
-				justify-content: center;
 				&:hover { background-color: #003366 !important; }
 			}
-
-			/* Desktop Dropdown */
-			.cs-dropdown {
-				position: relative;
-				&:hover, &.cs-active {
-					cursor: pointer;
-					.cs-drop-ul { opacity: 1; visibility: visible; transform: scaleY(1); }
-					.cs-drop-li { opacity: 1; transform: translateY(0); }
-				}
-			}
-
-			.cs-dropdown:has(.cs-drop-icon) {
-				display: flex;
-				align-items: center;
-				&:hover { .cs-drop-icon { transform: rotate(0); } }
-			}
-
-			.cs-drop-icon {
-				width: (15/16rem);
-				height: auto;
-				display: inline-block;
-				color: #C5A059;
-				transform: rotate(180deg);
-				transition: 0.3s;
-			}
-
-			.cs-drop-ul {
-				margin: 0;
-				background-color: #fff;
-				box-shadow: rgba(149, 157, 165, 0.18) 0px 12px 32px;
-				opacity: 0;
-				visibility: hidden;
-				position: absolute;
-				top: 100%;
-				left: 0;
-				z-index: -100;
-				overflow: hidden;
-				transform: scaleY(0);
-				transition: transform 0.3s, visibility 0.3s, opacity 0.3s;
-				transform-origin: top;
-				border-radius: 0 0 8px 8px;
-			}
-
-			.cs-drop-card-style {
-				min-width: (270/16rem);
-				padding: (10/16rem);
-				border-bottom: 4px solid #C5A059;
-
-				.cs-drop-li { margin-bottom: (6/16rem); &:last-child { margin-bottom: 0; } }
-				.cs-drop-link {
-					padding: (10/16rem) (14/16rem);
-					border-radius: 6px;
-					border-left: 3px solid transparent;
-					&:hover { background-color: #f0f5fa; border-left-color: #C5A059; }
-				}
-			}
-
-			.cs-drop-title { display: block; font-size: (15/16rem); font-weight: 700; color: var(--headerColor); line-height: 1.2em; }
-			.cs-drop-desc { display: block; font-size: (12/16rem); color: #666; margin-top: (4/16rem); line-height: 1.2em; }
-			.cs-drop-li { font-size: (15/16rem); list-style: none; width: 100%; height: auto; color: var(--bodyTextColor); opacity: 0; display: block; transform: translateY(-10/16rem); transition: opacity 0.4s, transform 0.4s; }
-			
-			.cs-li-link {
-				&.cs-drop-link {
-					font-size: (15/16rem); line-height: 1.4em; text-decoration: none; white-space: nowrap; width: 100%; box-sizing: border-box; color: var(--bodyTextColor); display: block; transition: color 0.2s, background-color 0.2s, border-color 0.2s;
-					&:focus-within { outline: 2px solid currentColor; outline-offset: -2px; }
-					&:before { display: none; }
-				}
-			}
-			.cs-dropdown-toggle { background-color: transparent; border: none; appearance: none; font-family: inherit; cursor: pointer; }
 		}
 	}
 
@@ -584,11 +512,6 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 					color: var(--bodyTextColorWhite);
 					&:before { background-color: #C5A059; }
 				}
-				.cs-drop-ul { background-color: var(--dark); }
-				.cs-drop-title { color: #fff; }
-				.cs-drop-desc { color: #aaa; }
-				.cs-li-link { &.cs-drop-link { &:hover { background-color: var(--medium); } } }
-				.cs-drop-icon { color: #C5A059; filter: none; }
 			}
 		}
 	}
