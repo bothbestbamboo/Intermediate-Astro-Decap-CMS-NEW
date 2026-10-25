@@ -7,62 +7,78 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/Banner/Banner.astro";
 import CTA from "@components/CTA/CTASimple.astro";
 
-// Banner Image (建议替换为浴室柜相关的 Banner 图)
+// Banner Image
 import landingImage from "@assets/images/gallery/bannerplywood.jpg";
 
-// Project Showcase Images (请替换为你实际的浴室柜项目图片)
-import port1 from "@assets/images/projects/ply1.jpg";
-import port2 from "@assets/images/projects/ply2.jpg";
-import port3 from "@assets/images/projects/ply3.jpg";
-import port4 from "@assets/images/projects/ply4.jpg";
-import port5 from "@assets/images/projects/ply5.jpg";
-import port6 from "@assets/images/projects/ply6.jpg";
+// Project Showcase Images
+import port1 from "@assets/images/projects/pvc-bathroom-vanity42035.webp";
+import port2 from "@assets/images/projects/24-wood-bathroom-vanitya7672.webp";
+import port3 from "@assets/images/projects/48-wood-bathroom-vanity06e94.webp";
+import port4 from "@assets/images/projects/dark-wood-bathroom-cabinet7225c.webp";
+import port5 from "@assets/images/projects/modern-wood-bathroom-vanityda507.webp";
+import port6 from "@assets/images/projects/raw-wood-bathroom-vanity0bf29.webp";
+import port7 from "@assets/images/projects/real-wood-bathroom-vanitiesfd6dc.jpg";
+import port8 from "@assets/images/projects/single-wood-bathroom-vanity8aebc.webp";
 
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 
-// Structured Bath Cabinet Project Data
+// Structured Bath Cabinet Project Data (Based on the 8 provided images)
 const projectItems = [
 	{
 		img: port1,
-		title: "Modern Floating Vanity Project",
-		category: "Wall-Mounted Bath Cabinets",
-		specs: "Space-saving wall-mounted vanity with soft-close drawers, featuring moisture-resistant materials and a sleek minimalist aesthetic.",
+		title: "Smart LED Mirror Vanity Set",
+		category: "Modern Wall-Mounted Cabinets",
+		specs: "Ultra-modern floating vanity featuring a smart LED mirror with touch controls, gold-accented glass shelving, and a sleek seamless basin.",
 		location: "Luxury Apartment",
 	},
 	{
 		img: port2,
-		title: "Double Sink Master Bathroom Vanity",
-		category: "Double Basin Vanities",
-		specs: "Spacious double-sink vanity with ample storage, engineered for high-end residential master bathrooms.",
-		location: "Private Villa",
-	},
-	{
-		img: port3,
-		title: "Commercial Hotel Bathroom Storage",
-		category: "Freestanding Bath Cabinets",
-		specs: "Freestanding vanity unit with durable construction and a premium finish, designed for long-term commercial use.",
-		location: "Boutique Hotel",
-	},
-	{
-		img: port4,
-		title: "Minimalist Solid Wood Vanity",
-		category: "Solid Wood Bath Cabinets",
-		specs: "Crafted from premium solid wood with a natural grain finish, offering exceptional durability and warmth.",
-		location: "Residential Interior",
-	},
-	{
-		img: port5,
-		title: "Smart Mirror Integrated Vanity",
-		category: "Smart Bathroom Vanities",
-		specs: "Integrated LED mirror with anti-fog technology, paired with a modern vanity unit for a high-tech bathroom experience.",
+		title: "Minimalist Wood Grain Floating Vanity",
+		category: "Wood Finish Wall-Mounted",
+		specs: "Clean, handleless wood-grain floating vanity paired with a smart LED mirror and a tall matching side storage cabinet.",
 		location: "Modern Residence",
 	},
 	{
+		img: port3,
+		title: "Marble Top Fluted Vanity with LED Lighting",
+		category: "Luxury Fluted Bath Cabinets",
+		specs: "Elegant fluted ribbed cabinet design topped with premium marble. Features a smart mirror with integrated clock display and under-cabinet LED lighting.",
+		location: "High-End Villa",
+	},
+	{
+		img: port4,
+		title: "Classic Freestanding Solid Wood Vanity",
+		category: "Traditional Freestanding Cabinets",
+		specs: "Timeless freestanding cabinet crafted with a rich wood finish, featuring classic paneled doors, drawers, and a versatile open side shelf.",
+		location: "Heritage Renovation",
+	},
+	{
+		img: port5,
+		title: "Grey Fluted Smart Vanity System",
+		category: "Contemporary Smart Cabinets",
+		specs: "Sleek grey fluted cabinetry with a white marble countertop, integrated smart mirror, and gold hardware accents for a sophisticated modern look.",
+		location: "Boutique Hotel",
+	},
+	{
 		img: port6,
-		title: "Compact Corner Bathroom Cabinet",
-		category: "Corner Vanity Units",
-		specs: "Custom corner design maximizing storage in compact spaces, featuring soft-close hinges and a clean finish.",
-		location: "Small Apartment",
+		title: "Natural Oak Freestanding Cabinet",
+		category: "Scandinavian Style Cabinets",
+		specs: "Warm natural oak freestanding vanity with a solid base, offering a minimalist, handleless design that blends seamlessly into bright bathroom spaces.",
+		location: "Residential Interior",
+	},
+	{
+		img: port7,
+		title: "Double Sink Marble Vanity Set",
+		category: "Double Basin Bath Cabinets",
+		specs: "Luxurious double basin vanity with a thick marble countertop and black wood-grain finish, complete with under-shelf LED lighting and smart mirrors.",
+		location: "Commercial Project",
+	},
+	{
+		img: port8,
+		title: "White Marble Smart Combo Vanity",
+		category: "Custom Smart Vanities",
+		specs: "Expansive white marble-finish vanity featuring matching smart mirror cabinets, open shelving with gold trim, and ample storage for premium bathrooms.",
+		location: "Luxury Penthouse",
 	},
 ];
 ---

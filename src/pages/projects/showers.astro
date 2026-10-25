@@ -7,16 +7,18 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/Banner/Banner.astro";
 import CTA from "@components/CTA/CTASimple.astro";
 
-// Banner Image (建议替换为淋浴房相关的 Banner 图)
+// Banner Image
 import landingImage from "@assets/images/gallery/bannerdecking.jpg";
 
-// Project Showcase Images (请替换为你实际的淋浴房项目图片)
-import port1 from "@assets/images/projects/decking1.jpg";
-import port2 from "@assets/images/projects/decking2.jpg";
-import port3 from "@assets/images/projects/decking3.jpg";
-import port4 from "@assets/images/projects/decking4.jpg";
-import port5 from "@assets/images/projects/decking5.jpg";
-import port6 from "@assets/images/projects/decking6.jpg";
+// Project Showcase Images
+import port1 from "@assets/images/projects/rectangular-corner-shower-enclosure9a5f6.webp";
+import port2 from "@assets/images/projects/rectangular-shower-door75335.webp";
+import port3 from "@assets/images/projects/rectangular-shower-enclosure-with-pivot-door72395.webp";
+import port4 from "@assets/images/projects/rectangular-shower-units7a512.webp";
+import port5 from "@assets/images/projects/rectangular-walk-in-shower-enclosure8e774.webp";
+import port6 from "@assets/images/projects/round-corner-shower-stall038ae.webp";
+import port7 from "@assets/images/projects/walk-in-shower-cubicle0eab9.webp";
+import port8 from "@assets/images/projects/walk-in-frameless-shower-enclosure8d3bd.webp";
 
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 
@@ -24,45 +26,59 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 const projectItems = [
 	{
 		img: port1,
-		title: "Modern Villa Frameless Shower Enclosure",
-		category: "Frameless Glass Showers",
-		specs: "Premium 10mm tempered glass with polished hardware, creating a seamless and spacious look for high-end residential bathrooms.",
-		location: "Private Villa",
+		title: "Diamond Pivot Shower Enclosure",
+		category: "Corner Pivot Doors",
+		specs: "Space-saving diamond-shaped corner shower enclosure with dual pivot doors, crafted with premium tempered glass and silver hardware.",
+		location: "Modern Residence",
 	},
 	{
 		img: port2,
-		title: "Luxury Hotel Bathroom Glass Partition",
-		category: "Semi-Frameless Shower Doors",
-		specs: "Sturdy aluminum frame with clear tempered glass, offering superior waterproofing and easy-clean surfaces for hospitality projects.",
-		location: "Commercial Hotel",
+		title: "Frameless Walk-in Shower Screen",
+		category: "Walk-in Open Showers",
+		specs: "Ultra-clear single fixed glass panel with matte black hardware, delivering a minimalist, open-concept feel for luxury bathrooms.",
+		location: "High-End Villa",
 	},
 	{
 		img: port3,
-		title: "Contemporary Apartment Corner Shower",
-		category: "Pivot & Hinge Shower Doors",
-		specs: "Space-saving corner installation with smooth pivot hinges and magnetic seals, maximizing functionality in modern apartments.",
-		location: "Residential Apartment",
+		title: "Matte Black Double Swing Enclosure",
+		category: "Semi-Frameless Shower Doors",
+		specs: "Sophisticated double swing doors with sleek matte black frames and handles, offering wide access and a striking modern aesthetic.",
+		location: "Designer Apartment",
 	},
 	{
 		img: port4,
-		title: "Resort Walk-in Shower Screen",
-		category: "Walk-in Open Showers",
-		specs: "Single fixed glass panel design for a minimalist open-concept bathroom, treated with nano anti-limescale coating.",
-		location: "Resort & Spa",
+		title: "Frosted Glass Corner Shower Cubicle",
+		category: "Privacy Corner Showers",
+		specs: "Black-framed corner shower featuring frosted glass panels for enhanced privacy, perfect for shared family bathrooms.",
+		location: "Residential Project",
 	},
 	{
 		img: port5,
-		title: "Luxury Master Bathroom Sliding Shower",
-		category: "Sliding Glass Shower Doors",
-		specs: "Smooth sliding mechanism with dual rollers, perfect for large bathroom spaces, featuring premium brushed gold finish.",
-		location: "Luxury Residence",
+		title: "Gold Frame Fluted Glass Walk-in",
+		category: "Luxury Walk-in Screens",
+		specs: "Stunning half-wall gold frame design combining clear glass with fluted privacy panels, bringing a touch of art-deco elegance.",
+		location: "Boutique Hotel",
 	},
 	{
 		img: port6,
-		title: "Commercial Gym & Club Shower Enclosures",
-		category: "Heavy-Duty Public Showers",
-		specs: "Robust heavy-duty tempered glass and reinforced hardware engineered to withstand high-frequency public use and strict safety standards.",
-		location: "Commercial Fitness Center",
+		title: "Curved Sliding Shower Enclosure",
+		category: "Quadrant Sliding Doors",
+		specs: "Classic curved sliding shower enclosure maximizing corner space, featuring smooth roller mechanisms and easy-clean glass.",
+		location: "Classic Bathroom",
+	},
+	{
+		img: port7,
+		title: "Gold Sliding Glass Shower Door",
+		category: "Sliding Glass Shower Doors",
+		specs: "Premium top-rail sliding shower door with elegant brushed gold hardware, providing smooth operation and a luxurious finish.",
+		location: "Luxury Master Bath",
+	},
+	{
+		img: port8,
+		title: "Classic Gold Frame Sliding Enclosure",
+		category: "Traditional Sliding Showers",
+		specs: "Timeless gold-framed sliding enclosure with an integrated towel bar, blending classic French elegance with modern functionality.",
+		location: "Heritage Renovation",
 	},
 ];
 ---
@@ -206,7 +222,7 @@ const projectItems = [
 </script>
 
 <style>
-	/* 保持与 bathtubs.astro 相同的样式代码，由于篇幅限制，请直接复制 bathtubs.astro 的 <style> 部分过来即可，无需更改 */
+	/* 保持与其他分类页一致的样式 */
 	.projects-section { padding: 4rem 1.5rem; background-color: #f8fafc; }
 	.cs-container { max-width: 1280px; margin: 0 auto; }
 	.section-intro { text-align: center; max-width: 750px; margin: 0 auto 2.5rem auto; }

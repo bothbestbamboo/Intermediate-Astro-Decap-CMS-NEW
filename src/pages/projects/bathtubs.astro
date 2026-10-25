@@ -10,15 +10,15 @@ import CTA from "@components/CTA/CTASimple.astro";
 // Banner Image (建议替换为浴缸相关的 Banner 图)
 import landingImage from "@assets/images/gallery/bannerflooring.jpg";
 
-// Project Showcase Images (请替换为你实际的浴缸项目图片)
-import port1 from "@assets/images/projects/floor1.jpg";
-import port2 from "@assets/images/projects/floor2.jpg";
-import port3 from "@assets/images/projects/floor3.jpg";
-import port4 from "@assets/images/projects/floor4.jpg";
-import port5 from "@assets/images/projects/floor5.jpg";
-import port6 from "@assets/images/projects/floor6.jpg";
-import port7 from "@assets/images/projects/floor7.jpg";
-import port8 from "@assets/images/projects/floor8.jpg";
+// Project Showcase Images (对应你提供的 8 张浴缸图片，请确保文件名一致)
+import port1 from "@assets/images/projects/Modern-Free-Stand-Bath-Tub-Freestanding-Solid-Surface-Bath-Tub-Bathtub-for-Soaking.webp"; // 图1：灰色双端浴缸
+import port2 from "@assets/images/projects/Modern-Freestanding-Acrylic-Bathtub-Soaking-Corner-Bath-Tub-with-Drainer-Faucet-Included-for-Hotels.webp"; // 图2：白色极简大浴缸
+import port3 from "@assets/images/projects/Modern-Freestanding-Artificial-Stone-Bathtub-Solid-Surface-with-Drainage-Resin-Soaking-Tub-for-Hotel-Villa-Apartment-Use-1.webp"; // 图3：黑白金现代浴缸
+import port4 from "@assets/images/projects/Modern-Simple-Design-Freestanding-Customized-Solid-Surface-Free-Standing-Bathtub-Mutil-Color-Bathtub.webp"; // 图4：琥珀色透明树脂浴缸
+import port5 from "@assets/images/projects/New-Modern-Free-Standing-Soaking-Bathtub-SPA-Bathroom-Sanitary-Ware-Acrylic-Artificial-Stone-Massage-Bath-Tub-With-Faucet.webp"; // 图5：条纹/罗马柱白色浴缸
+import port6 from "@assets/images/projects/Colorful-Freestanding-Bathtub-Solid-Surface-Blue-Bathtub.webp"; // 图6：深海蓝磨砂浴缸
+import port7 from "@assets/images/projects/Freestanding-Acrylic-Bathtub-Modern-Soaking-Tub-for-Luxury-Bathroom.webp"; // 图7：经典复古裙边浴缸
+import port8 from "@assets/images/projects/Luxury-Thermostatic-Baby-Spa-Bathtub-Whirlpool-Freestanding-Acrylic-Bubble-Massage-Bath-Tub-1.webp"; // 图8：透明扇形按摩浴缸
 
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 
@@ -26,59 +26,59 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 const projectItems = [
 	{
 		img: port1,
-		title: "Luxury Hotel Suite Freestanding Tub",
+		title: "Modern Asymmetrical Double-Ended Bathtub",
 		category: "Modern Acrylic Bathtubs",
-		specs: "High-quality pure acrylic freestanding bathtub with excellent heat retention and smooth, non-porous surface for ultimate comfort.",
-		location: "Hospitality Project",
+		specs: "Ergonomically designed asymmetrical double-ended tub, featuring a sleek matte grey exterior and a comfortable, deep soaking interior for ultimate relaxation.",
+		location: "Luxury Residential",
 	},
 	{
 		img: port2,
-		title: "Residential Spa Master Bathroom",
-		category: "Whirlpool & Massage Tubs",
-		specs: "Integrated hydrotherapy whirlpool system with ergonomic design, delivering a relaxing spa experience at home.",
-		location: "Private Villa",
+		title: "Contemporary Rectangular Freestanding Tub",
+		category: "Minimalist Freestanding Tubs",
+		specs: "Clean, straight lines with softly rounded corners, crafted from high-gloss pure acrylic. Perfect for modern, minimalist bathroom spaces.",
+		location: "High-End Apartment",
 	},
 	{
 		img: port3,
-		title: "Commercial Resort Outdoor Jacuzzi",
-		category: "Outdoor Hot Tubs",
-		specs: "Weather-resistant exterior bathtub engineered for outdoor landscapes, featuring robust insulation and anti-slip base.",
-		location: "Resort & Leisure",
+		title: "Luxury Oval Freestanding Bathtub",
+		category: "Whirlpool & Massage Tubs",
+		specs: "Classic oval silhouette paired with a premium matte black floor-mounted faucet, offering exceptional heat retention and a spa-like experience.",
+		location: "Hotel Suite Project",
 	},
 	{
 		img: port4,
-		title: "Boutique Hotel Guest Room Fit-Out",
-		category: "Compact Freestanding Tubs",
-		specs: "Space-saving freestanding bathtub tailored for compact bathrooms, combining minimalist aesthetics with ergonomic depth.",
-		location: "Boutique Hotel",
+		title: "Transparent Amber Resin Freestanding Tub",
+		category: "Custom Resin Bathtubs",
+		specs: "A true centerpiece featuring a stunning translucent amber resin construction. Designed for ultra-luxury villas and boutique hospitality spaces.",
+		location: "Boutique Resort",
 	},
 	{
 		img: port5,
-		title: "Executive Penthouse Corner Bathtub",
-		category: "Corner Acrylic Bathtubs",
-		specs: "Custom corner design maximizing space utilization, featuring a sleek modern finish and integrated overflow system.",
-		location: "Luxury Apartment",
+		title: "Fluted Ribbed Acrylic Bathtub",
+		category: "Designer Acrylic Tubs",
+		specs: "Featuring an elegant vertically fluted exterior, this tub blends classical architectural elements with modern acrylic craftsmanship for a sophisticated look.",
+		location: "Luxury Villa",
 	},
 	{
 		img: port6,
-		title: "Wellness Center Hydrotherapy Suite",
-		category: "Commercial Whirlpools",
-		specs: "Large-scale commercial whirlpool tub engineered for continuous heavy use, equipped with targeted jet massage systems.",
-		location: "Wellness Center",
+		title: "Matte Deep Blue Freestanding Bathtub",
+		category: "Custom Colored Bathtubs",
+		specs: "Striking matte deep blue finish, custom-molded for clients seeking a bold, statement-making focal point in contemporary bathroom designs.",
+		location: "Designer Residence",
 	},
 	{
 		img: port7,
-		title: "Modern Minimalist Bathroom Project",
-		category: "Flat-Bottom Freestanding Tubs",
-		specs: "Ultra-slim edge design with a flat bottom structure, providing high stability and a clean, contemporary look.",
-		location: "Residential Interior",
+		title: "Classic Vintage Skirted Bathtub",
+		category: "Traditional Skirted Tubs",
+		specs: "Elegant pedestal-style skirted base with traditional detailing, paired with vintage-style chrome hardware for a timeless, classic bathroom aesthetic.",
+		location: "Heritage Renovation",
 	},
 	{
 		img: port8,
-		title: "Family Villa Double-Ended Bathtub",
-		category: "Double-Ended Soaking Tubs",
-		specs: "Spacious double-ended acrylic tub allowing comfortable soaking for two, featuring premium reinforcement for exceptional durability.",
-		location: "Luxury Residence",
+		title: "Transparent Fan-Shaped Whirlpool Tub",
+		category: "Luxury Hydrotherapy Tubs",
+		specs: "Advanced transparent front panel with integrated LED lighting and targeted water jets, delivering a high-tech, immersive massage experience.",
+		location: "Wellness Center",
 	},
 ];
 ---
