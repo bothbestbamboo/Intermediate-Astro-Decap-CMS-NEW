@@ -117,8 +117,8 @@ import profile4 from "@assets/images/testimonials/profile-4.png";
 			position: absolute;
 			top: (-40/16rem);
 			border-radius: 50%;
-			object-fit: cover; /* 修复图片变形 */
-			background-color: #fff; /* 防止透明底漏色 */
+			object-fit: cover;
+			background-color: #fff;
 		}
 
 		.cs-item-p {
@@ -143,7 +143,7 @@ import profile4 from "@assets/images/testimonials/profile-4.png";
 		.cs-desc {
 			font-size: (14/16rem);
 			font-weight: 400;
-			color: #353535; /* 修复了原来无效的 var(#353535) */
+			color: #353535; /* 修复了原本无效的 var 写法 */
 			display: block;
 		}
 
@@ -173,9 +173,9 @@ import profile4 from "@assets/images/testimonials/profile-4.png";
 	/* Dark Mode */
 	body.dark-mode {
 		#reviews {
-			/* 🌟 统一修复：强制设置为灰蓝色（可替换为你的全局变量如 var(--secondary)） */
+			/* 🌟 修复：使用和 About Us 相同的颜色变量，或直接定义蓝灰色 */
 			.cs-topper {
-				color: #83a2b5 !important;
+				color: var(--primaryLight) !important;
 			}
 
 			.cs-title,
@@ -199,7 +199,7 @@ import profile4 from "@assets/images/testimonials/profile-4.png";
 			}
 
 			.cs-desc {
-				color: var(--primaryLight, #aed52b);
+				color: var(--primaryLight);
 			}
 		}
 	}

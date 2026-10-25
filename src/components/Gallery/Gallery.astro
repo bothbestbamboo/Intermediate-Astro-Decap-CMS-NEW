@@ -145,7 +145,7 @@ import port9 from "@assets/images/projects/port9.jpg";
       font-size: ~"min(1.1vw, 1em)";
       width: 100%;
       max-width: (1322/16em);
-      margin: 0 auto (60/16rem);
+      margin: 0 auto (60/16em);
       display: flex;
       justify-content: center;
       align-items: flex-start;
@@ -163,7 +163,7 @@ import port9 from "@assets/images/projects/port9.jpg";
     .cs-picture {
       display: block;
       position: relative;
-      width: (420/16em); /* 合并了重复的宽度定义 */
+      width: (420/16em); /* 合并重复代码 */
       
       img {
         width: 100%;
@@ -198,9 +198,9 @@ import port9 from "@assets/images/projects/port9.jpg";
   /* Dark mode */
   body.dark-mode {
     #gallery {
-      /* 🌟 统一修复：强制设置为灰蓝色（可替换为你的全局变量如 var(--secondary)） */
+      /* 🌟 修复：使用和 About Us 相同的颜色变量 */
       .cs-topper {
-        color: #83a2b5 !important;
+        color: var(--primaryLight) !important;
       }
       
       .cs-title {
