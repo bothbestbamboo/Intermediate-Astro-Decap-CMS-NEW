@@ -10,12 +10,12 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 <header id="cs-navigation">
 	<div class="cs-container">
-	<a href="/" class="cs-logo" aria-label="Return to Home page">
-    <img
-        src="/assets/favicons/logo-black.svg"
-        alt="XC BATH - Premium Bathtub & Shower"
-    />
-</a>
+		<a href="/" class="cs-logo" aria-label="Return to Home page">
+			<img
+				src="/assets/favicons/logo-black.svg"
+				alt="XC BATH - Premium Bathtub & Shower"
+			/>
+		</a>
 
 		<nav class="cs-nav" aria-label="main navigation">
 			<button
@@ -111,7 +111,6 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 							<Icon name="mdi--caret" class="cs-drop-icon" />
 						</button>
 						<ul class="cs-drop-ul cs-drop-card-style" aria-labelledby="projects-dropdown-toggle">
-							<!-- 🌟 修改：更新了这里的链接和文案 -->
 							<li class="cs-drop-li">
 								<a href="/projects/bathtubs/" class="cs-li-link cs-drop-link">
 									<span class="cs-drop-title">Bathtub Projects</span>
@@ -172,7 +171,11 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 	/* Mobile - 1023px */
 	@media only screen and (max-width: 63.9375rem) {
-		body { &.cs-open { overflow: hidden; } }
+		body {
+			&.cs-open {
+				overflow: hidden;
+			}
+		}
 
 		#cs-navigation {
 			width: 100%;
@@ -180,7 +183,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			padding: (12/16rem) (16/16rem);
 			background-color: #fff;
 			box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-			position: fixed; 
+			position: fixed;
 			z-index: 10000;
 
 			&:before {
@@ -204,7 +207,12 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				.cs-li { opacity: 1; transform: translateX(0); }
 			}
 
-			.cs-container { width: 100%; display: flex; justify-content: space-between; align-items: center; }
+			.cs-container {
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
 
 			.cs-logo {
 				width: auto;
@@ -215,6 +223,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				justify-content: flex-start;
 				align-items: center;
 				z-index: 10;
+
 				img { width: 100%; height: 100%; object-fit: contain; object-position: left; }
 			}
 
@@ -227,19 +236,35 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				display: flex;
 				justify-content: center;
 				align-items: center;
+				cursor: pointer;
 			}
+
+			.cs-box {
+				width: clamp(1.5rem, 2vw, 1.75rem);
+				height: clamp(0.875rem, 1.5vw, 1rem);
+				position: relative;
+			}
+
+			.cs-line {
+				width: 100%;
+				height: 2px;
+				background-color: #1a1a1a;
+				border-radius: 2px;
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				transition: transform 0.5s, top 0.3s, bottom 0.3s, opacity 0.3s;
+			}
+
+			.cs-line1 { top: 0; }
+			.cs-line2 { top: 50%; transform: translateX(-50%) translateY(-50%); }
+			.cs-line3 { bottom: 0; }
 
 			.cs-active {
 				.cs-line1 { top: 50%; transform: translate(-50%, -50%) rotate(225deg); }
 				.cs-line2 { top: 50%; transform: translate(-50%, -50%) rotate(-225deg); transform-origin: center; }
 				.cs-line3 { opacity: 0; bottom: 100%; }
 			}
-
-			.cs-box { width: clamp(1.5rem, 2vw, 1.75rem); height: clamp(0.875rem, 1.5vw, 1rem); position: relative; }
-			.cs-line { width: 100%; height: 2px; background-color: #1a1a1a; border-radius: 2px; position: absolute; left: 50%; transform: translateX(-50%); }
-			.cs-line1 { top: 0; transition: transform 0.5s, top 0.3s; }
-			.cs-line2 { top: 50%; transform: translateX(-50%) translateY(-50%); transition: top 0.3s, transform 0.5s; }
-			.cs-line3 { bottom: 0; transition: bottom 0.3s, opacity 0.3s; }
 
 			.cs-ul-wrapper {
 				height: 100vh;
@@ -289,7 +314,6 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				margin: 0;
 				display: inline-block;
 				position: relative;
-				&.cs-active { &:before { display: block; } }
 			}
 
 			.cs-button-solid { display: none; }
@@ -355,7 +379,16 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			.cs-drop-title { display: block; font-weight: 600; }
 			.cs-drop-desc { display: block; font-size: 0.75rem; opacity: 0.8; margin-top: 4px; }
 
-			.cs-dropdown-toggle { background-color: transparent; border: none; appearance: none; font-family: inherit; cursor: pointer; }
+			/* 统一按钮清理 */
+			.cs-dropdown-toggle {
+				background-color: transparent;
+				border: none;
+				appearance: none;
+				font-family: inherit;
+				cursor: pointer;
+				padding: 0;
+				text-align: inherit;
+			}
 		}
 	}
 
@@ -416,7 +449,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 					&:before { display: none; }
 				}
 			}
-			.cs-dropdown-toggle { background-color: transparent; border: none; appearance: none; font-family: inherit; cursor: pointer; }
+			.cs-dropdown-toggle { background-color: transparent; border: none; appearance: none; font-family: inherit; cursor: pointer; padding: 0; }
 		}
 	}
 
@@ -459,7 +492,20 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			}
 
 			.cs-toggle { display: none; }
-			.cs-logo { width: 18.4%; max-width: (350/16rem); height: (65/16rem); margin: 0 auto 0 0; padding: 0; display: flex; justify-content: center; align-items: center; z-index: 100; svg { width: 100%; height: 100%; object-fit: contain; } }
+
+			.cs-logo { 
+				flex: 1; 
+				max-width: (350/16rem); 
+				height: (65/16rem); 
+				margin: 0 auto 0 0; 
+				padding: 0; 
+				display: flex; 
+				justify-content: center; 
+				align-items: center; 
+				z-index: 100; 
+				img { width: 100%; height: 100%; object-fit: contain; object-position: left; } 
+			}
+			
 			.cs-ul { width: 100%; margin: 0; padding: 0; display: flex; justify-content: flex-start; align-items: center; gap: 0.25rem; }
 			.cs-li { list-style: none; padding: (32/16rem) (16/16rem); flex: none; }
 
@@ -497,6 +543,9 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				text-decoration: none;
 				font-weight: 600;
 				transition: background-color 0.3s;
+				display: flex;
+				align-items: center;
+				justify-content: center;
 				&:hover { background-color: #003366 !important; }
 			}
 		}
