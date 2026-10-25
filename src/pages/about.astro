@@ -8,19 +8,19 @@ import Banner from "@components/Banner/Banner.astro";
 import FAQAbout from "@components/FAQ/FAQAbout.astro";
 import CTA from "@components/CTA/CTASimple.astro";
 
-// Hero Image (建议换成一张高逼格的整体卫浴场景图或者工厂大门)
+// Hero Image
 import landingImage from "@assets/images/gallery/bannerproduct.jpg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 
-// 你提供的 7 张生产与展会图片 (对应你上传的顺序)
-import factoryAcrylic from "@assets/images/about/xc-bath-1.jpg"; // 图1：亚克力板/初加工
-import factoryMolding from "@assets/images/about/xc-bath-2.jpg"; // 图2：浴缸成型/流水线
-import factoryExhibition from "@assets/images/about/xc-bath-3.jpg"; // 图3：展会洽谈/客户看浴缸
-import factoryGrinding from "@assets/images/about/xc-bath-4.jpg"; // 图4：工人打磨/抛光
-import factorySpraying from "@assets/images/about/xc-bath-5.jpg"; // 图5：喷涂/玻璃钢加强层
-import factoryAssembly from "@assets/images/about/xc-bath-7.jpg"; // 图6：半成品浴缸排列
-import factoryMachining from "@assets/images/about/xc-bath-6.jpg"; // 图7：机器加工/开孔(根据图片推测)
-import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg"; // 图8：生产车间
+// Factory Images
+import factoryAcrylic from "@assets/images/about/xc-bath-1.jpg";
+import factoryMolding from "@assets/images/about/xc-bath-2.jpg";
+import factoryExhibition from "@assets/images/about/xc-bath-3.jpg";
+import factoryGrinding from "@assets/images/about/xc-bath-4.jpg";
+import factorySpraying from "@assets/images/about/xc-bath-5.jpg";
+import factoryAssembly from "@assets/images/about/xc-bath-7.jpg";
+import factoryMachining from "@assets/images/about/xc-bath-6.jpg";
+import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg";
 ---
 
 <BaseLayout
@@ -87,7 +87,6 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg"; // 图8：生�
 
 			<div class="cs-timeline-container">
 				<div class="cs-timeline">
-					<!-- Phase 1: Foundation -->
 					<div class="cs-timeline-item">
 						<div class="cs-timeline-dot"></div>
 						<div class="cs-timeline-content">
@@ -100,7 +99,6 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg"; // 图8：生�
 						</div>
 					</div>
 
-					<!-- Phase 2: Achievements -->
 					<div class="cs-timeline-item">
 						<div class="cs-timeline-dot"></div>
 						<div class="cs-timeline-content">
@@ -114,7 +112,6 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg"; // 图8：生�
 						</div>
 					</div>
 
-					<!-- Phase 3: Global Expansion -->
 					<div class="cs-timeline-item">
 						<div class="cs-timeline-dot"></div>
 						<div class="cs-timeline-content">
@@ -128,7 +125,6 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg"; // 图8：生�
 						</div>
 					</div>
 
-					<!-- Phase 4: Digital & Smart Manufacturing -->
 					<div class="cs-timeline-item">
 						<div class="cs-timeline-dot"></div>
 						<div class="cs-timeline-content">
@@ -147,9 +143,7 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg"; // 图8：生�
 			<!-- Section 4: Core Manufacturing Infrastructure -->
 			<div class="cs-section-header">
 				<span class="cs-topper">FACTORY CAPABILITIES</span>
-				<h2 class="cs-title">
-					Advanced Manufacturing & Automation
-				</h2>
+				<h2 class="cs-title">Advanced Manufacturing & Automation</h2>
 			</div>
 
 			<div class="cs-grid-4">
@@ -334,7 +328,7 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg"; // 图8：生�
 			font-size: (14/16rem);
 			font-weight: 700;
 			letter-spacing: 0.1em;
-			color: var(--primary, #004B87); /* 改为深海蓝 */
+			color: var(--primary);
 			display: block;
 			margin-bottom: (8/16rem);
 			text-transform: uppercase;
@@ -379,7 +373,7 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg"; // 图8：生�
 			padding: (24/16rem);
 			border-radius: (12/16rem);
 			text-align: center;
-			border-bottom: 3px solid var(--primary, #004B87);
+			border-bottom: 3px solid var(--primary);
 
 			.cs-stat-number {
 				display: block;
@@ -395,7 +389,7 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg"; // 图8：生�
 			}
 		}
 
-		/* 2. About Hero (Side by side) */
+		/* 2. About Hero */
 		.cs-about-hero {
 			display: flex;
 			flex-direction: column;
@@ -434,7 +428,7 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg"; // 图8：生�
 			}
 		}
 
-		/* Timeline Section Styles */
+		/* Timeline Section */
 		.cs-timeline-container {
 			max-width: (900/16rem);
 			margin: 0 auto (60/16rem);
@@ -443,7 +437,7 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg"; // 图8：生�
 
 			.cs-timeline {
 				position: relative;
-				border-left: 2px solid var(--primary, #004B87);
+				border-left: 2px solid var(--primary);
 				margin-left: (20/16rem);
 
 				@media only screen and (min-width: 48em) {
@@ -465,10 +459,10 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg"; // 图8：生�
 						top: (4/16rem);
 						width: (16/16rem);
 						height: (16/16rem);
-						background: var(--primary, #004B87);
+						background: var(--primary);
 						border: 3px solid #fff;
 						border-radius: 50%;
-						box-shadow: 0 0 0 2px var(--primary, #004B87);
+						box-shadow: 0 0 0 2px var(--primary);
 					}
 
 					.cs-timeline-content {
@@ -483,7 +477,7 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg"; // 图8：生�
 							font-size: (13/16rem);
 							font-weight: 700;
 							color: #fff;
-							background: var(--primary, #004B87);
+							background: var(--primary);
 							padding: (4/16rem) (12/16rem);
 							border-radius: (20/16rem);
 							margin-bottom: (10/16rem);
@@ -656,7 +650,7 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg"; // 图8：生�
 						margin-bottom: (8/16rem);
 
 						strong {
-							color: var(--primary, #004B87);
+							color: var(--primary);
 						}
 					}
 				}
@@ -664,7 +658,7 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg"; // 图8：生�
 		}
 	}
 
-	/* Dark Mode */
+	/* Dark Mode Optimization */
 	body.dark-mode {
 		#about-modern {
 			background-color: transparent;
@@ -695,7 +689,17 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg"; // 图8：生�
 			}
 
 			.cs-timeline-dot {
-				border-color: #1a1a1a;
+				border-color: var(--dark); /* 修复：使用全局暗黑模式背景色 */
+			}
+
+			/* 修复：补充暗黑模式下联系横幅的样式 */
+			.cs-contact-banner {
+				background: var(--medium);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				
+				.cs-banner-info p {
+					color: #aaa;
+				}
 			}
 		}
 	}
