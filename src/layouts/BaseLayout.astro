@@ -20,7 +20,7 @@ type HeroImage = GetImageResult | ImageMetadata;
 interface Props {
 	title: string;
 	description: string;
-	heroImage?: HeroImage; 
+	heroImage?: HeroImage; // optional - passing a heroImage to BaseLayout will 1. preload the image and 2. use the image for og socials tags in the <head>
 }
 
 const { description, title, heroImage } = Astro.props as Props;
@@ -30,43 +30,6 @@ const { description, title, heroImage } = Astro.props as Props;
 	<head>
 		<!-- View Transitions support -->
 		<ClientRouter />
-
-		<!-- 🌟 核心修复：将脚本放在 <head> 最前面，防止闪屏并确保切页保留状态 -->
-		<script is:inline>
-			// 主题初始化函数
-			const initTheme = () => {
-				let theme = localStorage.getItem("theme");
-				
-				// 如果没有本地记录，检查系统偏好
-				if (!theme) {
-					theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-				}
-
-				if (theme === "dark") {
-					document.documentElement.classList.add("dark-mode");
-					document.body.classList.add("dark-mode");
-				} else {
-					document.documentElement.classList.remove("dark-mode");
-					document.body.classList.remove("dark-mode");
-				}
-			};
-
-			// 1. 页面首次加载时立即执行
-			initTheme();
-
-			// 2. 监听 Astro 页面切换，在 DOM 准备后、绘制前强制重设，防止短暂闪白
-			document.addEventListener("astro:before-swap", () => {
-				// 在切页前确保 html 标签上也有主题类名
-				if (localStorage.getItem("theme") === "dark") {
-					document.documentElement.classList.add("dark-mode");
-				}
-			});
-			
-			// 3. 页面切换完成后（DOM 已替换），再次同步类名，防止被新页面覆盖
-			document.addEventListener("astro:after-swap", () => {
-				initTheme();
-			});
-		</script>
 
 		<!-- SEO Meta Tags -->
 		<Meta title={title} description={description} heroImage={heroImage}>
@@ -95,3 +58,41 @@ const { description, title, heroImage } = Astro.props as Props;
 		<Footer />
 	</body>
 </html>
+
+<script is:inline>
+	// helper functions to toggle dark mode
+	function enableDarkMode() {
+		document.body.classList.add("dark-mode");
+		localStorage.setItem("theme", "dark");
+	}
+
+	function disableDarkMode() {
+		document.body.classList.remove("dark-mode");
+		localStorage.setItem("theme", "light");
+	}
+
+	function setTheme() {
+		// default to the light theme
+		let theme = "light";
+
+		// check localStorage for a saved 'theme' variable. if it's there, the user has visited before, so apply the necessary theme choices
+		if (localStorage.getItem("theme")) {
+			theme = localStorage.getItem("theme");
+		}
+		// if it's not there, check to see if the user has applied dark mode preferences themselves in the browser
+		else if (
+			window.matchMedia &&
+			window.matchMedia("(prefers-color-scheme: dark)").matches
+		) {
+			theme = "dark";
+		}
+
+		// if there is no preference set, the default of light will be used. apply accordingly
+		theme === "dark" ? enableDarkMode() : disableDarkMode();
+	}
+
+	setTheme();
+
+	document.addEventListener("astro:after-swap", setTheme); // For View Transitions purposes - astro:after-swap ensures that the theme is kept after navigating to a new page.
+</script>
+
