@@ -11,9 +11,6 @@ import DynamicHeader from "@components/Header/DynamicHeader.astro";
 import Footer from "@components/Footer/Footer.astro";
 import Meta from "@components/Meta/Meta.astro";
 
-// Analytics
-import Analytics from '@vercel/analytics/astro';
-
 // Data
 import { SITE } from "@data/client";
 
@@ -34,50 +31,40 @@ const { description, title, heroImage } = Astro.props as Props;
 		<!-- View Transitions support -->
 		<ClientRouter />
 
-		<!-- 🌟 核心修复：将暗黑模式脚本置于 <head> 中，防止首屏白闪；并在切页时强制保留主题 -->
+		<!-- 🌟 核心修复：将脚本放在 <head> 最前面，防止闪屏并确保切页保留状态 -->
 		<script is:inline>
-			function enableDarkMode() {
-				document.documentElement.classList.add("dark-mode");
-				document.body.classList.add("dark-mode");
-				localStorage.setItem("theme", "dark");
-			}
-
-			function disableDarkMode() {
-				document.documentElement.classList.remove("dark-mode");
-				document.body.classList.remove("dark-mode");
-				localStorage.setItem("theme", "light");
-			}
-
-			function setTheme() {
+			// 主题初始化函数
+			const initTheme = () => {
 				let theme = localStorage.getItem("theme");
-
+				
 				// 如果没有本地记录，检查系统偏好
 				if (!theme) {
-					theme = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+					theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 				}
 
 				if (theme === "dark") {
-					enableDarkMode();
-				} else {
-					disableDarkMode();
-				}
-			}
-
-			// 1. 立即执行一次，确保页面首屏渲染前主题就已生效
-			setTheme();
-
-			// 2. 在 Astro 页面切换前的瞬间拦截，防止白闪
-			document.addEventListener("astro:before-swap", () => {
-				// 如果本地存储是暗黑模式，强制加回类名，避免过渡动画闪烁
-				if (localStorage.getItem("theme") === "dark") {
 					document.documentElement.classList.add("dark-mode");
 					document.body.classList.add("dark-mode");
+				} else {
+					document.documentElement.classList.remove("dark-mode");
+					document.body.classList.remove("dark-mode");
+				}
+			};
+
+			// 1. 页面首次加载时立即执行
+			initTheme();
+
+			// 2. 监听 Astro 页面切换，在 DOM 准备后、绘制前强制重设，防止短暂闪白
+			document.addEventListener("astro:before-swap", () => {
+				// 在切页前确保 html 标签上也有主题类名
+				if (localStorage.getItem("theme") === "dark") {
+					document.documentElement.classList.add("dark-mode");
 				}
 			});
 			
-			// 3. 在 Astro 页面切换完成后，再次执行以确保万无一失
+			// 3. 页面切换完成后（DOM 已替换），再次同步类名，防止被新页面覆盖
 			document.addEventListener("astro:after-swap", () => {
-				setTheme();
+				initTheme();
 			});
 		</script>
 
@@ -106,7 +93,5 @@ const { description, title, heroImage } = Astro.props as Props;
 			<slot />
 		</main>
 		<Footer />
-
-		
 	</body>
 </html>
