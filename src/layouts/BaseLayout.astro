@@ -31,18 +31,15 @@ const { description, title, heroImage } = Astro.props as Props;
 		<!-- View Transitions support -->
 		<ClientRouter />
 
-		<!-- 🌟 核心修复：将脚本放在 <head> 最前面，防止闪屏并确保切页保留状态 -->
+		<!-- 🌟 核心修复：将主题脚本放入 <head> 最前面，确保页面渲染前生效 -->
 		<script is:inline>
 			// 主题初始化函数
-			const initTheme = () => {
-				let theme = localStorage.getItem("theme");
+			const applyTheme = () => {
+				const theme = localStorage.getItem("theme");
+				// 如果本地存了 dark，或者没有存但系统偏好是 dark
+				const isDark = theme === "dark" || (!theme && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
 				
-				// 如果没有本地记录，检查系统偏好
-				if (!theme) {
-					theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-				}
-
-				if (theme === "dark") {
+				if (isDark) {
 					document.documentElement.classList.add("dark-mode");
 					document.body.classList.add("dark-mode");
 				} else {
@@ -51,20 +48,21 @@ const { description, title, heroImage } = Astro.props as Props;
 				}
 			};
 
-			// 1. 页面首次加载时立即执行
-			initTheme();
+			// 1. 立即执行一次，防止首屏闪烁
+			applyTheme();
 
-			// 2. 监听 Astro 页面切换，在 DOM 准备后、绘制前强制重设，防止短暂闪白
+			// 2. 监听 Astro 的页面切换事件
+			// astro:before-swap 在旧 DOM 移除、新 DOM 插入前触发
 			document.addEventListener("astro:before-swap", () => {
-				// 在切页前确保 html 标签上也有主题类名
+				// 强制给根节点加回 dark-mode 类，防止切换瞬间闪白
 				if (localStorage.getItem("theme") === "dark") {
 					document.documentElement.classList.add("dark-mode");
 				}
 			});
 			
-			// 3. 页面切换完成后（DOM 已替换），再次同步类名，防止被新页面覆盖
+			// 3. astro:after-swap 在新页面 DOM 准备好后触发
 			document.addEventListener("astro:after-swap", () => {
-				initTheme();
+				applyTheme();
 			});
 		</script>
 
