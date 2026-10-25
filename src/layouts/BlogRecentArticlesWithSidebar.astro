@@ -5,7 +5,6 @@
 
 // Utils
 import { Picture, Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
 import { formatDate } from "@js/utils";
 
 // 🌟 修改：导入你准备好的 XC Bath 头像
@@ -25,9 +24,7 @@ const { posts } = Astro.props;
                 posts.map((post) => (
                     <article class="recent-articles">
                         <Picture
-                            pictureAttributes={{
-                                class: "blog-mainImage",
-                            }}
+                            pictureAttributes={{ class: "blog-mainImage" }}
                             src={post.data.image}
                             quality={"mid"}
                             formats={["avif", "webp"]}
@@ -38,12 +35,11 @@ const { posts } = Astro.props;
                         <div class="blog-header">
                             <div class="blog-authorGroup">
                                 <picture class="blog-author-img">
-                                    {/* 🌟 修改：直接强制渲染 XC Bath 的头像和名字 */}
                                     <Image 
                                         src={xcBathAvatar} 
                                         alt="XC Bath Team" 
-                                        width="32" 
-                                        height="32" 
+                                        width="36" 
+                                        height="36" 
                                         style={{ 
                                             borderRadius: '50%', 
                                             objectFit: 'contain', 
@@ -58,7 +54,6 @@ const { posts } = Astro.props;
                             </div>
                             <h2 class="blog-h1">{post.data.title}</h2>
                             <p class="blog-desc">{post.data.description}</p>
-                            <!-- 修复这里的链接为 /news/${post.id} -->
                             <a href={`/news/${post.id}`} class="blog-link">
                                 Continue Reading
                             </a>
@@ -75,218 +70,203 @@ const { posts } = Astro.props;
 </section>
 
 <style lang="less">
-	/* Mobile - 360px */
-	@media only screen and (min-width: 0em) {
-		.blog-link {
-			font-size: (16/16rem);
-			font-weight: 700;
-			line-height: clamp(2.875em, 5.5vw, 3.5em);
-			text-align: center;
-			text-decoration: none;
-			min-width: (150/16rem);
-			margin: auto;
-			box-sizing: border-box;
-			padding: 0 (24/16rem);
-			/* 👇 修改：强制白字深蓝底 */
-			color: #ffffff !important; 
-			background-color: #004B87 !important;
-			border-radius: (4/16rem);
-			display: inline-block;
-			position: relative;
-			z-index: 1;
-			transition: all 0.3s;
+    /* =========================================
+       1. 基础布局与组件 (平铺直接写，无需媒体查询)
+       ========================================= */
+    .blog-container {
+        width: 94%;
+        max-width: (1120/16em);
+        margin: auto;
+        padding: clamp(60px, 7vw, 100px) 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: (50/16em);
+        position: relative;
+    }
 
-			&:before {
-				content: "";
-				width: 100%;
-				height: 100%;
-				box-sizing: border-box;
-				background: #C5A059 !important; /* 悬停变香槟金 */
-				opacity: 0;
-				border-radius: (4/16rem);
-				position: absolute;
-				top: 0;
-				left: 0;
-				z-index: -1;
-				transition: all 0.3s;
-			}
+    .main-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: (50/16em);
+    }
 
-			&:hover {
-				color: #ffffff !important;
-				&:before {
-					opacity: 1;
-				}
-			}
+    /* 修正：全局统一定义一次，避免原来 `.recent-articles` 内部再次重复覆盖 */
+    .blog-link {
+        font-size: (16/16rem);
+        font-weight: 700;
+        line-height: clamp(2.875em, 5.5vw, 3.5em);
+        text-align: center;
+        text-decoration: none;
+        min-width: (150/16rem);
+        margin: auto;
+        box-sizing: border-box;
+        padding: 0 (24/16rem);
+        color: #ffffff !important; 
+        background-color: #004B87 !important;
+        border-radius: (4/16rem);
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+        transition: all 0.3s;
 
-			&:focus-within {
-				outline-offset: 5px;
-			}
-		}
-	}
+        &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            background: #C5A059 !important; 
+            opacity: 0;
+            border-radius: (4/16rem);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: all 0.3s;
+        }
 
-	/* Mobile - 360px */
-	@media only screen and (min-width: 0em) {
-		.blog-container {
-			width: 94%;
-			max-width: (1120/16em);
-			margin: auto;
-			padding: clamp(60px, 7vw, 100px) 0;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			row-gap: (50/16em);
-			position: relative;
-		}
+        &:hover {
+            color: #ffffff !important;
+            &::before {
+                opacity: 1;
+            }
+        }
 
-		.main-content {
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			row-gap: (50/16em);
-		}
-	}
+        &:focus-within {
+            outline-offset: 5px;
+        }
+    }
 
-	/* Tablet - 1024px */
-	@media only screen and (min-width: 64em) {
-		.blog-container {
-			flex-direction: row;
-			align-items: flex-start;
-			column-gap: (48/16em);
-		}
-	}
+    .recent-articles {
+        width: 100%;
+        max-width: (795/16em);
+        flex: none;
 
-	/* Mobile - 360px */
-	@media only screen and (min-width: 0em) {
-		.recent-articles {
-			width: 100%;
-			max-width: (795/16em);
-			flex: none;
+        .blog-mainImage {
+            width: 100%;
+            height: clamp(200px, 30vw, 400px);
+            border-radius: (8/16em) (8/16em) 0 0;
+            display: block;
+            position: relative;
+            overflow: hidden;
 
-			.blog-mainImage {
-				width: 100%;
-				height: clamp(200px, 30vw, 400px);
-				border-radius: (8/16em) (8/16em) 0 0;
-				display: block;
-				position: relative;
-				overflow: hidden;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
 
-				img {
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
-					position: absolute;
-					top: 0;
-					left: 0;
-				}
-			}
+        .blog-header {
+            padding: clamp(30px, 5vw, 50px);
+            border: 1px solid #ebebeb;
+            border-radius: 0 0 (8/16em) (8/16em);
+        }
 
-			.blog-header {
-				padding: clamp(30px, 5vw, 50px);
-				border: 1px solid #ebebeb;
-				border-radius: 0 0 (8/16em) (8/16em);
-			}
+        .blog-author-img {
+            width: (36/16em);
+            height: (36/16em);
+            border-radius: 50%;
+            display: block;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            /* 移除了内部的 img 样式，避免与 Astro Image 的内联样式打架 */
+        }
 
-			.blog-author-img {
-				width: (36/16em); /* 调大一点点 */
-				height: (36/16em);
-				border-radius: 50%;
-				display: block;
-				position: relative;
-				overflow: hidden;
-				border: 1px solid #e5e7eb;
+        .blog-authorGroup {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: (12/16rem);
+        }
 
-				img {
-					width: 100%;
-					height: 100%;
-					object-fit: contain;
-					position: absolute;
-					top: 0;
-					left: 0;
-				}
-			}
+        .blog-author,
+        .blog-date {
+            font-size: (14/16rem);
+            line-height: 1.5em;
+            color: var(--bodyTextColor);
+        }
 
-			.blog-authorGroup {
-				display: flex;
-				justify-content: flex-start;
-				align-items: center;
-				gap: (12/16rem);
-			}
+        .blog-dot {
+            width: 4px;
+            height: 4px;
+            background-color: #C5A059;
+            border-radius: 50%;
+            display: block;
+        }
 
-			.blog-author,
-			.blog-date {
-				font-size: (14/16rem);
-				line-height: 1.5em;
-				color: var(--bodyTextColor);
-			}
+        .blog-h1 {
+            font-size: clamp(20px, 5vw, 32px);
+            font-weight: 700;
+            line-height: 1.4em;
+            margin: (16/16rem) 0;
+            color: var(--headerColor);
+        }
 
-			.blog-dot {
-				width: 4px;
-				height: 4px;
-				background-color: #C5A059; /* 香槟金点缀 */
-				border-radius: 50%;
-				display: block;
-			}
+        .blog-desc {
+            font-size: (16/16rem);
+            line-height: 1.5em;
+            margin: (16/16rem) 0 (32/16rem);
+            color: var(--bodyTextColor);
+        }
+    }
 
-			.blog-h1 {
-				font-size: clamp(20px, 5vw, 32px);
-				font-weight: 700;
-				line-height: 1.4em;
-				margin: (16/16rem) 0;
-				color: var(--headerColor);
-			}
+    /* =========================================
+       2. 桌面端布局调整 (1024px+)
+       ========================================= */
+    @media only screen and (min-width: 64em) {
+        .blog-container {
+            flex-direction: row;
+            align-items: flex-start;
+            column-gap: (48/16em);
+        }
 
-			.blog-desc {
-				font-size: (16/16rem);
-				line-height: 1.5em;
-				margin: (16/16rem) 0 (32/16rem);
-				color: var(--bodyTextColor);
-			}
-		}
-	}
+        .recent-articles {
+            .blog-h1 {
+                max-width: (500/16rem);
+            }
+        }
+    }
 
-	/* Mobile - 1024px */
-	@media only screen and (min-width: 64em) {
-		.recent-articles {
-			.blog-h1 {
-				max-width: (500/16rem);
-			}
-		}
-	}
+    /* =========================================
+       3. 暗黑模式适配
+       ========================================= */
+    body.dark-mode {
+        .recent-articles {
+            .blog-header {
+                border-color: #333;
+            }
+            .blog-h1,
+            .blog-desc,
+            .blog-author,
+            .blog-date {
+                color: #f7f7f7;
+            }
+            .blog-author-img {
+                border-color: #333;
+                img {
+                    background-color: #1a1a1a !important;
+                }
+            }
+        }
 
-	/* Dark Mode */
-	@media only screen and (min-width: 0em) {
-		body.dark-mode {
-			.recent-articles {
-				.blog-header {
-					border-color: #333;
-				}
-				.blog-h1,
-				.blog-desc,
-				.blog-author,
-				.blog-date {
-					color: #f7f7f7;
-				}
-				.blog-author-img {
-					border-color: #333;
-					img {
-						background-color: #1a1a1a;
-					}
-				}
-			}
-
-			.blog-sidebar_widget-h3,
-			.blog-sidebar_widget-date,
-			.blog-sidebar_widget-header {
-				color: #f7f7f7;
-			}
-			.blog-sidebar_widget-header {
-				&:after {
-					background: var(--primary);
-				}
-			}
-		}
-	}
+        .blog-sidebar_widget-h3,
+        .blog-sidebar_widget-date,
+        .blog-sidebar_widget-header {
+            color: #f7f7f7;
+        }
+        .blog-sidebar_widget-header {
+            &::after {
+                background: var(--primary);
+            }
+        }
+    }
 </style>
