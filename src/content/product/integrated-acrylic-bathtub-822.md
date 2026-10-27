@@ -11,9 +11,22 @@ isFeatured: true
 
 One molded body, no joints, no steps, no compromises at the edges. The integrated bathtub is built from premium acrylic resin blended with fine mineral composite, giving it a non-porous, stone-like surface that stays smooth through years of daily use. The double-walled shell is insulated to full depth, so the water stays warm long after the tap is closed.
 
+## Specifications
+
+| Parameter | Specifications & Details |
+| :--- | :--- |
+| **Sizes** | 1500 x 750 x 720 mm, 1600 x 750 x 720 mm, 1700 x 750 x 720 mm |
+| **Material** | Pure acrylic with mineral composite |
+| **Standard Color** | High gloss white |
+| **Other Colors** | High gloss black exterior with white interior, matte white, matte black |
+| **Customization** | Custom colors available on request |
+| **Accessories** | Overflow, waterproof drain and drain pipe |
+| **Connection** | Seamless, with anti-scratch paint finish |
+| **Installation** | Freestanding, standalone |
+| **Warranty** | 7 years |
+
 ## Highlights
 
-<!-- 使用带 class 的 HTML 表格来美化 Highlight -->
 <table class="spec-highlight-table">
   <tbody>
     <tr>
@@ -44,21 +57,6 @@ One molded body, no joints, no steps, no compromises at the edges. The integrate
 </table>
 
 ![Integrated acrylic bathtub in a modern bathroom](@assets/images/products/822-1-1.jpg)
-
-## Specifications
-
-<!-- 使用标准 Markdown 表格，结合全局样式即可 -->
-| Parameter | Specifications & Details |
-| :--- | :--- |
-| **Sizes** | 1500 x 750 x 720 mm, 1600 x 750 x 720 mm, 1700 x 750 x 720 mm |
-| **Material** | Pure acrylic with mineral composite |
-| **Standard Color** | High gloss white |
-| **Other Colors** | High gloss black exterior with white interior, matte white, matte black |
-| **Customization** | Custom colors available on request |
-| **Accessories** | Overflow, waterproof drain and drain pipe |
-| **Connection** | Seamless, with anti-scratch paint finish |
-| **Installation** | Freestanding, standalone |
-| **Warranty** | 7 years |
 
 ## Faucet Set and Finishing Touches
 
