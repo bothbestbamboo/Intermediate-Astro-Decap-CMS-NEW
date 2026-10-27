@@ -8,11 +8,9 @@ tags: ["Bathtubs"]
 isFeatured: true
 ---
 
-# Integrated Acrylic Bathtub 822: One-Piece Freestanding Soaking Tub
+One molded body, no joints, no steps, no compromises at the edges. The integrated bathtub is built from premium acrylic resin blended with fine mineral composite, giving it a non-porous, stone-like surface that stays smooth through years of daily use. The double-walled shell is insulated to full depth, so the water stays warm long after the tap is closed.
 
 ![Integrated acrylic bathtub in a modern bathroom](@assets/images/products/822-1-1.jpg)
-
-One molded body, no joints, no steps, no compromises at the edges. The integrated bathtub is built from premium acrylic resin blended with fine mineral composite, giving it a non-porous, stone-like surface that stays smooth through years of daily use. The double-walled shell is insulated to full depth, so the water stays warm long after the tap is closed.
 
 ## Highlights
 
@@ -22,8 +20,6 @@ One molded body, no joints, no steps, no compromises at the edges. The integrate
 - **Full depth insulation** — double-walled construction holds heat far longer than a standard tub
 - **Freestanding installation** — flexible placement in any bathroom layout, with a floor drain
 - **Seven-year warranty** on the one-piece model
-
-![Top view of the integrated bathtub interior](@assets/images/products/822-1-2.jpg)
 
 ## Specifications
 
@@ -44,6 +40,8 @@ One molded body, no joints, no steps, no compromises at the edges. The integrate
 ![Chrome floor mixer with hand shower](@assets/images/products/822-1-3.jpg)
 
 The chrome floor-mounted mixer in the gallery pairs a tall curved spout, three cross handles and a matching hand shower with the tub. Its upright lines match the wide oval rim and keep the deck area completely clear of clutter, which suits a freestanding layout.
+
+![Top view of the integrated bathtub interior](@assets/images/products/822-1-2.jpg)
 
 ## How It Is Made
 
