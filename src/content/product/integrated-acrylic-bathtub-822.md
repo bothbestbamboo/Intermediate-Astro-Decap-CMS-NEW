@@ -13,7 +13,7 @@ isFeatured: true
 **Model 822 Integrated Acrylic Bathtub** represents the pinnacle of modern minimalist bathroom luxury. Engineered with a true one-piece molded body—free of visible joints, seams, or edge compromises—it blends sleek, organic architectural aesthetics with high-performance ergonomics. 
 
 Crafted from premium 100% pure acrylic resin blended with fine mineral composites, the double-walled shell provides a non-porous, warm-to-touch stone-like texture. Built-in full-depth thermal insulation ensures bathwater stays warm long after the tap is closed, transforming every soak into an immersive spa-like experience for high-end residential suites and luxury hotels.
-
+![Integrated acrylic bathtub in a modern bathroom](@assets/images/products/822-1-1.jpg)
 ---
 
 ## Technical Specifications
@@ -41,6 +41,8 @@ Crafted from premium 100% pure acrylic resin blended with fine mineral composite
 * **Flexible Freestanding Placement:** Designed for versatile architecture, pairing easily with floor-mounted tub fillers or wall-spout systems in open master bathrooms.
 * **Easy Maintenance & Hygiene:** Zero grout lines or concealed crevices mean the surface wipes clean in seconds, preventing mold and soap scum buildup.
 
+![Integrated bathtub in a bright bathroom](@assets/images/products/822-1-2.jpg)
+
 ---
 
 ## Precision Manufacturing Process
@@ -61,11 +63,11 @@ Our bathtubs undergo a rigorous 9-stage industrial production workflow to guaran
 
 ## Design Details & Finishing Touches
 
-![Top view of the integrated bathtub interior](@assets/images/products/822-1-2.jpg)
+![Top view of the integrated bathtub interior](@assets/images/products/822-1-3.jpg)
 
 The interior contour is meticulously engineered to support the natural curve of the spine, offering an ergonomic reclining angle that maximizes comfort during extended soaking sessions.
 
-![Chrome floor mixer with hand shower](@assets/images/products/822-1-3.jpg)
+![Chrome floor mixer with hand shower](@assets/images/products/822-1-4.jpg)
 
 Pairing the tub with a floor-mounted chrome mixer—featuring a tall curved spout, cross handles, and a matching hand shower—maintains a clean, uncluttered deck area while highlighting the sculptural lines of the freestanding layout.
 
@@ -79,8 +81,7 @@ Designed to elevate diverse interior architectural styles:
 - **High-End Boutique Hotels & Resorts:** Delivers durable, low-maintenance luxury that satisfies rigorous commercial hospitality standards.
 - **Compact Urban Apartments & Spa Suites:** Space-efficient 1500/1600mm profiles offer deep soaking luxury even in limited square footage.
 
-![Integrated bathtub in a bright bathroom](@assets/images/products/822-1-5.jpg)
-![Integrated acrylic bathtub in a modern bathroom](@assets/images/products/822-1-1.jpg)
+![Integrated acrylic bathtub in a modern bathroom](@assets/images/products/822-1-5.jpg)
 
 ---
 
