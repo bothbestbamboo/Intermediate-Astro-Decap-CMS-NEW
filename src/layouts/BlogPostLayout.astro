@@ -7,7 +7,7 @@ import { formatDate } from "@js/utils";
 import { getBlogPostingSchema } from "@js/blogPostingSchema.js";
 import "@styles/markdown.less";
 
-// 导入作者真实的头像图片 (确保图片已放在该路径下)
+// 导入作者真实的头像图片
 import xcBathAvatar from "@assets/images/authors/xcbath.png";
 
 // Components
@@ -20,13 +20,9 @@ const { post } = Astro.props;
 const { title, date, description, image, imageAlt, author, tags } = post.data;
 const { Content, headings } = await render(post);
 
-// 判断当前页面是不是产品页面
-const isProductPage =
-    tags &&
-    (tags.includes("Products") ||
-        tags.includes("Bathtubs") ||
-        tags.includes("Showers") ||
-        tags.includes("Cabinets"));
+// 判断当前页面是不是产品页面（精简判断逻辑）
+const productTags = ["Products", "Bathtubs", "Showers", "Cabinets"];
+const isProductPage = tags && tags.some((tag) => productTags.includes(tag));
 
 // Generate BlogPosting schema
 const imageUrl = image.src.startsWith("http")
@@ -46,6 +42,10 @@ const blogPostingSchema = getBlogPostingSchema(
     },
     Astro.url.origin,
 );
+
+// 🌟 优化：提取作者判断逻辑，避免多次转换
+const cleanAuthor = author ? author.toLowerCase().trim() : "";
+const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "xc bath";
 ---
 
 <BaseLayout title={title} description={description} heroImage={image}>
@@ -63,11 +63,9 @@ const blogPostingSchema = getBlogPostingSchema(
                     <header class="blog-header">
                         <h1 class="blog-h1">{title}</h1>
                         <div class="blog-authorGroup">
-                            <picture class="blog-author-img">
+                            <div class="blog-author-img">
                                 {
-                                    !author ||
-                                    author.toLowerCase().trim() === "bothbest" || 
-                                    author.toLowerCase().trim() === "xc bath" ? (
+                                    isXcBathTeam ? (
                                         <Image
                                             src={xcBathAvatar}
                                             alt="XC Bath Team"
@@ -75,9 +73,7 @@ const blogPostingSchema = getBlogPostingSchema(
                                             height="36"
                                             style={{
                                                 borderRadius: "50%",
-                                                objectFit: "contain",
-                                                padding: "4px",
-                                                backgroundColor: "#f8fafc"
+                                                objectFit: "cover", // 改为 cover 避免留白
                                             }}
                                         />
                                     ) : (
@@ -88,14 +84,14 @@ const blogPostingSchema = getBlogPostingSchema(
                                         />
                                     )
                                 }
-                            </picture>
+                            </div>
                             <span class="blog-author">{author}</span>
                             <span aria-hidden="true" class="blog-dot"></span>
                             <span class="blog-date">{formatDate(date)}</span>
                         </div>
                     </header>
 
-                    <picture class="blog-mainImage">
+                    <div class="blog-mainImage">
                         <Image
                             src={image}
                             alt={imageAlt}
@@ -103,7 +99,7 @@ const blogPostingSchema = getBlogPostingSchema(
                             height="400"
                             decoding="async"
                         />
-                    </picture>
+                    </div>
 
                     <div class="blog-sidebar_widget-wrapper cs-hide-on-desktop">
                         <TableOfContents headings={headings} levels={3} />
@@ -155,7 +151,7 @@ const blogPostingSchema = getBlogPostingSchema(
 
 <style lang="less" is:global>
     /* ==========================================================================
-       1. Mobile Base Styles (0em+) - 基础手机端样式与嵌套结构
+       1. Mobile Base Styles (0em+)
        ========================================================================== */
     .blog-container {
         width: 94%;
@@ -219,7 +215,6 @@ const blogPostingSchema = getBlogPostingSchema(
             overflow: hidden;
             border: 1px solid #e5e7eb; 
             background-color: #fff; 
-            /* 移除了内部的 img 样式，完全交给 Astro Image 内联样式管理 */
         }
 
         .blog-authorGroup {
@@ -356,7 +351,12 @@ const blogPostingSchema = getBlogPostingSchema(
             }
             .blog-author-img {
                 border-color: #333333;
-                background-color: #1a1a1a;
+                background-color: #1a1a1a; /* 暗黑模式下容器底暗色 */
+                
+                /* 如果你的头像图片是透明底，这里能保证不闪白 */
+                img {
+                    background-color: #1a1a1a;
+                }
             }
             #blog-content {
                 border-top-color: #333333;

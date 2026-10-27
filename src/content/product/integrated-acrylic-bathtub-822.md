@@ -2,7 +2,6 @@
 title: "Integrated Acrylic Bathtub 822: One-Piece Freestanding Soaking Tub"
 description: "A one-piece integrated bathtub in solid surface acrylic with a seamless anti-scratch finish. Model 822 Offered in 1500, 1600 and 1700 mm, freestanding for flexible placement, and backed by a 7-year warranty."
 date: 2026-09-27
-author: "XC Bath"
 image: "@assets/images/products/822-1f.jpg"
 imageAlt: "Integrated Acrylic Bathtub one-piece freestanding soaking tub in a modern bathroom"
 tags: ["Bathtubs"]
