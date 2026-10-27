@@ -12,7 +12,7 @@ import CTA from "@components/CTA/CTASimple.astro";
 import landingImage from "@assets/images/gallery/bannerproduct.jpg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 
-// Factory Images
+// Factory Images (Original - Reserved for other sections)
 import factoryAcrylic from "@assets/images/about/xc-bath-1.jpg";
 import factoryMolding from "@assets/images/about/xc-bath-2.jpg";
 import factoryExhibition from "@assets/images/about/xc-bath-3.jpg";
@@ -21,6 +21,17 @@ import factorySpraying from "@assets/images/about/xc-bath-5.jpg";
 import factoryAssembly from "@assets/images/about/xc-bath-7.jpg";
 import factoryMachining from "@assets/images/about/xc-bath-6.jpg";
 import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg";
+
+// Process Step Images (9 Steps)
+import stepHeat from "@assets/images/about/Heat-Acrylic-Plate.webp";
+import stepAbsorbing from "@assets/images/about/Plastic-Absorbing.webp";
+import stepRelease from "@assets/images/about/Mold-Release.webp";
+import stepResin from "@assets/images/about/Coated-Resin.webp";
+import stepCutting from "@assets/images/about/Cutting.webp";
+import stepDocking from "@assets/images/about/Docking.webp";
+import stepBracket from "@assets/images/about/Bracket.webp";
+import stepPolish from "@assets/images/about/Polish.webp";
+import stepPacking from "@assets/images/about/Packing.webp";
 ---
 
 <BaseLayout
@@ -140,114 +151,124 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg";
 				</div>
 			</div>
 
-			<!-- Section 4: Core Manufacturing Infrastructure -->
+			<!-- Section 4: Production Process & Craftsmanship (9 Steps) -->
 			<div class="cs-section-header">
-				<span class="cs-topper">FACTORY CAPABILITIES</span>
-				<h2 class="cs-title">Advanced Manufacturing & Automation</h2>
-			</div>
-
-			<div class="cs-grid-4">
-				<div class="cs-card">
-					<div class="cs-card-img">
-						<Image
-							src={factoryAcrylic}
-							alt="Premium Acrylic Sheet Processing"
-						/>
-					</div>
-					<h3>Premium Acrylic Material</h3>
-					<p>
-						We use 100% pure, high-quality acrylic sheets reinforced with fiberglass, ensuring exceptional heat retention, scratch resistance, and a brilliant glossy finish.
-					</p>
-				</div>
-
-				<div class="cs-card">
-					<div class="cs-card-img">
-						<Image
-							src={factoryMolding}
-							alt="Bathtub Molding & Forming Line"
-						/>
-					</div>
-					<h3>Precision Molding Line</h3>
-					<p>
-						State-of-the-art forming equipment and automated production lines guarantee perfect ergonomic contours and consistent wall thickness for every bathtub.
-					</p>
-				</div>
-
-				<div class="cs-card">
-					<div class="cs-card-img">
-						<Image
-							src={factorySpraying}
-							alt="Fiberglass Reinforcement & Spraying"
-						/>
-					</div>
-					<h3>Fiberglass Reinforcement</h3>
-					<p>
-						Dedicated spraying rooms apply multi-layer fiberglass reinforcement, providing superior structural stability, durability, and impact resistance.
-					</p>
-				</div>
-
-				<div class="cs-card">
-					<div class="cs-card-img">
-						<Image
-							src={factoryMachining}
-							alt="CNC Machining and Precise Hole Drilling"
-						/>
-					</div>
-					<h3>Automated CNC Machining</h3>
-					<p>
-						High-precision CNC machines execute precise drilling, edge trimming, and custom modifications, ensuring seamless integration of hardware and drains.
-					</p>
-				</div>
-			</div>
-
-			<!-- Section 5: Production Process & Craftsmanship -->
-			<div class="cs-section-header">
-				<span class="cs-topper">END-TO-END QUALITY CONTROL</span>
+				<span class="cs-topper">END-TO-END CRAFTSMANSHIP</span>
 				<h2 class="cs-title">Precision Manufacturing Workflow</h2>
+				<p class="cs-header-p">Explore our rigorous 9-step production workflow, combining advanced automation with meticulous hand-craftsmanship for superior quality.</p>
 			</div>
 
-			<div class="cs-grid-3">
-				<div class="cs-card">
-					<div class="cs-card-img">
-						<Image
-							src={factoryGrinding}
-							alt="Hand Polishing and Grinding"
-						/>
+			<div class="cs-process-grid">
+				<!-- Step 01 -->
+				<div class="cs-process-card">
+					<div class="cs-process-img">
+						<Image src={stepHeat} alt="Acrylic Sheet Heating" />
+						<span class="cs-step-badge">Step 01</span>
 					</div>
-					<h3>Meticulous Hand Polishing</h3>
-					<p>
-						Experienced craftsmen meticulously sand and polish every edge and surface, ensuring a flawlessly smooth, spa-like touch and a mirror-like finish.
-					</p>
+					<div class="cs-process-content">
+						<h3>Acrylic Sheet Heating</h3>
+						<p>Premium, 100% pure acrylic sheets are evenly heated in advanced thermal ovens to achieve optimal plasticity for precision forming.</p>
+					</div>
 				</div>
 
-				<div class="cs-card">
-					<div class="cs-card-img">
-						<Image
-							src={factoryExhibition}
-							alt="Client Meeting and Product Inspection"
-						/>
+				<!-- Step 02 -->
+				<div class="cs-process-card">
+					<div class="cs-process-img">
+						<Image src={stepAbsorbing} alt="Vacuum Forming" />
+						<span class="cs-step-badge">Step 02</span>
 					</div>
-					<h3>Client-Centric Quality Checks</h3>
-					<p>
-						We conduct rigorous in-line inspections and welcome global clients to our factory or trade shows for hands-on product evaluation and collaboration.
-					</p>
+					<div class="cs-process-content">
+						<h3>Vacuum Forming</h3>
+						<p>Heated acrylic sheets are precisely vacuum-formed over custom molds, creating seamless, ergonomic contours with uniform wall thickness.</p>
+					</div>
 				</div>
 
-				<div class="cs-card">
-					<div class="cs-card-img">
-						<Image
-							src={factoryAssembly}
-							alt="Final Assembly and Packaging"
-						/>
+				<!-- Step 03 -->
+				<div class="cs-process-card">
+					<div class="cs-process-img">
+						<Image src={stepRelease} alt="Mold Release & Cooling" />
+						<span class="cs-step-badge">Step 03</span>
 					</div>
-					<h3>Safe Packaging & Rapid Delivery</h3>
-					<p>
-						Every finished product undergoes a final leak and visual test before being securely packaged with shock-absorbing materials for safe ocean freight.
-					</p>
+					<div class="cs-process-content">
+						<h3>Mold Release & Cooling</h3>
+						<p>Controlled cooling and precise mold release ensure structural integrity, smooth surfaces, and flawless dimensional accuracy.</p>
+					</div>
+				</div>
+
+				<!-- Step 04 -->
+				<div class="cs-process-card">
+					<div class="cs-process-img">
+						<Image src={stepResin} alt="Fiberglass Reinforcement" />
+						<span class="cs-step-badge">Step 04</span>
+					</div>
+					<div class="cs-process-content">
+						<h3>Fiberglass Reinforcement</h3>
+						<p>Multi-layer high-strength resin and fiberglass reinforcement are expertly applied to guarantee exceptional durability and heat insulation.</p>
+					</div>
+				</div>
+
+				<!-- Step 05 -->
+				<div class="cs-process-card">
+					<div class="cs-process-img">
+						<Image src={stepCutting} alt="CNC Edge Trimming" />
+						<span class="cs-step-badge">Step 05</span>
+					</div>
+					<div class="cs-process-content">
+						<h3>CNC Edge Trimming</h3>
+						<p>Advanced CNC machinery and dust-free trimming stations precisely cut edges and drill drainage holes for seamless hardware integration.</p>
+					</div>
+				</div>
+
+				<!-- Step 06 -->
+				<div class="cs-process-card">
+					<div class="cs-process-img">
+						<Image src={stepDocking} alt="Structural Framing" />
+						<span class="cs-step-badge">Step 06</span>
+					</div>
+					<div class="cs-process-content">
+						<h3>Structural Framing</h3>
+						<p>Heavy-duty stainless steel or galvanized support frameworks are securely docked and aligned to provide rock-solid stability.</p>
+					</div>
+				</div>
+
+				<!-- Step 07 -->
+				<div class="cs-process-card">
+					<div class="cs-process-img">
+						<Image src={stepBracket} alt="Skirt Assembly & Clamping" />
+						<span class="cs-step-badge">Step 07</span>
+					</div>
+					<div class="cs-process-content">
+						<h3>Skirt Assembly & Clamping</h3>
+						<p>Outer skirts and decorative panels are meticulously assembled and clamped under uniform pressure to achieve an elegant finish.</p>
+					</div>
+				</div>
+
+				<!-- Step 08 -->
+				<div class="cs-process-card">
+					<div class="cs-process-img">
+						<Image src={stepPolish} alt="Meticulous Polishing" />
+						<span class="cs-step-badge">Step 08</span>
+					</div>
+					<div class="cs-process-content">
+						<h3>Meticulous Polishing</h3>
+						<p>Skilled craftsmen conduct rigorous multi-stage sanding and buffing, delivering a mirror-like, flawless gloss finish with a luxurious touch.</p>
+					</div>
+				</div>
+
+				<!-- Step 09 -->
+				<div class="cs-process-card">
+					<div class="cs-process-img">
+						<Image src={stepPacking} alt="Inspection & Secure Packing" />
+						<span class="cs-step-badge">Step 09</span>
+					</div>
+					<div class="cs-process-content">
+						<h3>Inspection & Secure Packing</h3>
+						<p>Every finished tub undergoes rigorous water-pressure and visual testing before being securely packed with protective cushioning for global transit.</p>
+					</div>
 				</div>
 			</div>
 
-			<!-- Section 6: Quality Certifications & R&D -->
+			<!-- Section 5: Quality Certifications & R&D -->
 			<div class="cs-section-header">
 				<span class="cs-topper">CERTIFICATIONS & INNOVATION</span>
 				<h2 class="cs-title">International Standards & Design Capabilities</h2>
@@ -280,7 +301,7 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg";
 				</div>
 			</div>
 
-			<!-- Section 7: Warehouse & Contact Callout -->
+			<!-- Section 6: Warehouse & Contact Callout -->
 			<div class="cs-contact-banner">
 				<div class="cs-banner-img">
 					<Image
@@ -511,31 +532,45 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg";
 			}
 		}
 
-		/* 3. Grid 4 Cards */
-		.cs-grid-4 {
+		/* 3. Process Grid (9 Steps) */
+		.cs-process-grid {
 			display: grid;
 			grid-template-columns: 1fr;
 			gap: (24/16rem);
 
-			@media only screen and (min-width: 36em) {
+			@media only screen and (min-width: 48em) {
 				grid-template-columns: repeat(2, 1fr);
 			}
 
-			@media only screen and (min-width: 62em) {
-				grid-template-columns: repeat(4, 1fr);
+			@media only screen and (min-width: 64em) {
+				grid-template-columns: repeat(3, 1fr);
 			}
 		}
 
-		.cs-card {
+		.cs-process-card {
 			background: #fff;
-			border-radius: (12/16rem);
+			border-radius: (14/16rem);
 			overflow: hidden;
 			border: 1px solid #eef0f2;
-			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+			display: flex;
+			flex-direction: column;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-			.cs-card-img {
-				height: (260/16rem);
+			&:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+
+				.cs-process-img img {
+					transform: scale(1.05);
+				}
+			}
+
+			.cs-process-img {
+				height: (240/16rem);
 				width: 100%;
+				position: relative;
+				overflow: hidden;
 				background: #f0f2f5;
 
 				img {
@@ -543,25 +578,46 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg";
 					height: 100%;
 					object-fit: cover;
 					display: block;
+					transition: transform 0.5s ease;
+				}
+
+				.cs-step-badge {
+					position: absolute;
+					top: (16/16rem);
+					left: (16/16rem);
+					background: var(--primary);
+					color: #fff;
+					font-size: (12/16rem);
+					font-weight: 700;
+					padding: (5/16rem) (12/16rem);
+					border-radius: (20/16rem);
+					box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 				}
 			}
 
-			h3 {
-				font-size: (18/16rem);
-				font-weight: 700;
-				padding: (16/16rem) (16/16rem) (8/16rem);
-				color: var(--headerColor, #1a1a1a);
-			}
+			.cs-process-content {
+				padding: (24/16rem);
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
 
-			p {
-				font-size: (14/16rem);
-				line-height: 1.5em;
-				padding: 0 (16/16rem) (20/16rem);
-				color: var(--bodyTextColor, #666);
+				h3 {
+					font-size: (18/16rem);
+					font-weight: 700;
+					color: var(--headerColor, #1a1a1a);
+					margin-bottom: (10/16rem);
+				}
+
+				p {
+					font-size: (14/16rem);
+					line-height: 1.6em;
+					color: var(--bodyTextColor, #666);
+					margin: 0;
+				}
 			}
 		}
 
-		/* 4. Grid 3 Cards */
+		/* 4. Grid 3 Cards (Features) */
 		.cs-grid-3 {
 			display: grid;
 			grid-template-columns: 1fr;
@@ -671,7 +727,8 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg";
 			.cs-stat-card .cs-stat-number,
 			.cs-card h3,
 			.cs-feature-box h3,
-			.cs-timeline-content h3 {
+			.cs-timeline-content h3,
+			.cs-process-card h3 {
 				color: #ffffff !important;
 			}
 
@@ -680,7 +737,8 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg";
 			.cs-about-text p,
 			.cs-card p,
 			.cs-feature-box p,
-			.cs-timeline-content ul li {
+			.cs-timeline-content ul li,
+			.cs-process-card p {
 				color: #cbd5e1 !important;
 			}
 
@@ -688,7 +746,8 @@ import factoryWorkshop from "@assets/images/about/xc-bath-8.jpg";
 			.cs-stat-card,
 			.cs-card,
 			.cs-feature-box,
-			.cs-timeline-content {
+			.cs-timeline-content,
+			.cs-process-card {
 				background-color: var(--medium, #1a1a1a) !important;
 				border-color: rgba(255, 255, 255, 0.1) !important;
 			}
