@@ -21,12 +21,8 @@ const { title, date, description, image, imageAlt, author, tags } = post.data;
 const { Content, headings } = await render(post);
 
 // 判断当前页面是不是产品页面
-const isProductPage =
-    tags &&
-    (tags.includes("Products") ||
-        tags.includes("Bathtubs") ||
-        tags.includes("Showers") ||
-        tags.includes("Cabinets"));
+const productTags = ["Products", "Bathtubs", "Showers", "Cabinets"];
+const isProductPage = tags && tags.some((tag) => productTags.includes(tag));
 
 // Generate BlogPosting schema
 const imageUrl = image.src.startsWith("http")
@@ -46,6 +42,10 @@ const blogPostingSchema = getBlogPostingSchema(
     },
     Astro.url.origin,
 );
+
+// 🌟 修复：完整匹配 "xc bath" 和 "bothbest"
+const cleanAuthor = author ? author.toLowerCase().trim() : "";
+const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "xc bath";
 ---
 
 <BaseLayout title={title} description={description} heroImage={image}>
@@ -63,11 +63,10 @@ const blogPostingSchema = getBlogPostingSchema(
                     <header class="blog-header">
                         <h1 class="blog-h1">{title}</h1>
                         <div class="blog-authorGroup">
-                            <picture class="blog-author-img">
+                            <!-- 🌟 修复：强制换成 div，防止 <picture> 挤压图片 -->
+                            <div class="blog-author-img">
                                 {
-                                    !author ||
-                                    author.toLowerCase().trim() ===
-                                        "bothbest" ? (
+                                    isXcBathTeam ? (
                                         <Image
                                             src={xcBathAvatar}
                                             alt="XC Bath Team"
@@ -86,7 +85,7 @@ const blogPostingSchema = getBlogPostingSchema(
                                         />
                                     )
                                 }
-                            </picture>
+                            </div>
                             <span class="blog-author">{author}</span>
                             <span aria-hidden="true" class="blog-dot"></span>
                             <span class="blog-date">{formatDate(date)}</span>
@@ -215,8 +214,8 @@ const blogPostingSchema = getBlogPostingSchema(
             display: block;
             position: relative;
             overflow: hidden;
-            border: 1px solid #e5e7eb; 
-            background-color: #fff; 
+            border: 1px solid #e5e7eb;
+            background-color: #fff;
         }
 
         .blog-authorGroup {
@@ -301,7 +300,7 @@ const blogPostingSchema = getBlogPostingSchema(
         border: 1px solid #e2e8f0;
         border-radius: 8px;
         padding: 24px;
-        border-left: 4px solid #004B87; /* 品牌深海蓝 */
+        border-left: 4px solid #004B87;
         box-sizing: border-box;
 
         h3 {
@@ -336,7 +335,7 @@ const blogPostingSchema = getBlogPostingSchema(
         }
 
         .product-inquiry-btn:hover {
-            background-color: #C5A059 !important; /* 悬停变香槟金 */
+            background-color: #C5A059 !important;
             color: #ffffff !important;
         }
     }
