@@ -21,8 +21,12 @@ const { title, date, description, image, imageAlt, author, tags } = post.data;
 const { Content, headings } = await render(post);
 
 // 判断当前页面是不是产品页面
-const productTags = ["Products", "Bathtubs", "Showers", "Cabinets"];
-const isProductPage = tags && tags.some((tag) => productTags.includes(tag));
+const isProductPage =
+    tags &&
+    (tags.includes("Products") ||
+        tags.includes("Bathtubs") ||
+        tags.includes("Showers") ||
+        tags.includes("Cabinets"));
 
 // Generate BlogPosting schema
 const imageUrl = image.src.startsWith("http")
@@ -42,7 +46,6 @@ const blogPostingSchema = getBlogPostingSchema(
     },
     Astro.url.origin,
 );
-
 ---
 
 <BaseLayout title={title} description={description} heroImage={image}>
@@ -60,10 +63,14 @@ const blogPostingSchema = getBlogPostingSchema(
                     <header class="blog-header">
                         <h1 class="blog-h1">{title}</h1>
                         <div class="blog-authorGroup">
-                            <!-- 🌟 修复：强制换成 div，防止 <picture> 挤压图片 -->
-                            <div class="blog-author-img">
+                            <!-- 恢复为最标准的写法 -->
+                            <picture class="blog-author-img">
                                 {
-                                    isXcBathTeam ? (
+                                    !author ||
+                                    author.toLowerCase().trim() ===
+                                        "bothbest" ||
+                                    author.toLowerCase().trim() ===
+                                        "xc bath" ? (
                                         <Image
                                             src={xcBathAvatar}
                                             alt="XC Bath Team"
@@ -82,7 +89,7 @@ const blogPostingSchema = getBlogPostingSchema(
                                         />
                                     )
                                 }
-                            </div>
+                            </picture>
                             <span class="blog-author">{author}</span>
                             <span aria-hidden="true" class="blog-dot"></span>
                             <span class="blog-date">{formatDate(date)}</span>
@@ -205,14 +212,21 @@ const blogPostingSchema = getBlogPostingSchema(
         }
 
         .blog-author-img {
-            width: (36/16em);
-            height: (36/16em);
+            width: (32/16em);
+            height: (32/16em);
             border-radius: 50%;
             display: block;
             position: relative;
             overflow: hidden;
-            border: 1px solid #e5e7eb;
-            background-color: #fff;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
         }
 
         .blog-authorGroup {
@@ -227,13 +241,12 @@ const blogPostingSchema = getBlogPostingSchema(
             font-size: (14/16rem);
             line-height: 1.5em;
             color: var(--bodyTextColor);
-            font-weight: 500;
         }
 
         .blog-dot {
-            width: 4px;
-            height: 4px;
-            background-color: #C5A059;
+            width: 3px;
+            height: 3px;
+            background-color: #fe4f70;
             border-radius: 50%;
             display: block;
         }
@@ -242,6 +255,8 @@ const blogPostingSchema = getBlogPostingSchema(
             font-size: clamp(18px, 4vw, 31px);
             font-weight: 800;
             line-height: 1.25em;
+            width: 100% !important;
+            max-width: 100% !important;
             margin: (12/16rem) 0;
             color: var(--headerColor);
             word-wrap: break-word;
