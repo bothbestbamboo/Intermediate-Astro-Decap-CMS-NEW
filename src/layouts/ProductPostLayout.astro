@@ -43,9 +43,6 @@ const blogPostingSchema = getBlogPostingSchema(
     Astro.url.origin,
 );
 
-// 🌟 修复：完整匹配 "xc bath" 和 "bothbest"
-const cleanAuthor = author ? author.toLowerCase().trim() : "";
-const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "xc bath";
 ---
 
 <BaseLayout title={title} description={description} heroImage={image}>
