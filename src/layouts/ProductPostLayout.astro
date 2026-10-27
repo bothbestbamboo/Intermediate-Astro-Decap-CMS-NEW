@@ -63,12 +63,9 @@ const blogPostingSchema = getBlogPostingSchema(
                     <header class="blog-header">
                         <h1 class="blog-h1">{title}</h1>
                         <div class="blog-authorGroup">
-                            <!-- 恢复为最标准的写法 -->
                             <picture class="blog-author-img">
                                 {
                                     !author ||
-                                    author.toLowerCase().trim() ===
-                                        "bothbest" ||
                                     author.toLowerCase().trim() ===
                                         "xc bath" ? (
                                         <Image

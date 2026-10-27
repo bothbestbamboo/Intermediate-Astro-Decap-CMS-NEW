@@ -20,9 +20,13 @@ const { post } = Astro.props;
 const { title, date, description, image, imageAlt, author, tags } = post.data;
 const { Content, headings } = await render(post);
 
-// 判断当前页面是不是产品页面（精简判断逻辑）
-const productTags = ["Products", "Bathtubs", "Showers", "Cabinets"];
-const isProductPage = tags && tags.some((tag) => productTags.includes(tag));
+// 判断当前页面是不是产品页面
+const isProductPage =
+    tags &&
+    (tags.includes("Products") ||
+        tags.includes("Bathtubs") ||
+        tags.includes("Showers") ||
+        tags.includes("Cabinets"));
 
 // Generate BlogPosting schema
 const imageUrl = image.src.startsWith("http")
@@ -42,10 +46,6 @@ const blogPostingSchema = getBlogPostingSchema(
     },
     Astro.url.origin,
 );
-
-// 🌟 优化：提取作者判断逻辑，避免多次转换
-const cleanAuthor = author ? author.toLowerCase().trim() : "";
-const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "xc bath";
 ---
 
 <BaseLayout title={title} description={description} heroImage={image}>
@@ -63,9 +63,11 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
                     <header class="blog-header">
                         <h1 class="blog-h1">{title}</h1>
                         <div class="blog-authorGroup">
-                            <div class="blog-author-img">
+                            <picture class="blog-author-img">
                                 {
-                                    isXcBathTeam ? (
+                                    !author ||
+                                    author.toLowerCase().trim() ===
+                                        "xc bath" ? (
                                         <Image
                                             src={xcBathAvatar}
                                             alt="XC Bath Team"
@@ -73,7 +75,9 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
                                             height="36"
                                             style={{
                                                 borderRadius: "50%",
-                                                objectFit: "cover", // 改为 cover 避免留白
+                                                objectFit: "contain",
+                                                padding: "4px",
+                                                backgroundColor: "#f8fafc"
                                             }}
                                         />
                                     ) : (
@@ -84,14 +88,14 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
                                         />
                                     )
                                 }
-                            </div>
+                            </picture>
                             <span class="blog-author">{author}</span>
                             <span aria-hidden="true" class="blog-dot"></span>
                             <span class="blog-date">{formatDate(date)}</span>
                         </div>
                     </header>
 
-                    <div class="blog-mainImage">
+                    <picture class="blog-mainImage">
                         <Image
                             src={image}
                             alt={imageAlt}
@@ -99,7 +103,7 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
                             height="400"
                             decoding="async"
                         />
-                    </div>
+                    </picture>
 
                     <div class="blog-sidebar_widget-wrapper cs-hide-on-desktop">
                         <TableOfContents headings={headings} levels={3} />
@@ -151,7 +155,7 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
 
 <style lang="less" is:global>
     /* ==========================================================================
-       1. Mobile Base Styles (0em+)
+       1. Mobile Base Styles (0em+) - 基础手机端样式与嵌套结构
        ========================================================================== */
     .blog-container {
         width: 94%;
@@ -207,14 +211,24 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
         }
 
         .blog-author-img {
-            width: (36/16em);
+            width: (36/16em); /* 微调：稍微放大了一点点到36px，更显眼 */
             height: (36/16em);
             border-radius: 50%;
             display: block;
             position: relative;
             overflow: hidden;
             border: 1px solid #e5e7eb; 
-            background-color: #fff; 
+            background-color: #fff; /* 确保透明 PNG 的背景是白色的 */
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain; /* 修改：确保你的浴缸图标不变形，完整显示 */
+                padding: 4px; /* 修改：给图标四周留一点空隙，避免贴边 */
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
         }
 
         .blog-authorGroup {
@@ -244,6 +258,8 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
             font-size: clamp(18px, 4vw, 31px);
             font-weight: 800;
             line-height: 1.25em;
+            width: 100% !important;
+            max-width: 100% !important;
             margin: (12/16rem) 0;
             color: var(--headerColor);
             word-wrap: break-word;
@@ -316,6 +332,7 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
             margin: 0 0 18px 0;
         }
 
+        /* 按钮：深蓝底白字 */
         .product-inquiry-btn {
             display: flex;
             align-items: center;
@@ -340,7 +357,7 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
     }
 
     /* ==========================================================================
-       4. Dark Mode Styles
+       4. Dark Mode Styles - 暗黑模式独立平铺
        ========================================================================== */
     body.dark-mode {
         .blog-article {
@@ -351,15 +368,7 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
             }
             .blog-author-img {
                 border-color: #333333;
-                background-color: #1a1a1a; /* 暗黑模式下容器底暗色 */
-                
-                /* 如果你的头像图片是透明底，这里能保证不闪白 */
-                img {
-                    background-color: #1a1a1a;
-                }
-            }
-            #blog-content {
-                border-top-color: #333333;
+                background-color: #1a1a1a; /* 深色模式下的头像背景 */
             }
         }
         
@@ -386,7 +395,7 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
 
     /* Global Markdown Divider Override */
     #blog-content {
-        hr {
+        :global(hr) {
             display: block !important;
             height: 1px !important;
             border: 0 !important;
@@ -396,10 +405,5 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
             padding: 0 !important;
             clear: both !important;
         }
-    }
-
-    /* 暗黑模式下的分割线 */
-    body.dark-mode #blog-content hr {
-        border-top-color: #333333 !important;
     }
 </style>
