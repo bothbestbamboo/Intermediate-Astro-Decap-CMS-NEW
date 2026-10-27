@@ -20,11 +20,9 @@ const { post } = Astro.props;
 const { title, date, description, image, imageAlt, author, tags } = post.data;
 const { Content, headings } = await render(post);
 
-// 判断当前页面是不是产品页面
 const productTags = ["Products", "Bathtubs", "Showers", "Cabinets"];
 const isProductPage = tags && tags.some((tag) => productTags.includes(tag));
 
-// Generate BlogPosting schema
 const imageUrl = image.src.startsWith("http")
     ? image.src
     : Astro.url.origin + image.src;
@@ -43,7 +41,6 @@ const blogPostingSchema = getBlogPostingSchema(
     Astro.url.origin,
 );
 
-// 🌟 提取作者判断，防止大小写和空格干扰
 const cleanAuthor = author ? author.toLowerCase().trim() : "";
 const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "xc bath";
 ---
@@ -63,7 +60,7 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
                     <header class="blog-header">
                         <h1 class="blog-h1">{title}</h1>
                         <div class="blog-authorGroup">
-                            <!-- 🌟 修复：将 picture 换为 div，防止图片高度被压缩 -->
+                            <!-- 🌟 必须用 div，不要用 picture -->
                             <div class="blog-author-img">
                                 {
                                     isXcBathTeam ? (
@@ -152,11 +149,7 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
     <CTA />
 </BaseLayout>
 
-<!-- 🌟 重要修复：补上了 is:global，否则暗黑模式全部失效 -->
 <style lang="less" is:global>
-    /* ==========================================================================
-       1. Mobile Base Styles (0em+)
-       ========================================================================== */
     .blog-container {
         width: 94%;
         max-width: (1120/16em);
@@ -219,7 +212,7 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
             overflow: hidden;
             border: 1px solid #e5e7eb;
             background-color: #fff;
-            flex-shrink: 0; /* 🌟 防止被挤压 */
+            flex-shrink: 0; 
         }
 
         .blog-authorGroup {
@@ -261,9 +254,6 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
         }
     }
 
-    /* ==========================================================================
-       2. Tablet/Desktop Styles (64em+ / 1024px+)
-       ========================================================================== */
     @media only screen and (min-width: 64em) {
         .blog-wrapper-inner {
             flex-direction: row;
@@ -277,7 +267,6 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
             max-height: calc(100vh - 9rem); 
             overflow-y: auto; 
             overscroll-behavior: contain; 
-            
             scrollbar-width: none; 
             -ms-overflow-style: none; 
             &::-webkit-scrollbar {
@@ -305,9 +294,6 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
         }
     }
 
-    /* ==========================================================================
-       3. Inquiry Box Styles
-       ========================================================================== */
     .product-inquiry-box-inserted {
         margin-top: 24px;
         width: 100%;
@@ -359,9 +345,6 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
         }
     }
 
-    /* ==========================================================================
-       4. Dark Mode Styles
-       ========================================================================== */
     body.dark-mode {
         .blog-article {
             .blog-h1,
@@ -399,9 +382,6 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
         }
     }
 
-    /* ==========================================================================
-       5. Global Markdown Divider Override
-       ========================================================================== */
     #blog-content {
         hr {
             display: block !important;
