@@ -20,9 +20,15 @@ const { post } = Astro.props;
 const { title, date, description, image, imageAlt, author, tags } = post.data;
 const { Content, headings } = await render(post);
 
-const productTags = ["Products", "Bathtubs", "Showers", "Cabinets"];
-const isProductPage = tags && tags.some((tag) => productTags.includes(tag));
+// 判断当前页面是不是产品页面
+const isProductPage =
+    tags &&
+    (tags.includes("Products") ||
+        tags.includes("Bathtubs") ||
+        tags.includes("Showers") ||
+        tags.includes("Cabinets"));
 
+// Generate BlogPosting schema
 const imageUrl = image.src.startsWith("http")
     ? image.src
     : Astro.url.origin + image.src;
@@ -40,9 +46,6 @@ const blogPostingSchema = getBlogPostingSchema(
     },
     Astro.url.origin,
 );
-
-const cleanAuthor = author ? author.toLowerCase().trim() : "";
-const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "xc bath";
 ---
 
 <BaseLayout title={title} description={description} heroImage={image}>
@@ -60,20 +63,19 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
                     <header class="blog-header">
                         <h1 class="blog-h1">{title}</h1>
                         <div class="blog-authorGroup">
-                            <!-- 🌟 必须用 div，不要用 picture -->
-                            <div class="blog-author-img">
+                            <picture class="blog-author-img">
                                 {
-                                    isXcBathTeam ? (
+                                    !author ||
+                                    author.toLowerCase().trim() ===
+                                        "bothbest" ? (
                                         <Image
                                             src={xcBathAvatar}
                                             alt="XC Bath Team"
-                                            width="36"
-                                            height="36"
+                                            width="32"
+                                            height="32"
                                             style={{
                                                 borderRadius: "50%",
                                                 objectFit: "cover",
-                                                width: "100%",
-                                                height: "100%"
                                             }}
                                         />
                                     ) : (
@@ -84,7 +86,7 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
                                         />
                                     )
                                 }
-                            </div>
+                            </picture>
                             <span class="blog-author">{author}</span>
                             <span aria-hidden="true" class="blog-dot"></span>
                             <span class="blog-date">{formatDate(date)}</span>
@@ -150,6 +152,9 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
 </BaseLayout>
 
 <style lang="less" is:global>
+    /* ==========================================================================
+       1. Mobile Base Styles (0em+)
+       ========================================================================== */
     .blog-container {
         width: 94%;
         max-width: (1120/16em);
@@ -210,9 +215,8 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
             display: block;
             position: relative;
             overflow: hidden;
-            border: 1px solid #e5e7eb;
-            background-color: #fff;
-            flex-shrink: 0; 
+            border: 1px solid #e5e7eb; 
+            background-color: #fff; 
         }
 
         .blog-authorGroup {
@@ -254,25 +258,14 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
         }
     }
 
+    /* ==========================================================================
+       2. Tablet/Desktop Styles (64em+ / 1024px+)
+       ========================================================================== */
     @media only screen and (min-width: 64em) {
         .blog-wrapper-inner {
             flex-direction: row;
             align-items: flex-start;
             column-gap: (48/16em);
-        }
-
-        .blog-sidebar {
-            position: sticky;
-            top: 8.5rem; 
-            max-height: calc(100vh - 9rem); 
-            overflow-y: auto; 
-            overscroll-behavior: contain; 
-            scrollbar-width: none; 
-            -ms-overflow-style: none; 
-            &::-webkit-scrollbar {
-                display: none; 
-            }
-            padding-right: (10/16em);
         }
 
         .product-page-layout {
@@ -294,6 +287,9 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
         }
     }
 
+    /* ==========================================================================
+       3. Inquiry Box Styles - 询盘反馈框独立平铺
+       ========================================================================== */
     .product-inquiry-box-inserted {
         margin-top: 24px;
         width: 100%;
@@ -305,7 +301,7 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
         border: 1px solid #e2e8f0;
         border-radius: 8px;
         padding: 24px;
-        border-left: 4px solid #004B87;
+        border-left: 4px solid #004B87; /* 品牌深海蓝 */
         box-sizing: border-box;
 
         h3 {
@@ -340,11 +336,14 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
         }
 
         .product-inquiry-btn:hover {
-            background-color: #C5A059 !important;
+            background-color: #C5A059 !important; /* 悬停变香槟金 */
             color: #ffffff !important;
         }
     }
 
+    /* ==========================================================================
+       4. Dark Mode Styles
+       ========================================================================== */
     body.dark-mode {
         .blog-article {
             .blog-h1,
@@ -360,7 +359,7 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
                 border-top-color: #333333;
             }
         }
-
+        
         .product-inquiry-box {
             background: #1a1a1a;
             border-color: #333333;
@@ -382,6 +381,7 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
         }
     }
 
+    /* Global Markdown Divider Override */
     #blog-content {
         hr {
             display: block !important;
@@ -395,6 +395,7 @@ const isXcBathTeam = !author || cleanAuthor === "bothbest" || cleanAuthor === "x
         }
     }
 
+    /* 暗黑模式下的分割线 */
     body.dark-mode #blog-content hr {
         border-top-color: #333333 !important;
     }
