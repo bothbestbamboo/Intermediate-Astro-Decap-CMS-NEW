@@ -13,7 +13,9 @@ isFeatured: true
 **Model 822 Integrated Acrylic Bathtub** represents the pinnacle of modern minimalist bathroom luxury. Engineered with a true one-piece molded body—free of visible joints, seams, or edge compromises—it blends sleek, organic architectural aesthetics with high-performance ergonomics. 
 
 Crafted from premium 100% pure acrylic resin blended with fine mineral composites, the double-walled shell provides a non-porous, warm-to-touch stone-like texture. Built-in full-depth thermal insulation ensures bathwater stays warm long after the tap is closed, transforming every soak into an immersive spa-like experience for high-end residential suites and luxury hotels.
+
 ![Integrated acrylic bathtub in a modern bathroom](@assets/images/products/822-1-1.jpg)
+
 ---
 
 ## Technical Specifications
