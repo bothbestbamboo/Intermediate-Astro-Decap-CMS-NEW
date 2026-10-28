@@ -4,26 +4,21 @@ import "@styles/sidebar.less";
 import { Icon } from "astro-icon/components";
 
 interface Heading {
-	depth: number; // The heading level (h1 = 1, h2 = 2, etc)
-	slug: string; // The ID of the heading for linking
-	text: string; // The text content of the heading
+	depth: number;
+	slug: string;
+	text: string;
 }
 
 interface Props {
-	headings: Heading[]; // Array of headings from your markdown content
-	levels?: 1 | 2 | 3; // How many levels of headers to show in TOC (default: 2)
+	headings: Heading[];
+	levels?: 1 | 2 | 3;
 }
 
 const { headings, levels = 2 } = Astro.props as Props;
-
-// Filter headings to only show up to the specified level
 const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
 
-// 自定义函数：根据标题文本匹配对应的 Phosphor 图标
 const getIconName = (text: string) => {
     const t = text.toLowerCase();
-    
-    // 浴缸产品页专属匹配
     if (t.includes("overview") || t.includes("philosophy")) return "ph:lightbulb";
     if (t.includes("technical") || t.includes("specification")) return "ph:gear";
     if (t.includes("advantage") || t.includes("craftsmanship")) return "ph:star";
@@ -31,161 +26,137 @@ const getIconName = (text: string) => {
     if (t.includes("detail") || t.includes("finishing")) return "ph:magnifying-glass";
     if (t.includes("application") || t.includes("environment")) return "ph:buildings";
     if (t.includes("packaging") || t.includes("ordering") || t.includes("bulk order")) return "ph:package";
-
-    // 🌟 终极兜底：如果以上都没匹配上，显示一个干净的高级通用文档图标，绝不会突兀
-    return "ph:file-text"; 
+    if (t.includes("available profile") || t.includes("profile")) return "ph:layout";
+    if (t.includes("safety") || t.includes("performance")) return "ph:shield-check";
+    if (t.includes("physical") || t.includes("stability")) return "ph:scales";
+    if (t.includes("installation")) return "ph:wrench";
+    if (t.includes("gallery")) return "ph:images";
+    if (t.includes("infuser") || t.includes("drinking")) return "ph:coffee";
+    if (t.includes("customization") || t.includes("label") || t.includes("private")) return "ph:tag";
+    if (t.includes("user experience") || t.includes("design")) return "ph:magic-wand";
+    if (t.includes("care") || t.includes("recommendation") || t.includes("maintenance")) return "ph:info";
+    return "ph:file-text";
 };
 ---
 
-	<h3 class="blog-sidebar_widget-header">Quick Navigation</h3>
-	<ul class="cs-toc-list">
-		{
-			filteredHeadings.map((heading) => (
-				<li class={`cs-toc-item depth-${heading.depth}`}>
-					<a href={`#${heading.slug}`} class="cs-toc-link">
-                        <Icon name={getIconName(heading.text)} class="cs-toc-icon" width="16" height="16" />
-						<span class="cs-toc-text">{heading.text}</span>
-					</a>
-				</li>
-			))
-		}
-	</ul>
+<h3 class="blog-sidebar_widget-header">Quick Navigation</h3>
+<ul class="cs-toc-list">
+	{
+		filteredHeadings.map((heading) => (
+			<li class={`cs-toc-item depth-${heading.depth}`}>
+				<a href={`#${heading.slug}`} class="cs-toc-link">
+					<Icon name={getIconName(heading.text)} class="cs-toc-icon" width="16" height="16" />
+					<span class="cs-toc-text">{heading.text}</span>
+				</a>
+			</li>
+		))
+	}
+</ul>
 
 <style lang="less">
-	.cs-toc-container {
-		border-radius: 0.5em;
-		border: 1px solid #ebebeb;
-        padding: 2.1875em 1.875em;
-        margin-bottom: 2rem;
+	.blog-sidebar_widget-header {
+		margin: 0 0 1.5rem 0 !important;
+		font-size: 1.125rem !important;
+		font-weight: 700 !important;
+		color: #111 !important;
+		
+		&::after {
+			background: var(--primaryLight) !important; 
+		}
 	}
 
 	.cs-toc-list {
-		margin-top: 1rem;
+		margin: 0 !important;
+		padding: 0 !important;
 		font-size: 0.875rem;
 		display: flex;
 		flex-direction: column;
 		gap: 14px !important;
 		list-style: none !important;
-        padding-left: 0 !important;
 	}
 
+	/* 移除绿线，仅保留整齐缩进 */
 	.cs-toc-item {
-		&.depth-2 {
-			padding-left: 0.75rem !important;
-		}
-		&.depth-3 {
-			padding-left: 1.5rem !important;
-		}
-		&:has(.cs-toc-current) {
-			border-left: 2px solid var(--primaryLight) !important;
-			color: var(--primaryLight);
-            padding-left: calc(0.75rem - 2px) !important;
-            &.depth-3 {
-				padding-left: calc(1.5rem - 2px) !important;
-			}
+		display: block !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		position: relative;
+		line-height: 1.4 !important;
+
+		border-left: 2px solid transparent !important;
+		padding-left: 8px !important; 
+		
+		&.depth-3 { 
+			padding-left: 20px !important; 
 		}
 	}
 
 	.cs-toc-link {
-		transition: all 0.2s ease-in-out;
-		color: var(--bodyTextColor);
+		display: flex !important;
+		align-items: flex-start;
+		gap: 8px; 
+		line-height: 1.4 !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		color: #4b5563 !important; 
 		text-decoration: none !important;
-        
-        /* 让图标和文字并排对齐 */
-        display: flex !important;
-        align-items: flex-start; 
-        gap: 8px; 
-        width: 100%;
+		word-break: break-word !important;
+		transition: all 0.2s ease-in-out;
+		width: 100%;
 
-        .cs-toc-text {
-            flex: 1; 
-            font-size: 14px !important;
-            line-height: 1.4 !important;
-            margin-top: 1px;
-        }
+		.cs-toc-text {
+			flex: 1;
+			font-size: 14px !important;
+			font-weight: 400 !important;
+			line-height: 1.4 !important;
+			display: block; 
+		}
 
 		&.cs-toc-current {
-			color: var(--primaryLight);
-			.cs-toc-text {
-                font-weight: 700 !important;
-            }
-            .cs-toc-icon {
-                color: var(--primaryLight);
-            }
+			color: var(--primaryLight) !important;
+			.cs-toc-text { font-weight: 700 !important; }
+			.cs-toc-icon { color: var(--primaryLight); }
 		}
 		&:hover {
-			color: var(--primaryLight);
-            .cs-toc-icon {
-                color: var(--primaryLight);
-            }
+			color: var(--primaryLight) !important;
+			.cs-toc-icon { color: var(--primaryLight); }
 		}
 	}
 
-    .cs-toc-icon {
-        color: #999; 
-        flex-shrink: 0; 
-        margin-top: 2px; 
-        transition: color 0.2s ease-in-out;
-    }
+	.cs-toc-icon {
+		color: #999; 
+		flex-shrink: 0; 
+		margin-top: 2px; 
+		transition: color 0.2s ease-in-out;
+	}
 
-    /* ==========================================
-       🌟 核心逻辑：针对普通博文隐藏图标（配合主模板的 .is-blog-post 类名）
-       ========================================== */
-    .is-blog-post {
-        .cs-toc-icon {
-            display: none !important; /* 直接隐藏图标 */
-        }
-        .cs-toc-link {
-            gap: 0 !important; /* 取消图标和文字之间的间隙 */
-        }
-        .cs-toc-text {
-            margin-top: 0 !important; /* 取消微调 */
-        }
-    }
+	.is-blog-post {
+		.cs-toc-icon { display: none !important; }
+		.cs-toc-link { gap: 0 !important; }
+	}
 
-    @media only screen and (min-width: 64rem) {
-        .cs-toc-container {
-            margin-bottom: 0;
-        }
-    }
-
-    /* Dark Mode */
-    @media only screen and (min-width: 0em) {
-    body.dark-mode {
-        .cs-toc-icon {
-            color: #a3a3a3;
-        }
-        .cs-toc-link {
-            color: #f7f7f7;
-			&.cs-toc-current {
-				color: var(--primaryLight);
-                .cs-toc-icon {
-                    color: var(--primaryLight);
-                }
-			}
-			&:hover {
-				opacity: 0.8;
-			}
-        }
-    }
-}
+	body.dark-mode {
+		.blog-sidebar_widget-header { color: #f7f7f7 !important; }
+		.cs-toc-icon { color: #a3a3a3; }
+		.cs-toc-link {
+			color: #a2a0a0 !important;
+			&.cs-toc-current { color: var(--primaryLight) !important; }
+			&:hover { color: #ffffff !important; }
+		}
+	}
 </style>
 
 <script>
-	// Wrapper for Blog post content
-	let wrappingElement: Element | null;
 	let observeHeaderTags: IntersectionObserver;
 	let allHeaderTags: NodeListOf<Element>;
 	let isDesktop = window.matchMedia("(min-width: 1024px)").matches;
 
-	// Function that runs when the Intersection Observer fires
 	function setCurrent(entries: any[]) {
 		const tocWrapper = document.querySelector("#desktop-toc");
 		if (!tocWrapper) return;
-
 		const allSectionLinks = tocWrapper.querySelectorAll(".cs-toc-link");
-
-		entries.forEach((entry: { isIntersecting: any; target: { id: any; }; }) => {
+		
+		entries.forEach((entry: any) => {
 			if (entry.isIntersecting) {
 				allSectionLinks.forEach((link) => link.classList.remove("cs-toc-current"));
 				const targetLink = tocWrapper.querySelector(`a[href="#${entry.target.id}"].cs-toc-link`);
@@ -195,46 +166,33 @@ const getIconName = (text: string) => {
 	}
 
 	function initTOC() {
-		// Check if it's desktop
 		if (!window.matchMedia("(min-width: 64rem)").matches) return;
-
-		// update this with whatever class wraps your blog post content
-		wrappingElement = document.querySelector("#blog-content");
+		
+		const wrappingElement = document.querySelector("#blog-content");
 		if (!wrappingElement) return;
-
-		// Get all H1/H2/H3 tags from the post
+		
 		allHeaderTags = wrappingElement.querySelectorAll(":scope > h1, :scope > h2, :scope > h3");
 		if (!allHeaderTags.length) return;
-
-		// Intersection Observer Options
-		let options = {
-			root: null,
-			rootMargin: "0px 0px -50% 0px",
-			threshold: [1],
+		
+		// 🌟 优化了触发范围，防止长标题遮挡
+		let options = { 
+			root: null, 
+			rootMargin: "-10% 0px -70% 0px", 
+			threshold: 0 
 		};
-
-		// Create Observer
+		
 		observeHeaderTags = new IntersectionObserver(setCurrent, options);
 		allHeaderTags.forEach((tag) => observeHeaderTags.observe(tag));
 	}
 
-	// Run on initial page load if on desktop
 	if (isDesktop) initTOC();
-
-	// Re-run on view transitions navigation if on desktop
+	
 	document.addEventListener("astro:after-swap", () => {
-		if (window.matchMedia("(min-width: 64rem)").matches) {
-			initTOC();
-		}
+		if (window.matchMedia("(min-width: 64rem)").matches) initTOC();
 	});
-
-	// Listen for screen size changes
+	
 	window.matchMedia("(min-width: 64rem)").addEventListener("change", (e) => {
-		if (e.matches) {
-			initTOC();
-		} else {
-			// Clean up observer when switching to mobile
-			if (observeHeaderTags) observeHeaderTags.disconnect();
-		}
+		if (e.matches) initTOC();
+		else if (observeHeaderTags) observeHeaderTags.disconnect();
 	});
 </script>
