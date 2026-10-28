@@ -8,7 +8,7 @@ tags: ["Bathtubs"]
 isFeatured: true
 ---
 
-## Product Overview & Design Philosophy
+## Overview & Design Philosophy
 
 **Model 822 Integrated Acrylic Bathtub** represents the pinnacle of modern minimalist bathroom luxury. Engineered with a true one-piece molded body—free of visible joints, seams, or edge compromises—it blends sleek, organic architectural aesthetics with high-performance ergonomics. 
 
@@ -34,20 +34,20 @@ Crafted from premium 100% pure acrylic resin blended with fine mineral composite
 
 ---
 
-## Key Advantages & Craftsmanship Highlights
+## Advantages & Highlights
 
-* **Solid Surface Body & Texture:** Blended with fine mineral composites to offer a luxurious, non-porous, stone-like tactile feel that resists everyday wear and staining.
-* **Seamless Anti-Scratch Finish:** Molded in a single continuous body and finished with specialized automotive-grade anti-scratch lacquer for enduring brilliance.
-* **Rigid Heavy-Duty Stability:** Weighing approximately 299 lb (136 kg), the tub sits solidly on any finished floor without shifting or wobbling.
-* **Full-Depth Thermal Insulation:** Advanced double-walled construction traps ambient heat within the cavity, significantly extending water temperature retention compared to standard thin tubs.
-* **Flexible Freestanding Placement:** Designed for versatile architecture, pairing easily with floor-mounted tub fillers or wall-spout systems in open master bathrooms.
-* **Easy Maintenance & Hygiene:** Zero grout lines or concealed crevices mean the surface wipes clean in seconds, preventing mold and soap scum buildup.
+- **Solid Surface Body & Texture:** Blended with fine mineral composites to offer a luxurious, non-porous, stone-like tactile feel that resists everyday wear and staining.
+- **Seamless Anti-Scratch Finish:** Molded in a single continuous body and finished with specialized automotive-grade anti-scratch lacquer for enduring brilliance.
+- **Rigid Heavy-Duty Stability:** Weighing approximately 299 lb (136 kg), the tub sits solidly on any finished floor without shifting or wobbling.
+- **Full-Depth Thermal Insulation:** Advanced double-walled construction traps ambient heat within the cavity, significantly extending water temperature retention compared to standard thin tubs.
+- **Flexible Freestanding Placement:** Designed for versatile architecture, pairing easily with floor-mounted tub fillers or wall-spout systems in open master bathrooms.
+- **Easy Maintenance & Hygiene:** Zero grout lines or concealed crevices mean the surface wipes clean in seconds, preventing mold and soap scum buildup.
 
 ![Integrated bathtub in a bright bathroom](@assets/images/products/822-1-2.jpg)
 
 ---
 
-## Precision Manufacturing Process
+## Manufacturing Process
 
 Our bathtubs undergo a rigorous 9-stage industrial production workflow to guarantee long-term structural integrity and flawless aesthetic perfection:
 
@@ -75,7 +75,7 @@ Pairing the tub with a floor-mounted chrome mixer—featuring a tall curved spou
 
 ---
 
-## Primary Applications & Luxury Environments
+## Primary Applications
 
 Designed to elevate diverse interior architectural styles:
 
