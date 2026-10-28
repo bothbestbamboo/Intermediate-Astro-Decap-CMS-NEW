@@ -56,7 +56,6 @@ const blogPostingSchema = getBlogPostingSchema(
         set:html={JSON.stringify(blogPostingSchema)}
     />
 
-    <!-- 🌟 动态绑定类名 -->
     <div class={`blog-container ${isProductPage ? "product-page-layout" : "is-blog-post"}`}>
         <div class="blog-wrapper-inner">
             <section class="main-content">
@@ -114,11 +113,8 @@ const blogPostingSchema = getBlogPostingSchema(
             </section>
 
             <aside class="blog-sidebar">
-                <!-- 产品页保留外框 class，博文页去掉外框 class 避免双重嵌套 -->
-                <div
-                    class={`${isProductPage ? "blog-sidebar_widget-wrapper" : ""} cs-hide-on-mobile`}
-                    id="desktop-toc"
-                >
+                <!-- 🌟 统一提供外框：blog-sidebar_widget-wrapper -->
+                <div class="blog-sidebar_widget-wrapper cs-hide-on-mobile" id="desktop-toc">
                     <TableOfContents headings={headings} levels={3} isProduct={isProductPage} />
                 </div>
 
@@ -154,9 +150,6 @@ const blogPostingSchema = getBlogPostingSchema(
 </BaseLayout>
 
 <style lang="less" is:global>
-    /* ==========================================================================
-       1. Mobile Base Styles (0em+)
-       ========================================================================== */
     .blog-container {
         width: 94%;
         max-width: (1120/16em);
@@ -275,9 +268,6 @@ const blogPostingSchema = getBlogPostingSchema(
         }
     }
 
-    /* ==========================================================================
-       2. Tablet/Desktop Styles (64em+ / 1024px+)
-       ========================================================================== */
     @media only screen and (min-width: 64em) {
         .blog-wrapper-inner {
             flex-direction: row;
@@ -316,9 +306,6 @@ const blogPostingSchema = getBlogPostingSchema(
         }
     }
 
-    /* ==========================================================================
-       3. Inquiry Box Styles
-       ========================================================================== */
     .product-inquiry-box-inserted {
         margin-top: 24px;
         width: 100%;
@@ -359,9 +346,6 @@ const blogPostingSchema = getBlogPostingSchema(
         }
     }
 
-    /* ==========================================================================
-       4. Dark Mode Styles
-       ========================================================================== */
     body.dark-mode {
         .blog-article {
             .blog-h1, .blog-author, .blog-date { color: #f7f7f7; }
@@ -378,9 +362,14 @@ const blogPostingSchema = getBlogPostingSchema(
         }
     }
 
-    /* 5. 删除所有强制剥离 #desktop-toc 的代码，让 isProduct 判断来接管样式 */
+    /* 去除外部容器的强制内边距，让组件自己控制 */
+    #desktop-toc {
+        width: 100%;
+        padding: 0 !important;
+        border: none !important;
+        background: transparent !important;
+    }
 
-    /* 6. 全局分割线 */
     #blog-content {
         hr {
             display: block !important;

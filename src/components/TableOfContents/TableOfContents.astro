@@ -12,7 +12,7 @@ interface Heading {
 interface Props {
 	headings: Heading[];
 	levels?: 1 | 2 | 3;
-	isProduct?: boolean; // 🌟 新增参数
+	isProduct?: boolean;
 }
 
 const { headings, levels = 2, isProduct = false } = Astro.props as Props;
@@ -40,52 +40,29 @@ const getIconName = (text: string) => {
 };
 ---
 
-<!-- 🌟 如果是产品页，包裹一层自带的卡片外框；如果是博文，就不包裹 -->
-{isProduct ? (
-    <div class="cs-toc-card-wrapper">
-        <h3 class="blog-sidebar_widget-header">Quick Navigation</h3>
-        <ul class="cs-toc-list">
-            {filteredHeadings.map((heading) => (
-                <li class={`cs-toc-item depth-${heading.depth}`}>
-                    <a href={`#${heading.slug}`} class="cs-toc-link">
-                        <Icon name={getIconName(heading.text)} class="cs-toc-icon" width="16" height="16" />
-                        <span class="cs-toc-text">{heading.text}</span>
-                    </a>
-                </li>
-            ))}
-        </ul>
-    </div>
-) : (
-    <>
-        <h3 class="blog-sidebar_widget-header">Quick Navigation</h3>
-        <ul class="cs-toc-list">
-            {filteredHeadings.map((heading) => (
-                <li class={`cs-toc-item depth-${heading.depth}`}>
-                    <a href={`#${heading.slug}`} class="cs-toc-link">
-                        <Icon name={getIconName(heading.text)} class="cs-toc-icon" width="16" height="16" />
-                        <span class="cs-toc-text">{heading.text}</span>
-                    </a>
-                </li>
-            ))}
-        </ul>
-    </>
-)}
+<div class="cs-toc-inner">
+	<h3 class="blog-sidebar_widget-header">Quick Navigation</h3>
+	<ul class="cs-toc-list">
+		{
+			filteredHeadings.map((heading) => (
+				<li class={`cs-toc-item depth-${heading.depth}`}>
+					<a href={`#${heading.slug}`} class="cs-toc-link">
+						{/* 只有产品页才渲染图标 */}
+						{isProduct && (
+							<Icon name={getIconName(heading.text)} class="cs-toc-icon" width="16" height="16" />
+						)}
+						<span class="cs-toc-text">{heading.text}</span>
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</div>
 
 <style lang="less">
-	/* 只有当作为产品页被渲染时，这个外框才会生效 */
-	.cs-toc-card-wrapper {
-		background: #ffffff;
-		border: 1px solid #a2a0a0;
-		border-radius: (8/16em);
-		padding: 24px;
+	/* 组件内部容器 */
+	.cs-toc-inner {
 		width: 100%;
-		box-sizing: border-box;
-		margin-bottom: 2rem;
-
-		body.dark-mode & {
-			background: #1a1a1a;
-			border-color: #333333;
-		}
 	}
 
 	.blog-sidebar_widget-header {
@@ -93,7 +70,7 @@ const getIconName = (text: string) => {
 		font-size: 1.125rem !important;
 		font-weight: 700 !important;
 		color: #111 !important;
-		text-align: center; /* 确保居中 */
+		text-align: center;
 		
 		&::after {
 			content: "";
@@ -117,7 +94,6 @@ const getIconName = (text: string) => {
 		list-style: none !important;
 	}
 
-	/* 移除绿线，仅保留整齐缩进 */
 	.cs-toc-item {
 		display: block !important;
 		margin: 0 !important;
@@ -125,6 +101,7 @@ const getIconName = (text: string) => {
 		position: relative;
 		line-height: 1.4 !important;
 
+		/* 用 border 占位，保证对齐且没有奇怪的线条 */
 		border-left: 2px solid transparent !important;
 		padding-left: 8px !important; 
 		
@@ -136,6 +113,7 @@ const getIconName = (text: string) => {
 	.cs-toc-link {
 		display: flex !important;
 		align-items: flex-start;
+		/* 只有产品页才有 8px 的 gap，博文是 0 */
 		gap: 8px; 
 		line-height: 1.4 !important;
 		margin: 0 !important;
@@ -165,17 +143,16 @@ const getIconName = (text: string) => {
 		}
 	}
 
+	/* 博文模式：消除间距 */
+	.is-blog-post {
+		.cs-toc-link { gap: 0 !important; }
+	}
+
 	.cs-toc-icon {
 		color: #999; 
 		flex-shrink: 0; 
 		margin-top: 2px; 
 		transition: color 0.2s ease-in-out;
-	}
-
-	/* 博文隐藏图标 */
-	.is-blog-post {
-		.cs-toc-icon { display: none !important; }
-		.cs-toc-link { gap: 0 !important; }
 	}
 
 	body.dark-mode {
