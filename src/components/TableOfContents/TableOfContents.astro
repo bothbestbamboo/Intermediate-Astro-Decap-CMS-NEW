@@ -40,7 +40,6 @@ const getIconName = (text: string) => {
 };
 ---
 
-<!-- 🌟 重新引入外框，让组件自成一体 -->
 <div class="cs-toc-card">
 	<h3 class="blog-sidebar_widget-header">Quick Navigation</h3>
 	<ul class="cs-toc-list">
@@ -60,10 +59,10 @@ const getIconName = (text: string) => {
 </div>
 
 <style lang="less">
-	/* 自带的完美卡片框 */
+	/* 彻底消除多余边框嵌套，自适应外层容器 */
 	.cs-toc-card {
 		background: #ffffff;
-		border: 1px solid #a2a0a0;
+		border: 1px solid #e5e7eb;
 		border-radius: (8/16em);
 		padding: 24px;
 		width: 100%;
@@ -88,7 +87,7 @@ const getIconName = (text: string) => {
 			width: 50px;
 			height: 3px;
 			margin: 16px auto 0;
-			background: var(--primaryLight) !important; /* 强制主题绿线 */
+			background: var(--primaryLight) !important;
 			border-radius: 4px;
 			display: block;
 			position: relative;
@@ -156,7 +155,6 @@ const getIconName = (text: string) => {
 		transition: color 0.2s ease-in-out;
 	}
 
-	/* 博文模式：没有图标，消除间隙 */
 	.cs-toc-link:not(:has(.cs-toc-icon)) {
 		gap: 0 !important;
 	}
