@@ -40,24 +40,42 @@ const getIconName = (text: string) => {
 };
 ---
 
-<!-- 🌟 组件不再自带外框，直接输出内容，完全交由主模板的 wrapper 来控制 -->
-<h3 class="blog-sidebar_widget-header">Quick Navigation</h3>
-<ul class="cs-toc-list">
-	{
-		filteredHeadings.map((heading) => (
-			<li class={`cs-toc-item depth-${heading.depth}`}>
-				<a href={`#${heading.slug}`} class="cs-toc-link">
-					{isProduct && (
-						<Icon name={getIconName(heading.text)} class="cs-toc-icon" width="16" height="16" />
-					)}
-					<span class="cs-toc-text">{heading.text}</span>
-				</a>
-			</li>
-		))
-	}
-</ul>
+<!-- 🌟 重新加上组件自带的卡片外框 -->
+<div class="cs-toc-wrapper">
+	<h3 class="blog-sidebar_widget-header">Quick Navigation</h3>
+	<ul class="cs-toc-list">
+		{
+			filteredHeadings.map((heading) => (
+				<li class={`cs-toc-item depth-${heading.depth}`}>
+					<a href={`#${heading.slug}`} class="cs-toc-link">
+						{isProduct && (
+							<Icon name={getIconName(heading.text)} class="cs-toc-icon" width="16" height="16" />
+						)}
+						<span class="cs-toc-text">{heading.text}</span>
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</div>
 
 <style lang="less">
+	/* 组件自身的卡片框架，保证无论放在哪里都有外框 */
+	.cs-toc-wrapper {
+		background: #ffffff;
+		border: 1px solid #a2a0a0;
+		border-radius: (8/16em);
+		padding: (35/16em) (30/16em); /* 和原来 sidebar.less 保持一致的间距 */
+		width: 100%;
+		box-sizing: border-box;
+		margin-bottom: 2rem;
+
+		body.dark-mode & {
+			background: #1a1a1a;
+			border-color: #333333;
+		}
+	}
+
 	.blog-sidebar_widget-header {
 		margin: 0 0 1.5rem 0 !important;
 		font-size: 1.125rem !important;
@@ -65,6 +83,7 @@ const getIconName = (text: string) => {
 		color: #111 !important;
 		text-align: center;
 		
+		/* 🌟 强制覆盖全局的黑线，变回绿线 */
 		&::after {
 			content: "";
 			width: 50px;
