@@ -11,7 +11,7 @@ import "@styles/markdown.less";
 import xcBathAvatar from "@assets/images/authors/xcbath.png";
 
 // Components
-import BaseLayout from "@layouts/BaseLayout.astro"; // 🌟 确保引入了 BaseLayout
+import BaseLayout from "@layouts/BaseLayout.astro"; 
 import FeaturedProduct from "@components/FeaturedProduct/FeaturedProduct.astro";
 import TableOfContents from "@components/TableOfContents/TableOfContents.astro";
 import CTA from "@components/CTA/CTASimple.astro";
@@ -56,7 +56,6 @@ const blogPostingSchema = getBlogPostingSchema(
         set:html={JSON.stringify(blogPostingSchema)}
     />
 
-    <!-- 🌟 动态绑定类名：产品页使用 product-page-layout，普通博文使用 is-blog-post -->
     <div class={`blog-container ${isProductPage ? "product-page-layout" : "is-blog-post"}`}>
         <div class="blog-wrapper-inner">
             <section class="main-content">
@@ -104,7 +103,7 @@ const blogPostingSchema = getBlogPostingSchema(
                         />
                     </picture>
 
-                    <!-- 移动端 TOC -->
+                    <!-- 🌟 移动端 TOC 统一包裹在自带边框的 div 中 -->
                     <div class="blog-sidebar_widget-wrapper cs-hide-on-desktop">
                         <TableOfContents headings={headings} levels={3} isProduct={isProductPage} />
                     </div>
@@ -115,8 +114,8 @@ const blogPostingSchema = getBlogPostingSchema(
             </section>
 
             <aside class="blog-sidebar">
-                <!-- 桌面端 TOC：去掉自带的外框类名，统一由组件内部渲染卡片 -->
-                <div class="cs-hide-on-mobile" id="desktop-toc">
+                <!-- 🌟 桌面端 TOC 也统一使用 blog-sidebar_widget-wrapper 作为外壳 -->
+                <div class="blog-sidebar_widget-wrapper cs-hide-on-mobile" id="desktop-toc">
                     <TableOfContents headings={headings} levels={3} isProduct={isProductPage} />
                 </div>
 
@@ -396,7 +395,7 @@ const blogPostingSchema = getBlogPostingSchema(
     }
 
     /* ==========================================================================
-       5. 全局分割线（去掉了 :global 伪类，防止构建报错）
+       5. 全局分割线
        ========================================================================== */
     #blog-content {
         hr {

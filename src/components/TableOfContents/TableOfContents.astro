@@ -12,7 +12,7 @@ interface Heading {
 interface Props {
 	headings: Heading[];
 	levels?: 1 | 2 | 3;
-	isProduct?: boolean; // 接收是不是产品页
+	isProduct?: boolean; 
 }
 
 const { headings, levels = 2, isProduct = false } = Astro.props as Props;
@@ -40,43 +40,24 @@ const getIconName = (text: string) => {
 };
 ---
 
-<!-- 统一的卡片容器，不论是产品还是博文，都自带漂亮的外框 -->
-<div class="cs-toc-wrapper">
-	<h3 class="blog-sidebar_widget-header">Quick Navigation</h3>
-	<ul class="cs-toc-list">
-		{
-			filteredHeadings.map((heading) => (
-				<li class={`cs-toc-item depth-${heading.depth}`}>
-					<a href={`#${heading.slug}`} class="cs-toc-link">
-						{/* 只有 isProduct 为 true（产品页）时才渲染图标 */}
-						{isProduct && (
-							<Icon name={getIconName(heading.text)} class="cs-toc-icon" width="16" height="16" />
-						)}
-						<span class="cs-toc-text">{heading.text}</span>
-					</a>
-				</li>
-			))
-		}
-	</ul>
-</div>
+<!-- 🌟 组件不再自带外框，直接输出内容，完全交由主模板的 wrapper 来控制 -->
+<h3 class="blog-sidebar_widget-header">Quick Navigation</h3>
+<ul class="cs-toc-list">
+	{
+		filteredHeadings.map((heading) => (
+			<li class={`cs-toc-item depth-${heading.depth}`}>
+				<a href={`#${heading.slug}`} class="cs-toc-link">
+					{isProduct && (
+						<Icon name={getIconName(heading.text)} class="cs-toc-icon" width="16" height="16" />
+					)}
+					<span class="cs-toc-text">{heading.text}</span>
+				</a>
+			</li>
+		))
+	}
+</ul>
 
 <style lang="less">
-	/* 卡片外框样式 */
-	.cs-toc-wrapper {
-		background: #ffffff;
-		border: 1px solid #a2a0a0;
-		border-radius: (8/16em);
-		padding: 24px;
-		width: 100%;
-		box-sizing: border-box;
-		margin-bottom: 2rem;
-
-		body.dark-mode & {
-			background: #1a1a1a;
-			border-color: #333333;
-		}
-	}
-
 	.blog-sidebar_widget-header {
 		margin: 0 0 1.5rem 0 !important;
 		font-size: 1.125rem !important;
@@ -160,7 +141,7 @@ const getIconName = (text: string) => {
 		transition: color 0.2s ease-in-out;
 	}
 
-	/* 如果是博文（没有图标），取消图标与文字的间距 */
+	/* 如果是博文（没有图标），消除间隙 */
 	.cs-toc-link:not(:has(.cs-toc-icon)) {
 		gap: 0 !important;
 	}
@@ -186,11 +167,9 @@ const getIconName = (text: string) => {
 		if (!tocWrapper) return;
 		const allSectionLinks = tocWrapper.querySelectorAll(".cs-toc-link");
 		
-		// 🌟 核心优化：收集当前在视口中可见的所有标题
 		const visibleEntries = entries.filter(e => e.isIntersecting);
 		
 		if (visibleEntries.length > 0) {
-			// 如果同时有多个标题在屏幕上，只选最上面（y 轴最小）的那一个
 			const topEntry = visibleEntries.reduce((prev, curr) => {
 				return (prev.boundingClientRect.top < curr.boundingClientRect.top) ? prev : curr;
 			});
@@ -207,11 +186,9 @@ const getIconName = (text: string) => {
 		const wrappingElement = document.querySelector("#blog-content");
 		if (!wrappingElement) return;
 		
-		// 只抓取 H2 和 H3，忽略 H4
 		allHeaderTags = wrappingElement.querySelectorAll(":scope > h2, :scope > h3");
 		if (!allHeaderTags.length) return;
 		
-		// 调整触发红线，使其在屏幕中上部（-10% 到 -60%）生效
 		let options = { 
 			root: null, 
 			rootMargin: "-10% 0px -60% 0px", 
