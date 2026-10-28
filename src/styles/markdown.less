@@ -15,6 +15,9 @@
 		line-height: 1.5em;
 		margin-bottom: (16/16rem);
 		color: var(--headerColor);
+		&[id] {
+			scroll-margin-top: 8rem; /* adds margin top when scrolling down to a h2 header using a TOC link */
+		}
 	}
 
 	h3 {
@@ -25,17 +28,14 @@
 		color: var(--headerColor);
 	}
 
-	h4, h5, h6 {
+	h4,
+	h5,
+	h6 {
 		font-size: (20/16rem);
 		font-weight: 700;
 		line-height: 1.5em;
 		margin-bottom: (16/16rem);
 		color: var(--headerColor);
-	}
-
-	/* 🌟 核心优化：统一给 h2 和 h3 增加滚动留白，确保不会被顶部固定导航遮挡 */
-	h2[id], h3[id] {
-		scroll-margin-top: 8rem; /* 如果还是被挡住，可以把 8rem 改成 10rem 或 12rem */
 	}
 
 	p {
@@ -52,41 +52,21 @@
 		color: var(--secondary);
 	}
 
-	/* --- 优化正文列表样式 --- */
-	ul, ol {
+	/* 全局列表样式 */
+	ul,
+	ol {
 		margin: 0;
 		margin: (16/16rem) 0;
-		padding-left: (24/16rem); 
+		padding-left: (40/16rem);
 
 		li {
 			font-size: (16/16rem);
 			line-height: 1.6em;
-			margin-bottom: (12/16rem);
+			list-style: circle;
+			margin-bottom: (16/16rem);
 			color: var(--bodyTextColor);
 		}
 	}
-
-    /* 无序列表专属美化 */
-    ul {
-        list-style: none;
-        padding-left: (28/16rem);
-
-        li {
-            position: relative;
-            
-            /* 使用 CSS 绘制一个高级的小圆点，替代默认的黑圆圈 */
-            &::before {
-                content: "";
-                position: absolute;
-                left: -1.2rem;
-                top: 0.6em;
-                width: 6px;
-                height: 6px;
-                background-color: var(--primaryLight); 
-                border-radius: 50%; 
-            }
-        }
-    }
 
 	img {
 		width: 100%;
@@ -96,12 +76,13 @@
 		display: block;
 	}
 
+	/* code blocks */
 	pre {
 		padding: (16/16rem);
 		margin: (16/16rem) 0;
 	}
 
-	/* --- 常规表格美化 --- */
+	/* --- 高端工业风美化表格样式 --- */
 	table {
 		width: 100%;
 		border-collapse: collapse;
@@ -122,8 +103,8 @@
 	}
 
 	th {
-		background-color: #eaf1f8;
-		color: #004B87;
+		background-color: #e5eddc;
+		color: #1a2e05;
 		font-weight: 700;
 		text-align: left;
 		padding: (12/16rem) (16/16rem);
@@ -146,7 +127,7 @@
 	}
 
 	/* ==========================================================================
-       🌟 全局暗黑模式表格适配
+       🌟 暗黑模式表格适配
        ========================================================================== */
 	body.dark-mode & {
 		table {
@@ -155,9 +136,9 @@
 		}
 
 		th {
-			background-color: #1a2633; 
-			color: #8bb4d8;
-			border-color: #333;
+			background-color: #2a3a1e;
+			color: #e5eddc;
+			border-color: #3f5231;
 		}
 
 		td {
