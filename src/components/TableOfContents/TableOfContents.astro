@@ -59,7 +59,6 @@ const getIconName = (text: string) => {
 </div>
 
 <style lang="less">
-	/* 🌟 自带的卡片外框 */
 	.cs-toc-wrapper {
 		background: #ffffff;
 		border: 1px solid #a2a0a0;
@@ -67,6 +66,7 @@ const getIconName = (text: string) => {
 		padding: (24/16em) (20/16em);
 		width: 100%;
 		box-sizing: border-box;
+		/* 🌟 保证卡片下方有充足的呼吸空间 */
 		margin-bottom: 2rem;
 
 		body.dark-mode & {
@@ -155,7 +155,6 @@ const getIconName = (text: string) => {
 		transition: color 0.2s ease-in-out;
 	}
 
-	/* 博文模式：没有图标，消除间隙 */
 	.cs-toc-link:not(:has(.cs-toc-icon)) {
 		gap: 0 !important;
 	}

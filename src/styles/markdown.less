@@ -33,9 +33,9 @@
 		color: var(--headerColor);
 	}
 
-	/* 🌟 核心修复：把 8rem 改大到了 12rem。因为你的固定顶栏可能很高，8rem 刚好被遮住或者超出。 */
-	h2[id], h3[id] {
-		scroll-margin-top: 12rem; 
+	/* 🌟 核心修复：让 h2, h3, h4 跳转时都在距顶部 10rem 处停住，绝不会跑到屏幕外 */
+	h2[id], h3[id], h4[id] {
+		scroll-margin-top: 10rem; 
 	}
 
 	p {
