@@ -40,24 +40,42 @@ const getIconName = (text: string) => {
 };
 ---
 
-<h3 class="blog-sidebar_widget-header">Quick Navigation</h3>
-<ul class="cs-toc-list">
-	{
-		filteredHeadings.map((heading) => (
-			<li class={`cs-toc-item depth-${heading.depth}`}>
-				<a href={`#${heading.slug}`} class="cs-toc-link">
-					{isProduct && (
-						<Icon name={getIconName(heading.text)} class="cs-toc-icon" width="16" height="16" />
-					)}
-					<span class="cs-toc-text">{heading.text}</span>
-				</a>
-			</li>
-		))
-	}
-</ul>
+<!-- 🌟 重新引入外框，让组件自成一体 -->
+<div class="cs-toc-card">
+	<h3 class="blog-sidebar_widget-header">Quick Navigation</h3>
+	<ul class="cs-toc-list">
+		{
+			filteredHeadings.map((heading) => (
+				<li class={`cs-toc-item depth-${heading.depth}`}>
+					<a href={`#${heading.slug}`} class="cs-toc-link">
+						{isProduct && (
+							<Icon name={getIconName(heading.text)} class="cs-toc-icon" width="16" height="16" />
+						)}
+						<span class="cs-toc-text">{heading.text}</span>
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</div>
 
 <style lang="less">
-	/* 🌟 强制覆盖标题下方的线为绿色（主题色） */
+	/* 自带的完美卡片框 */
+	.cs-toc-card {
+		background: #ffffff;
+		border: 1px solid #a2a0a0;
+		border-radius: (8/16em);
+		padding: 24px;
+		width: 100%;
+		box-sizing: border-box;
+		margin-bottom: 2rem;
+
+		body.dark-mode & {
+			background: #1a1a1a;
+			border-color: #333333;
+		}
+	}
+
 	.blog-sidebar_widget-header {
 		margin: 0 0 1.5rem 0 !important;
 		font-size: 1.125rem !important;
@@ -70,7 +88,7 @@ const getIconName = (text: string) => {
 			width: 50px;
 			height: 3px;
 			margin: 16px auto 0;
-			background: var(--primaryLight) !important; 
+			background: var(--primaryLight) !important; /* 强制主题绿线 */
 			border-radius: 4px;
 			display: block;
 			position: relative;
