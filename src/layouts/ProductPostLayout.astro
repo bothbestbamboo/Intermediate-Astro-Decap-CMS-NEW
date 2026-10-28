@@ -81,7 +81,7 @@ const blogPostingSchema = getBlogPostingSchema(
             <Image src={image} alt={imageAlt} width="795" height="400" decoding="async" />
           </picture>
 
-          <!-- 移动端 TOC -->
+          <!-- 移动端 TOC：带外框 -->
           <div class="blog-sidebar_widget-wrapper cs-hide-on-desktop">
             <TableOfContents headings={headings} levels={3} isProduct={isProductPage} />
           </div>
@@ -92,8 +92,8 @@ const blogPostingSchema = getBlogPostingSchema(
       </section>
 
       <aside class="blog-sidebar">
-        <!-- 🌟 修复：去掉外层死板的 wrapper，防止被全局样式挤压。 -->
-        <div class="cs-hide-on-mobile" id="desktop-toc" style="margin-bottom: 2rem;">
+        <!-- 🌟 修复：桌面端 TOC 加上这个 wrapper，用来提供统一的边框和白底 -->
+        <div class="blog-sidebar_widget-wrapper cs-hide-on-mobile" id="desktop-toc">
           <TableOfContents headings={headings} levels={3} isProduct={isProductPage} />
         </div>
 
@@ -179,9 +179,13 @@ const blogPostingSchema = getBlogPostingSchema(
       display: flex; align-items: center; justify-content: center; width: 100%; padding: 12px;
       font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none;
       border-radius: 4px; transition: background-color 0.3s ease, color 0.3s ease;
-      background-color: #004B87 !important; color: #111111 !important;
+      background-color: #004B87 !important; 
+      color: #ffffff !important; /* 🌟 修复：按钮文字强制变成纯白色 */
     }
-    .product-inquiry-btn:hover { background-color: #111111 !important; color: #ffffff !important; }
+    .product-inquiry-btn:hover { 
+      background-color: #C5A059 !important; /* 悬停变成香槟金 */
+      color: #ffffff !important; 
+    }
   }
 
   /* 暗黑模式 */
