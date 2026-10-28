@@ -12,9 +12,10 @@ interface Heading {
 interface Props {
 	headings: Heading[];
 	levels?: 1 | 2 | 3;
+	isProduct?: boolean; // 🌟 接收是否是产品页的判断
 }
 
-const { headings, levels = 2 } = Astro.props as Props;
+const { headings, levels = 2, isProduct = false } = Astro.props as Props;
 const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
 
 const getIconName = (text: string) => {
@@ -39,29 +40,58 @@ const getIconName = (text: string) => {
 };
 ---
 
-<h3 class="blog-sidebar_widget-header">Quick Navigation</h3>
-<ul class="cs-toc-list">
-	{
-		filteredHeadings.map((heading) => (
-			<li class={`cs-toc-item depth-${heading.depth}`}>
-				<a href={`#${heading.slug}`} class="cs-toc-link">
-					<Icon name={getIconName(heading.text)} class="cs-toc-icon" width="16" height="16" />
-					<span class="cs-toc-text">{heading.text}</span>
-				</a>
-			</li>
-		))
-	}
-</ul>
+<!-- 🌟 如果外层没有包裹卡片，组件就自己提供一个完美的卡片框 -->
+<div class="cs-toc-wrapper">
+	<h3 class="blog-sidebar_widget-header">Quick Navigation</h3>
+	<ul class="cs-toc-list">
+		{
+			filteredHeadings.map((heading) => (
+				<li class={`cs-toc-item depth-${heading.depth}`}>
+					<a href={`#${heading.slug}`} class="cs-toc-link">
+						{/* 只有产品页显示图标 */}
+						{isProduct && (
+							<Icon name={getIconName(heading.text)} class="cs-toc-icon" width="16" height="16" />
+						)}
+						<span class="cs-toc-text">{heading.text}</span>
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</div>
 
 <style lang="less">
+	/* 统一的精美卡片外框 */
+	.cs-toc-wrapper {
+		background: #ffffff;
+		border: 1px solid #a2a0a0;
+		border-radius: (8/16em);
+		padding: 24px;
+		width: 100%;
+		box-sizing: border-box;
+
+		body.dark-mode & {
+			background: #1a1a1a;
+			border-color: #333333;
+		}
+	}
+
 	.blog-sidebar_widget-header {
 		margin: 0 0 1.5rem 0 !important;
 		font-size: 1.125rem !important;
 		font-weight: 700 !important;
 		color: #111 !important;
+		text-align: center;
 		
 		&::after {
+			content: "";
+			width: 50px;
+			height: 3px;
+			margin: 16px auto 0;
 			background: var(--primaryLight) !important; 
+			border-radius: 4px;
+			display: block;
+			position: relative;
 		}
 	}
 
@@ -75,20 +105,16 @@ const getIconName = (text: string) => {
 		list-style: none !important;
 	}
 
-	/* 保持整齐缩进 */
 	.cs-toc-item {
 		display: block !important;
 		margin: 0 !important;
 		padding: 0 !important;
 		position: relative;
 		line-height: 1.4 !important;
-
 		border-left: 2px solid transparent !important;
 		padding-left: 8px !important; 
 		
-		&.depth-3 { 
-			padding-left: 20px !important; 
-		}
+		&.depth-3 { padding-left: 20px !important; }
 	}
 
 	.cs-toc-link {
@@ -109,7 +135,7 @@ const getIconName = (text: string) => {
 			font-size: 14px !important;
 			font-weight: 400 !important;
 			line-height: 1.4 !important;
-			display: block; /* 关键：确保 span 是块级，JS 才能准确测量它的位置 */
+			display: block; 
 		}
 
 		&.cs-toc-current {
@@ -130,10 +156,9 @@ const getIconName = (text: string) => {
 		transition: color 0.2s ease-in-out;
 	}
 
-	/* 博文隐藏图标 */
-	.is-blog-post {
-		.cs-toc-icon { display: none !important; }
-		.cs-toc-link { gap: 0 !important; }
+	/* 如果隐藏了图标，修正间距 */
+	.cs-toc-link:not(:has(.cs-toc-icon)) {
+		gap: 0 !important;
 	}
 
 	body.dark-mode {
@@ -157,16 +182,20 @@ const getIconName = (text: string) => {
 		if (!tocWrapper) return;
 		const allSectionLinks = tocWrapper.querySelectorAll(".cs-toc-link");
 		
-		entries.forEach((entry: any) => {
-			if (entry.isIntersecting) {
-				// 清除所有高亮
-				allSectionLinks.forEach((link) => link.classList.remove("cs-toc-current"));
-				
-				// 精确找到对应的 a 标签，并高亮
-				const targetLink = tocWrapper.querySelector(`a[href="#${entry.target.id}"].cs-toc-link`);
-				if (targetLink) targetLink.classList.add("cs-toc-current");
-			}
-		});
+		// 收集所有当前在视口内的标题
+		const visibleEntries = entries.filter(e => e.isIntersecting);
+		
+		if (visibleEntries.length > 0) {
+			// 🌟 终极修复：如果有多个标题同时进入判定区，只取最靠近屏幕顶部（y最小）的那一个！
+			// 这彻底解决了因为图片高度不同或 #### 标题干扰导致的高亮跳跃。
+			const topEntry = visibleEntries.reduce((prev, curr) => {
+				return (prev.boundingClientRect.top < curr.boundingClientRect.top) ? prev : curr;
+			});
+
+			allSectionLinks.forEach((link) => link.classList.remove("cs-toc-current"));
+			const targetLink = tocWrapper.querySelector(`a[href="#${topEntry.target.id}"].cs-toc-link`);
+			if (targetLink) targetLink.classList.add("cs-toc-current");
+		}
 	}
 
 	function initTOC() {
@@ -175,13 +204,14 @@ const getIconName = (text: string) => {
 		const wrappingElement = document.querySelector("#blog-content");
 		if (!wrappingElement) return;
 		
-		allHeaderTags = wrappingElement.querySelectorAll(":scope > h1, :scope > h2, :scope > h3");
+		// 只监听 h2 和 h3
+		allHeaderTags = wrappingElement.querySelectorAll(":scope > h2, :scope > h3");
 		if (!allHeaderTags.length) return;
 		
-		// 🌟 优化了触发范围，防止长标题遮挡
+		// 调整触发范围，确保精准捕获滚动到顶部的第一个元素
 		let options = { 
 			root: null, 
-			rootMargin: "-10% 0px -70% 0px", 
+			rootMargin: "-10% 0px -60% 0px", // 稍微收紧了底部触发区
 			threshold: 0 
 		};
 		
