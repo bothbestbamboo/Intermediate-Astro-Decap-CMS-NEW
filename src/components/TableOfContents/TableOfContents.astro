@@ -40,41 +40,25 @@ const getIconName = (text: string) => {
 };
 ---
 
-<div class="cs-toc-wrapper">
-	<h3 class="blog-sidebar_widget-header">Quick Navigation</h3>
-	<ul class="cs-toc-list">
-		{
-			filteredHeadings.map((heading) => (
-				<li class={`cs-toc-item depth-${heading.depth}`}>
-					<a href={`#${heading.slug}`} class="cs-toc-link">
-						{isProduct && (
-							<Icon name={getIconName(heading.text)} class="cs-toc-icon" width="16" height="16" />
-						)}
-						<span class="cs-toc-text">{heading.text}</span>
-					</a>
-				</li>
-			))
-		}
-	</ul>
-</div>
+<!-- 🌟 彻底移除外层包裹 div，直接渲染内容，避免套娃 -->
+<h3 class="blog-sidebar_widget-header">Quick Navigation</h3>
+<ul class="cs-toc-list">
+	{
+		filteredHeadings.map((heading) => (
+			<li class={`cs-toc-item depth-${heading.depth}`}>
+				<a href={`#${heading.slug}`} class="cs-toc-link">
+					{isProduct && (
+						<Icon name={getIconName(heading.text)} class="cs-toc-icon" width="16" height="16" />
+					)}
+					<span class="cs-toc-text">{heading.text}</span>
+				</a>
+			</li>
+		))
+	}
+</ul>
 
 <style lang="less">
-	.cs-toc-wrapper {
-		background: #ffffff;
-		border: 1px solid #a2a0a0;
-		border-radius: (8/16em);
-		padding: (24/16em) (20/16em);
-		width: 100%;
-		box-sizing: border-box;
-		/* 🌟 保证卡片下方有充足的呼吸空间 */
-		margin-bottom: 2rem;
-
-		body.dark-mode & {
-			background: #1a1a1a;
-			border-color: #333333;
-		}
-	}
-
+	/* 🌟 强制覆盖标题下方的线为绿色 */
 	.blog-sidebar_widget-header {
 		margin: 0 0 1.5rem 0 !important;
 		font-size: 1.125rem !important;
@@ -87,7 +71,7 @@ const getIconName = (text: string) => {
 			width: 50px;
 			height: 3px;
 			margin: 16px auto 0;
-			background: var(--primaryLight) !important; /* 强制绿线 */
+			background: var(--primaryLight) !important; 
 			border-radius: 4px;
 			display: block;
 			position: relative;
@@ -155,6 +139,7 @@ const getIconName = (text: string) => {
 		transition: color 0.2s ease-in-out;
 	}
 
+	/* 博文模式：没有图标，消除间隙 */
 	.cs-toc-link:not(:has(.cs-toc-icon)) {
 		gap: 0 !important;
 	}
