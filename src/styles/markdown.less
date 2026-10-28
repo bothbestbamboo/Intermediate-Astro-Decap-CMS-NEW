@@ -50,19 +50,41 @@
 		color: var(--secondary);
 	}
 
+	/* --- 优化正文列表样式 --- */
 	ul, ol {
 		margin: 0;
 		margin: (16/16rem) 0;
-		padding-left: (40/16rem);
+		padding-left: (24/16rem); // 减小左侧缩进
 
 		li {
 			font-size: (16/16rem);
 			line-height: 1.6em;
-			list-style: circle;
-			margin-bottom: (16/16rem);
+			margin-bottom: (12/16rem);
 			color: var(--bodyTextColor);
 		}
 	}
+
+    /* 无序列表专属美化 */
+    ul {
+        list-style: none;
+        padding-left: (28/16rem);
+
+        li {
+            position: relative;
+            
+            /* 使用 CSS 绘制一个高级的小圆点/方块，替代默认的黑圆圈 */
+            &::before {
+                content: "";
+                position: absolute;
+                left: -1.2rem;
+                top: 0.6em;
+                width: 6px;
+                height: 6px;
+                background-color: var(--primaryLight); // 使用主题色
+                border-radius: 50%; // 圆形。如果想要方块，可以改为 2px
+            }
+        }
+    }
 
 	img {
 		width: 100%;
