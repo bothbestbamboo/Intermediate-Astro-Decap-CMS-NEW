@@ -56,7 +56,8 @@ const blogPostingSchema = getBlogPostingSchema(
         set:html={JSON.stringify(blogPostingSchema)}
     />
 
-    <div class={`blog-container ${isProductPage ? "product-page-layout" : ""}`}>
+    <!-- 🌟 修改点：如果是普通博文，则加上 is-blog-post 类名 -->
+    <div class={`blog-container ${isProductPage ? "product-page-layout" : "is-blog-post"}`}>
         <div class="blog-wrapper-inner">
             <section class="main-content">
                 <article class="blog-article">
@@ -389,6 +390,20 @@ const blogPostingSchema = getBlogPostingSchema(
             .product-inquiry-btn:hover {
                 background-color: #C5A059 !important;
                 color: #ffffff !important;
+            }
+        }
+    }
+
+    /* ==========================================================================
+       🌟 修改点：针对普通博文隐藏导航图标
+       ========================================================================== */
+    .is-blog-post {
+        #desktop-toc {
+            svg {
+                display: none !important;
+            }
+            .cs-toc-link {
+                gap: 0 !important;
             }
         }
     }
