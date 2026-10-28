@@ -8,7 +8,7 @@ tags: ["Bathtubs"]
 isFeatured: true
 ---
 
-## Product Overview & Design Philosophy
+## 💡 Product Overview & Design Philosophy
 
 **Model 822 Integrated Acrylic Bathtub** represents the pinnacle of modern minimalist bathroom luxury. Engineered with a true one-piece molded body—free of visible joints, seams, or edge compromises—it blends sleek, organic architectural aesthetics with high-performance ergonomics. 
 
@@ -18,7 +18,7 @@ Crafted from premium 100% pure acrylic resin blended with fine mineral composite
 
 ---
 
-## Technical Specifications
+## ⚙️ Technical Specifications
 
 | Parameter | Specifications & Details |
 | :--- | :--- |
@@ -34,7 +34,7 @@ Crafted from premium 100% pure acrylic resin blended with fine mineral composite
 
 ---
 
-## Key Advantages & Craftsmanship Highlights
+## ⭐ Key Advantages & Craftsmanship Highlights
 
 * **Solid Surface Body & Texture:** Blended with fine mineral composites to offer a luxurious, non-porous, stone-like tactile feel that resists everyday wear and staining.
 * **Seamless Anti-Scratch Finish:** Molded in a single continuous body and finished with specialized automotive-grade anti-scratch lacquer for enduring brilliance.
@@ -47,7 +47,7 @@ Crafted from premium 100% pure acrylic resin blended with fine mineral composite
 
 ---
 
-## Precision Manufacturing Process
+## 🏭 Precision Manufacturing Process
 
 Our bathtubs undergo a rigorous 9-stage industrial production workflow to guarantee long-term structural integrity and flawless aesthetic perfection:
 
@@ -63,7 +63,7 @@ Our bathtubs undergo a rigorous 9-stage industrial production workflow to guaran
 
 ---
 
-## Design Details & Finishing Touches
+## 🔍 Design Details & Finishing Touches
 
 ![Top view of the integrated bathtub interior](@assets/images/products/822-1-3.jpg)
 
@@ -75,7 +75,7 @@ Pairing the tub with a floor-mounted chrome mixer—featuring a tall curved spou
 
 ---
 
-## Primary Applications & Luxury Environments
+## 🏨 Primary Applications & Luxury Environments
 
 Designed to elevate diverse interior architectural styles:
 
@@ -87,7 +87,7 @@ Designed to elevate diverse interior architectural styles:
 
 ---
 
-## Packaging & Ordering Notes
+## 📦 Packaging & Ordering Notes
 
 - **Customization:** Specify desired length (1500/1600/1700 mm), color finish (gloss/matte), and whether you require matching faucet sets.
 - **Secure Transit Protection:** Each tub is wrapped in protective film, secured with shock-absorbing edge cushioning, and packed inside a reinforced multi-layer carton or wooden crate to safeguard the gloss finish during global ocean freight.
