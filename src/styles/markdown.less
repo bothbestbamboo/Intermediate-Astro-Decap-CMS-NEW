@@ -15,9 +15,6 @@
 		line-height: 1.5em;
 		margin-bottom: (16/16rem);
 		color: var(--headerColor);
-		&[id] {
-			scroll-margin-top: 8rem; /* adds margin top when scrolling down to a h2 header using a TOC link */
-		}
 	}
 
 	h3 {
@@ -28,14 +25,17 @@
 		color: var(--headerColor);
 	}
 
-	h4,
-	h5,
-	h6 {
+	h4, h5, h6 {
 		font-size: (20/16rem);
 		font-weight: 700;
 		line-height: 1.5em;
 		margin-bottom: (16/16rem);
 		color: var(--headerColor);
+	}
+
+	/* 🌟 核心修复：把 8rem 改大到了 12rem。因为你的固定顶栏可能很高，8rem 刚好被遮住或者超出。 */
+	h2[id], h3[id] {
+		scroll-margin-top: 12rem; 
 	}
 
 	p {
@@ -53,8 +53,7 @@
 	}
 
 	/* 全局列表样式 */
-	ul,
-	ol {
+	ul, ol {
 		margin: 0;
 		margin: (16/16rem) 0;
 		padding-left: (40/16rem);
