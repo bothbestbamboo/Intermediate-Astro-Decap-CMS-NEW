@@ -20,7 +20,6 @@ const { post } = Astro.props;
 const { title, date, description, image, imageAlt, author, tags } = post.data;
 const { Content, headings } = await render(post);
 
-// 判断当前页面是不是产品页面
 const isProductPage =
     tags &&
     (tags.includes("Products") ||
@@ -87,8 +86,8 @@ const blogPostingSchema = getBlogPostingSchema(
                         <Image src={image} alt={imageAlt} width="795" height="400" decoding="async" />
                     </picture>
 
-                    <!-- 移动端 -->
-                    <div class="blog-sidebar_widget-wrapper cs-hide-on-desktop">
+                    <!-- 移动端 TOC -->
+                    <div class="cs-hide-on-desktop">
                         <TableOfContents headings={headings} levels={3} isProduct={isProductPage} />
                     </div>
                     <div id="blog-content">
@@ -98,8 +97,8 @@ const blogPostingSchema = getBlogPostingSchema(
             </section>
 
             <aside class="blog-sidebar">
-                <!-- 桌面端：保留这个包装器提供统一的卡片外框 -->
-                <div class="blog-sidebar_widget-wrapper cs-hide-on-mobile" id="desktop-toc">
+                <!-- 🌟 修复：去掉这里的 blog-sidebar_widget-wrapper 类名 -->
+                <div class="cs-hide-on-mobile" id="desktop-toc">
                     <TableOfContents headings={headings} levels={3} isProduct={isProductPage} />
                 </div>
 
@@ -126,14 +125,11 @@ const blogPostingSchema = getBlogPostingSchema(
 </BaseLayout>
 
 <style lang="less" is:global>
-    .blog-container {
-        width: 94%; max-width: (1120/16em); margin: auto; padding: clamp(60px, 7vw, 100px) 0;
-        display: flex; flex-direction: column; position: relative;
-    }
+    /* 基础布局，保持不变 */
+    .blog-container { width: 94%; max-width: (1120/16em); margin: auto; padding: clamp(60px, 7vw, 100px) 0; display: flex; flex-direction: column; position: relative; }
     .blog-wrapper-inner { width: 100%; display: flex; flex-direction: column; row-gap: (50/16em); }
     .main-content { width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
     .blog-sidebar { width: 100%; display: flex; flex-direction: column; gap: (30/16em); }
-
     .blog-article {
         width: 100%; max-width: (795/16em); display: block;
         .blog-header { margin-block: clamp(24px, 4vw, 40px); }
@@ -173,6 +169,7 @@ const blogPostingSchema = getBlogPostingSchema(
         }
     }
 
+    /* 询盘框、暗黑模式保持不变 */
     .product-inquiry-box-inserted { margin-top: 24px; width: 100%; box-sizing: border-box; }
     .product-inquiry-box {
         background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 24px;
@@ -187,7 +184,6 @@ const blogPostingSchema = getBlogPostingSchema(
         }
         .product-inquiry-btn:hover { background-color: #111111 !important; color: #ffffff !important; }
     }
-
     body.dark-mode {
         .blog-article {
             .blog-h1, .blog-author, .blog-date { color: #f7f7f7; }
@@ -198,7 +194,6 @@ const blogPostingSchema = getBlogPostingSchema(
             h3 { color: #ffffff; } p { color: #999999; }
         }
     }
-
     #blog-content hr {
         display: block !important; height: 1px !important; border: 0 !important;
         border-top: 1px solid #e5e7eb !important; margin-top: 30px !important; margin-bottom: 30px !important;

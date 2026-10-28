@@ -40,25 +40,42 @@ const getIconName = (text: string) => {
 };
 ---
 
-<!-- 只有内容，没有任何带边框的 div -->
-<h3 class="blog-sidebar_widget-header">Quick Navigation</h3>
-<ul class="cs-toc-list">
-	{
-		filteredHeadings.map((heading) => (
-			<li class={`cs-toc-item depth-${heading.depth}`}>
-				<a href={`#${heading.slug}`} class="cs-toc-link">
-					{isProduct && (
-						<Icon name={getIconName(heading.text)} class="cs-toc-icon" width="16" height="16" />
-					)}
-					<span class="cs-toc-text">{heading.text}</span>
-				</a>
-			</li>
-		))
-	}
-</ul>
+<div class="cs-toc-wrapper">
+	<h3 class="blog-sidebar_widget-header">Quick Navigation</h3>
+	<ul class="cs-toc-list">
+		{
+			filteredHeadings.map((heading) => (
+				<li class={`cs-toc-item depth-${heading.depth}`}>
+					<a href={`#${heading.slug}`} class="cs-toc-link">
+						{isProduct && (
+							<Icon name={getIconName(heading.text)} class="cs-toc-icon" width="16" height="16" />
+						)}
+						<span class="cs-toc-text">{heading.text}</span>
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</div>
 
 <style lang="less">
-	/* 覆盖全局样式，防止线变黑 */
+	/* 组件自带的卡片，不依赖外部样式 */
+	.cs-toc-wrapper {
+		background: #ffffff;
+		border: 1px solid #a2a0a0;
+		border-radius: (8/16em);
+		padding: (24/16em) (20/16em);
+		width: 100%;
+		box-sizing: border-box;
+		margin-bottom: 2rem;
+
+		body.dark-mode & {
+			background: #1a1a1a;
+			border-color: #333333;
+		}
+	}
+
+	/* 覆盖全局样式，强制绿线 */
 	.blog-sidebar_widget-header {
 		margin: 0 0 1.5rem 0 !important;
 		font-size: 1.125rem !important;
@@ -71,7 +88,7 @@ const getIconName = (text: string) => {
 			width: 50px;
 			height: 3px;
 			margin: 16px auto 0;
-			background: var(--primaryLight) !important; /* 强制绿线 */
+			background: var(--primaryLight) !important; 
 			border-radius: 4px;
 			display: block;
 			position: relative;
@@ -97,9 +114,7 @@ const getIconName = (text: string) => {
 		border-left: 2px solid transparent !important;
 		padding-left: 8px !important; 
 		
-		&.depth-3 { 
-			padding-left: 20px !important; 
-		}
+		&.depth-3 { padding-left: 20px !important; }
 	}
 
 	.cs-toc-link {
