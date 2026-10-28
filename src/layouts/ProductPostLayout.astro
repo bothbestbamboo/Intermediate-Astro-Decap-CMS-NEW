@@ -65,16 +65,25 @@ const blogPostingSchema = getBlogPostingSchema(
                         <div class="blog-authorGroup">
                             <picture class="blog-author-img">
                                 {
-                                    !author || author.toLowerCase().trim() === "xc bath" ? (
+                                    !author ||
+                                    author.toLowerCase().trim() ===
+                                        "xc bath" ? (
                                         <Image
                                             src={xcBathAvatar}
                                             alt="XC Bath Team"
                                             width="32"
                                             height="32"
-                                            style={{ borderRadius: "50%", objectFit: "cover" }}
+                                            style={{
+                                                borderRadius: "50%",
+                                                objectFit: "cover",
+                                            }}
                                         />
                                     ) : (
-                                        <Icon name="profile" width="32" height="32" />
+                                        <Icon
+                                            name="profile"
+                                            width="32"
+                                            height="32"
+                                        />
                                     )
                                 }
                             </picture>
@@ -97,7 +106,6 @@ const blogPostingSchema = getBlogPostingSchema(
                     <div class="blog-sidebar_widget-wrapper cs-hide-on-desktop">
                         <TableOfContents headings={headings} levels={3} />
                     </div>
-                    
                     <div id="blog-content">
                         <Content />
                     </div>
@@ -105,22 +113,30 @@ const blogPostingSchema = getBlogPostingSchema(
             </section>
 
             <aside class="blog-sidebar">
-                <div class="blog-sidebar_widget-wrapper cs-hide-on-mobile" id="desktop-toc">
+                <div
+                    class="blog-sidebar_widget-wrapper cs-hide-on-mobile"
+                    id="desktop-toc"
+                >
                     <TableOfContents headings={headings} levels={3} />
                 </div>
 
                 {
                     isProductPage && (
-                        <div class="product-inquiry-box">
-                            <h3>Interested in this Product?</h3>
-                            <p>
-                                Get instant factory-direct pricing, custom
-                                specifications, and product catalogs for
-                                your projects.
-                            </p>
-                            <a href="/contact/#cs-form" class="product-inquiry-btn">
-                                INQUIRE NOW ➔
-                            </a>
+                        <div class="product-inquiry-box-inserted">
+                            <div class="product-inquiry-box">
+                                <h3>Interested in this Product?</h3>
+                                <p>
+                                    Get instant factory-direct pricing, custom
+                                    specifications, and product catalogs for
+                                    your projects.
+                                </p>
+                                <a
+                                    href="/contact/#cs-form"
+                                    class="product-inquiry-btn"
+                                >
+                                    INQUIRE NOW ➔
+                                </a>
+                            </div>
                         </div>
                     )
                 }
@@ -164,22 +180,14 @@ const blogPostingSchema = getBlogPostingSchema(
         align-items: center;
     }
 
-    .blog-sidebar {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: (30/16em);
-        
-        /* 防止内部大图撑破容器 */
-        img { max-width: 100% !important; height: auto !important; }
-    }
-
     .blog-article {
         width: 100%;
         max-width: (795/16em);
         display: block;
 
-        .blog-header { margin-block: clamp(24px, 4vw, 40px); }
+        .blog-header {
+            margin-block: clamp(24px, 4vw, 40px);
+        }
 
         .blog-mainImage {
             width: 100%;
@@ -225,7 +233,8 @@ const blogPostingSchema = getBlogPostingSchema(
             gap: (12/16rem);
         }
 
-        .blog-author, .blog-date {
+        .blog-author,
+        .blog-date {
             font-size: (14/16rem);
             line-height: 1.5em;
             color: var(--bodyTextColor);
@@ -267,58 +276,41 @@ const blogPostingSchema = getBlogPostingSchema(
             column-gap: (48/16em);
         }
 
-        .main-content {
-            flex: 1;
-            width: auto;
-            min-width: 0; /* 防止内部子元素撑破左侧宽度 */
-        }
-
-        .blog-article {
-            max-width: 100% !important;
-            width: 100% !important;
-        }
-
-        .blog-sidebar {
-            /* 修复原代码缺失的侧边栏吸顶和滚动逻辑 */
-            position: sticky;
-            top: 8.5rem;
-            max-height: calc(100vh - 9rem);
-            overflow-y: auto;
-            overscroll-behavior: contain;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            &::-webkit-scrollbar { display: none; }
-
-            /* 锁定侧边栏宽度，防止被内部组件撑宽挤压中间 */
-            flex: 0 0 (320/16em);
-            width: (320/16em);
-            max-width: (320/16em);
-            box-sizing: border-box;
-            padding-right: (10/16em);
-        }
-
         .product-page-layout {
-            .blog-wrapper-inner { column-gap: (32/16em); }
+            .blog-wrapper-inner {
+                column-gap: (32/16em);
+            }
+            .main-content {
+                flex: 1;
+                width: auto;
+            }
+            .blog-article {
+                max-width: 100% !important;
+                width: 100% !important;
+            }
             .blog-sidebar {
-                flex: 0 0 (300/16em);
-                width: (300/16em);
-                max-width: (300/16em);
+                width: (320/16em);
+                min-width: (320/16em);
             }
         }
     }
 
     /* ==========================================================================
-       3. Inquiry Box Styles - 询盘反馈框
+       3. Inquiry Box Styles - 询盘反馈框独立平铺
        ========================================================================== */
-    .product-inquiry-box {
+    .product-inquiry-box-inserted {
         margin-top: 24px;
         width: 100%;
         box-sizing: border-box;
+    }
+
+    .product-inquiry-box {
         background: #f8fafc;
         border: 1px solid #e2e8f0;
         border-radius: 8px;
         padding: 24px;
         border-left: 4px solid #004B87;
+        box-sizing: border-box;
 
         h3 {
             font-size: 16px;
@@ -349,11 +341,11 @@ const blogPostingSchema = getBlogPostingSchema(
             transition: background-color 0.3s ease, color 0.3s ease;
             background-color: #004B87 !important; 
             color: #ffffff !important; 
+        }
 
-            &:hover {
-                background-color: #C5A059 !important;
-                color: #ffffff !important;
-            }
+        .product-inquiry-btn:hover {
+            background-color: #C5A059 !important;
+            color: #ffffff !important;
         }
     }
 
@@ -362,35 +354,53 @@ const blogPostingSchema = getBlogPostingSchema(
        ========================================================================== */
     body.dark-mode {
         .blog-article {
-            .blog-h1, .blog-author, .blog-date { color: #f7f7f7; }
-            .blog-author-img { border-color: #333333; background-color: #1a1a1a; }
-            #blog-content { border-top-color: #333333; }
+            .blog-h1,
+            .blog-author,
+            .blog-date {
+                color: #f7f7f7;
+            }
+            .blog-author-img {
+                border-color: #333333;
+                background-color: #1a1a1a;
+            }
+            #blog-content {
+                border-top-color: #333333;
+            }
         }
         
         .product-inquiry-box {
             background: #1a1a1a;
             border-color: #333333;
             border-left-color: #004B87; 
-            
-            h3 { color: #ffffff; }
-            p { color: #999999; }
-            
-            /* 移除了原代码这里重复的 btn 及其 hover 样式，因为上方定义的已经生效 */
+            h3 {
+                color: #ffffff;
+            }
+            p {
+                color: #999999;
+            }
+            .product-inquiry-btn {
+                background-color: #004B87 !important;
+                color: #ffffff !important;
+            }
+            .product-inquiry-btn:hover {
+                background-color: #C5A059 !important;
+                color: #ffffff !important;
+            }
         }
     }
 
-    /* ==========================================================================
-       5. Global Markdown Divider
-       ========================================================================== */
-    #blog-content hr {
-        display: block !important;
-        height: 1px !important;
-        border: 0 !important;
-        border-top: 1px solid #e5e7eb !important;
-        margin-top: 30px !important;
-        margin-bottom: 30px !important;
-        padding: 0 !important;
-        clear: both !important;
+    /* Global Markdown Divider Override */
+    #blog-content {
+        hr {
+            display: block !important;
+            height: 1px !important;
+            border: 0 !important;
+            border-top: 1px solid #e5e7eb !important;
+            margin-top: 30px !important;
+            margin-bottom: 30px !important;
+            padding: 0 !important;
+            clear: both !important;
+        }
     }
 
     /* 暗黑模式下的分割线 */
