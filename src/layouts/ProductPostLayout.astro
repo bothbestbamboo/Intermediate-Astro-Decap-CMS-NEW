@@ -105,7 +105,7 @@ const blogPostingSchema = getBlogPostingSchema(
                     </picture>
 
                     <div class="blog-sidebar_widget-wrapper cs-hide-on-desktop">
-                        <TableOfContents headings={headings} levels={3} />
+                        <TableOfContents headings={headings} levels={3} isProduct={isProductPage} />
                     </div>
                     <div id="blog-content">
                         <Content />
@@ -114,11 +114,12 @@ const blogPostingSchema = getBlogPostingSchema(
             </section>
 
             <aside class="blog-sidebar">
+                <!-- 产品页保留外框 class，博文页去掉外框 class 避免双重嵌套 -->
                 <div
-                    class="blog-sidebar_widget-wrapper cs-hide-on-mobile"
+                    class={`${isProductPage ? "blog-sidebar_widget-wrapper" : ""} cs-hide-on-mobile`}
                     id="desktop-toc"
                 >
-                    <TableOfContents headings={headings} levels={3} />
+                    <TableOfContents headings={headings} levels={3} isProduct={isProductPage} />
                 </div>
 
                 {
@@ -377,13 +378,7 @@ const blogPostingSchema = getBlogPostingSchema(
         }
     }
 
-    /* 5. 彻底清理外界的 padding 干扰 */
-    #desktop-toc {
-        width: 100%;
-        padding: 0 !important;
-        background: transparent !important;
-        border: none !important;
-    }
+    /* 5. 删除所有强制剥离 #desktop-toc 的代码，让 isProduct 判断来接管样式 */
 
     /* 6. 全局分割线 */
     #blog-content {
