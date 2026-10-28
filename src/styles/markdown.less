@@ -15,9 +15,6 @@
 		line-height: 1.5em;
 		margin-bottom: (16/16rem);
 		color: var(--headerColor);
-		&[id] {
-			scroll-margin-top: 8rem; 
-		}
 	}
 
 	h3 {
@@ -34,6 +31,11 @@
 		line-height: 1.5em;
 		margin-bottom: (16/16rem);
 		color: var(--headerColor);
+	}
+
+	/* 🌟 核心优化：统一给 h2 和 h3 增加滚动留白，确保不会被顶部固定导航遮挡 */
+	h2[id], h3[id] {
+		scroll-margin-top: 8rem; /* 如果还是被挡住，可以把 8rem 改成 10rem 或 12rem */
 	}
 
 	p {
@@ -54,7 +56,7 @@
 	ul, ol {
 		margin: 0;
 		margin: (16/16rem) 0;
-		padding-left: (24/16rem); // 减小左侧缩进
+		padding-left: (24/16rem); 
 
 		li {
 			font-size: (16/16rem);
@@ -72,7 +74,7 @@
         li {
             position: relative;
             
-            /* 使用 CSS 绘制一个高级的小圆点/方块，替代默认的黑圆圈 */
+            /* 使用 CSS 绘制一个高级的小圆点，替代默认的黑圆圈 */
             &::before {
                 content: "";
                 position: absolute;
@@ -80,8 +82,8 @@
                 top: 0.6em;
                 width: 6px;
                 height: 6px;
-                background-color: var(--primaryLight); // 使用主题色
-                border-radius: 50%; // 圆形。如果想要方块，可以改为 2px
+                background-color: var(--primaryLight); 
+                border-radius: 50%; 
             }
         }
     }
@@ -153,7 +155,7 @@
 		}
 
 		th {
-			background-color: #1a2633; /* 深蓝黑表头 */
+			background-color: #1a2633; 
 			color: #8bb4d8;
 			border-color: #333;
 		}
