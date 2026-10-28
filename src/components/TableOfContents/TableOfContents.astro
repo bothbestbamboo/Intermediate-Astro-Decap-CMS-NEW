@@ -40,42 +40,25 @@ const getIconName = (text: string) => {
 };
 ---
 
-<!-- 🌟 重新加上组件自带的卡片外框 -->
-<div class="cs-toc-wrapper">
-	<h3 class="blog-sidebar_widget-header">Quick Navigation</h3>
-	<ul class="cs-toc-list">
-		{
-			filteredHeadings.map((heading) => (
-				<li class={`cs-toc-item depth-${heading.depth}`}>
-					<a href={`#${heading.slug}`} class="cs-toc-link">
-						{isProduct && (
-							<Icon name={getIconName(heading.text)} class="cs-toc-icon" width="16" height="16" />
-						)}
-						<span class="cs-toc-text">{heading.text}</span>
-					</a>
-				</li>
-			))
-		}
-	</ul>
-</div>
+<!-- 只有内容，没有任何带边框的 div -->
+<h3 class="blog-sidebar_widget-header">Quick Navigation</h3>
+<ul class="cs-toc-list">
+	{
+		filteredHeadings.map((heading) => (
+			<li class={`cs-toc-item depth-${heading.depth}`}>
+				<a href={`#${heading.slug}`} class="cs-toc-link">
+					{isProduct && (
+						<Icon name={getIconName(heading.text)} class="cs-toc-icon" width="16" height="16" />
+					)}
+					<span class="cs-toc-text">{heading.text}</span>
+				</a>
+			</li>
+		))
+	}
+</ul>
 
 <style lang="less">
-	/* 组件自身的卡片框架，保证无论放在哪里都有外框 */
-	.cs-toc-wrapper {
-		background: #ffffff;
-		border: 1px solid #a2a0a0;
-		border-radius: (8/16em);
-		padding: (35/16em) (30/16em); /* 和原来 sidebar.less 保持一致的间距 */
-		width: 100%;
-		box-sizing: border-box;
-		margin-bottom: 2rem;
-
-		body.dark-mode & {
-			background: #1a1a1a;
-			border-color: #333333;
-		}
-	}
-
+	/* 覆盖全局样式，防止线变黑 */
 	.blog-sidebar_widget-header {
 		margin: 0 0 1.5rem 0 !important;
 		font-size: 1.125rem !important;
@@ -83,13 +66,12 @@ const getIconName = (text: string) => {
 		color: #111 !important;
 		text-align: center;
 		
-		/* 🌟 强制覆盖全局的黑线，变回绿线 */
 		&::after {
 			content: "";
 			width: 50px;
 			height: 3px;
 			margin: 16px auto 0;
-			background: var(--primaryLight) !important; 
+			background: var(--primaryLight) !important; /* 强制绿线 */
 			border-radius: 4px;
 			display: block;
 			position: relative;
@@ -112,7 +94,6 @@ const getIconName = (text: string) => {
 		padding: 0 !important;
 		position: relative;
 		line-height: 1.4 !important;
-
 		border-left: 2px solid transparent !important;
 		padding-left: 8px !important; 
 		
@@ -160,7 +141,7 @@ const getIconName = (text: string) => {
 		transition: color 0.2s ease-in-out;
 	}
 
-	/* 如果是博文（没有图标），消除间隙 */
+	/* 博文模式：没有图标，消除间隙 */
 	.cs-toc-link:not(:has(.cs-toc-icon)) {
 		gap: 0 !important;
 	}
@@ -208,11 +189,7 @@ const getIconName = (text: string) => {
 		allHeaderTags = wrappingElement.querySelectorAll(":scope > h2, :scope > h3");
 		if (!allHeaderTags.length) return;
 		
-		let options = { 
-			root: null, 
-			rootMargin: "-10% 0px -60% 0px", 
-			threshold: 0 
-		};
+		let options = { root: null, rootMargin: "-10% 0px -60% 0px", threshold: 0 };
 		
 		observeHeaderTags = new IntersectionObserver(setCurrent, options);
 		allHeaderTags.forEach((tag) => observeHeaderTags.observe(tag));
