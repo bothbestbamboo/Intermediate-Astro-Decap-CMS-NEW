@@ -22,14 +22,18 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
 // 自定义函数：根据标题文本匹配对应的 Phosphor 图标
 const getIconName = (text: string) => {
     const t = text.toLowerCase();
+    
+    // 浴缸产品页专属匹配
     if (t.includes("overview") || t.includes("philosophy")) return "ph:lightbulb";
     if (t.includes("technical") || t.includes("specification")) return "ph:gear";
     if (t.includes("advantage") || t.includes("craftsmanship")) return "ph:star";
     if (t.includes("manufacturing") || t.includes("process")) return "ph:factory";
     if (t.includes("detail") || t.includes("finishing")) return "ph:magnifying-glass";
     if (t.includes("application") || t.includes("environment")) return "ph:buildings";
-    if (t.includes("packaging") || t.includes("ordering")) return "ph:package";
-    return "ph:caret-right"; // 默认图标
+    if (t.includes("packaging") || t.includes("ordering") || t.includes("bulk order")) return "ph:package";
+
+    // 🌟 终极兜底：如果以上都没匹配上，显示一个干净的高级通用文档图标，绝不会突兀
+    return "ph:file-text"; 
 };
 ---
 
@@ -122,6 +126,21 @@ const getIconName = (text: string) => {
         flex-shrink: 0; 
         margin-top: 2px; 
         transition: color 0.2s ease-in-out;
+    }
+
+    /* ==========================================
+       🌟 核心逻辑：针对普通博文隐藏图标（配合主模板的 .is-blog-post 类名）
+       ========================================== */
+    .is-blog-post {
+        .cs-toc-icon {
+            display: none !important; /* 直接隐藏图标 */
+        }
+        .cs-toc-link {
+            gap: 0 !important; /* 取消图标和文字之间的间隙 */
+        }
+        .cs-toc-text {
+            margin-top: 0 !important; /* 取消微调 */
+        }
     }
 
     @media only screen and (min-width: 64rem) {
