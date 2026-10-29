@@ -172,69 +172,112 @@ const getIconName = (text: string) => {
 </style>
 
 <script>
-	// Wrapper for Blog post content
-	let wrappingElement: Element | null;
-	let observeHeaderTags: IntersectionObserver;
-	let allHeaderTags: NodeListOf<Element>;
+	// =========================================================================
+	// 🌟 终极精准版：使用滚动位置计算替代 IntersectionObserver
+	// 彻底解决短标题高亮跳跃、同时触发导致覆盖的问题。
+	// =========================================================================
 	let isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+	let tocLinks: NodeListOf<HTMLAnchorElement>;
+	let headerElements: HTMLElement[];
+	let ticking = false;
 
-	// Function that runs when the Intersection Observer fires
-	function setCurrent(entries: any[]) {
-		const tocWrapper = document.querySelector("#desktop-toc");
-		if (!tocWrapper) return;
+	function updateTOC() {
+		if (!isDesktop || !headerElements || headerElements.length === 0 || !tocLinks) return;
 
-		const allSectionLinks = tocWrapper.querySelectorAll(".cs-toc-link");
+		// 定义基准线：屏幕顶部往下 120px（可根据你网站顶部的固定导航栏高度微调）
+		// 只要标题的顶部越过这个线，就认为它是当前正在阅读的章节
+		const offset = 120; 
+		let currentId = headerElements[0].id;
 
-		entries.forEach((entry: { isIntersecting: any; target: { id: any; }; }) => {
-			if (entry.isIntersecting) {
-				allSectionLinks.forEach((link) => link.classList.remove("cs-toc-current"));
-				const targetLink = tocWrapper.querySelector(`a[href="#${entry.target.id}"].cs-toc-link`);
-				if (targetLink) targetLink.classList.add("cs-toc-current");
+		for (let i = 0; i < headerElements.length; i++) {
+			const el = headerElements[i];
+			const rect = el.getBoundingClientRect();
+			
+			// 如果标题的顶部在基准线之上，说明我们已滚过它
+			if (rect.top <= offset) {
+				currentId = el.id;
+			} else {
+				// 遇到第一个没有越过基准线的标题就停止，因为下面的都没越过
+				break;
+			}
+		}
+
+		// 更新右侧目录的高亮状态
+		tocLinks.forEach((link) => {
+			link.classList.remove("cs-toc-current");
+			if (link.getAttribute("href") === `#${currentId}`) {
+				link.classList.add("cs-toc-current");
 			}
 		});
 	}
 
 	function initTOC() {
-		// Check if it's desktop
 		if (!window.matchMedia("(min-width: 64rem)").matches) return;
 
-		// update this with whatever class wraps your blog post content
-		wrappingElement = document.querySelector("#blog-content");
-		if (!wrappingElement) return;
+		const wrappingElement = document.querySelector("#blog-content");
+		const tocWrapper = document.querySelector("#desktop-toc");
+		if (!wrappingElement || !tocWrapper) return;
 
-		// Get all H1/H2/H3 tags from the post
-		allHeaderTags = wrappingElement.querySelectorAll(":scope > h1, :scope > h2, :scope > h3");
-		if (!allHeaderTags.length) return;
+		// 获取正文中的所有标题 和 右侧的目录链接
+		headerElements = Array.from(wrappingElement.querySelectorAll(":scope > h1, :scope > h2, :scope > h3"));
+		tocLinks = tocWrapper.querySelectorAll(".cs-toc-link");
 
-		// Intersection Observer Options
-		let options = {
-			root: null,
-			rootMargin: "0px 0px -50% 0px",
-			threshold: [1],
-		};
+		if (headerElements.length === 0) return;
 
-		// Create Observer
-		observeHeaderTags = new IntersectionObserver(setCurrent, options);
-		allHeaderTags.forEach((tag) => observeHeaderTags.observe(tag));
+		// 1. 绑定滚动事件（使用 requestAnimationFrame 节流保证性能）
+		window.addEventListener("scroll", () => {
+			if (!ticking) {
+				window.requestAnimationFrame(() => {
+					updateTOC();
+					ticking = false;
+				});
+				ticking = true;
+			}
+		}, { passive: true });
+
+		// 2. 绑定点击事件：用户点击目录时，立刻高亮被点击的项
+		// 防止浏览器平滑滚动动画过程中高亮在多个标题间乱跳
+		tocLinks.forEach(link => {
+			link.addEventListener('click', () => {
+				tocLinks.forEach(l => l.classList.remove("cs-toc-current"));
+				link.classList.add("cs-toc-current");
+			});
+		});
+
+		// 3. 如果页面加载时 URL 带有 #hash，处理初始高亮
+		const hash = window.location.hash;
+		if (hash) {
+			setTimeout(() => {
+				const targetLink = document.querySelector(`#desktop-toc a[href="${hash}"]`) as HTMLAnchorElement;
+				if (targetLink) {
+					tocLinks.forEach(l => l.classList.remove("cs-toc-current"));
+					targetLink.classList.add("cs-toc-current");
+				}
+			}, 150);
+		} else {
+			// 没有 hash 时的初始状态
+			updateTOC();
+		}
 	}
 
-	// Run on initial page load if on desktop
+	// 页面首次加载运行
 	if (isDesktop) initTOC();
 
-	// Re-run on view transitions navigation if on desktop
+	// 适配 Astro 的页面路由切换 (View Transitions)
 	document.addEventListener("astro:after-swap", () => {
 		if (window.matchMedia("(min-width: 64rem)").matches) {
+			isDesktop = true;
 			initTOC();
+		} else {
+			isDesktop = false;
 		}
 	});
 
-	// Listen for screen size changes
+	// 窗口大小变化监听
 	window.matchMedia("(min-width: 64rem)").addEventListener("change", (e) => {
+		isDesktop = e.matches;
 		if (e.matches) {
 			initTOC();
-		} else {
-			// Clean up observer when switching to mobile
-			if (observeHeaderTags) observeHeaderTags.disconnect();
 		}
 	});
 </script>
