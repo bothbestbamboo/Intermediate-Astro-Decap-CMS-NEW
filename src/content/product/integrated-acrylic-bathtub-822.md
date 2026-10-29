@@ -1,6 +1,6 @@
 ---
 title: "Integrated Acrylic Bathtub 822: One-Piece Freestanding Soaking Tub"
-description: "A one-piece integrated bathtub in solid surface acrylic with a seamless anti-scratch finish. Model 822 Offered in 1500, 1600 and 1700 mm, freestanding for flexible placement, and backed by a 7-year warranty."
+description: "A one-piece integrated bathtub in solid surface acrylic with a seamless anti-scratch finish. Model 822 offered in 1400 to 1800 mm sizes, freestanding for flexible placement, and backed by a 7-year warranty."
 date: 2026-10-26
 image: "@assets/images/products/822-1f.jpg"
 imageAlt: "Integrated Acrylic Bathtub one-piece freestanding soaking tub in a modern bathroom"
@@ -23,7 +23,7 @@ Crafted from premium 100% pure acrylic resin blended with fine mineral composite
 | Parameter | Specifications & Details |
 | :--- | :--- |
 | **Product Name** | Integrated Acrylic Freestanding Bathtub (Model 822) |
-| **Available Sizes** | 1500 x 800 x 580 mm \| 1600 x 800 x 580 mm \| 1700 x 800 x 580 mm |
+| **Available Sizes** | 1400 x 800 x 580 mm \| 1500 x 800 x 580 mm \| 1600 x 800 x 580 mm \| 1700 x 800 x 580 mm \| 1800 x 800 x 580 mm |
 | **Material & Structure** | Pure Acrylic Resin with Fine Mineral Composite & Multi-Layer Fiberglass |
 | **Standard Finish** | High Gloss White |
 | **Custom Options** | High Gloss Black Exterior with White Interior, Matte White, Matte Black, Custom RAL Colors |
@@ -79,9 +79,9 @@ Pairing the tub with a floor-mounted chrome mixer—featuring a tall curved spou
 
 Designed to elevate diverse interior architectural styles:
 
-- **Luxury Residential Master Bathrooms:** Creates an instant focal point of modern elegance and relaxation.
+- **Luxury Residential Master Bathrooms:** Creates an instant focal point of modern elegance and relaxation for spacious layouts with 1700/1800mm models.
 - **High-End Boutique Hotels & Resorts:** Delivers durable, low-maintenance luxury that satisfies rigorous commercial hospitality standards.
-- **Compact Urban Apartments & Spa Suites:** Space-efficient 1500/1600mm profiles offer deep soaking luxury even in limited square footage.
+- **Compact Urban Apartments & Spa Suites:** Space-efficient 1400/1500mm profiles offer deep soaking luxury even in limited square footage.
 
 ![Integrated acrylic bathtub in a modern bathroom](@assets/images/products/822-1-4.jpg)
 
@@ -89,5 +89,5 @@ Designed to elevate diverse interior architectural styles:
 
 ## Packaging & Ordering Notes
 
-- **Customization:** Specify desired length (1500/1600/1700 mm), color finish (gloss/matte), and whether you require matching faucet sets.
+- **Customization:** Specify desired length (1400 / 1500 / 1600 / 1700 / 1800 mm), color finish (gloss/matte), and whether you require matching faucet sets.
 - **Secure Transit Protection:** Each tub is wrapped in protective film, secured with shock-absorbing edge cushioning, and packed inside a reinforced multi-layer carton or wooden crate to safeguard the gloss finish during global ocean freight.
