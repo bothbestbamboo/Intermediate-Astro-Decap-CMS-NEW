@@ -23,7 +23,7 @@ Crafted from premium 100% pure acrylic resin blended with fine mineral composite
 | Parameter | Specifications & Details |
 | :--- | :--- |
 | **Product Name** | Integrated Acrylic Freestanding Bathtub (Model 822) |
-| **Available Sizes** | 1500 x 750 x 720 mm \| 1600 x 750 x 720 mm \| 1700 x 750 x 720 mm |
+| **Available Sizes** | 1500 x 800 x 580 mm \| 1600 x 800 x 580 mm \| 1700 x 800 x 580 mm |
 | **Material & Structure** | Pure Acrylic Resin with Fine Mineral Composite & Multi-Layer Fiberglass |
 | **Standard Finish** | High Gloss White |
 | **Custom Options** | High Gloss Black Exterior with White Interior, Matte White, Matte Black, Custom RAL Colors |
