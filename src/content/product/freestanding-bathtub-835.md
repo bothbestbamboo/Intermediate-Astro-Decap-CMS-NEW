@@ -1,6 +1,6 @@
 ---
 title: "Freestanding Bathtub 835: Seamless Solid Surface Soaking Tub"
-description: "Model 835 is a 100% handmade solid surface freestanding soaking bathtub with seamless joint construction, deep slotted overflow, smooth natural texture, and repairable matte/gloss finish."
+description: "Model 835 is a 100% handmade solid surface freestanding soaking bathtub with seamless joint construction, deep slotted overflow, smooth natural texture, offered in 1200 to 1700 mm sizes."
 date: 2026-10-28
 image: "@assets/images/products/835-1f.jpg"
 imageAlt: "Model 835 Freestanding Solid Surface Soaking Bathtub in a modern luxury bathroom"
@@ -12,7 +12,7 @@ isFeatured: true
 
 **Model 835 Freestanding Bathtub** is crafted from 100% handmade solid surface material, featuring seamless one-piece molding that delivers clean lines and organic curves. Designed for deep soaking comfort, it combines the tactile elegance of natural stone with superior structural durability.
 
-The non-porous cast resin surface feels silky smooth to the touch, resisting stains while maintaining exceptional thermal retention. Its standalone profile brings an understated luxury centerpiece to both modern residential master suites and premium hotel bathrooms.
+The non-porous cast resin surface feels silky smooth to the touch, resisting stains while maintaining exceptional thermal retention. Offered in a versatile size range from compact 1200mm models to spacious 1700mm layouts, its standalone profile brings an understated luxury centerpiece to both urban residential bathrooms and premium hotel suites.
 
 ![Freestanding solid surface bathtub Model 835 top angle view](@assets/images/products/835-2.jpg)
 
@@ -23,7 +23,7 @@ The non-porous cast resin surface feels silky smooth to the touch, resisting sta
 | Parameter | Specifications & Details |
 | :--- | :--- |
 | **Product Name** | Freestanding Solid Surface Soaking Bathtub (Model 835) |
-| **Available Sizes** | 1200 x 700 x 580 mm \| 1300 x 720 x 580 mm \| 1600 x 750 x 580 mm |
+| **Available Sizes** | 1200 x 700 x 580 mm \| 1300 x 720 x 580 mm \| 1400 x 720 x 580 mm \| 1500 x 730 x 580 mm \| 1600 x 750 x 580 mm \| 1700 x 750 x 580 mm |
 | **Material & Craft** | Premium Solid Surface / Cast Resin (100% Handmade) |
 | **Molding & Finish** | One-Piece Seamless Molding (Matte White / Glossy White) |
 | **Drainage System** | Slotted Deep-Soaking Overflow & Chrome Pop-Up Drain |
@@ -71,9 +71,9 @@ The refined rim features uniform, slim edge contours that showcase precision cra
 
 Ideal for high-end interior architectural projects:
 
-- **Luxury Master Bathrooms:** Serves as an elegant freestanding centerpiece for private residential retreats.
+- **Luxury Master Bathrooms:** Spacious 1600mm and 1700mm models serve as an elegant freestanding centerpiece for private residential retreats.
 - **Boutique Hotels & Hospitality Suites:** Provides a durable, easily renewable surface built for commercial use.
-- **Modern Minimalist Spa Layouts:** Blends seamlessly with stone, wood, and concrete architectural finishes.
+- **Compact Urban Apartments & Small Bathrooms:** Space-efficient 1200mm, 1300mm, and 1400mm profiles bring deep soaking luxury even into space-constrained layouts.
 
 ![Front view of Model 835 solid surface freestanding bathtub](@assets/images/products/835-5.jpg)
 
@@ -81,5 +81,5 @@ Ideal for high-end interior architectural projects:
 
 ## Packaging & Ordering Notes
 
-- **Custom Options:** Available in Matte or Glossy finishes, with flexible color options for bulk orders.
+- **Customization:** Specify desired length (1200 / 1300 / 1400 / 1500 / 1600 / 1700 mm), finish (Matte or Glossy), and whether you require matching faucet sets.
 - **Secure Export Packaging:** Each unit is wrapped in protective foam film, fitted with edge guards, and crated securely for ocean freight transit.

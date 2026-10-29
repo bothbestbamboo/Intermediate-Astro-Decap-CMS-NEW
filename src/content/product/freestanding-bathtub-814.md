@@ -1,6 +1,6 @@
 ---
 title: "Freestanding Bathtub 814: Seamless Solid Surface Soaking Tub"
-description: "Model 814 is a 100% handmade solid surface freestanding soaking bathtub with seamless joint construction, deep slotted overflow, smooth natural texture, and repairable matte finish."
+description: "Model 814 is a 100% handmade solid surface freestanding soaking bathtub with seamless joint construction, deep slotted overflow, smooth natural texture, and offered in 1400 to 1700 mm sizes."
 date: 2026-10-28
 image: "@assets/images/products/814-1f.jpg"
 imageAlt: "Model 814 Freestanding Solid Surface Soaking Bathtub in a modern luxury bathroom"
@@ -23,7 +23,7 @@ The non-porous cast resin surface feels silky smooth to the touch, resisting sta
 | Parameter | Specifications & Details |
 | :--- | :--- |
 | **Product Name** | Freestanding Solid Surface Soaking Bathtub (Model 814) |
-| **Available Sizes** | 1500 x 800 x 580 mm \| 1600 x 800 x 580 mm \| 1700 x 800 x 580 mm |
+| **Available Sizes** | 1400 x 800 x 580 mm \| 1500 x 800 x 580 mm \| 1600 x 800 x 580 mm \| 1700 x 800 x 580 mm |
 | **Material & Craft** | Premium Solid Surface / Cast Resin (100% Handmade) |
 | **Molding & Finish** | One-Piece Seamless Molding (Matte White) |
 | **Drainage System** | Slotted Deep-Soaking Overflow & Chrome Pop-Up Drain |
@@ -71,9 +71,9 @@ The refined rim features uniform, slim edge contours that showcase precision cra
 
 Ideal for high-end interior architectural projects:
 
-- **Luxury Master Bathrooms:** Serves as an elegant freestanding centerpiece for private residential retreats.
+- **Luxury Master Bathrooms:** Spacious 1600mm and 1700mm models serve as an elegant freestanding centerpiece for private residential retreats.
 - **Boutique Hotels & Hospitality Suites:** Provides a durable, easily renewable surface built for commercial use.
-- **Modern Minimalist Spa Layouts:** Blends seamlessly with stone, wood, and concrete architectural finishes.
+- **Compact Urban Apartments & Spa Suites:** Space-efficient 1400mm and 1500mm profiles offer deep soaking luxury even in limited square footage.
 
 ![Top view of Model 814 solid surface freestanding bathtub](@assets/images/products/814-5.jpg)
 
@@ -81,7 +81,7 @@ Ideal for high-end interior architectural projects:
 
 ## Packaging & Ordering Notes
 
-- **Custom Options:** Available in Matte or Glossy finishes, with flexible color options for bulk orders.
+- **Customization:** Specify desired length (1400 / 1500 / 1600 / 1700 mm), color finish (Matte or Glossy), and whether you require matching faucet sets.
 - **Secure Export Packaging:** Each unit is wrapped in protective foam film, fitted with edge guards, and crated securely for ocean freight transit.
 
 ![Model 814 freestanding bathtub in a luxury waterfront bathroom setting](@assets/images/products/814-6.jpg)
