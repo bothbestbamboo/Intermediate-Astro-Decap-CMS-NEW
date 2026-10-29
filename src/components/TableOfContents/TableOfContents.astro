@@ -173,32 +173,37 @@ const getIconName = (text: string) => {
 
 <script>
 	// =========================================================================
-	// 🌟 终极精准版：使用滚动位置计算替代 IntersectionObserver
-	// 彻底解决短标题高亮跳跃、同时触发导致覆盖的问题。
+	// 🌟 终极精准版 v2：增加点击锁定机制，彻底解决定位偏差导致的高亮回退
 	// =========================================================================
 	let isDesktop = window.matchMedia("(min-width: 1024px)").matches;
 	let tocLinks: NodeListOf<HTMLAnchorElement>;
 	let headerElements: HTMLElement[];
 	let ticking = false;
+	let isClickingTOC = false; // 点击锁定标志位
+	let clickTimer: any;
 
 	function updateTOC() {
 		if (!isDesktop || !headerElements || headerElements.length === 0 || !tocLinks) return;
+		// 如果用户刚刚点击了目录，跳过滚动监听，保持点击时的高亮
+		if (isClickingTOC) return;
 
-		// 定义基准线：屏幕顶部往下 120px（可根据你网站顶部的固定导航栏高度微调）
-		// 只要标题的顶部越过这个线，就认为它是当前正在阅读的章节
-		const offset = 120; 
+		const offset = 120; // 基准线：屏幕顶部往下 120px
 		let currentId = headerElements[0].id;
 
-		for (let i = 0; i < headerElements.length; i++) {
-			const el = headerElements[i];
-			const rect = el.getBoundingClientRect();
-			
-			// 如果标题的顶部在基准线之上，说明我们已滚过它
-			if (rect.top <= offset) {
-				currentId = el.id;
-			} else {
-				// 遇到第一个没有越过基准线的标题就停止，因为下面的都没越过
-				break;
+		// 特判：如果已经滚动到页面最底部，直接高亮最后一个标题
+		// （防止文章最后一段太短，滚不到基准线导致高亮卡在倒数第二个）
+		if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
+			currentId = headerElements[headerElements.length - 1].id;
+		} else {
+			for (let i = 0; i < headerElements.length; i++) {
+				const el = headerElements[i];
+				const rect = el.getBoundingClientRect();
+				
+				if (rect.top <= offset) {
+					currentId = el.id;
+				} else {
+					break;
+				}
 			}
 		}
 
@@ -218,13 +223,12 @@ const getIconName = (text: string) => {
 		const tocWrapper = document.querySelector("#desktop-toc");
 		if (!wrappingElement || !tocWrapper) return;
 
-		// 获取正文中的所有标题 和 右侧的目录链接
 		headerElements = Array.from(wrappingElement.querySelectorAll(":scope > h1, :scope > h2, :scope > h3"));
 		tocLinks = tocWrapper.querySelectorAll(".cs-toc-link");
 
 		if (headerElements.length === 0) return;
 
-		// 1. 绑定滚动事件（使用 requestAnimationFrame 节流保证性能）
+		// 1. 绑定滚动事件
 		window.addEventListener("scroll", () => {
 			if (!ticking) {
 				window.requestAnimationFrame(() => {
@@ -235,16 +239,24 @@ const getIconName = (text: string) => {
 			}
 		}, { passive: true });
 
-		// 2. 绑定点击事件：用户点击目录时，立刻高亮被点击的项
-		// 防止浏览器平滑滚动动画过程中高亮在多个标题间乱跳
+		// 2. 绑定点击事件：加入锁定机制
 		tocLinks.forEach(link => {
 			link.addEventListener('click', () => {
+				// 立刻高亮
 				tocLinks.forEach(l => l.classList.remove("cs-toc-current"));
 				link.classList.add("cs-toc-current");
+				
+				// 开启锁定，防止平滑滚动过程中的乱跳或定位不足导致的回退
+				isClickingTOC = true;
+				clearTimeout(clickTimer);
+				clickTimer = setTimeout(() => {
+					isClickingTOC = false;
+					updateTOC(); // 解锁后重新计算一次准确位置
+				}, 500); // 500ms 足够浏览器完成平滑滚动
 			});
 		});
 
-		// 3. 如果页面加载时 URL 带有 #hash，处理初始高亮
+		// 3. 处理初始加载 Hash
 		const hash = window.location.hash;
 		if (hash) {
 			setTimeout(() => {
@@ -255,15 +267,12 @@ const getIconName = (text: string) => {
 				}
 			}, 150);
 		} else {
-			// 没有 hash 时的初始状态
 			updateTOC();
 		}
 	}
 
-	// 页面首次加载运行
 	if (isDesktop) initTOC();
 
-	// 适配 Astro 的页面路由切换 (View Transitions)
 	document.addEventListener("astro:after-swap", () => {
 		if (window.matchMedia("(min-width: 64rem)").matches) {
 			isDesktop = true;
@@ -273,7 +282,6 @@ const getIconName = (text: string) => {
 		}
 	});
 
-	// 窗口大小变化监听
 	window.matchMedia("(min-width: 64rem)").addEventListener("change", (e) => {
 		isDesktop = e.matches;
 		if (e.matches) {
