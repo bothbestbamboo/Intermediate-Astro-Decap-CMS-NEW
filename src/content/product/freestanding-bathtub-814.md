@@ -23,6 +23,7 @@ The non-porous cast resin surface feels silky smooth to the touch, resisting sta
 | Parameter | Specifications & Details |
 | :--- | :--- |
 | **Product Name** | Freestanding Solid Surface Soaking Bathtub (Model 814) |
+| **Available Sizes** | 1500 x 800 x 580 mm \| 1600 x 800 x 580 mm \| 1700 x 800 x 580 mm |
 | **Material & Craft** | Premium Solid Surface / Cast Resin (100% Handmade) |
 | **Molding & Finish** | One-Piece Seamless Molding (Matte White) |
 | **Drainage System** | Slotted Deep-Soaking Overflow & Chrome Pop-Up Drain |
