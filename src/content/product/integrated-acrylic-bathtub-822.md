@@ -69,7 +69,7 @@ Our bathtubs undergo a rigorous 9-stage industrial production workflow to guaran
 
 The interior contour is meticulously engineered to support the natural curve of the spine, offering an ergonomic reclining angle that maximizes comfort during extended soaking sessions.
 
-![Chrome floor mixer with hand shower](@assets/images/products/822-1-4.jpg)
+![Chrome floor mixer with hand shower](@assets/images/products/822-1-5.jpg)
 
 Pairing the tub with a floor-mounted chrome mixer—featuring a tall curved spout, cross handles, and a matching hand shower—maintains a clean, uncluttered deck area while highlighting the sculptural lines of the freestanding layout.
 
@@ -83,7 +83,7 @@ Designed to elevate diverse interior architectural styles:
 - **High-End Boutique Hotels & Resorts:** Delivers durable, low-maintenance luxury that satisfies rigorous commercial hospitality standards.
 - **Compact Urban Apartments & Spa Suites:** Space-efficient 1500/1600mm profiles offer deep soaking luxury even in limited square footage.
 
-![Integrated acrylic bathtub in a modern bathroom](@assets/images/products/822-1-5.jpg)
+![Integrated acrylic bathtub in a modern bathroom](@assets/images/products/822-1-4.jpg)
 
 ---
 
