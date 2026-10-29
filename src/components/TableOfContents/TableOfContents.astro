@@ -172,120 +172,69 @@ const getIconName = (text: string) => {
 </style>
 
 <script>
-	// =========================================================================
-	// 🌟 终极精准版 v2：增加点击锁定机制，彻底解决定位偏差导致的高亮回退
-	// =========================================================================
+	// Wrapper for Blog post content
+	let wrappingElement: Element | null;
+	let observeHeaderTags: IntersectionObserver;
+	let allHeaderTags: NodeListOf<Element>;
 	let isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-	let tocLinks: NodeListOf<HTMLAnchorElement>;
-	let headerElements: HTMLElement[];
-	let ticking = false;
-	let isClickingTOC = false; // 点击锁定标志位
-	let clickTimer: any;
 
-	function updateTOC() {
-		if (!isDesktop || !headerElements || headerElements.length === 0 || !tocLinks) return;
-		// 如果用户刚刚点击了目录，跳过滚动监听，保持点击时的高亮
-		if (isClickingTOC) return;
+	// Function that runs when the Intersection Observer fires
+	function setCurrent(entries: any[]) {
+		const tocWrapper = document.querySelector("#desktop-toc");
+		if (!tocWrapper) return;
 
-		const offset = 120; // 基准线：屏幕顶部往下 120px
-		let currentId = headerElements[0].id;
+		const allSectionLinks = tocWrapper.querySelectorAll(".cs-toc-link");
 
-		// 特判：如果已经滚动到页面最底部，直接高亮最后一个标题
-		// （防止文章最后一段太短，滚不到基准线导致高亮卡在倒数第二个）
-		if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
-			currentId = headerElements[headerElements.length - 1].id;
-		} else {
-			for (let i = 0; i < headerElements.length; i++) {
-				const el = headerElements[i];
-				const rect = el.getBoundingClientRect();
-				
-				if (rect.top <= offset) {
-					currentId = el.id;
-				} else {
-					break;
-				}
-			}
-		}
-
-		// 更新右侧目录的高亮状态
-		tocLinks.forEach((link) => {
-			link.classList.remove("cs-toc-current");
-			if (link.getAttribute("href") === `#${currentId}`) {
-				link.classList.add("cs-toc-current");
+		entries.forEach((entry: { isIntersecting: any; target: { id: any; }; }) => {
+			if (entry.isIntersecting) {
+				allSectionLinks.forEach((link) => link.classList.remove("cs-toc-current"));
+				const targetLink = tocWrapper.querySelector(`a[href="#${entry.target.id}"].cs-toc-link`);
+				if (targetLink) targetLink.classList.add("cs-toc-current");
 			}
 		});
 	}
 
 	function initTOC() {
+		// Check if it's desktop
 		if (!window.matchMedia("(min-width: 64rem)").matches) return;
 
-		const wrappingElement = document.querySelector("#blog-content");
-		const tocWrapper = document.querySelector("#desktop-toc");
-		if (!wrappingElement || !tocWrapper) return;
+		// update this with whatever class wraps your blog post content
+		wrappingElement = document.querySelector("#blog-content");
+		if (!wrappingElement) return;
 
-		headerElements = Array.from(wrappingElement.querySelectorAll(":scope > h1, :scope > h2, :scope > h3"));
-		tocLinks = tocWrapper.querySelectorAll(".cs-toc-link");
+		// Get all H1/H2/H3 tags from the post
+		allHeaderTags = wrappingElement.querySelectorAll(":scope > h1, :scope > h2, :scope > h3");
+		if (!allHeaderTags.length) return;
 
-		if (headerElements.length === 0) return;
+		// Intersection Observer Options
+		let options = {
+			root: null,
+			rootMargin: "0px 0px -50% 0px",
+			threshold: [1],
+		};
 
-		// 1. 绑定滚动事件
-		window.addEventListener("scroll", () => {
-			if (!ticking) {
-				window.requestAnimationFrame(() => {
-					updateTOC();
-					ticking = false;
-				});
-				ticking = true;
-			}
-		}, { passive: true });
-
-		// 2. 绑定点击事件：加入锁定机制
-		tocLinks.forEach(link => {
-			link.addEventListener('click', () => {
-				// 立刻高亮
-				tocLinks.forEach(l => l.classList.remove("cs-toc-current"));
-				link.classList.add("cs-toc-current");
-				
-				// 开启锁定，防止平滑滚动过程中的乱跳或定位不足导致的回退
-				isClickingTOC = true;
-				clearTimeout(clickTimer);
-				clickTimer = setTimeout(() => {
-					isClickingTOC = false;
-					updateTOC(); // 解锁后重新计算一次准确位置
-				}, 500); // 500ms 足够浏览器完成平滑滚动
-			});
-		});
-
-		// 3. 处理初始加载 Hash
-		const hash = window.location.hash;
-		if (hash) {
-			setTimeout(() => {
-				const targetLink = document.querySelector(`#desktop-toc a[href="${hash}"]`) as HTMLAnchorElement;
-				if (targetLink) {
-					tocLinks.forEach(l => l.classList.remove("cs-toc-current"));
-					targetLink.classList.add("cs-toc-current");
-				}
-			}, 150);
-		} else {
-			updateTOC();
-		}
+		// Create Observer
+		observeHeaderTags = new IntersectionObserver(setCurrent, options);
+		allHeaderTags.forEach((tag) => observeHeaderTags.observe(tag));
 	}
 
+	// Run on initial page load if on desktop
 	if (isDesktop) initTOC();
 
+	// Re-run on view transitions navigation if on desktop
 	document.addEventListener("astro:after-swap", () => {
 		if (window.matchMedia("(min-width: 64rem)").matches) {
-			isDesktop = true;
 			initTOC();
-		} else {
-			isDesktop = false;
 		}
 	});
 
+	// Listen for screen size changes
 	window.matchMedia("(min-width: 64rem)").addEventListener("change", (e) => {
-		isDesktop = e.matches;
 		if (e.matches) {
 			initTOC();
+		} else {
+			// Clean up observer when switching to mobile
+			if (observeHeaderTags) observeHeaderTags.disconnect();
 		}
 	});
 </script>
