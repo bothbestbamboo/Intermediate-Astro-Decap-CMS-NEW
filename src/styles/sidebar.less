@@ -51,16 +51,10 @@
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
-		column-gap: (24/16em);
+		column-gap: (16/16em); 
 
-		&:nth-of-type(1) {
-			padding-top: 0;
-		}
-
-		&:last-of-type {
-			padding-bottom: 0;
-			border: none;
-		}
+		&:nth-of-type(1) { padding-top: 0; }
+		&:last-of-type { padding-bottom: 0; border: none; }
 	}
 
 		.blog-sidebar_widget-image {
@@ -95,8 +89,8 @@
 		margin: 0;
 		margin-bottom: (4/16rem);
 		color: var(--headerColor);
-		display: -webkit-box !important; /* 🌟 核心修改：开启多行截断 */
-		-webkit-line-clamp: 3 !important; /* 🌟 限制最多显示 3 行 */
+		display: -webkit-box !important;
+		-webkit-line-clamp: 3 !important;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 	}
