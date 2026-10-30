@@ -63,22 +63,27 @@
 		}
 	}
 
-	.blog-sidebar_widget-image {
-		width: (60/16em);
-		height: (60/16em);
-		border-radius: 50%;
-		display: block;
-		position: relative;
-		overflow: hidden;
-		flex: none;
+		.blog-sidebar_widget-image {
+		width: (100/16em) !important;   
+		height: (52/16em) !important;  
+		min-width: (100/16em) !important;
+		min-height: (52/16em) !important;
+		border-radius: 6px !important; 
+		display: flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+		position: relative !important;
+		overflow: hidden !important;
+		flex: none !important;
+		background-color: #f3f4f6 !important; 
 
 		img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			position: absolute;
-			top: 0;
-			left: 0;
+			width: 100% !important;
+			height: 100% !important;
+			object-fit: cover !important; 
+			position: relative !important; 
+			display: block !important;
+			margin: 0 !important;
 		}
 	}
 
