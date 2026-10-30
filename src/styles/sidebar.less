@@ -87,7 +87,7 @@
 		}
 	}
 
-	.blog-sidebar_widget-h4 {
+		.blog-sidebar_widget-h4 {
 		font-size: (14/16rem);
 		font-weight: 700;
 		line-height: 1.5em;
@@ -95,7 +95,10 @@
 		margin: 0;
 		margin-bottom: (4/16rem);
 		color: var(--headerColor);
-		display: block;
+		display: -webkit-box !important; /* 🌟 核心修改：开启多行截断 */
+		-webkit-line-clamp: 3 !important; /* 🌟 限制最多显示 3 行 */
+		-webkit-box-orient: vertical;
+		overflow: hidden;
 	}
 
 	.blog-sidebar_widget-date {
