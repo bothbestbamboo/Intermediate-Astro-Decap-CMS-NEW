@@ -1,7 +1,7 @@
 ---
 title: "Freestanding Bathtub 814: Seamless Solid Surface Soaking Tub"
 description: "Model 814 is a 100% handmade solid surface freestanding soaking bathtub with seamless joint construction, deep slotted overflow, smooth natural texture, and offered in 1400 to 1700 mm sizes."
-date: 2026-10-28
+date: 2026-10-29
 image: "@assets/images/products/814-1f.jpg"
 imageAlt: "Model 814 Freestanding Solid Surface Soaking Bathtub in a modern luxury bathroom"
 tags: ["Bathtubs"]

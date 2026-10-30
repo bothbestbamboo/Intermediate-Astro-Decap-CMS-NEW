@@ -1,7 +1,7 @@
 ---
 title: "Freestanding Bathtub 6009: Seamless Solid Surface Soaking Tub"
 description: "Model 6009 is a 100% handmade solid surface freestanding soaking bathtub with seamless joint construction, deep slotted overflow, smooth natural texture, and repairable matte/gloss finish."
-date: 2026-10-28
+date: 2026-10-29
 image: "@assets/images/products/6009-1f.jpg"
 imageAlt: "Model 6009 Freestanding Solid Surface Soaking Bathtub in a modern luxury bathroom"
 tags: ["Bathtubs"]
