@@ -23,6 +23,7 @@ The non-porous cast resin surface feels silky smooth to the touch, resisting sta
 | Parameter | Specifications & Details |
 | :--- | :--- |
 | **Product Name** | Freestanding Solid Surface Soaking Bathtub (Model 6009) |
+| **Available Sizes** | 1800 x 800 x 660 mm | 
 | **Material & Craft** | Premium Solid Surface / Cast Resin (100% Handmade) |
 | **Molding & Finish** | One-Piece Seamless Molding (Matte White / Glossy White) |
 | **Drainage System** | Slotted Deep-Soaking Overflow & Chrome Pop-Up Drain |
