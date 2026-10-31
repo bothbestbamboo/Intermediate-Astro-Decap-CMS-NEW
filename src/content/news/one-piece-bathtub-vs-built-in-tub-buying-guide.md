@@ -52,18 +52,20 @@ Built-in bathtubs excel in spatial efficiency and design integration. In tight o
 
 Evaluating key practical metrics side by side provides clear clarity on which style best serves your immediate renovation demands and long-term expectations.
 
+### 1. Installation Complexity and Labor Costs
+
 ![Installation Complexity](@assets/images/blog/one-piece-vs-built-in-installation.jpg)
 
-### 1. Installation Complexity and Labor Costs
 Installation protocols vary dramatically between these two designs:
 
 One-piece bathtubs often require simple floor positioning and plumbing connections, but moving them into the room presents a logistical challenge. Because one-piece units cannot be disassembled, navigating tight hallways, narrow doorways, or steep stairwells during a remodel can prove difficult or physically impossible without removing door frames or opening drywall. However, once in the room, installation labor is relatively fast since no framing or custom tiling is required around the tub body.
 
 Built-in bathtubs are much easier to transport into the bathroom because the basin arrives as a compact, lightweight component. However, the installation labor on site is significantly higher. Contractors must construct a custom support framework, install backer boards, apply liquid or sheet waterproofing membranes, layout and set wall or apron tile, and apply perimeter grout and caulk. This added labor generally increases the overall project timeline and initial installation budget.
 
+### 2. Cleaning, Maintenance, and Hygiene
+
 ![Cleaning, Maintenance](@assets/images/blog/tub-grout-vs-seamless-cleaning.jpg)
 
-### 2. Cleaning, Maintenance, and Hygiene
 Daily maintenance requirements highlight stark operational differences between the two choices:
 
 One-piece tubs win decisively in ease of cleaning. With no grout lines to scrub, no silicone joints to re-caulk, and smooth rounded internal transitions, maintaining hygiene requires little more than a gentle wipe down with a mild soapy solution and a soft cloth. 
