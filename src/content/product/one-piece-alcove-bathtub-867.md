@@ -77,3 +77,5 @@ The chrome deck set — arched spout, two cross-handle valves and a hand shower 
 - **Customization:** Specify length (1400 / 1500 / 1600 / 1700 mm), finish (matte or gloss) and color, plus whether a matching chrome faucet set is required.
 - **Listing Names:** Also catalogued as Solid Surface Bathtub, Drop-in Bath, Walk-in Bath and Whirlpool Bath.
 - **Secure Export Packaging:** Each unit is wrapped in protective foam film, fitted with edge guards and crated for ocean freight transit.
+
+![Model 867 one-piece solid surface bathtub in a bright bathroom with terrace view](@assets/images/products/867-7.jpg)
