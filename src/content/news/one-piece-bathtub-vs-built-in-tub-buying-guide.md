@@ -3,7 +3,7 @@ title: "One-Piece Bathtub vs. Built-In Tub: Which Should You Buy for Your Home?"
 description: "One-piece bathtub vs built-in tub comparisons cover installation costs, maintenance, longevity, and space requirements to help you choose the best fixture for your bathroom."
 author: "XC Bath"
 date: 2026-10-24T17:34:00.000Z
-image: "@assets/images/blog/20261025-bathtub-2.jpg"
+image: "@assets/images/blog/20261025-one-piece-vs-built-in-tub.jpg"
 imageAlt: "One-Piece Bathtub vs Built-In Tub Comparison"
 isFeatured: true
 ---
@@ -15,6 +15,8 @@ Understanding the structural differences, material variations, installation requ
 ## Understanding One-Piece Bathtub Construction and Features
 
 A one-piece bathtub refers to a seamless fixture where the tub basin, surrounding apron, and integrated wall surround or deck are molded together as a single continuous structure during manufacturing. Alternatively, freestanding one-piece tubs feature a single seamless shell where the inner soaking basin and outer skirt form an unbroken exterior body without visible seams or joins.
+
+![One-Piece Bathtub Construction](@assets/images/blog/one-piece-tub-seamless-construction.jpg)
 
 ### Seamless Structural Integrity
 The defining physical characteristic of a one-piece bathtub is its complete lack of assembly joints or perimeter seams. Because the entire body is cast or heat-formed from a single material mass, there are no structural gaps where water can penetrate, sit, or cause subfloor damage over time. This continuous construction eliminates vulnerable caulk lines along the tub deck, drastically lowering the risk of internal leaks.
@@ -32,6 +34,8 @@ The primary appeal of a one-piece bathtub centers around maintenance simplicity 
 
 A built-in bathtub, often referred to as a drop-in or alcove tub, consists of a standalone basin installed into a pre-framed enclosure, deck, or structural surround. The surrounding platform is finished separately using materials like ceramic tile, natural stone, porcelain slabs, or waterproof wood paneling.
 
+![Built-In Bathtub Designs and Configurations](@assets/images/blog/built-in-tub-alcove-drop-in-undermount.jpg)
+
 ### Modular Customization Options
 Unlike factory-molded one-piece units, built-in tubs separate the water vessel from the surrounding wall and floor finishes. This modular approach grants total design flexibility. You can pair a standard white acrylic drop-in basin with custom floor-to-ceiling marble wall tile, integrated granite counter ledges, or decorative mosaic skirts that match your vanity countertops.
 
@@ -48,12 +52,16 @@ Built-in bathtubs excel in spatial efficiency and design integration. In tight o
 
 Evaluating key practical metrics side by side provides clear clarity on which style best serves your immediate renovation demands and long-term expectations.
 
+![Installation Complexity](@assets/images/blog/one-piece-vs-built-in-installation.jpg)
+
 ### 1. Installation Complexity and Labor Costs
 Installation protocols vary dramatically between these two designs:
 
 One-piece bathtubs often require simple floor positioning and plumbing connections, but moving them into the room presents a logistical challenge. Because one-piece units cannot be disassembled, navigating tight hallways, narrow doorways, or steep stairwells during a remodel can prove difficult or physically impossible without removing door frames or opening drywall. However, once in the room, installation labor is relatively fast since no framing or custom tiling is required around the tub body.
 
 Built-in bathtubs are much easier to transport into the bathroom because the basin arrives as a compact, lightweight component. However, the installation labor on site is significantly higher. Contractors must construct a custom support framework, install backer boards, apply liquid or sheet waterproofing membranes, layout and set wall or apron tile, and apply perimeter grout and caulk. This added labor generally increases the overall project timeline and initial installation budget.
+
+![Cleaning, Maintenance](@assets/images/blog/tub-grout-vs-seamless-cleaning.jpg)
 
 ### 2. Cleaning, Maintenance, and Hygiene
 Daily maintenance requirements highlight stark operational differences between the two choices:
@@ -91,6 +99,8 @@ Before placing an order for either tub style, verify these practical baseline re
 * Entryway Rough-In Clearances: Measure all doorways, stairwell landings, hallway corners, and elevator cabs along the delivery path to verify a rigid one-piece tub can pass through smoothly without damaging interior walls.
 * Plumbing Drain and Overflow Alignments: Verify whether your project requires a left-hand, right-hand, or center drain orientation. Built-in tubs offer broad flexibility with hidden drain configurations, while one-piece units require exact alignment with subfloor rough-in plumbing locations.
 * Faucet Mount Preferences: Decide early whether you want wall-mounted, floor-mounted freestanding, or deck-mounted tub filler valves, as this dictates whether the tub deck or wall framing must be pre-drilled.
+
+![Critical Considerations](@assets/images/blog/tub-purchase-checklist-floorplan.jpg)
 
 ## Final Selection Guidance for Your Project
 
