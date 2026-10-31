@@ -3,7 +3,7 @@ title: "Clean Glass Shower Doors and Remove Hard Water Stains: Effective Tips an
 description: "Learn how to clean glass shower doors and remove hard water stains effectively. Discover natural cleaning solutions, removal techniques, protective coatings, and daily care habits."
 author: "XC Bath"
 date: 2026-10-24T17:37:00.000Z
-image: "@assets/images/blog/20261025-bathtub-4.jpg"
+image: "@assets/images/blog/20261025-shower-door-cleaning.jpg"
 imageAlt: "Clean Glass Shower Doors and Remove Hard Water Stains"
 isFeatured: true
 ---
@@ -15,6 +15,8 @@ Restoring clarity to glass shower panels requires a systematic cleaning approach
 ## The Science Behind Hard Water Stains and Soap Scum
 
 Understanding what causes cloudy glass helps in selecting the right cleaning strategy to dissolve deposits without scratching the panel.
+
+![Hard Water Stains](@assets/images/blog/hard-water-stain-vs-etched-glass.jpg)
 
 ## Mineral Scale and Limescale
 Hard water contains high concentrations of dissolved minerals, primarily calcium, magnesium, silica, and iron. When water droplets sit on glass shower doors and evaporate, these dissolved minerals remain behind. Over time, recurring evaporation builds up thick, chalky mineral layers known as limescale. If left untreated, alkaline minerals react chemically with the silica in the glass, leading to etching—a permanent physical pitting of the glass matrix that cannot be wiped away with standard cleaners.
@@ -37,12 +39,16 @@ Distilled white vinegar contains roughly five percent acetic acid, making it an 
 4. Allow the mixture to dwell on the glass surface for fifteen to thirty minutes so the acid breaks down calcium bonds while the dish soap dissolves oil layers.
 5. Scrub lightly with a soft microfiber sponge and rinse thoroughly with warm water.
 
+![White Vinegar and Dish Soap Spray](@assets/images/blog/vinegar-dish-soap-spray-bottle.jpg)
+
 ## Lemon Juice and Baking Soda Paste
 For stubborn mineral rings and heavy lower-panel scale, a mild abrasive paste provides extra cleaning power:
 * Mix fresh lemon juice with baking soda to form a thick paste with the consistency of toothpaste.
 * Apply the paste directly onto mineral-stained zones using a soft sponge.
 * Lightly work the paste over the glass in gentle circular motions. The citric acid in lemon juice works alongside the mild mechanical action of baking soda to lift scale without scratching the glass pane.
 * Rinse clean with fresh water and dry immediately with a microfiber cloth.
+
+![Lemon Juice and Baking Soda Paste](@assets/images/blog/lemon-baking-soda-paste.jpg)
 
 ## Deep Cleaning Heavy Mineral Deposits with Commercial Cleaners
 
@@ -55,6 +61,8 @@ Commercial hard water stain removers often utilize phosphoric acid, sulfamic aci
 Removing hardened mineral crusts sometimes requires physical lifting:
 * Grade 0000 Ultra-Fine Steel Wool: Only use grade 0000 steel wool on dry shower glass. Ultra-fine steel wool polishes off stubborn mineral scale without scratching tempered glass. Never use coarse steel wool or scouring pads containing silicon carbide, as they cause micro-scratches.
 * Plastic Razor Blades: Holding a plastic razor blade at a thirty-degree angle allows you to shave thick mineral deposits off the glass surface safely without gouging glass or damaging surrounding aluminum frame finishes.
+
+![Plastic Scrapes and Steel Wool](@assets/images/blog/steel-wool-plastic-razor-glass.jpg)
 
 ## Step-by-Step Restoration Process for Clouded Glass
 
@@ -88,6 +96,8 @@ Professional-grade ceramic coatings utilize nano-silica technology to fill micro
 ## Essential Daily Habits for Spotless Shower Glass
 
 Preventing hard water stains requires far less time and labor than removing heavy mineral buildup later. Adopting quick post-shower habits maintains glass clarity indefinitely.
+
+![Daily Habits for Spotless Shower Glass](@assets/images/blog/squeegee-daily-shower-glass.jpg)
 
 * Daily Squeegee Use: Keep a soft rubber squeegee inside the shower enclosure. Take thirty seconds after every shower to wipe down the glass panels from top to bottom, removing water droplets before they dry and drop minerals on the surface.
 * Microfiber Towel Wipe Down: Follow up squeegee passes by drying metal door hardware, rubber seals, and corner joints with a quick-drying microfiber towel to eliminate pooling water.
