@@ -55,9 +55,7 @@ The raised rim is the defining detail. It is not a flat ledge but a continuous c
 
 In the white finish, the surface reads as a single quiet volume. Paired with a matte black floor faucet and grey stone tiles, it suits restrained, minimalist bathrooms. In the two-tone finish, the red outer skin is glossy and saturated while the interior remains white, so the colour is visible from across the room without overwhelming the bather once inside the tub.
 
-![Model 6009 freestanding bathtub in gloss red with chrome floor faucet](@assets/images/products/6009-5.jpg)
-
-![Model 6009 white freestanding bathtub front view with black floor faucet](@assets/images/products/6009-4.jpg)
+![Model 6009 freestanding bathtub in gloss red with chrome floor faucet](@assets/images/products/6009-4.jpg)
 
 ---
 
