@@ -2,7 +2,7 @@
 title: "Freestanding Bathtub Reviews: Best Models, Materials, and Buying Tips for Homeowners"
 description: "Freestanding bathtub reviews comparing solid surface, acrylic, cast iron, and copper models with practical buying tips on size, comfort, heat retention, and long-term maintenance for homeowners."
 author: "XC Bath"
-date: 2026-10-24T17:40:00.000Z
+date: 2026-11-1T05:40:00.000Z
 image: "@assets/images/blog/freestanding-bathtub-reviews-cover.jpg"
 imageAlt: "Freestanding Bathtub Reviews Best Models Materials and Buying Tips"
 isFeatured: true
