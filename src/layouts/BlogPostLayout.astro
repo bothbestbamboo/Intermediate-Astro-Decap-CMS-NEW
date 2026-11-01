@@ -394,17 +394,20 @@ const blogPostingSchema = getBlogPostingSchema(
         }
     }
 
-    /* ==========================================================================
-       🌟 修改点：针对普通博文隐藏导航图标
+        /* ==========================================================================
+       🌟 修改点：针对普通博文隐藏导航图标（去掉 #desktop-toc，覆盖全设备）
        ========================================================================== */
     .is-blog-post {
-        #desktop-toc {
-            svg {
-                display: none !important;
-            }
-            .cs-toc-link {
-                gap: 0 !important;
-            }
+        /* 隐藏所有 toc 图标和 svg */
+        .cs-toc-icon,
+        .cs-toc-link svg {
+            display: none !important;
+        }
+        .cs-toc-link {
+            gap: 0 !important; /* 取消图标与文字之间的间距 */
+        }
+        .cs-toc-text {
+            margin-top: 0 !important; /* 取消文字微调 */
         }
     }
 

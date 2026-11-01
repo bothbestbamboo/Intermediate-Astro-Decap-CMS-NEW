@@ -128,20 +128,7 @@ const getIconName = (text: string) => {
         transition: color 0.2s ease-in-out;
     }
 
-    /* ==========================================
-       🌟 核心逻辑：针对普通博文隐藏图标（配合主模板的 .is-blog-post 类名）
-       ========================================== */
-    .is-blog-post {
-        .cs-toc-icon {
-            display: none !important; /* 直接隐藏图标 */
-        }
-        .cs-toc-link {
-            gap: 0 !important; /* 取消图标和文字之间的间隙 */
-        }
-        .cs-toc-text {
-            margin-top: 0 !important; /* 取消微调 */
-        }
-    }
+   
 
     @media only screen and (min-width: 64rem) {
         .cs-toc-container {
