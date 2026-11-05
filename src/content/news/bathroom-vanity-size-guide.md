@@ -2,7 +2,7 @@
 title: "Bathroom Vanity Size Guide: How to Pick the Right Width for Any Space"
 description: "Learn how to choose the right bathroom vanity width for any space. This guide covers standard sizes, measuring tips, clearance rules, and storage considerations."
 author: "XC Bath"
-date: "2026-11-5T10:00:00.000Z"
+date: 2026-11-5T05:40:00.000Z
 image: "@assets/images/blog/bathroom-vanity-size-guide-hero.jpg"
 imageAlt: "Modern bathroom vanity showing width measurement in a clean, bright bathroom"
 isFeatured: false
