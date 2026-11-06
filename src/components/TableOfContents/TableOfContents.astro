@@ -4,28 +4,24 @@ import "@styles/sidebar.less";
 import { Icon } from "astro-icon/components";
 
 interface Heading {
-	depth: number; // The heading level (h1 = 1, h2 = 2, etc)
-	slug: string; // The ID of the heading for linking
-	text: string; // The text content of the heading
+	depth: number;
+	slug: string;
+	text: string;
 }
 
 interface Props {
-	headings: Heading[]; // Array of headings from your markdown content
-	levels?: 1 | 2 | 3; // How many levels of headers to show in TOC (default: 2)
+	headings: Heading[];
+	levels?: 1 | 2 | 3;
 }
 
 const { headings, levels = 2 } = Astro.props as Props;
 
-// Filter headings to only show up to the specified level
 const filteredHeadings = headings.filter(
     (heading) => heading.depth <= levels && heading.text && heading.text.trim() !== ""
 );
 
-// 自定义函数：根据标题文本匹配对应的 Phosphor 图标
 const getIconName = (text: string) => {
     const t = text.toLowerCase();
-    
-    // 浴缸产品页专属匹配
     if (t.includes("overview") || t.includes("philosophy")) return "ph:lightbulb";
     if (t.includes("technical") || t.includes("specification")) return "ph:gear";
     if (t.includes("advantage") || t.includes("craftsmanship")) return "ph:star";
@@ -33,8 +29,6 @@ const getIconName = (text: string) => {
     if (t.includes("detail") || t.includes("finishing")) return "ph:magnifying-glass";
     if (t.includes("application") || t.includes("environment")) return "ph:buildings";
     if (t.includes("packaging") || t.includes("ordering") || t.includes("bulk order")) return "ph:package";
-
-    // 🌟 终极兜底：如果以上都没匹配上，显示一个干净的高级通用文档图标，绝不会突兀
     return "ph:file-text"; 
 };
 ---
@@ -68,48 +62,49 @@ const getIconName = (text: string) => {
 		flex-direction: column;
 		gap: 14px !important;
 		list-style: none !important;
-        padding-left: 0 !important;
+        
+        /* 🚨 关键：给整个列表留出 20px 的内边距，给左侧线条腾出空间 */
+        padding-left: 20px !important; 
 	}
 
 	.cs-toc-item {
 		position: relative;
 		transition: all 0.2s ease;
 		
-		/* 🌟 调整缩进：给 2 级标题增加 12px 的内边距，拉开与线条的距离 */
-		&.depth-2 { padding-left: 12px !important; }
-		&.depth-3 { padding-left: 24px !important; } /* 3 级标题相应缩进更多 */
-
-		/* 🌟 统一辅助线 (默认隐藏) */
-		&::before {
-			content: "";
-			position: absolute;
-			left: 0; /* 线条始终贴在最左侧 */
-			top: 5px;
-			bottom: 5px;
-			width: 2px;
-			background-color: var(--primaryLight, #9cc813); 
-			border-radius: 2px;
-			opacity: 0; 
-			transition: all 0.2s ease;
-		}
-
-		/* 悬浮 或 当前高亮项 时显示辅助线 */
-		&:hover::before,
-		&:has(.cs-toc-current)::before {
-			opacity: 1;
-		}
+		/* 🚨 彻底去掉 li 的 padding，完全靠 margin 控制层级 */
+		&.depth-2 { margin-left: 0 !important; }
+		&.depth-3 { margin-left: 16px !important; } /* 3级标题整体向右缩进 */
 	}
 
 	.cs-toc-link {
+		position: relative; /* 🌟 线条定位的新基准点 */
 		transition: all 0.2s ease-in-out;
 		color: var(--bodyTextColor);
 		text-decoration: none !important;
-        
-        /* 让图标和文字并排对齐 */
         display: flex !important;
         align-items: flex-start; 
         gap: 8px; 
         width: 100%;
+
+        /* 🌟 终极绝杀：把辅助线放在 a 标签的左侧外挂位置 */
+        &::before {
+            content: "";
+            position: absolute;
+            left: -16px; /* 🚨 距离文字左侧固定 16px */
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background-color: var(--primaryLight, #9cc813); 
+            border-radius: 2px;
+            opacity: 0; 
+            transition: all 0.2s ease;
+        }
+
+		/* 悬浮 或 当前高亮 时显示线条 */
+		&:hover::before,
+		&.cs-toc-current::before {
+			opacity: 1;
+		}
 
         .cs-toc-text {
             flex: 1; 
@@ -128,7 +123,6 @@ const getIconName = (text: string) => {
             }
 		}
 		
-		/* 🌟 全局悬浮颜色变绿 */
 		&:hover {
             .cs-toc-text {
                 color: var(--primaryLight) !important;
@@ -139,7 +133,6 @@ const getIconName = (text: string) => {
 		}
 	}
 
-    /* 3级标题文本小一点、灰一点 */
     .cs-toc-item.depth-3 .cs-toc-text {
         font-size: 13px !important; 
         color: #6b7280 !important; 
@@ -173,10 +166,8 @@ const getIconName = (text: string) => {
 			}
         }
         
-        .cs-toc-item {
-            &::before {
-                background-color: var(--primaryLight, #aed52b);
-            }
+        .cs-toc-link::before {
+            background-color: var(--primaryLight, #aed52b);
         }
 
         .cs-toc-item.depth-3 .cs-toc-text {
@@ -194,7 +185,6 @@ const getIconName = (text: string) => {
 	let observeHeaderTags: IntersectionObserver;
 	let allHeaderTags: NodeListOf<Element>;
 	let isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-	// 🌟 维护一个当前可见的标题集合
 	let visibleHeadings = new Set<Element>();
 
 	function updateActiveLink() {
@@ -206,10 +196,8 @@ const getIconName = (text: string) => {
 
 		let currentActive = null;
 		let maxTop = -Infinity;
-		// 偏移量，需配合 markdown.less 里的 scroll-margin-top: 10rem (160px)
 		const OFFSET = 170; 
 
-		// 1. 寻找已经越过基准线且最靠下的元素（解决跳转高亮不生效）
 		visibleHeadings.forEach((target) => {
 			const rect = target.getBoundingClientRect();
 			if (rect.top <= OFFSET) {
@@ -220,7 +208,6 @@ const getIconName = (text: string) => {
 			}
 		});
 
-		// 2. 如果所有可见元素都在基准线下方（刚进页面），选最靠上的
 		if (!currentActive) {
 			let minTop = Infinity;
 			visibleHeadings.forEach((target) => {
@@ -267,7 +254,6 @@ const getIconName = (text: string) => {
 
 		let options = { 
 			root: null, 
-			// 顶部留出 160px 避开固定 Header (与 scroll-margin-top 一致)
 			rootMargin: "-160px 0px -50% 0px", 
 			threshold: 0 
 		};
