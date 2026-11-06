@@ -75,15 +75,15 @@ const getIconName = (text: string) => {
 		position: relative;
 		transition: all 0.2s ease;
 		
-		/* 层级缩进 */
-		&.depth-2 { padding-left: 0 !important; }
-		&.depth-3 { padding-left: 12px !important; } /* 3级标题缩进 */
+		/* 🌟 调整缩进：给 2 级标题增加 12px 的内边距，拉开与线条的距离 */
+		&.depth-2 { padding-left: 12px !important; }
+		&.depth-3 { padding-left: 24px !important; } /* 3 级标题相应缩进更多 */
 
 		/* 🌟 统一辅助线 (默认隐藏) */
 		&::before {
 			content: "";
 			position: absolute;
-			left: 0; 
+			left: 0; /* 线条始终贴在最左侧 */
 			top: 5px;
 			bottom: 5px;
 			width: 2px;
@@ -281,7 +281,7 @@ const getIconName = (text: string) => {
 	document.addEventListener("astro:after-swap", () => {
 		if (window.matchMedia("(min-width: 64rem)").matches) initTOC();
 	});
-	
+
 	window.matchMedia("(min-width: 64rem)").addEventListener("change", (e) => {
 		if (e.matches) {
 			initTOC();
