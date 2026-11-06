@@ -17,7 +17,9 @@ interface Props {
 const { headings, levels = 2 } = Astro.props as Props;
 
 // Filter headings to only show up to the specified level
-const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
+const filteredHeadings = headings.filter(
+    (heading) => heading.depth <= levels && heading.text && heading.text.trim() !== ""
+);
 
 // 自定义函数：根据标题文本匹配对应的 Phosphor 图标
 const getIconName = (text: string) => {
@@ -70,19 +72,31 @@ const getIconName = (text: string) => {
 	}
 
 	.cs-toc-item {
-		&.depth-2 {
-			padding-left: 0.75rem !important;
+		position: relative;
+		transition: all 0.2s ease;
+		
+		/* 层级缩进 */
+		&.depth-2 { padding-left: 0 !important; }
+		&.depth-3 { padding-left: 12px !important; } /* 3级标题缩进 */
+
+		/* 🌟 统一辅助线 (默认隐藏) */
+		&::before {
+			content: "";
+			position: absolute;
+			left: 0; 
+			top: 5px;
+			bottom: 5px;
+			width: 2px;
+			background-color: var(--primaryLight, #9cc813); 
+			border-radius: 2px;
+			opacity: 0; 
+			transition: all 0.2s ease;
 		}
-		&.depth-3 {
-			padding-left: 1.5rem !important;
-		}
-		&:has(.cs-toc-current) {
-			border-left: 2px solid var(--primaryLight) !important;
-			color: var(--primaryLight);
-            padding-left: calc(0.75rem - 2px) !important;
-            &.depth-3 {
-				padding-left: calc(1.5rem - 2px) !important;
-			}
+
+		/* 悬浮 或 当前高亮项 时显示辅助线 */
+		&:hover::before,
+		&:has(.cs-toc-current)::before {
+			opacity: 1;
 		}
 	}
 
@@ -102,10 +116,10 @@ const getIconName = (text: string) => {
             font-size: 14px !important;
             line-height: 1.4 !important;
             margin-top: 1px;
+            transition: color 0.2s ease;
         }
 
 		&.cs-toc-current {
-			color: var(--primaryLight);
 			.cs-toc-text {
                 font-weight: 700 !important;
             }
@@ -113,13 +127,23 @@ const getIconName = (text: string) => {
                 color: var(--primaryLight);
             }
 		}
+		
+		/* 🌟 全局悬浮颜色变绿 */
 		&:hover {
-			color: var(--primaryLight);
+            .cs-toc-text {
+                color: var(--primaryLight) !important;
+            }
             .cs-toc-icon {
                 color: var(--primaryLight);
             }
 		}
 	}
+
+    /* 3级标题文本小一点、灰一点 */
+    .cs-toc-item.depth-3 .cs-toc-text {
+        font-size: 13px !important; 
+        color: #6b7280 !important; 
+    }
 
     .cs-toc-icon {
         color: #999; 
@@ -143,83 +167,126 @@ const getIconName = (text: string) => {
         .cs-toc-link {
             color: #f7f7f7;
 			&.cs-toc-current {
-				color: var(--primaryLight);
                 .cs-toc-icon {
                     color: var(--primaryLight);
                 }
 			}
-			&:hover {
-				opacity: 0.8;
-			}
+        }
+        
+        .cs-toc-item {
+            &::before {
+                background-color: var(--primaryLight, #aed52b);
+            }
+        }
+
+        .cs-toc-item.depth-3 .cs-toc-text {
+            color: #888 !important; 
+        }
+        
+        .cs-toc-link:hover .cs-toc-text {
+            color: var(--primaryLight) !important;
         }
     }
 }
 </style>
 
 <script>
-	// Wrapper for Blog post content
-	let wrappingElement: Element | null;
 	let observeHeaderTags: IntersectionObserver;
 	let allHeaderTags: NodeListOf<Element>;
 	let isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+	// 🌟 维护一个当前可见的标题集合
+	let visibleHeadings = new Set<Element>();
 
-	// Function that runs when the Intersection Observer fires
-	function setCurrent(entries: any[]) {
+	function updateActiveLink() {
 		const tocWrapper = document.querySelector("#desktop-toc");
 		if (!tocWrapper) return;
-
 		const allSectionLinks = tocWrapper.querySelectorAll(".cs-toc-link");
+		
+		if (visibleHeadings.size === 0) return;
 
-		entries.forEach((entry: { isIntersecting: any; target: { id: any; }; }) => {
-			if (entry.isIntersecting) {
-				allSectionLinks.forEach((link) => link.classList.remove("cs-toc-current"));
-				const targetLink = tocWrapper.querySelector(`a[href="#${entry.target.id}"].cs-toc-link`);
-				if (targetLink) targetLink.classList.add("cs-toc-current");
+		let currentActive = null;
+		let maxTop = -Infinity;
+		// 偏移量，需配合 markdown.less 里的 scroll-margin-top: 10rem (160px)
+		const OFFSET = 170; 
+
+		// 1. 寻找已经越过基准线且最靠下的元素（解决跳转高亮不生效）
+		visibleHeadings.forEach((target) => {
+			const rect = target.getBoundingClientRect();
+			if (rect.top <= OFFSET) {
+				if (rect.top > maxTop) {
+					maxTop = rect.top;
+					currentActive = target;
+				}
 			}
 		});
+
+		// 2. 如果所有可见元素都在基准线下方（刚进页面），选最靠上的
+		if (!currentActive) {
+			let minTop = Infinity;
+			visibleHeadings.forEach((target) => {
+				const rect = target.getBoundingClientRect();
+				if (rect.top < minTop) {
+					minTop = rect.top;
+					currentActive = target;
+				}
+			});
+		}
+
+		if (currentActive) {
+			allSectionLinks.forEach((link) => link.classList.remove("cs-toc-current"));
+			const targetLink = tocWrapper.querySelector(`a[href="#${(currentActive as Element).id}"].cs-toc-link`);
+			if (targetLink) targetLink.classList.add("cs-toc-current");
+		}
+	}
+
+	function setCurrent(entries: IntersectionObserverEntry[]) {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				visibleHeadings.add(entry.target);
+			} else {
+				visibleHeadings.delete(entry.target);
+			}
+		});
+		updateActiveLink();
 	}
 
 	function initTOC() {
-		// Check if it's desktop
 		if (!window.matchMedia("(min-width: 64rem)").matches) return;
-
-		// update this with whatever class wraps your blog post content
-		wrappingElement = document.querySelector("#blog-content");
+		
+		const wrappingElement = document.querySelector("#blog-content");
 		if (!wrappingElement) return;
-
-		// Get all H1/H2/H3 tags from the post
-		allHeaderTags = wrappingElement.querySelectorAll(":scope > h1, :scope > h2, :scope > h3");
+		
+		allHeaderTags = wrappingElement.querySelectorAll(":scope > h2, :scope > h3");
 		if (!allHeaderTags.length) return;
+		
+		visibleHeadings.clear(); 
 
-		// Intersection Observer Options
-		let options = {
-			root: null,
-			rootMargin: "0px 0px -50% 0px",
-			threshold: [1],
+		if (observeHeaderTags) {
+			observeHeaderTags.disconnect();
+		}
+
+		let options = { 
+			root: null, 
+			// 顶部留出 160px 避开固定 Header (与 scroll-margin-top 一致)
+			rootMargin: "-160px 0px -50% 0px", 
+			threshold: 0 
 		};
-
-		// Create Observer
+		
 		observeHeaderTags = new IntersectionObserver(setCurrent, options);
 		allHeaderTags.forEach((tag) => observeHeaderTags.observe(tag));
 	}
 
-	// Run on initial page load if on desktop
 	if (isDesktop) initTOC();
-
-	// Re-run on view transitions navigation if on desktop
+	
 	document.addEventListener("astro:after-swap", () => {
-		if (window.matchMedia("(min-width: 64rem)").matches) {
-			initTOC();
-		}
+		if (window.matchMedia("(min-width: 64rem)").matches) initTOC();
 	});
-
-	// Listen for screen size changes
+	
 	window.matchMedia("(min-width: 64rem)").addEventListener("change", (e) => {
 		if (e.matches) {
 			initTOC();
-		} else {
-			// Clean up observer when switching to mobile
-			if (observeHeaderTags) observeHeaderTags.disconnect();
+		} else if (observeHeaderTags) {
+			observeHeaderTags.disconnect();
 		}
 	});
 </script>
