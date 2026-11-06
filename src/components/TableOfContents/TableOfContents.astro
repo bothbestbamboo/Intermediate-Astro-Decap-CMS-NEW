@@ -62,22 +62,21 @@ const getIconName = (text: string) => {
 		flex-direction: column;
 		gap: 14px !important;
 		list-style: none !important;
-        
-        /* 🚨 关键：给整个列表留出 20px 的内边距，给左侧线条腾出空间 */
-        padding-left: 20px !important; 
+        /* 🚨 恢复为 0，不占用水平宽度 */
+        padding-left: 0 !important; 
 	}
 
 	.cs-toc-item {
 		position: relative;
 		transition: all 0.2s ease;
 		
-		/* 🚨 彻底去掉 li 的 padding，完全靠 margin 控制层级 */
+		/* 🚨 用 margin 控制层级缩进，完美不挤压文字 */
 		&.depth-2 { margin-left: 0 !important; }
-		&.depth-3 { margin-left: 16px !important; } /* 3级标题整体向右缩进 */
+		&.depth-3 { margin-left: 14px !important; }
 	}
 
 	.cs-toc-link {
-		position: relative; /* 🌟 线条定位的新基准点 */
+		position: relative;
 		transition: all 0.2s ease-in-out;
 		color: var(--bodyTextColor);
 		text-decoration: none !important;
@@ -85,12 +84,14 @@ const getIconName = (text: string) => {
         align-items: flex-start; 
         gap: 8px; 
         width: 100%;
+        /* 🚨 确保文字完全不缩进，恢复原有宽度 */
+        padding-left: 0 !important; 
 
-        /* 🌟 终极绝杀：把辅助线放在 a 标签的左侧外挂位置 */
+        /* 🌟 终极绝杀：把线条外挂到文字左侧的留白处 */
         &::before {
             content: "";
             position: absolute;
-            left: -16px; /* 🚨 距离文字左侧固定 16px */
+            left: -12px; /* 🚨 向左外挂 12px，完美拉开间距且不占位 */
             top: 5px;
             bottom: 5px;
             width: 2px;
