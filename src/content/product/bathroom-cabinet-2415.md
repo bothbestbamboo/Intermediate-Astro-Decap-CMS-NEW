@@ -14,16 +14,14 @@ isFeatured: true
 
 The vanity is offered in four widths — 500, 600, 700, and 800 mm — all sharing a slim 360 mm depth and 480 mm cabinet height, so it fits everything from a narrow guest WC to a standard family bathroom. The carcase can be built in PVC, MDF, or plywood depending on budget and humidity requirements, paired with a smooth ceramic integrated basin. A recessed channel under the basin works as a hidden handle, keeping the front completely clean. Inside, the cabinet offers open storage sized for daily toiletries and tall bottles.
 
-![Open storage interior of Model 2415 bathroom vanity with wood veneer lining](@assets/images/products/2415-cabinet-inside.jpg)
-
 ---
 
 ## Specifications
 
 | Parameter | Specifications & Details |
 | :--- | :--- |
-| **Product Name** | Bathroom Vanity / Bathroom Cabinet (Model 2415) |
-| **Available Sizes (W x D x H)** | 500 x 360 x 480 mm \| 600 x 360 x 480 mm \| 700 x 360 x 480 mm \| 800 x 360 x 480 mm |
+| **Product Name** | Bathroom Vanity (Model 2415) |
+| **Sizes (W x D x H)** | 500 x 360 x 480 mm \| 600 x 360 x 480 mm \| 700 x 360 x 480 mm \| 800 x 360 x 480 mm |
 | **Installation Type** | Wall Mounted / Floating |
 | **Carcase Material** | PVC / MDF / Plywood (Optional) |
 | **Surface Treatment** | Lacquer / Veneer |
@@ -82,6 +80,8 @@ The vanity pairs naturally with a round black-framed copper-free mirror and a wa
 - **Family Bathrooms:** The 700 mm and 800 mm widths add storage and counter space for daily shared use.
 - **Hotels & Serviced Apartments:** Durable lacquer and veneer surfaces handle high-turnover use, and the four-size range keeps one design language across different room layouts.
 - **Renovation Projects:** Wall-mounted installation works over existing floors with no rework, shortening project timelines.
+
+![Open storage interior of Model 2415 bathroom vanity with wood veneer lining](@assets/images/products/2415-cabinet-inside.jpg)
 
 ---
 
