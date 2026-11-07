@@ -47,31 +47,31 @@
 		width: 100% !important;
 	}
 
-	/* 🚨 关键：清理单元格的全部多余属性，杜绝任何高度误差 */
 	#blog-content table td,
 	.prose table td {
 		vertical-align: top !important;
 	}
 
+	/* 🚨 核心修复区：恢复内边距，留出缝隙，且保证等高 */
 	#blog-content table td:has(img),
 	.prose table td:has(img) {
 		cursor: zoom-in;
-		padding: 0 !important; /* 移除内边距，让图片贴合边框 */
+		padding: 12px !important; /* 🌟 恢复缝隙：上下左右留出 12px 空白 */
 		overflow: hidden;
-		line-height: 0 !important; /* 🚨 核心修复：清除行内元素底部的默认空隙 */
-		font-size: 0 !important;   /* 🚨 核心修复：清除字体带来的额外高度 */
+		line-height: 0 !important; /* 清除行内元素底部的默认空隙 */
+		font-size: 0 !important;   
 	}
 
-	/* 🚨 核心修复：改用 height: auto，让 aspect-ratio 自己完美计算高度 */
+	/* 🚨 图片严格按内容区宽度和比例计算，绝不拉伸 */
 	#blog-content table td img,
 	.prose table td img {
 		width: 100% !important;
-		height: auto !important; /* 🚨 这里必须是 auto */
+		height: auto !important; 
 		aspect-ratio: 1 / 1 !important; /* 强制 1:1 正方形 */
 		object-fit: cover !important; /* 裁剪填满 */
 		display: block !important; 
 		border-radius: 6px;
-		margin: 0 !important;
+		margin: 0 auto !important; /* 水平居中 */
 		padding: 0 !important;
 		box-shadow: none; 
 	}
@@ -180,9 +180,9 @@
 			word-wrap: break-word !important; 
 		}
 		
-		/* 手机端图片同样清理多余空隙 */
+		/* 手机端图片也保留一点微小缝隙 */
 		#blog-content table td:has(img) {
-			padding: 0 !important;
+			padding: 6px !important; 
 			line-height: 0 !important;
 		}
 
