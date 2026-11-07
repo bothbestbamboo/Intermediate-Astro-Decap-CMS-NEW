@@ -8,7 +8,7 @@ tags: ["cabinets"]
 isFeatured: true
 ---
 
-## Overview
+## Overview & Design Philosophy
 
 **Model 2415 Bathroom Vanity** is a compact wall-mounted cabinet designed for modern bathrooms where floor space matters. The floating design keeps the floor clear and makes the room feel larger, while the vertically fluted door front adds texture without visual noise.
 

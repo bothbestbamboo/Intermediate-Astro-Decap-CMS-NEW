@@ -8,7 +8,7 @@ tags: ["showers"]
 isFeatured: true
 ---
 
-## Overview
+## Overview & Design Philosophy
 
 **Model 2701 Bathroom Vanity** is a 1200 mm wall-mounted double sink cabinet built for shared bathrooms. The floating design keeps the floor clear, while the vertically fluted door front and two brushed gold semicircle handles give the cabinet a refined, furniture-like presence.
 
@@ -16,7 +16,7 @@ The double ceramic integrated basin lets two people use the vanity at the same t
 
 ---
 
-## Specifications
+## Technical Specifications
 
 | Parameter             | Specifications & Details                                           |
 | :-------------------- | :----------------------------------------------------------------- |
@@ -38,7 +38,7 @@ The double ceramic integrated basin lets two people use the vanity at the same t
 
 ---
 
-## Key Features
+## Advantages & Highlights
 
 - **True Double Sink Layout:** Two basins and two faucet positions in 1200 mm let couples and families get ready side by side without waiting.
 - **Gold Semicircle Handles:** The brushed gold half-moon pulls sit at the center of each door, adding a warm accent that works with both light and dark finishes.
@@ -67,7 +67,7 @@ Model 2701 is shown in seven finishes, and custom colors are available on reques
 
 ---
 
-## Applications
+## Primary Applications
 
 - **Master Bathrooms:** The 1200 mm double basin layout is sized for shared daily routines in family homes.
 - **Hotels & Serviced Apartments:** Twin basins raise the perceived room grade, and the durable lacquer or veneer finish handles high-turnover use.
@@ -75,7 +75,7 @@ Model 2701 is shown in seven finishes, and custom colors are available on reques
 
 ---
 
-## Packaging & Delivery
+## Packaging & Ordering Notes
 
 - **Packaging:** Inner EPE wrapping with foam protection on all 6 sides, packed in standard 5-layer export cartons. Mirror is packed separately with reinforced protection.
 - **Lead Time:** 35–40 days for 1–200 sets; negotiable for larger quantities.
