@@ -39,22 +39,41 @@
 	}
 
 	/* =========================================
-       2. 表格内的图片专属样式 (强制统一比例与大小)
+       2. 表格及图片的终极强控样式
        ========================================= */
-	#blog-content table td img,
-	.prose table td img {
-		max-width: 100% !important;
+	#blog-content table,
+	.prose table {
+		table-layout: fixed !important; 
 		width: 100% !important;
-		aspect-ratio: 4 / 5 !important; /* 强制图片比例，随屏幕变小而变小 */
-		object-fit: cover !important;    
-		border-radius: 6px;
-		margin: 0 !important;
-		box-shadow: none; 
+	}
+
+	/* 🚨 关键：清理单元格的全部多余属性，杜绝任何高度误差 */
+	#blog-content table td,
+	.prose table td {
+		vertical-align: top !important;
 	}
 
 	#blog-content table td:has(img),
 	.prose table td:has(img) {
 		cursor: zoom-in;
+		padding: 0 !important; /* 移除内边距，让图片贴合边框 */
+		overflow: hidden;
+		line-height: 0 !important; /* 🚨 核心修复：清除行内元素底部的默认空隙 */
+		font-size: 0 !important;   /* 🚨 核心修复：清除字体带来的额外高度 */
+	}
+
+	/* 🚨 核心修复：改用 height: auto，让 aspect-ratio 自己完美计算高度 */
+	#blog-content table td img,
+	.prose table td img {
+		width: 100% !important;
+		height: auto !important; /* 🚨 这里必须是 auto */
+		aspect-ratio: 1 / 1 !important; /* 强制 1:1 正方形 */
+		object-fit: cover !important; /* 裁剪填满 */
+		display: block !important; 
+		border-radius: 6px;
+		margin: 0 !important;
+		padding: 0 !important;
+		box-shadow: none; 
 	}
 
 	/* =========================================
@@ -138,37 +157,39 @@
 	}
     
 	/* =========================================
-       4. 移动端适配 (核心修复区：保持表格结构，按比例缩小)
+       4. 移动端适配
        ========================================= */
 	@media (max-width: 768px) {
-		/* 普通图片宽度恢复 100% */
 		.prose img, #blog-content img {
 			width: 100%;
 			max-width: 100%;
 			margin: 1.5rem 0;
 		}
 
-		/* 🚨 关键修复：强制恢复表格原本的布局，不变成卡片，允许换行 */
 		#blog-content table {
 			display: table !important; 
-			table-layout: fixed !important; /* 强制各列平分屏幕宽度 */
+			table-layout: fixed !important; 
 			white-space: normal !important; 
 			width: 100% !important;
 		}
 
-		/* 🚨 缩小手机端单元格的内边距，腾出空间 */
 		#blog-content th, 
 		#blog-content td {
 			padding: 0.5rem 0.2rem !important; 
-			font-size: 12px !important; /* 缩小手机端字号 */
-			word-wrap: break-word !important; /* 文字太挤时强制换行 */
+			font-size: 12px !important; 
+			word-wrap: break-word !important; 
+		}
+		
+		/* 手机端图片同样清理多余空隙 */
+		#blog-content table td:has(img) {
+			padding: 0 !important;
+			line-height: 0 !important;
 		}
 
-		/* 确保图片在单元格里能等比例缩小 */
 		#blog-content table td img {
 			width: 100% !important;
-			height: auto !important;
-			aspect-ratio: 4 / 5 !important; 
+			height: auto !important; 
+			aspect-ratio: 1 / 1 !important; 
 			object-fit: cover !important;
 		}
 	}
@@ -192,7 +213,6 @@
 
 			img.addEventListener('click', (e) => {
 				modal.style.display = 'flex';
-				// 点击放大时，展示未裁剪的原始高清图
 				modalImg.src = img.currentSrc || img.src;
 			});
 		});
