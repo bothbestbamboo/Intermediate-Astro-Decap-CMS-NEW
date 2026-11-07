@@ -172,7 +172,7 @@ const getBadgeClass = (tag?: string) => {
         {CATEGORIES.map((cat) => (
             <a 
                 href={getCleanUrl(cat.slug, 1)} 
-                class={`filter-btn ${currentCategory === cat.slug ? 'active' : ''}`}
+                class={`filter-btn ${currentCategory === cat.slug ? `active active-${cat.slug}` : ''}`}
             >
                 {cat.name}
             </a>
@@ -305,11 +305,30 @@ const getBadgeClass = (tag?: string) => {
                 transform: translateY(-1px);
             }
 
-            &.active {
+            /* 🌟 修改：根据分类设置激活状态的专属颜色 */
+            &.active-all {
                 background-color: var(--primary, #004B87); 
                 color: #ffffff;
                 border-color: var(--primary, #004B87);
                 box-shadow: 0 4px 6px -1px rgba(0, 75, 135, 0.2);
+            }
+            &.active-bathtubs {
+                background-color: var(--primary, #004B87); 
+                color: #ffffff;
+                border-color: var(--primary, #004B87);
+                box-shadow: 0 4px 6px -1px rgba(0, 75, 135, 0.2);
+            }
+            &.active-showers {
+                background-color: var(--secondary, #C5A059); /* 香槟金 */
+                color: #ffffff;
+                border-color: var(--secondary, #C5A059);
+                box-shadow: 0 4px 6px -1px rgba(197, 160, 89, 0.2);
+            }
+            &.active-cabinets {
+                background-color: #64748b; /* 石板灰 */
+                color: #ffffff;
+                border-color: #64748b;
+                box-shadow: 0 4px 6px -1px rgba(100, 116, 139, 0.2);
             }
         }
     }
@@ -414,8 +433,10 @@ const getBadgeClass = (tag?: string) => {
         font-weight: 500;
         flex-shrink: 0;
     }
+
+    /* 🌟 修改：卡片标签的专属颜色 */
     .badge-bathtubs { background-color: var(--primary, #004B87); color: #ffffff; }
-    .badge-showers { background-color: #0ea5e9; color: #ffffff; }
+    .badge-showers { background-color: var(--secondary, #C5A059); color: #ffffff; }
     .badge-cabinets { background-color: #64748b; color: #ffffff; }
     .badge-default { border: 1px solid #cbd5e1; color: #64748b; }
 
@@ -475,7 +496,7 @@ const getBadgeClass = (tag?: string) => {
     }
 
     /* ==========================================================================
-       4. 🌟 暗黑模式全面适配 (修复截图中的字体颜色问题)
+       4. 🌟 暗黑模式全面适配
        ========================================================================== */
     body.dark-mode {
         .vp-page-title {
@@ -496,19 +517,29 @@ const getBadgeClass = (tag?: string) => {
                 border-color: #cbd5e1;
                 color: #ffffff;
             }
-            &.active {
+            &.active-all, &.active-bathtubs {
                 background-color: var(--primary, #004B87);
                 color: #ffffff;
                 border-color: var(--primary, #004B87);
             }
+            &.active-showers {
+                background-color: var(--secondary, #C5A059);
+                color: #ffffff;
+                border-color: var(--secondary, #C5A059);
+            }
+            &.active-cabinets {
+                background-color: #64748b;
+                color: #ffffff;
+                border-color: #64748b;
+            }
         }
 
         .project-card {
-            background-color: #1e293b; /* 卡片深色背景 */
+            background-color: #1e293b; 
             border-color: #334155;
 
             &:hover {
-                border-color: var(--primary, #3b82f6); /* 深色模式下高亮用稍微亮一点的蓝 */
+                border-color: var(--primary, #3b82f6); 
                 box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
             }
 

@@ -29,7 +29,7 @@ The vanity is offered in four widths — 500, 600, 700, and 800 mm — all shari
 | **Surface Treatment** | Lacquer / Veneer |
 | **Door Front** | Vertical Fluted (Reeded) Design with Recessed Handle |
 | **Basin Material** | Ceramic, Integrated Top |
-| **Color Options** | White / Black / Grey / Cream / Sage Green / Walnut, or Customized |
+| **Color Options** | White / Black / Grey / Cream / Green / Walnut, or Customized |
 | **Mirror** | 4 mm / 5 mm Copper-Free Mirror (Optional Round Mirror) |
 | **Certificates** | ISO 9001, FSC, UPC, CE |
 | **Place of Origin** | Anhui, China |
