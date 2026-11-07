@@ -16,7 +16,7 @@ The vanity is offered in four widths — 500, 600, 700, and 800 mm — all shari
 
 ---
 
-## Specifications
+## Technical Specifications
 
 | Parameter | Specifications & Details |
 | :--- | :--- |
@@ -36,7 +36,7 @@ The vanity is offered in four widths — 500, 600, 700, and 800 mm — all shari
 
 ---
 
-## Key Features
+## Advantages & Highlights
 
 - **Four Widths, One Slim Depth:** Choose 500, 600, 700, or 800 mm wide — all at a space-saving 360 mm depth that keeps narrow bathrooms comfortable.
 - **Three Carcase Options:** PVC for full waterproof performance in wet rooms, MDF for a smooth lacquer finish at an economical price, or plywood for superior screw-holding strength and long-term durability.
@@ -74,7 +74,7 @@ The vanity pairs naturally with a round black-framed copper-free mirror and a wa
 
 ---
 
-## Applications
+## Primary Applications
 
 - **Compact Bathrooms & Guest WCs:** The 500 mm and 600 mm widths with a 360 mm depth fit apartments, powder rooms, and narrow en-suites.
 - **Family Bathrooms:** The 700 mm and 800 mm widths add storage and counter space for daily shared use.
@@ -85,7 +85,7 @@ The vanity pairs naturally with a round black-framed copper-free mirror and a wa
 
 ---
 
-## Packaging & Delivery
+## Packaging & Ordering Notes
 
 - **Packaging:** Inner EPE wrapping with foam protection on all 6 sides, packed in standard 5-layer export cartons.
 - **Lead Time:** 35–40 days for 1–200 sets; negotiable for larger quantities.

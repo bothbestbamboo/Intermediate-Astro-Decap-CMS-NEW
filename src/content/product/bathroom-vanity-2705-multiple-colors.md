@@ -55,8 +55,6 @@ Model 2705 is shown in four finishes, with custom colors available on request. W
 | :---: | :---: |
 | ![Light oak fluted bathroom vanity](@assets/images/products/2705-oak.jpg) | ![Walnut fluted bathroom vanity](@assets/images/products/2705-walnut.jpg) |
 
-Storage and basin layouts cover the full size range, from single-basin doors to twin-basin sets with paired mirrors.
-
 | Double Doors | Double Drawers |
 | :---: | :---: |
 | ![Double door fluted bathroom vanity](@assets/images/products/2705-double-doors.jpg) | ![Double drawer fluted bathroom vanity](@assets/images/products/2705-double-drawers.jpg) |
