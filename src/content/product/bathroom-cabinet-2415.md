@@ -54,11 +54,17 @@ The vanity is offered in four widths — 500, 600, 700, and 800 mm — all shari
 
 Model 2415 is shown in six finishes, and custom colors are available on request. Neutral tones like white, cream, and light grey suit minimalist interiors; dark grey adds contrast against white sanitaryware; sage green brings a soft natural accent; walnut veneer delivers a warm wood look.
 
-| Light Finishes | Dark & Natural Finishes |
+| Green | Black |
 | :---: | :---: |
-| ![White fluted bathroom vanity](@assets/images/products/2415-green.jpg) | ![Dark grey fluted bathroom vanity](@assets/images/products/2415-black.jpg) |
-| ![Cream fluted bathroom vanity close-up](@assets/images/products/2415-light-grey.jpg) | ![Walnut veneer fluted bathroom vanity](@assets/images/products/2415-dark-grey.jpg) |
-| ![Light grey fluted bathroom vanity](@assets/images/products/2415-walnut.jpg) | ![Sage green fluted bathroom vanity](@assets/images/products/2415-milk-coffee.jpg) |
+| ![Green fluted bathroom vanity](@assets/images/products/2415-green.jpg) | ![Black fluted bathroom vanity](@assets/images/products/2415-black.jpg) |
+
+| Light Grey | Dark Grey |
+| :---: | :---: |
+| ![Light grey fluted bathroom vanity close-up](@assets/images/products/2415-light-grey.jpg) | ![Dark grey fluted bathroom vanity](@assets/images/products/2415-dark-grey.jpg) |
+
+| Walnut | Cream |
+| :---: | :---: |
+| ![Walnut fluted bathroom vanity](@assets/images/products/2415-walnut.jpg) | ![Cream fluted bathroom vanity](@assets/images/products/2415-milk-coffee.jpg) |
 
 ---
 
