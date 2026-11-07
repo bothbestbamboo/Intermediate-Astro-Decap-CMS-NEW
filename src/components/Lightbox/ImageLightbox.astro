@@ -1,0 +1,231 @@
+---
+// src/components/Lightbox/ImageLightbox.astro
+---
+
+<!-- 🌟 Lightbox Modal HTML -->
+<div id="lightbox-modal" class="lightbox-modal" style="display: none;">
+	<span class="lightbox-close" title="Close">&times;</span>
+	<div class="lightbox-image-wrap">
+		<img class="lightbox-content" id="lightbox-img" alt="Enlarged image" />
+		<span class="lightbox-zoomout" title="Click to shrink / close">
+			<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+				<circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/>
+				<line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+				<line x1="7.5" y1="10.5" x2="13.5" y2="10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+			</svg>
+		</span>
+	</div>
+</div>
+
+<!-- 🌟 Global CSS Styles -->
+<style is:global>
+	/* =========================================
+       1. 普通文章内图片基础样式 (铺满 100% 宽度)
+       ========================================= */
+	.prose img, #blog-content img {
+		width: 100%;            
+		max-width: 100%;        
+		height: auto;
+		border-radius: 8px;
+		margin: 2rem 0;         
+		display: block;
+		box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+		cursor: zoom-in;
+		transition: opacity 0.2s ease;
+	}
+
+	.prose img:hover, #blog-content img:hover {
+		opacity: 0.95;
+	}
+
+	/* =========================================
+       2. 表格内的图片专属样式 (🚨 强制统一比例与大小)
+       ========================================= */
+	#blog-content table td img,
+	.prose table td img {
+		max-width: 100% !important;
+		width: 100% !important;
+		aspect-ratio: 4 / 5 !important; /* 🚨 核心修复：强制所有图片为 4:5 的竖向长方形 */
+		object-fit: cover !important;    /* 🚨 核心修复：裁剪填满，确保不拉伸、不变形 */
+		border-radius: 6px;
+		margin: 0 !important;
+		box-shadow: none; 
+	}
+
+	#blog-content table td:has(img),
+	.prose table td:has(img) {
+		cursor: zoom-in;
+	}
+
+	/* =========================================
+       3. Lightbox 弹窗相关样式
+       ========================================= */
+	.lightbox-modal {
+		display: none;
+		position: fixed;
+		z-index: 9999;
+		left: 0; top: 0; width: 100%; height: 100%;
+		background-color: rgba(0, 0, 0, 0.85);
+		backdrop-filter: blur(5px);
+		justify-content: center; align-items: center;
+		padding: 2rem;
+	}
+
+	.lightbox-image-wrap {
+		position: relative;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		max-width: 90vw;
+		max-height: 85vh;
+	}
+
+	.lightbox-content {
+		max-width: 90vw;
+		max-height: 85vh;
+		object-fit: contain;
+		border-radius: 8px;
+		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+		animation: zoomIn 0.25s ease;
+		cursor: zoom-out;
+		display: block;
+	}
+
+	.lightbox-zoomout {
+		position: absolute;
+		top: 50%; left: 50%;
+		transform: translate(-50%, -50%) scale(0.9);
+		width: 64px; height: 64px;
+		border-radius: 50%;
+		background: rgba(15, 23, 42, 0.6);
+		color: #ffffff;
+		display: flex; align-items: center; justify-content: center;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+		cursor: zoom-out;
+		backdrop-filter: blur(3px);
+	}
+
+	.lightbox-image-wrap:hover .lightbox-zoomout {
+		opacity: 1;
+		pointer-events: auto;
+		transform: translate(-50%, -50%) scale(1);
+	}
+	.lightbox-zoomout:hover {
+		background: var(--primary, #9cc813);
+		color: #ffffff;
+	}
+
+	.lightbox-close {
+		position: absolute;
+		top: 20px; right: 30px;
+		color: #fff;
+		font-size: 40px;
+		font-weight: bold;
+		cursor: pointer;
+		transition: color 0.2s;
+		line-height: 1;
+		z-index: 2;
+	}
+	.lightbox-close:hover {
+		color: var(--primary, #9cc813);
+	}
+
+	@keyframes zoomIn {
+		from { transform: scale(0.9); opacity: 0; }
+		to { transform: scale(1); opacity: 1; }
+	}
+    
+	/* =========================================
+       4. 移动端适配
+       ========================================= */
+	@media (max-width: 768px) {
+		.prose img, #blog-content img {
+			width: 100%;
+			max-width: 100%;
+			margin: 1.5rem 0;
+		}
+
+		#blog-content table {
+			display: block !important;
+			white-space: normal !important; 
+			overflow: visible !important;
+			border: none !important;
+			box-shadow: none !important;
+			background: transparent !important;
+		}
+
+		#blog-content thead {
+			display: none !important;
+		}
+
+		#blog-content tr {
+			display: flex !important;
+			flex-direction: column !important;
+			margin-bottom: 2rem !important;
+			background: #ffffff;
+			border: 1px solid #e5e7eb;
+			border-radius: 8px;
+			padding: 1rem !important;
+			box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+		}
+
+		#blog-content td {
+			display: block !important;
+			width: 100% !important;
+			border: none !important;
+			padding: 0.5rem 0 !important;
+			text-align: center !important;
+		}
+
+		body.dark-mode #blog-content tr {
+			background: #1a1a1a;
+			border-color: #333333;
+		}
+	}
+</style>
+
+<!-- 🌟 Lightbox JavaScript Logic -->
+<script is:inline>
+	function setupBlogLightbox() {
+		const modal = document.getElementById('lightbox-modal');
+		const modalImg = document.getElementById('lightbox-img');
+		const closeBtn = document.querySelector('.lightbox-close');
+		const zoomOutBtn = document.querySelector('.lightbox-zoomout');
+
+		if (!modal || !modalImg) return;
+
+		const contentImages = document.querySelectorAll('.prose table td img, #blog-content table td img, #blog-content img');
+		
+		contentImages.forEach(img => {
+			if (img.dataset.lightboxBound) return;
+			img.dataset.lightboxBound = "true";
+
+			img.addEventListener('click', (e) => {
+				modal.style.display = 'flex';
+				// 点击放大时，展示未裁剪的原始高清图
+				modalImg.src = img.currentSrc || img.src;
+			});
+		});
+
+		const closeModal = () => {
+			modal.style.display = 'none';
+			modalImg.src = '';
+		};
+
+		if (closeBtn) closeBtn.onclick = closeModal;
+		if (zoomOutBtn) zoomOutBtn.onclick = (e) => { e.stopPropagation(); closeModal(); };
+
+		modal.onclick = (e) => {
+			if (e.target === modal || e.target === modalImg) closeModal();
+		};
+
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
+		});
+	}
+
+	setupBlogLightbox();
+	document.addEventListener('astro:page-load', setupBlogLightbox);
+</script>
