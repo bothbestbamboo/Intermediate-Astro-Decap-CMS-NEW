@@ -34,7 +34,7 @@ The vanity is offered in four widths — 500, 600, 700, and 800 mm — all shari
 | **Certificates** | ISO 9001, FSC, UPC, CE |
 | **Place of Origin** | Anhui, China |
 | **MOQ** | 15 Sets |
-| **Shipping Port** | Shanghai, China |
+| **Shipping Port** | Nanjing or Shanghai, China |
 
 ---
 
@@ -83,5 +83,5 @@ The vanity pairs naturally with a round black-framed copper-free mirror and a wa
 
 - **Packaging:** Inner EPE wrapping with foam protection on all 6 sides, packed in standard 5-layer export cartons.
 - **Lead Time:** 35–40 days for 1–200 sets; negotiable for larger quantities.
-- **Shipping:** FOB Ningbo or Shanghai, China; mixed-model container loading supported.
+- **Shipping:** FOB Nanjing or Shanghai, China; mixed-model container loading supported.
 - **Ordering Notes:** Please confirm width (500 / 600 / 700 / 800 mm), carcase material (PVC / MDF / plywood), color, mirror option, and basin tap-hole requirement when placing an order.
