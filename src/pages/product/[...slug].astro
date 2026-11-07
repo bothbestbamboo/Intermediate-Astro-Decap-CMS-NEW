@@ -154,14 +154,12 @@ const getBadgeClass = (tag?: string) => {
     description={pageDescription} 
     heroImage={optimizedBannerImage}
 >
-    <!-- Banner 组件只需传入 title, subtitle, image 即可 -->
     <Banner 
         title={currentSeo.title} 
         subtitle={currentSeo.description} 
         image={optimizedBannerImage} 
     />
 
-    <!-- 🎯 页头大标题 -->
     <div class="vp-page-title">
         <h1 class="title">Luxury Bathing Solutions</h1>
         <p class="lead">Explore our premium freestanding bathtubs, modern shower enclosures & elegant bathroom cabinets.</p>
@@ -255,7 +253,6 @@ const getBadgeClass = (tag?: string) => {
     <CTA />
 </BaseLayout>
 
-<!-- 🌟 增加 is:global 使 body.dark-mode 生效 -->
 <style lang="less" is:global>
     /* ==========================================================================
        1. 基础排版与过滤按钮
@@ -305,30 +302,30 @@ const getBadgeClass = (tag?: string) => {
                 transform: translateY(-1px);
             }
 
-            /* 🌟 修改：根据分类设置激活状态的专属颜色 */
+            /* 🚨 核心修改：加上 !important 强制覆盖颜色，直接写死 Hex 值 */
             &.active-all {
-                background-color: var(--primary, #004B87); 
-                color: #ffffff;
-                border-color: var(--primary, #004B87);
-                box-shadow: 0 4px 6px -1px rgba(0, 75, 135, 0.2);
+                background-color: #004B87 !important; 
+                color: #ffffff !important;
+                border-color: #004B87 !important;
+                box-shadow: 0 4px 6px -1px rgba(0, 75, 135, 0.2) !important;
             }
             &.active-bathtubs {
-                background-color: var(--primary, #004B87); 
-                color: #ffffff;
-                border-color: var(--primary, #004B87);
-                box-shadow: 0 4px 6px -1px rgba(0, 75, 135, 0.2);
+                background-color: #004B87 !important; /* 浴缸：品牌深海蓝 */
+                color: #ffffff !important;
+                border-color: #004B87 !important;
+                box-shadow: 0 4px 6px -1px rgba(0, 75, 135, 0.2) !important;
             }
             &.active-showers {
-                background-color: var(--secondary, #C5A059); /* 香槟金 */
-                color: #ffffff;
-                border-color: var(--secondary, #C5A059);
-                box-shadow: 0 4px 6px -1px rgba(197, 160, 89, 0.2);
+                background-color: #C5A059 !important; /* 淋浴房：香槟金 */
+                color: #ffffff !important;
+                border-color: #C5A059 !important;
+                box-shadow: 0 4px 6px -1px rgba(197, 160, 89, 0.2) !important;
             }
             &.active-cabinets {
-                background-color: #64748b; /* 石板灰 */
-                color: #ffffff;
-                border-color: #64748b;
-                box-shadow: 0 4px 6px -1px rgba(100, 116, 139, 0.2);
+                background-color: #64748b !important; /* 浴室柜：石板灰 */
+                color: #ffffff !important;
+                border-color: #64748b !important;
+                box-shadow: 0 4px 6px -1px rgba(100, 116, 139, 0.2) !important;
             }
         }
     }
@@ -434,11 +431,23 @@ const getBadgeClass = (tag?: string) => {
         flex-shrink: 0;
     }
 
-    /* 🌟 修改：卡片标签的专属颜色 */
-    .badge-bathtubs { background-color: var(--primary, #004B87); color: #ffffff; }
-    .badge-showers { background-color: var(--secondary, #C5A059); color: #ffffff; }
-    .badge-cabinets { background-color: #64748b; color: #ffffff; }
-    .badge-default { border: 1px solid #cbd5e1; color: #64748b; }
+    /* 🚨 卡片标签的专属颜色，同样加上 !important */
+    .badge-bathtubs { 
+        background-color: #004B87 !important; 
+        color: #ffffff !important; 
+    }
+    .badge-showers { 
+        background-color: #C5A059 !important; 
+        color: #ffffff !important; 
+    }
+    .badge-cabinets { 
+        background-color: #64748b !important; 
+        color: #ffffff !important; 
+    }
+    .badge-default { 
+        border: 1px solid #cbd5e1; 
+        color: #64748b; 
+    }
 
     /* ==========================================================================
        3. 分页器
@@ -476,15 +485,15 @@ const getBadgeClass = (tag?: string) => {
 
     .pagination-btn:hover:not(.disabled),
     .pagination-number:hover:not(.active) {
-        border-color: var(--primary, #004B87);
-        color: var(--primary, #004B87);
+        border-color: #004B87;
+        color: #004B87;
         background-color: #f8fafc; 
     }
 
     .pagination-number.active {
-        background-color: var(--primary, #004B87);
+        background-color: #004B87;
         color: #ffffff;
-        border-color: var(--primary, #004B87);
+        border-color: #004B87;
         font-weight: 600;
     }
 
@@ -518,19 +527,19 @@ const getBadgeClass = (tag?: string) => {
                 color: #ffffff;
             }
             &.active-all, &.active-bathtubs {
-                background-color: var(--primary, #004B87);
-                color: #ffffff;
-                border-color: var(--primary, #004B87);
+                background-color: #004B87 !important;
+                color: #ffffff !important;
+                border-color: #004B87 !important;
             }
             &.active-showers {
-                background-color: var(--secondary, #C5A059);
-                color: #ffffff;
-                border-color: var(--secondary, #C5A059);
+                background-color: #C5A059 !important;
+                color: #ffffff !important;
+                border-color: #C5A059 !important;
             }
             &.active-cabinets {
-                background-color: #64748b;
-                color: #ffffff;
-                border-color: #64748b;
+                background-color: #64748b !important;
+                color: #ffffff !important;
+                border-color: #64748b !important;
             }
         }
 
@@ -539,7 +548,7 @@ const getBadgeClass = (tag?: string) => {
             border-color: #334155;
 
             &:hover {
-                border-color: var(--primary, #3b82f6); 
+                border-color: #3b82f6; 
                 box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
             }
 
@@ -567,9 +576,9 @@ const getBadgeClass = (tag?: string) => {
         }
 
         .pagination-number.active {
-            background-color: var(--primary, #004B87);
+            background-color: #004B87;
             color: #ffffff;
-            border-color: var(--primary, #004B87);
+            border-color: #004B87;
         }
 
         .pagination-btn.disabled {
