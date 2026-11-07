@@ -58,7 +58,7 @@ The glossy interior, rounded corners, and chrome-finish fittings keep the design
 Use a soft cloth or non-abrasive sponge with mild soapy water, then rinse and wipe dry. Follow the supplier's acrylic-care instructions before using abrasive pads, solvents, or attempting surface repairs.
 
 ---
-## Primary Applications & Ordering Notes
+## Applications & Ordering Notes
 
 Model 6019 suits residential master bathrooms and hotel suites with space for a 1700 mm freestanding tub. Confirm floor support, drain position, and faucet reach before installation.
 
