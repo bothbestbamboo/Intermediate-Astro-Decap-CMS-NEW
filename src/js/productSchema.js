@@ -19,13 +19,22 @@ export function getProductSchema(product, siteUrl) {
         },
         offers: {
             "@type": "Offer",
-            url: siteUrl + "/product/" + product.id, // 替换成你的产品链接逻辑
+            url: siteUrl + "/product/" + product.id, 
             priceCurrency: product.currency || "USD",
             price: product.price || "0.00",
             availability: `https://schema.org/${product.availability || "InStock"}`,
-            itemCondition: "https://schema.org/NewCondition"
+            itemCondition: `https://schema.org/${product.condition || "NewCondition"}`
         }
     };
+
+    // 🌟 新增：如果有评分数据，自动加上 aggregateRating
+    if (product.ratingValue && product.reviewCount) {
+        schema.aggregateRating = {
+            "@type": "AggregateRating",
+            ratingValue: product.ratingValue,
+            reviewCount: product.reviewCount
+        };
+    }
 
     return schema;
 }
