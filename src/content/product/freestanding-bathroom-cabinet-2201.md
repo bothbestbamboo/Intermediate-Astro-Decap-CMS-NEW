@@ -54,19 +54,19 @@ Model 2201 is shown in eight finishes, and custom colors are available on reques
 
 | Light Grey | Dark Grey |
 | :---: | :---: |
-| ![Light grey fluted freestanding bathroom vanity with three drawers](@assets/images/products/2701-light-grey.jpg) | ![Dark grey fluted freestanding bathroom vanity with three drawers](@assets/images/products/2701-dark-grey.jpg) |
+| ![Light grey fluted freestanding bathroom vanity with three drawers](@assets/images/products/2201-light-grey.jpg) | ![Dark grey fluted freestanding bathroom vanity with three drawers](@assets/images/products/2201-dark-grey.jpg) |
 
 | White | Black |
 | :---: | :---: |
-![White fluted freestanding bathroom vanity with three drawers](@assets/images/products/2701-white.jpg) | ![Black fluted freestanding bathroom vanity with three drawers](@assets/images/products/2701-black.jpg) |
+![White fluted freestanding bathroom vanity with three drawers](@assets/images/products/2201-white.jpg) | ![Black fluted freestanding bathroom vanity with three drawers](@assets/images/products/2201-black.jpg) |
 
 | Walnut | Oak |
 | :---: | :---: |
-| ![Walnut fluted freestanding bathroom vanity with three drawers](@assets/images/products/2701-walnut.jpg) | ![Light oak fluted freestanding bathroom vanity with three drawers](@assets/images/products/2701-oak.jpg) |
+| ![Walnut fluted freestanding bathroom vanity with three drawers](@assets/images/products/2201-walnut.jpg) | ![Light oak fluted freestanding bathroom vanity with three drawers](@assets/images/products/2201-oak.jpg) |
 
 | Cream | Green |
 | :---: | :---: |
-| ![Cream fluted freestanding bathroom vanity with three drawers](@assets/images/products/2701-cream.jpg) | ![Green fluted freestanding bathroom vanity with three drawers](@assets/images/products/2701-green.jpg) |
+| ![Cream fluted freestanding bathroom vanity with three drawers](@assets/images/products/2201-cream.jpg) | ![Green fluted freestanding bathroom vanity with three drawers](@assets/images/products/2201-green.jpg) |
 
 ## Design Details & Finishing Touches
 
