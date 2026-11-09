@@ -4,10 +4,12 @@ import { render } from "astro:content";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { formatDate } from "@js/utils";
-import { getBlogPostingSchema } from "@js/blogPostingSchema.js";
-import "@styles/markdown.less";
 
-// 导入作者真实的头像图片
+// 🌟 引入两个 Schema 工具函数
+import { getBlogPostingSchema } from "@js/blogPostingSchema.js";
+import { getProductSchema } from "@js/productSchema.js"; 
+
+import "@styles/markdown.less";
 import xcBathAvatar from "@assets/images/authors/xcbath.png";
 
 // Components
@@ -21,7 +23,6 @@ const { post } = Astro.props;
 const { title, date, description, image, imageAlt, author, tags } = post.data;
 const { Content, headings } = await render(post);
 
-// 判断当前页面是不是产品页面
 const isProductPage =
     tags &&
     (tags.includes("Products") ||
@@ -29,32 +30,41 @@ const isProductPage =
         tags.includes("Showers") ||
         tags.includes("Cabinets"));
 
-// Generate BlogPosting schema
 const imageUrl = image.src.startsWith("http")
     ? image.src
     : Astro.url.origin + image.src;
 
-const blogPostingSchema = getBlogPostingSchema(
-    {
-        title,
-        description,
-        url: Astro.url.href,
-        imageUrl,
-        imageAlt,
-        publishedTime: date.toISOString(),
-        modifiedTime: date.toISOString(),
-        author,
-    },
-    Astro.url.origin,
-);
+// 🌟 核心逻辑：动态判断生成哪种 Schema
+let finalSchema = {};
+
+if (isProductPage) {
+    // 如果是产品页，生成 Product Schema
+    finalSchema = getProductSchema(post.data, Astro.url.origin);
+} else {
+    // 如果是普通博客，生成 BlogPosting Schema
+    finalSchema = getBlogPostingSchema(
+        {
+            title,
+            description,
+            url: Astro.url.href,
+            imageUrl,
+            imageAlt,
+            publishedTime: date.toISOString(),
+            modifiedTime: date.toISOString(),
+            author,
+        },
+        Astro.url.origin,
+    );
+}
 ---
 
 <BaseLayout title={title} description={description} heroImage={image}>
+    <!-- 🌟 将 finalSchema 注入到 head 中 -->
     <script
         slot="schema"
         is:inline
         type="application/ld+json"
-        set:html={JSON.stringify(blogPostingSchema)}
+        set:html={JSON.stringify(finalSchema)}
     />
 
     <div class={`blog-container ${isProductPage ? "product-page-layout" : ""}`}>

@@ -1,11 +1,19 @@
 ---
 title: "Bathroom Cabinet 2701: Wall-Mounted Double Sink Fluted Vanity"
 description: "Model 2701 is a 1200 mm wall-mounted double sink bathroom vanity with fluted doors, gold semicircle handles, a double ceramic basin, and an LED mirror option."
-date: 2026-11-09
+date: 2026-11-08
 image: "@assets/images/products/2701-f.jpg"
 imageAlt: "Model 2701 dark grey wall-mounted double sink bathroom vanity with fluted doors and gold handles"
 tags: ["showers"]
 isFeatured: true
+sku: "820A" 
+brand: "XC Bath"
+price: "60.00"
+currency: "USD"
+availability: "InStock" 
+condition: "NewCondition"
+ratingValue: "5.0"
+reviewCount: "358"
 ---
 
 ## Overview & Design Philosophy

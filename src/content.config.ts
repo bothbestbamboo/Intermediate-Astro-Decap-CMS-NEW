@@ -6,18 +6,25 @@ import { glob } from "astro/loaders";
 // Doc: https://docs.astro.build/en/guides/images/#images-in-content-collections
 
 // 1. 您的新闻数据集 (对齐 src/content/news 文件夹)
-const blogsCollection = defineCollection({
-    // 修改 base 路径为 ./src/content/news
-    loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/news" }),
+const productsCollection = defineCollection({
+    loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/product" }),
     schema: ({ image }) =>
         z.object({
             title: z.string(),
             description: z.string(),
-            author: z.string(),
-            date: z.date(),
-            image: image(),
-            imageAlt: z.string(),
+            author: z.string().optional(),
+            date: z.date().optional(),
+            image: image().optional().or(z.string()),
+            imageAlt: z.string().optional(),
+            tags: z.array(z.string()).optional(),
             isFeatured: z.boolean().optional().default(false),
+            
+            // 🌟 新增：SEO Product Schema 专属字段
+            sku: z.string().optional(), // 产品型号
+            price: z.union([z.number(), z.string()]).optional(), // 价格（数字或字符串）
+            currency: z.string().optional().default("USD"),
+            availability: z.string().optional().default("InStock"),
+            brand: z.string().optional().default("XC Bath"),
         }),
 });
 
