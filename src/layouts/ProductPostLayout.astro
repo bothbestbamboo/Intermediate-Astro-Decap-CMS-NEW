@@ -42,7 +42,7 @@ let finalSchema = {};
 
 if (isProductPage) {
     // 如果是产品页，生成 Product Schema
-    finalSchema = getProductSchema(post.data, Astro.url.origin);
+    finalSchema = getProductSchema({ ...post.data, id: post.id }, Astro.url.origin);
 } else {
     // 如果是普通博客，生成 BlogPosting Schema
     finalSchema = getBlogPostingSchema(
