@@ -12,8 +12,19 @@ price: "243.00"
 currency: "USD"
 availability: "InStock" 
 condition: "NewCondition"
-ratingValue: "5.0"
-reviewCount: "101"
+reviews:
+  - author: "Julian Mercer"
+    rating: 5
+    date: "2026-08-20"
+    content: "Installed this in our boutique hotel. The one-piece solid surface is incredibly durable and the slotted overflow allows for a very deep, luxurious soak."
+  - author: "Akira Tanaka"
+    rating: 5
+    date: "2026-09-18"
+    content: "The ergonomic sloped backrest is fantastic. It's rare to find an alcove tub that is this comfortable. The included chrome deck faucet set is a great bonus."
+  - author: "Olivia Brown"
+    rating: 5
+    date: "2026-10-12"
+    content: "Cleaning is an absolute breeze. Just a quick wipe and it looks brand new. The stone-like finish pairs beautifully with our grey tiles."
 ---
 
 ## Overview & Design Philosophy

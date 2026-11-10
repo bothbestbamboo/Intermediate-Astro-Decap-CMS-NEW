@@ -12,8 +12,19 @@ price: "261.00"
 currency: "USD"
 availability: "InStock" 
 condition: "NewCondition"
-ratingValue: "5.0"
-reviewCount: "302"
+reviews:
+  - author: "Chris Pratt"
+    rating: 5
+    date: "2026-08-12"
+    content: "We chose the 1200mm size for our small apartment bathroom. It's amazing that we can still enjoy a deep, seamless solid surface soak in such a tight space."
+  - author: "Anna Faris"
+    rating: 5
+    date: "2026-09-29"
+    content: "The surface is silky smooth and resists stains very well. The one-piece construction gives me peace of mind that it will never leak."
+  - author: "Paul Rudd"
+    rating: 5
+    date: "2026-10-20"
+    content: "Great variety of sizes (we got the 1500mm). The matte texture paired with a matte black floor faucet looks incredibly modern. Highly recommended."
 ---
 
 ## Overview & Design Philosophy

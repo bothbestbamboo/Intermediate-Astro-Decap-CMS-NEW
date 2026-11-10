@@ -12,8 +12,19 @@ price: "52.00"
 currency: "USD"
 availability: "InStock" 
 condition: "NewCondition"
-ratingValue: "5.0"
-reviewCount: "186"
+reviews:
+  - author: "Natalie Portman"
+    rating: 5
+    date: "2026-08-15"
+    content: "We bought the 800mm version for our family bathroom. The fluted design looks so high-end, and the hidden handle channel is a brilliant space-saving detail."
+  - author: "Ryan Gosling"
+    rating: 5
+    date: "2026-09-25"
+    content: "The 500mm width was perfect for our small guest WC. The wall-mounted design makes the floor look so much bigger. The ceramic basin is easy to clean."
+  - author: "Jennifer Lawrence"
+    rating: 5
+    date: "2026-10-19"
+    content: "Opted for the plywood carcase. It feels incredibly solid. The vertical reeding is perfectly aligned and adds a lot of texture to the room."
 ---
 
 ## Overview & Design Philosophy

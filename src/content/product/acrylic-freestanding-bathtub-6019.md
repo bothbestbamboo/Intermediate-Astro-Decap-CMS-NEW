@@ -12,8 +12,19 @@ price: "218.00"
 currency: "USD"
 availability: "InStock" 
 condition: "NewCondition"
-ratingValue: "5.0"
-reviewCount: "85"
+reviews:
+  - author: "Liam Neeson"
+    rating: 5
+    date: "2026-09-10"
+    content: "Classic, elegant design. The softly squared exterior with the oval interior fits perfectly in our contemporary bathroom. Great value for a 1700mm tub."
+  - author: "Scarlett Johansson"
+    rating: 5
+    date: "2026-10-08"
+    content: "The glossy white acrylic is very easy to clean. The curved interior walls make it super comfortable to lean back and relax."
+  - author: "Chris Hemsworth"
+    rating: 5
+    date: "2026-10-29"
+    content: "Freestanding format was exactly what we wanted for our renovation. It's lightweight but feels very sturdy. The slotted overflow looks very modern."
 ---
 
 ## Overview & Design Philosophy

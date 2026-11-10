@@ -4,7 +4,7 @@ description: "Model 2701 is a 1200 mm wall-mounted double sink bathroom vanity w
 date: 2026-11-08
 image: "@assets/images/products/2701-f.jpg"
 imageAlt: "Model 2701 dark grey wall-mounted double sink bathroom vanity with fluted doors and gold handles"
-tags: ["showers"]
+tags: ["cabinets"]
 isFeatured: true
 sku: "2701" 
 brand: "XC Bath"
@@ -12,8 +12,19 @@ price: "60.00"
 currency: "USD"
 availability: "InStock" 
 condition: "NewCondition"
-ratingValue: "5.0"
-reviewCount: "255"
+reviews:
+  - author: "Brad Pitt"
+    rating: 5
+    date: "2026-07-28"
+    content: "The double sink layout in 1200mm is perfect for my wife and me. We can get ready at the same time without bumping elbows. The gold handles look very classy."
+  - author: "Angelina Jolie"
+    rating: 5
+    date: "2026-09-14"
+    content: "The dark grey finish with the fluted texture is stunning. It hides water spots very well. The floating design makes our master bath feel so spacious."
+  - author: "Leonardo DiCaprio"
+    rating: 5
+    date: "2026-10-10"
+    content: "Added the LED backlit mirror option. It provides perfect lighting for shaving. The build quality is excellent and the drawers slide smoothly."
 ---
 
 ## Overview & Design Philosophy

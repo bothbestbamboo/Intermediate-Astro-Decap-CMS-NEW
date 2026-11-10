@@ -20,7 +20,7 @@ import CTA from "@components/CTA/CTASimple.astro";
 import ImageLightbox from "@components/Lightbox/ImageLightbox.astro";
 
 const { post } = Astro.props;
-const { title, date, description, image, imageAlt, author, tags } = post.data;
+const { title, date, description, image, imageAlt, author, tags, reviews } = post.data;
 const { Content, headings } = await render(post);
 
 // 🌟 修复核心：将 tags 全部转为小写进行匹配，避免大小写导致的判断失败
@@ -125,6 +125,46 @@ if (isProductPage) {
                     <div id="blog-content">
                         <Content />
                     </div>
+
+                    <!-- 🌟 新增：客户评价展示区 -->
+                    {isProductPage && reviews && reviews.length > 0 && (
+                        <div class="product-reviews-section">
+                            <h2>Customer Reviews</h2>
+                            <div class="reviews-list">
+                                {reviews.map((review) => {
+                                    // 自动提取姓名首字母 (例如 "Michael Smith" -> "MS")
+                                    const initials = review.author
+                                        .split(' ')
+                                        .filter(Boolean)
+                                        .map((n: string) => n[0])
+                                        .join('')
+                                        .substring(0, 2)
+                                        .toUpperCase();
+
+                                    return (
+                                        <div class="review-card">
+                                            <div class="review-header">
+                                                <div class="review-author-info">
+                                                    <div class="review-avatar">{initials}</div>
+                                                    <div class="review-meta">
+                                                        <strong>{review.author}</strong>
+                                                        <span class="review-date">{review.date}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="review-stars">
+                                                    {Array.from({ length: 5 }).map((_, i) => (
+                                                        <Icon name={i < review.rating ? "ph:star-fill" : "ph:star"} class="star-icon" />
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            <p class="review-content">"{review.content}"</p>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    )}
+
                 </article>
             </section>
 
@@ -367,7 +407,91 @@ if (isProductPage) {
     }
 
     /* ==========================================================================
-       4. Dark Mode Styles
+       4. 🌟 评价模块样式
+       ========================================================================== */
+    .product-reviews-section {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px dashed #e5e7eb;
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--headerColor);
+            margin-bottom: 1.5rem;
+        }
+
+        .reviews-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .review-card {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.25rem;
+            
+            .review-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 0.75rem;
+
+                .review-author-info {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    
+                    .review-avatar {
+                        width: 2.75rem;
+                        height: 2.75rem;
+                        background-color: #2b5a41;
+                        color: #ffffff;
+                        font-size: 1rem;
+                        font-weight: 700;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 50%;
+                        flex-shrink: 0;
+                    }
+
+                    .review-meta {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.15rem;
+                    }
+                    
+                    strong { font-size: 0.95rem; color: #111827; }
+                    .review-date { font-size: 0.8rem; color: #6b7280; }
+                }
+
+                .review-stars {
+                    display: flex;
+                    color: #facc15;
+                    margin-top: 0.5rem;
+                    
+                    .star-icon {
+                        width: 1rem;
+                        height: 1rem;
+                    }
+                }
+            }
+
+            .review-content {
+                font-size: 0.9rem;
+                line-height: 1.6;
+                color: #374151;
+                margin: 0;
+                font-style: italic;
+            }
+        }
+    }
+
+    /* ==========================================================================
+       5. Dark Mode Styles
        ========================================================================== */
     body.dark-mode {
         .blog-article {
@@ -402,6 +526,21 @@ if (isProductPage) {
             .product-inquiry-btn:hover {
                 background-color: #C5A059 !important;
                 color: #ffffff !important;
+            }
+        }
+
+        /* 评价模块暗黑模式 */
+        .product-reviews-section {
+            border-top-color: #374151;
+            h2 { color: #f7f7f7; }
+            .review-card {
+                background: #1f2937;
+                border-color: #374151;
+                .review-header .review-author-info {
+                    strong { color: #f3f4f6; }
+                    .review-date { color: #9ca3af; }
+                }
+                .review-content { color: #d1d5db; }
             }
         }
     }

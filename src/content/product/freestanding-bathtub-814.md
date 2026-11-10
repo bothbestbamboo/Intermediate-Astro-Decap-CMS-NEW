@@ -12,8 +12,19 @@ price: "236.00"
 currency: "USD"
 availability: "InStock" 
 condition: "NewCondition"
-ratingValue: "5.0"
-reviewCount: "174"
+reviews:
+  - author: "Tom Holland"
+    rating: 5
+    date: "2026-09-02"
+    content: "The matte white finish is absolutely gorgeous. It feels like natural stone to the touch. The seamless one-piece molding makes it incredibly easy to clean."
+  - author: "Zendaya Coleman"
+    rating: 5
+    date: "2026-10-11"
+    content: "We ordered the 1600mm. The deep slotted overflow allows for a very high water level, which is perfect for a full shoulder soak. Excellent thermal retention."
+  - author: "Benedict Cumberbatch"
+    rating: 5
+    date: "2026-11-01"
+    content: "The craftsmanship is excellent. The slim rim gives it a very light appearance despite its solid build. The repairable cast resin is a huge selling point."
 ---
 
 ## Overview & Design Philosophy
