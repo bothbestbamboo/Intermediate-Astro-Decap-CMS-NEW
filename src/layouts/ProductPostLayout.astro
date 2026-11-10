@@ -23,16 +23,19 @@ const { post } = Astro.props;
 const { title, date, description, image, imageAlt, author, tags } = post.data;
 const { Content, headings } = await render(post);
 
+// 🌟 修复核心：将 tags 全部转为小写进行匹配，避免大小写导致的判断失败
+const lowerTags = tags ? tags.map((t: string) => t.toLowerCase()) : [];
 const isProductPage =
-    tags &&
-    (tags.includes("Products") ||
-        tags.includes("Bathtubs") ||
-        tags.includes("Showers") ||
-        tags.includes("Cabinets"));
+    lowerTags.length > 0 &&
+    (lowerTags.includes("products") ||
+        lowerTags.includes("bathtubs") ||
+        lowerTags.includes("showers") ||
+        lowerTags.includes("cabinets"));
 
-const imageUrl = image.src.startsWith("http")
+// 安全获取图片 URL
+const imageUrl = image && image.src.startsWith("http")
     ? image.src
-    : Astro.url.origin + image.src;
+    : (image ? Astro.url.origin + image.src : Astro.url.origin);
 
 // 🌟 核心逻辑：动态判断生成哪种 Schema
 let finalSchema = {};
@@ -48,10 +51,10 @@ if (isProductPage) {
             description,
             url: Astro.url.href,
             imageUrl,
-            imageAlt,
-            publishedTime: date.toISOString(),
-            modifiedTime: date.toISOString(),
-            author,
+            imageAlt: imageAlt || title,
+            publishedTime: date ? date.toISOString() : new Date().toISOString(),
+            modifiedTime: date ? date.toISOString() : new Date().toISOString(),
+            author: author || "XC Bath",
         },
         Astro.url.origin,
     );
@@ -98,21 +101,23 @@ if (isProductPage) {
                                     )
                                 }
                             </picture>
-                            <span class="blog-author">{author}</span>
+                            <span class="blog-author">{author || "XC Bath"}</span>
                             <span aria-hidden="true" class="blog-dot"></span>
-                            <span class="blog-date">{formatDate(date)}</span>
+                            <span class="blog-date">{date ? formatDate(date) : ""}</span>
                         </div>
                     </header>
 
-                    <picture class="blog-mainImage">
-                        <Image
-                            src={image}
-                            alt={imageAlt}
-                            width="795"
-                            height="400"
-                            decoding="async"
-                        />
-                    </picture>
+                    {image && (
+                        <picture class="blog-mainImage">
+                            <Image
+                                src={image}
+                                alt={imageAlt || title}
+                                width="795"
+                                height="400"
+                                decoding="async"
+                            />
+                        </picture>
+                    )}
 
                     <div class="blog-sidebar_widget-wrapper cs-hide-on-desktop">
                         <TableOfContents headings={headings} levels={3} />
