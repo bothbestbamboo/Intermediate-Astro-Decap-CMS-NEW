@@ -37,7 +37,6 @@ const productsCollection = defineCollection({
             availability: z.string().optional().default("InStock"),
             brand: z.string().optional().default("XC Bath"),
             
-            // 🌟 核心修改：替换为评论数组定义
             reviews: z.array(z.object({
                 author: z.string(),
                 rating: z.number().min(1).max(5),
