@@ -37,9 +37,13 @@ const productsCollection = defineCollection({
             availability: z.string().optional().default("InStock"),
             brand: z.string().optional().default("XC Bath"),
             
-            // 🌟 补充：星级评分字段
-            ratingValue: z.union([z.number(), z.string()]).optional(),
-            reviewCount: z.union([z.number(), z.string()]).optional(),
+            // 🌟 核心修改：替换为评论数组定义
+            reviews: z.array(z.object({
+                author: z.string(),
+                rating: z.number().min(1).max(5),
+                date: z.string(),
+                content: z.string(),
+            })).optional(),
         }),
 });
 
