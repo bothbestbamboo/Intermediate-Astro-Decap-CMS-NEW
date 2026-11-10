@@ -6,6 +6,14 @@ image: "@assets/images/products/814-1f.jpg"
 imageAlt: "Model 814 Freestanding Solid Surface Soaking Bathtub in a modern luxury bathroom"
 tags: ["Bathtubs"]
 isFeatured: true
+sku: "814" 
+brand: "XC Bath"
+price: "236.00"
+currency: "USD"
+availability: "InStock" 
+condition: "NewCondition"
+ratingValue: "5.0"
+reviewCount: "174"
 ---
 
 ## Overview & Design Philosophy

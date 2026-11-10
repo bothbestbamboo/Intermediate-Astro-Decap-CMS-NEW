@@ -6,6 +6,14 @@ image: "@assets/images/products/822-1f.jpg"
 imageAlt: "Integrated Acrylic Bathtub one-piece freestanding soaking tub in a modern bathroom"
 tags: ["Bathtubs"]
 isFeatured: true
+sku: "822" 
+brand: "XC Bath"
+price: "210.00"
+currency: "USD"
+availability: "InStock" 
+condition: "NewCondition"
+ratingValue: "5.0"
+reviewCount: "558"
 ---
 
 ## Overview & Design Philosophy

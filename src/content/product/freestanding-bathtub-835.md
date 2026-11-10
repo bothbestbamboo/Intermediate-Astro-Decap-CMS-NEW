@@ -6,6 +6,14 @@ image: "@assets/images/products/835-1f.jpg"
 imageAlt: "Model 835 Freestanding Solid Surface Soaking Bathtub in a modern luxury bathroom"
 tags: ["Bathtubs"]
 isFeatured: true
+sku: "835" 
+brand: "XC Bath"
+price: "261.00"
+currency: "USD"
+availability: "InStock" 
+condition: "NewCondition"
+ratingValue: "5.0"
+reviewCount: "302"
 ---
 
 ## Overview & Design Philosophy

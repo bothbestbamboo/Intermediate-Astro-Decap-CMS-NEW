@@ -6,6 +6,14 @@ image: "@assets/images/products/2415-f.jpg"
 imageAlt: "Model 2415 white wall-mounted bathroom vanity with fluted doors and ceramic basin"
 tags: ["cabinets"]
 isFeatured: true
+sku: "2415" 
+brand: "XC Bath"
+price: "52.00"
+currency: "USD"
+availability: "InStock" 
+condition: "NewCondition"
+ratingValue: "5.0"
+reviewCount: "186"
 ---
 
 ## Overview & Design Philosophy

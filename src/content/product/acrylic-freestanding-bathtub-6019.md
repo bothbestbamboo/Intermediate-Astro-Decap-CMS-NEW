@@ -6,6 +6,14 @@ image: "@assets/images/products/6019-1f.jpg"
 imageAlt: "Model 6019 white acrylic freestanding bathtub with a curved basin"
 tags: ["Bathtubs"]
 isFeatured: true
+sku: "6019" 
+brand: "XC Bath"
+price: "218.00"
+currency: "USD"
+availability: "InStock" 
+condition: "NewCondition"
+ratingValue: "5.0"
+reviewCount: "85"
 ---
 
 ## Overview & Design Philosophy

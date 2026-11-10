@@ -6,6 +6,14 @@ image: "@assets/images/products/6009-1f.jpg"
 imageAlt: "Model 6009 Freestanding Two-Tone Solid Surface Soaking Bathtub in a modern luxury bathroom"
 tags: ["Bathtubs"]
 isFeatured: true
+sku: "6009" 
+brand: "XC Bath"
+price: "205.00"
+currency: "USD"
+availability: "InStock" 
+condition: "NewCondition"
+ratingValue: "5.0"
+reviewCount: "164"
 ---
 
 ## Overview & Design Philosophy

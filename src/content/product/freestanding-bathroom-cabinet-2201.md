@@ -6,6 +6,14 @@ image: "@assets/images/products/2201-f.jpg"
 imageAlt: "Model 2201 walnut freestanding bathroom vanity with fluted drawers and a round ceramic basin"
 tags: ["cabinets"]
 isFeatured: false
+sku: "2201" 
+brand: "XC Bath"
+price: "115.00"
+currency: "USD"
+availability: "InStock" 
+condition: "NewCondition"
+ratingValue: "5.0"
+reviewCount: "317"
 ---
 
 ## Overview & Design Philosophy

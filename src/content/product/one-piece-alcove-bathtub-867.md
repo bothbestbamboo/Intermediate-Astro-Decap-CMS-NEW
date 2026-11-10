@@ -6,6 +6,14 @@ image: "@assets/images/products/867-2f.jpg"
 imageAlt: "Model 867 one-piece solid surface alcove soaking bathtub with chrome deck faucet set in a modern grey tiled bathroom"
 tags: ["Bathtubs"]
 isFeatured: true
+sku: "867" 
+brand: "XC Bath"
+price: "243.00"
+currency: "USD"
+availability: "InStock" 
+condition: "NewCondition"
+ratingValue: "5.0"
+reviewCount: "101"
 ---
 
 ## Overview & Design Philosophy

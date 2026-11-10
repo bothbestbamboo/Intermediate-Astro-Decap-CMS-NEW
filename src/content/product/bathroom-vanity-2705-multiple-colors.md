@@ -6,6 +6,14 @@ image: "@assets/images/products/2705-f.jpg"
 imageAlt: "Model 2705 double-basin wall-mounted bathroom vanity with fluted oak doors and LED mirrors"
 tags: ["cabinets"]
 isFeatured: false
+sku: "2705" 
+brand: "XC Bath"
+price: "130.00"
+currency: "USD"
+availability: "InStock" 
+condition: "NewCondition"
+ratingValue: "5.0"
+reviewCount: "105"
 ---
 
 ## Overview & Design Philosophy

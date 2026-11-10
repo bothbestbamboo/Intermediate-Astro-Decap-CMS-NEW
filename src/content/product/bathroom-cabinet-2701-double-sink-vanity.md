@@ -6,14 +6,14 @@ image: "@assets/images/products/2701-f.jpg"
 imageAlt: "Model 2701 dark grey wall-mounted double sink bathroom vanity with fluted doors and gold handles"
 tags: ["showers"]
 isFeatured: true
-sku: "820A" 
+sku: "2701" 
 brand: "XC Bath"
 price: "60.00"
 currency: "USD"
 availability: "InStock" 
 condition: "NewCondition"
 ratingValue: "5.0"
-reviewCount: "358"
+reviewCount: "255"
 ---
 
 ## Overview & Design Philosophy
