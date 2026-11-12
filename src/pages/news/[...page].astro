@@ -29,9 +29,45 @@ export async function getStaticPaths({ paginate }) {
 
 // 2. 从 Astro.props 获取当前页面的分页数据
 const { page } = Astro.props;
+
+// ============================================================
+// 3. 动态 SEO 标题 & 描述（浴缸网站专属定制）
+// ============================================================
+const pageNum = page.currentPage;
+const totalPages = page.lastPage;
+const PAGE_SIZE = 10;
+
+const pageTitle =
+  pageNum > 1
+    ? `Bathtub Insights & Trends - Page ${pageNum} of ${totalPages} | XC Bath`
+    : "Bathtub Insights & Trends | XC Bath Blog";
+
+const pageDescription =
+  pageNum > 1
+    ? `Browse page ${pageNum} of XC Bath industry insights: technical guides, installation tips, and product updates for bathtubs, sanitary ware, and bathroom solutions.`
+    : "Technical insights on bathtubs, manufacturing processes, and industry trends from XC Bath — your reliable bathtub factory. Installation guides, material science, and factory updates.";
+
+// ============================================================
+// 4. ItemList 结构化数据 (帮助搜索引擎理解列表)
+// ============================================================
+const siteUrl = "https://www.chinabathtub.com"; 
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: pageNum > 1 ? `Bathtub Insights & Trends - Page ${pageNum}` : "Bathtub Insights & Trends",
+  numberOfItems: page.data.length,
+  itemListElement: page.data.map((post: any, index: number) => ({
+    "@type": "ListItem",
+    position: (pageNum - 1) * PAGE_SIZE + index + 1,
+    url: `${siteUrl}/news/${post.slug}/`,
+    name: post.data.title,
+  })),
+};
 ---
 
-<BaseLayout title="Blog" description="Meta description for the page" heroImage={placeholderOptimizedImage}>
+<BaseLayout title={pageTitle} description={pageDescription} heroImage={placeholderOptimizedImage}>
+    <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+
     <Banner 
         title="Bathtub Insights & Trends" 
         subtitle="Deep dives into performance standards, material science, and technical updates straight from our factory." 
