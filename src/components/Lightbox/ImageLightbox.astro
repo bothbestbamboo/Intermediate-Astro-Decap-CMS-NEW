@@ -201,7 +201,7 @@
 		let lightboxAbortController = null;
 
 		function setupBlogLightbox() {
-			// 🌟 每次重新初始化前，先取消上一次的所有事件绑定（清理旧内存）
+			// 每次重新初始化前，先取消上一次的所有事件绑定（清理旧内存）
 			if (lightboxAbortController) {
 				lightboxAbortController.abort();
 			}
@@ -216,25 +216,32 @@
 
 			if (!modal || !modalImg) return;
 
-			const contentImages = document.querySelectorAll('.prose table td img, #blog-content table td img, #blog-content img');
-			
-			contentImages.forEach(img => {
-				if (img.dataset.lightboxBound) return;
-				img.dataset.lightboxBound = "true";
+			// 🌟 核心修改：使用事件委托，绑定在 document 上，不再遍历单张图片
+			document.addEventListener('click', (e) => {
+				const target = e.target;
+				let clickedImg = null;
 
-				// 🌟 统一加上 { signal }
-				img.addEventListener('click', (e) => {
+				// 判断点的是不是图片
+				if (target.tagName === 'IMG') {
+					clickedImg = target;
+				} 
+				// 兼容表格场景：因为 td 有 padding，可能点到了 td 的留白处，此时去里面找 img
+				else if (target.tagName === 'TD') {
+					clickedImg = target.querySelector('img');
+				}
+
+				// 确保点击的图片是在文章内容区（防止误触导航栏或侧边栏的图片）
+				if (clickedImg && (clickedImg.closest('#blog-content') || clickedImg.closest('.prose'))) {
 					modal.style.display = 'flex';
-					modalImg.src = img.currentSrc || img.src;
-				}, { signal });
-			});
+					modalImg.src = clickedImg.currentSrc || clickedImg.src;
+				}
+			}, { signal });
 
 			const closeModal = () => {
 				modal.style.display = 'none';
 				modalImg.src = '';
 			};
 
-			// 🌟 改为 addEventListener 并绑定 signal
 			if (closeBtn) closeBtn.addEventListener('click', closeModal, { signal });
 			
 			if (zoomOutBtn) {
@@ -248,7 +255,7 @@
 				if (e.target === modal || e.target === modalImg) closeModal();
 			}, { signal });
 
-			// 🚨 最核心的修复：Esc 按键监听也绑上 signal
+			// Esc 按键监听同样绑上 signal
 			document.addEventListener('keydown', (e) => {
 				if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
 			}, { signal });
