@@ -197,43 +197,64 @@
 
 <!-- 🌟 Lightbox JavaScript Logic -->
 <script is:inline>
-	function setupBlogLightbox() {
-		const modal = document.getElementById('lightbox-modal');
-		const modalImg = document.getElementById('lightbox-img');
-		const closeBtn = document.querySelector('.lightbox-close');
-		const zoomOutBtn = document.querySelector('.lightbox-zoomout');
+	(function() {
+		let lightboxAbortController = null;
 
-		if (!modal || !modalImg) return;
+		function setupBlogLightbox() {
+			// 🌟 每次重新初始化前，先取消上一次的所有事件绑定（清理旧内存）
+			if (lightboxAbortController) {
+				lightboxAbortController.abort();
+			}
+			// 创建新的控制器
+			lightboxAbortController = new AbortController();
+			const { signal } = lightboxAbortController;
 
-		const contentImages = document.querySelectorAll('.prose table td img, #blog-content table td img, #blog-content img');
-		
-		contentImages.forEach(img => {
-			if (img.dataset.lightboxBound) return;
-			img.dataset.lightboxBound = "true";
+			const modal = document.getElementById('lightbox-modal');
+			const modalImg = document.getElementById('lightbox-img');
+			const closeBtn = document.querySelector('.lightbox-close');
+			const zoomOutBtn = document.querySelector('.lightbox-zoomout');
 
-			img.addEventListener('click', (e) => {
-				modal.style.display = 'flex';
-				modalImg.src = img.currentSrc || img.src;
+			if (!modal || !modalImg) return;
+
+			const contentImages = document.querySelectorAll('.prose table td img, #blog-content table td img, #blog-content img');
+			
+			contentImages.forEach(img => {
+				if (img.dataset.lightboxBound) return;
+				img.dataset.lightboxBound = "true";
+
+				// 🌟 统一加上 { signal }
+				img.addEventListener('click', (e) => {
+					modal.style.display = 'flex';
+					modalImg.src = img.currentSrc || img.src;
+				}, { signal });
 			});
-		});
 
-		const closeModal = () => {
-			modal.style.display = 'none';
-			modalImg.src = '';
-		};
+			const closeModal = () => {
+				modal.style.display = 'none';
+				modalImg.src = '';
+			};
 
-		if (closeBtn) closeBtn.onclick = closeModal;
-		if (zoomOutBtn) zoomOutBtn.onclick = (e) => { e.stopPropagation(); closeModal(); };
+			// 🌟 改为 addEventListener 并绑定 signal
+			if (closeBtn) closeBtn.addEventListener('click', closeModal, { signal });
+			
+			if (zoomOutBtn) {
+				zoomOutBtn.addEventListener('click', (e) => { 
+					e.stopPropagation(); 
+					closeModal(); 
+				}, { signal });
+			}
 
-		modal.onclick = (e) => {
-			if (e.target === modal || e.target === modalImg) closeModal();
-		};
+			modal.addEventListener('click', (e) => {
+				if (e.target === modal || e.target === modalImg) closeModal();
+			}, { signal });
 
-		document.addEventListener('keydown', (e) => {
-			if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
-		});
-	}
+			// 🚨 最核心的修复：Esc 按键监听也绑上 signal
+			document.addEventListener('keydown', (e) => {
+				if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
+			}, { signal });
+		}
 
-	setupBlogLightbox();
-	document.addEventListener('astro:page-load', setupBlogLightbox);
+		setupBlogLightbox();
+		document.addEventListener('astro:page-load', setupBlogLightbox);
+	})();
 </script>
