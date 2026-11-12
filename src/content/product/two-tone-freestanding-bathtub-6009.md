@@ -13,19 +13,19 @@ currency: "USD"
 availability: "InStock" 
 condition: "NewCondition"
 reviews:
-  - author: "Sophia Loren"
+  - author: "Sophia Martinez"
     rating: 5
     date: "2026-07-15"
     content: "The two-tone red and white design is an absolute showstopper. It's the focal point of our penthouse bathroom. The 1800mm size is perfect for stretching out."
-  - author: "James Bond"
+  - author: "James Harrison"
     rating: 5
     date: "2026-09-22"
     content: "The raised rim design at both ends provides excellent head support. The deep soaking capacity is exactly what I needed after a long day."
-  - author: "Emma Watson"
+  - author: "Emma Robinson"
     rating: 5
     date: "2026-10-15"
     content: "Very impressed with the cast resin material. It feels warm to the touch and the repairable surface is a huge plus for long-term maintenance."
-  - author: "Tom Ford"
+  - author: "Thomas Clark"
     rating: 5
     date: "2026-11-05"
     content: "Sleek, monolithic look. The seamless molding means no weak points. Shipping was secure and it arrived without a scratch."

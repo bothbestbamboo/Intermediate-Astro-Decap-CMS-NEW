@@ -13,19 +13,19 @@ currency: "USD"
 availability: "InStock" 
 condition: "NewCondition"
 reviews:
-  - author: "Hugh Jackman"
+  - author: "David Anderson"
     rating: 5
     date: "2026-09-05"
     content: "The three full-width drawers are a game-changer. There's so much storage space. The recessed horizontal grips look very sleek and modern."
-  - author: "Gal Gadot"
+  - author: "Emma Thompson"
     rating: 5
     date: "2026-10-01"
     content: "We chose the Walnut finish. The wood grain is beautiful and the freestanding design gives it a furniture-like feel. The wall-mounted faucet keeps the counter so clean."
-  - author: "Robert Downey Jr."
+  - author: "Robert Miller"
     rating: 5
     date: "2026-10-25"
     content: "The continuous fluted front across all three drawers is a great detail. It looks like one solid textured piece. The round vessel basin is very elegant."
-  - author: "Mark Ruffalo"
+  - author: "Mark Davis"
     rating: 5
     date: "2026-11-07"
     content: "Installation was straightforward since it's freestanding. The recessed plinth protects it from floor water. Very solid construction."

@@ -13,15 +13,15 @@ currency: "USD"
 availability: "InStock" 
 condition: "NewCondition"
 reviews:
-  - author: "Keanu Reeves"
+  - author: "James Wilson"
     rating: 5
     date: "2026-08-30"
     content: "The curved fluted design is incredibly unique. We ordered the 1800mm double basin in Oak. It transformed our master suite into a luxury spa experience."
-  - author: "Charlize Theron"
+  - author: "Sarah Jenkins"
     rating: 5
     date: "2026-09-21"
     content: "Very happy with the PVC waterproof carcase option. It's perfect for our humid bathroom. The soft bullnose silhouette softens the whole room."
-  - author: "Matt Damon"
+  - author: "Michael Brown"
     rating: 5
     date: "2026-10-17"
     content: "The ceramic integrated top is very practical. No seams, no mold. The paired LED mirrors are a perfect match. Highly recommend this manufacturer."
