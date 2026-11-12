@@ -62,7 +62,6 @@ const getIconName = (text: string) => {
 		flex-direction: column;
 		gap: 14px !important;
 		list-style: none !important;
-        /* 🚨 恢复为 0，不占用水平宽度 */
         padding-left: 0 !important; 
 	}
 
@@ -70,7 +69,6 @@ const getIconName = (text: string) => {
 		position: relative;
 		transition: all 0.2s ease;
 		
-		/* 🚨 用 margin 控制层级缩进，完美不挤压文字 */
 		&.depth-2 { margin-left: 0 !important; }
 		&.depth-3 { margin-left: 14px !important; }
 	}
@@ -84,10 +82,9 @@ const getIconName = (text: string) => {
         align-items: flex-start; 
         gap: 8px; 
         width: 100%;
-        /* 🚨 确保文字完全不缩进，恢复原有宽度 */
         padding-left: 0 !important; 
 
-        /* 🌟 终极绝杀：把线条外挂到文字左侧的留白处 */
+        /* 🌟 线条外挂到文字左侧的留白处 */
         &::before {
             content: "";
             position: absolute;
@@ -101,7 +98,6 @@ const getIconName = (text: string) => {
             transition: all 0.2s ease;
         }
 
-		/* 悬浮 或 当前高亮 时显示线条 */
 		&:hover::before,
 		&.cs-toc-current::before {
 			opacity: 1;
@@ -116,21 +112,13 @@ const getIconName = (text: string) => {
         }
 
 		&.cs-toc-current {
-			.cs-toc-text {
-                font-weight: 700 !important;
-            }
-            .cs-toc-icon {
-                color: var(--primaryLight);
-            }
+			.cs-toc-text { font-weight: 700 !important; }
+            .cs-toc-icon { color: var(--primaryLight); }
 		}
 		
 		&:hover {
-            .cs-toc-text {
-                color: var(--primaryLight) !important;
-            }
-            .cs-toc-icon {
-                color: var(--primaryLight);
-            }
+            .cs-toc-text { color: var(--primaryLight) !important; }
+            .cs-toc-icon { color: var(--primaryLight); }
 		}
 	}
 
@@ -147,23 +135,16 @@ const getIconName = (text: string) => {
     }
 
     @media only screen and (min-width: 64rem) {
-        .cs-toc-container {
-            margin-bottom: 0;
-        }
+        .cs-toc-container { margin-bottom: 0; }
     }
 
     /* Dark Mode */
-    @media only screen and (min-width: 0em) {
     body.dark-mode {
-        .cs-toc-icon {
-            color: #a3a3a3;
-        }
+        .cs-toc-icon { color: #a3a3a3; }
         .cs-toc-link {
             color: #f7f7f7;
 			&.cs-toc-current {
-                .cs-toc-icon {
-                    color: var(--primaryLight);
-                }
+                .cs-toc-icon { color: var(--primaryLight); }
 			}
         }
         
@@ -179,21 +160,18 @@ const getIconName = (text: string) => {
             color: var(--primaryLight) !important;
         }
     }
-}
 </style>
 
 <script>
 	let observeHeaderTags: IntersectionObserver;
 	let allHeaderTags: NodeListOf<Element>;
-	let isDesktop = window.matchMedia("(min-width: 1024px)").matches;
 	let visibleHeadings = new Set<Element>();
 
 	function updateActiveLink() {
-		const tocWrapper = document.querySelector("#desktop-toc");
-		if (!tocWrapper) return;
-		const allSectionLinks = tocWrapper.querySelectorAll(".cs-toc-link");
+		// 🌟 核心优化：直接抓取页面所有的 TOC 链接（同时覆盖手机端和桌面端）
+		const allSectionLinks = document.querySelectorAll(".cs-toc-link");
 		
-		if (visibleHeadings.size === 0) return;
+		if (visibleHeadings.size === 0 || allSectionLinks.length === 0) return;
 
 		let currentActive = null;
 		let maxTop = -Infinity;
@@ -221,9 +199,15 @@ const getIconName = (text: string) => {
 		}
 
 		if (currentActive) {
-			allSectionLinks.forEach((link) => link.classList.remove("cs-toc-current"));
-			const targetLink = tocWrapper.querySelector(`a[href="#${(currentActive as Element).id}"].cs-toc-link`);
-			if (targetLink) targetLink.classList.add("cs-toc-current");
+			const activeId = (currentActive as Element).id;
+			
+			// 🌟 核心优化：遍历所有链接，移除旧高亮，匹配当前标题则加上
+			allSectionLinks.forEach((link) => {
+				link.classList.remove("cs-toc-current");
+				if (link.getAttribute("href") === `#${activeId}`) {
+					link.classList.add("cs-toc-current");
+				}
+			});
 		}
 	}
 
@@ -239,8 +223,7 @@ const getIconName = (text: string) => {
 	}
 
 	function initTOC() {
-		if (!window.matchMedia("(min-width: 64rem)").matches) return;
-		
+		// 🌟 核心优化：移除了设备判断，让手机端在长文阅读时也能生效
 		const wrappingElement = document.querySelector("#blog-content");
 		if (!wrappingElement) return;
 		
@@ -263,17 +246,11 @@ const getIconName = (text: string) => {
 		allHeaderTags.forEach((tag) => observeHeaderTags.observe(tag));
 	}
 
-	if (isDesktop) initTOC();
+	// 初始化
+	initTOC();
 	
+	// 兼容 Astro View Transitions（页面切换时重新绑定）
 	document.addEventListener("astro:after-swap", () => {
-		if (window.matchMedia("(min-width: 64rem)").matches) initTOC();
-	});
-
-	window.matchMedia("(min-width: 64rem)").addEventListener("change", (e) => {
-		if (e.matches) {
-			initTOC();
-		} else if (observeHeaderTags) {
-			observeHeaderTags.disconnect();
-		}
+		initTOC();
 	});
 </script>
